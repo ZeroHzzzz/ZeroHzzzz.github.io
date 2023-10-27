@@ -16,17 +16,19 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在写文章的时候我们常常会使用图片来传达一些只可意会不可言传的含义…. 本地引用绝对路径当Hexo项目中只用到少量图片时，可以将图片统一放在source&#x2F;images文件夹中，通过markdown语法访问它们。 12![](&#x2F;images&#x2F;image.jpg)  这样图片既可以在首页内容中访问到，也可以在文章正文中访问到。 相对路径图片除了可以放在统一的images文件夹中，还可以放在文章">
+    <meta name="description" content="在写文章的时候我们常常会使用图片来传达一些只可意会不可言传的含义…. 本地引用绝对路径当Hexo项目中只用到少量图片时，可以将图片统一放在source&#x2F;images文件夹中，通过markdown语法访问它们。&#96;source&#x2F;images&#x2F;image.jpg &#96; 这样图片既可以在首页内容中访问到，也可以在文章正文中访问到。 相对路径图片除了可以放在统一的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo添加图片的几种方式">
 <meta property="og:url" content="http://zerohzzzz.github.io/2023/10/27/Hexo%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="ZeroHzzzz-Blog">
-<meta property="og:description" content="在写文章的时候我们常常会使用图片来传达一些只可意会不可言传的含义…. 本地引用绝对路径当Hexo项目中只用到少量图片时，可以将图片统一放在source&#x2F;images文件夹中，通过markdown语法访问它们。 12![](&#x2F;images&#x2F;image.jpg)  这样图片既可以在首页内容中访问到，也可以在文章正文中访问到。 相对路径图片除了可以放在统一的images文件夹中，还可以放在文章">
+<meta property="og:description" content="在写文章的时候我们常常会使用图片来传达一些只可意会不可言传的含义…. 本地引用绝对路径当Hexo项目中只用到少量图片时，可以将图片统一放在source&#x2F;images文件夹中，通过markdown语法访问它们。&#96;source&#x2F;images&#x2F;image.jpg &#96; 这样图片既可以在首页内容中访问到，也可以在文章正文中访问到。 相对路径图片除了可以放在统一的">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://zerohzzzz.github.io/images/image.jpg">
 <meta property="article:published_time" content="2023-10-27T02:36:10.000Z">
-<meta property="article:modified_time" content="2023-10-27T02:48:21.829Z">
+<meta property="article:modified_time" content="2023-10-27T02:57:08.489Z">
 <meta property="article:author" content="ZeroHzzzz">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://zerohzzzz.github.io/images/image.jpg">
   
   
   
@@ -219,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          384 words
+          398 words
         
       </span>
     
@@ -273,24 +275,19 @@
               <div class="markdown-body">
                 
                 <p>在写文章的时候我们常常会使用图片来传达一些只可意会不可言传的含义….</p>
-<h1 id="本地引用"><a href="#本地引用" class="headerlink" title="本地引用"></a>本地引用</h1><h2 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h2><p>当Hexo项目中只用到少量图片时，可以将图片统一放在source&#x2F;images文件夹中，通过markdown语法访问它们。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs source/images/image.jpg"><br>![](/images/image.jpg)<br></code></pre></td></tr></table></figure>
-
+<h1 id="本地引用"><a href="#本地引用" class="headerlink" title="本地引用"></a>本地引用</h1><h2 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h2><p>当Hexo项目中只用到少量图片时，可以将图片统一放在source&#x2F;images文件夹中，通过markdown语法访问它们。<br>&#96;source&#x2F;images&#x2F;image.jpg</p>
+<p><img src="/images/image.jpg" srcset="/img/loading.gif" lazyload><br>&#96;</p>
 <p>这样图片既可以在首页内容中访问到，也可以在文章正文中访问到。</p>
 <h2 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h2><p>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中。文章的目录可以通过配置_config.yml来生成。</p>
-<pre><code class="_config.yml">
-post_asset_folder: true```
-
-# CDN应用
-
-个人比较喜欢用这种方法（）
-
-- hexo new &quot;passage_name&quot;
-- 将图片到自动生成的文章的目录中，自动生成目录的方法如上
-- 用md语法访问
-
-```![photo](passage_name/images/1213.gif)```
-</code></pre>
+<p>在根目录的_config.yml中：</p>
+<p><code>post_asset_folder: true</code></p>
+<h1 id="CDN应用"><a href="#CDN应用" class="headerlink" title="CDN应用"></a>CDN应用</h1><p>个人比较喜欢用这种方法（）</p>
+<ul>
+<li>hexo new “passage_name”</li>
+<li>将图片到自动生成的文章的目录中，自动生成目录的方法如上</li>
+<li>用md语法访问</li>
+</ul>
+<p><code>![photo](passage_name/images/1213.gif)</code></p>
 
                 
               </div>
