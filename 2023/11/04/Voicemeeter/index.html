@@ -16,24 +16,29 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="准备工作 GitHub账号 安装git 安装node  创建仓库 创建仓库，并将仓库命名为 username.github.io注意这里的username（）  安装hexo 安装hexo  npm install -g hexo-cli  check  hexo -v  创建hexo项目并初始化123hexo init [hexo-blog(你新建的本地博客文件夹的名字，如果不输入默认为当前文件">
+    <meta name="description" content="一、基础知识输入与输出 硬件输入：就是现实的电脑上的麦克风、你头戴耳麦的麦克风等硬件录音设备。【硬件输入→（发出）→声音信号】（请注意这里的声音指的是电路中的声音信号，而不是你实际听到的声音。下同。）  硬件输出：就是现实的扬声器喇叭、你头戴耳麦的耳机等硬件发声设备。【声音信号→（被接收）→硬件输出】  虚拟输入：就是虚拟录音设备，专门监听系统中各种软件发出的声音信号。【声音信号→（被接收）→虚拟">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于hexo搭建博客（GitHub）">
-<meta property="og:url" content="http://zerohzzzz.github.io/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/index.html">
+<meta property="og:title" content="基于Voicemeeter实现同时连接多台输出设备">
+<meta property="og:url" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/index.html">
 <meta property="og:site_name" content="ZeroHzzzz-Blog">
-<meta property="og:description" content="准备工作 GitHub账号 安装git 安装node  创建仓库 创建仓库，并将仓库命名为 username.github.io注意这里的username（）  安装hexo 安装hexo  npm install -g hexo-cli  check  hexo -v  创建hexo项目并初始化123hexo init [hexo-blog(你新建的本地博客文件夹的名字，如果不输入默认为当前文件">
+<meta property="og:description" content="一、基础知识输入与输出 硬件输入：就是现实的电脑上的麦克风、你头戴耳麦的麦克风等硬件录音设备。【硬件输入→（发出）→声音信号】（请注意这里的声音指的是电路中的声音信号，而不是你实际听到的声音。下同。）  硬件输出：就是现实的扬声器喇叭、你头戴耳麦的耳机等硬件发声设备。【声音信号→（被接收）→硬件输出】  虚拟输入：就是虚拟录音设备，专门监听系统中各种软件发出的声音信号。【声音信号→（被接收）→虚拟">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/1.png">
-<meta property="article:published_time" content="2023-10-27T02:58:06.000Z">
-<meta property="article:modified_time" content="2023-10-28T11:12:09.050Z">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/virtual_input.jpg">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/virtual_output.jpg">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/%E8%BD%AF%E4%BB%B6%E7%95%8C%E9%9D%A2.jpg">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/%E7%A1%AC%E4%BB%B6%E9%80%9A%E9%81%93%E8%BE%93%E5%85%A5.jpg">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/1.jpg">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/1.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/3.png">
+<meta property="article:published_time" content="2023-11-03T16:09:53.000Z">
+<meta property="article:modified_time" content="2023-11-03T16:49:13.911Z">
 <meta property="article:author" content="ZeroHzzzz">
-<meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://zerohzzzz.github.io/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/1.png">
+<meta name="twitter:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/virtual_input.jpg">
   
   
   
-  <title>基于hexo搭建博客（GitHub） - ZeroHzzzz-Blog</title>
+  <title>基于Voicemeeter实现同时连接多台输出设备 - ZeroHzzzz-Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="基于hexo搭建博客（GitHub）"></span>
+            <span id="subtitle" data-typed-text="基于Voicemeeter实现同时连接多台输出设备"></span>
           
         </div>
 
@@ -210,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-27 10:58" pubdate>
-          October 27, 2023 am
+        <time datetime="2023-11-04 00:09" pubdate>
+          November 4, 2023 am
         </time>
       </span>
     
@@ -222,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          790 words
+          548 words
         
       </span>
     
@@ -233,7 +238,7 @@
         
         
         
-          7 mins
+          5 mins
         
       </span>
     
@@ -270,54 +275,58 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">基于hexo搭建博客（GitHub）</h1>
+            <h1 id="seo-header">基于Voicemeeter实现同时连接多台输出设备</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
-<li>GitHub账号</li>
-<li>安装git</li>
-<li>安装node</li>
+                <h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><ul>
+<li><p>硬件输入：就是现实的电脑上的麦克风、你头戴耳麦的麦克风等硬件录音设备。【硬件输入→（发出）→声音信号】（请注意这里的声音指的是电路中的声音信号，而不是你实际听到的声音。下同。）</p>
+</li>
+<li><p>硬件输出：就是现实的扬声器喇叭、你头戴耳麦的耳机等硬件发声设备。【声音信号→（被接收）→硬件输出】</p>
+</li>
+<li><p>虚拟输入：就是虚拟录音设备，专门监听系统中各种软件发出的声音信号。【声音信号→（被接收）→虚拟输入】</p>
+</li>
 </ul>
-<h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><ul>
-<li>创建仓库，并将仓库命名为 username.github.io<br>注意这里的username（）</li>
-</ul>
-<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><ul>
-<li>安装hexo</li>
-</ul>
-<p><code>npm install -g hexo-cli</code></p>
-<ul>
-<li>check</li>
-</ul>
-<p><code>hexo -v</code></p>
-<ul>
-<li>创建hexo项目并初始化<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">hexo init [hexo-<span class="hljs-keyword">blog(你新建的本地博客文件夹的名字，如果不输入默认为当前文件夹)]</span><br><span class="hljs-keyword"></span>cd hexo-<span class="hljs-keyword">blog</span><br><span class="hljs-keyword"></span>npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h1><p>hexo默认主题为landscape，可以前往hexo官网寻找你心仪的主题<br><a target="_blank" rel="noopener" href="https://hexo.io/themes/">Themes</a></p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">[github</span>地址] [存放路径]<br><span class="hljs-comment"># 例如</span><br><span class="hljs-comment"># git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></code></pre></td></tr></table></figure>
+<img src="/2023/11/04/Voicemeeter/virtual_input.jpg" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
 
-<p>在根目录的 _config.yml 文件中找到theme字段并将它改成你主题的名字<br><code>theme: next</code></p>
-<p>本地启动：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure>
-<img src="/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/1.png" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片.....">
-
-<h1 id="修改参数"><a href="#修改参数" class="headerlink" title="修改参数"></a>修改参数</h1><p>根据themes提供的文档修改参数</p>
-<h1 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h1><p>新建文章<br><code>hexo new post 测试文章</code><br>然后就开始写吧</p>
-<h1 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h1><ul>
-<li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可</li>
-<li>对 Hexo 根目录 _config.yml 的修改，需要重启本地服务器后才能预览效果</li>
-</ul>
-<p><code>hexo s</code></p>
-<h1 id="Deloy"><a href="#Deloy" class="headerlink" title="Deloy"></a>Deloy</h1><ul>
-<li>安装hexo-deployer-git</li>
-</ul>
-<p><code>npm install hexo-deployer-git --save</code></p>
 <ul>
-<li>修改根目录下的 _config.yml，配置 GitHub 相关信息,token获取方式自行百度<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repo:</span> https:<span class="hljs-comment">//github.com/yaorongke/yaorongke.github.io.git</span><br><span class="hljs-symbol">  branch:</span> main<br><span class="hljs-symbol">  token:</span> ghp_3KakcaPHerunNRyMerofcFd9pblU282FSbsY   <span class="hljs-meta"># 应该可写可不写</span><br></code></pre></td></tr></table></figure></li>
-<li>发布<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g -d</span><br></code></pre></td></tr></table></figure></li>
+<li>虚拟输出：就是虚拟发声设备，有一个虚拟的扬声器，负责向别的设备发出声音信号。【虚拟输出→（发出）→声音信号】</li>
 </ul>
-<h1 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h1>
+<img src="/2023/11/04/Voicemeeter/virtual_output.jpg" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
+
+<ul>
+<li>通道：用于接收和转发声音信号的中间人。</li>
+</ul>
+<h2 id="设置电脑的输入输出设备"><a href="#设置电脑的输入输出设备" class="headerlink" title="设置电脑的输入输出设备"></a>设置电脑的输入输出设备</h2><p>自行百度，这里不再赘述</p>
+<h1 id="二、软件界面"><a href="#二、软件界面" class="headerlink" title="二、软件界面"></a>二、软件界面</h1><img src="/2023/11/04/Voicemeeter/%E8%BD%AF%E4%BB%B6%E7%95%8C%E9%9D%A2.jpg" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
+
+<p>看下图硬件输入通道1下面框出来的按钮：A1、A2、A3、B1、B2 都是输出通道，你点亮了哪个，声音信号就会被接入到哪一个输出通道。</p>
+<img src="/2023/11/04/Voicemeeter/%E7%A1%AC%E4%BB%B6%E9%80%9A%E9%81%93%E8%BE%93%E5%85%A5.jpg" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
+
+<p>比如图中，点亮了A1和B1，那么硬件输入通道1的声音信号就会被发送到A1、B1两个输出通道中去。</p>
+<h1 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h1><p>这里只讲解软件同时输出到多个蓝牙设备的使用方法：</p>
+<ul>
+<li>打开Voicemeeter</li>
+<li>配置输出设备</li>
+</ul>
+<img src="/2023/11/04/Voicemeeter/1.jpg" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
+
+<ul>
+<li>在虚拟输入栏中选择输出设备</li>
+</ul>
+<img src="/2023/11/04/Voicemeeter/1.png" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
+
+<ul>
+<li>调节音量</li>
+</ul>
+<img src="/2023/11/04/Voicemeeter/3.png" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
+
+<ul>
+<li>run！</li>
+</ul>
+<h1 id="Addition"><a href="#Addition" class="headerlink" title="Addition"></a>Addition</h1><p>如果想了解更多关于voicemeeter相关的知识，可到：<br><a target="_blank" rel="noopener" href="http://vb-audio.cn/post/36.html">http://vb-audio.cn/post/36.html</a></p>
+
                 
               </div>
             
@@ -325,13 +334,6 @@
             <div>
               <div class="post-metas my-3">
   
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Hexo/" class="print-no-link">#Hexo</a>
-      
-    </div>
   
 </div>
 
@@ -341,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>基于hexo搭建博客（GitHub）</div>
-      <div>http://zerohzzzz.github.io/2023/10/27/基于hexo搭建博客（GitHub）/</div>
+      <div>基于Voicemeeter实现同时连接多台输出设备</div>
+      <div>http://zerohzzzz.github.io/2023/11/04/Voicemeeter/</div>
     </div>
     <div class="license-meta">
       
@@ -354,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 27, 2023</div>
+          <div>November 4, 2023</div>
         </div>
       
       
@@ -386,18 +388,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/04/Voicemeeter/" title="基于Voicemeeter实现同时连接多台输出设备">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">基于Voicemeeter实现同时连接多台输出设备</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/27/Hexo%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="Hexo添加图片的几种方式">
-                        <span class="hidden-mobile">Hexo添加图片的几种方式</span>
+                      <a href="/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/" title="基于hexo搭建博客（GitHub）">
+                        <span class="hidden-mobile">基于hexo搭建博客（GitHub）</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
