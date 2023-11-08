@@ -16,29 +16,31 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、基础知识输入与输出 硬件输入：就是现实的电脑上的麦克风、你头戴耳麦的麦克风等硬件录音设备。【硬件输入→（发出）→声音信号】（请注意这里的声音指的是电路中的声音信号，而不是你实际听到的声音。下同。）  硬件输出：就是现实的扬声器喇叭、你头戴耳麦的耳机等硬件发声设备。【声音信号→（被接收）→硬件输出】  虚拟输入：就是虚拟录音设备，专门监听系统中各种软件发出的声音信号。【声音信号→（被接收）→虚拟">
+    <meta name="description" content="综合分测定方法综合分测评的意义和作用 考察综合素质 为评定奖助学金、荣誉称号的主要依据 作为推荐优秀应届本科毕业生免试攻读研究生的参考依据  综合分办法解析 测评体系  学生综合素质评价采用量化标准，指标体系主要包括德育素质、智育素质、体育素质、劳育素质、美育素质、创新与实践素质六部分，满分 100 分。 学生综合素质测评成绩 &#x3D;  德育素质测评成绩（10 分）+智育素质测评成绩（60">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于Voicemeeter将声音同时输出到多个输出设备">
-<meta property="og:url" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/index.html">
+<meta property="og:title" content="综合分测定方法">
+<meta property="og:url" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="一、基础知识输入与输出 硬件输入：就是现实的电脑上的麦克风、你头戴耳麦的麦克风等硬件录音设备。【硬件输入→（发出）→声音信号】（请注意这里的声音指的是电路中的声音信号，而不是你实际听到的声音。下同。）  硬件输出：就是现实的扬声器喇叭、你头戴耳麦的耳机等硬件发声设备。【声音信号→（被接收）→硬件输出】  虚拟输入：就是虚拟录音设备，专门监听系统中各种软件发出的声音信号。【声音信号→（被接收）→虚拟">
+<meta property="og:description" content="综合分测定方法综合分测评的意义和作用 考察综合素质 为评定奖助学金、荣誉称号的主要依据 作为推荐优秀应届本科毕业生免试攻读研究生的参考依据  综合分办法解析 测评体系  学生综合素质评价采用量化标准，指标体系主要包括德育素质、智育素质、体育素质、劳育素质、美育素质、创新与实践素质六部分，满分 100 分。 学生综合素质测评成绩 &#x3D;  德育素质测评成绩（10 分）+智育素质测评成绩（60">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/virtual_input.jpg">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/virtual_output.jpg">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/%E8%BD%AF%E4%BB%B6%E7%95%8C%E9%9D%A2.jpg">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/%E7%A1%AC%E4%BB%B6%E9%80%9A%E9%81%93%E8%BE%93%E5%85%A5.jpg">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/1.jpg">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/1.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/3.png">
-<meta property="article:published_time" content="2023-11-03T16:09:53.000Z">
-<meta property="article:modified_time" content="2023-11-08T00:30:38.638Z">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/%E6%89%A3%E5%88%86.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/%E8%8D%A3%E8%AA%89%E5%8A%A0%E5%88%86.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-1.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-3.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-2.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-4.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-5.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-6.png">
+<meta property="article:published_time" content="2023-11-08T07:48:48.000Z">
+<meta property="article:modified_time" content="2023-11-08T07:58:05.698Z">
 <meta property="article:author" content="ZeroHzzzz">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://zerohzzzz.github.io/2023/11/04/Voicemeeter/virtual_input.jpg">
+<meta name="twitter:image" content="http://zerohzzzz.github.io/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/%E6%89%A3%E5%88%86.png">
   
   
   
-  <title>基于Voicemeeter将声音同时输出到多个输出设备 - Welcome To my Blog</title>
+  <title>综合分测定方法 - Welcome To my Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +206,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="基于Voicemeeter将声音同时输出到多个输出设备"></span>
+            <span id="subtitle" data-typed-text="综合分测定方法"></span>
           
         </div>
 
@@ -215,8 +217,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-04 00:09" pubdate>
-          November 4, 2023 am
+        <time datetime="2023-11-08 15:48" pubdate>
+          November 8, 2023 pm
         </time>
       </span>
     
@@ -227,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          548 words
+          1.3k words
         
       </span>
     
@@ -238,7 +240,7 @@
         
         
         
-          5 mins
+          11 mins
         
       </span>
     
@@ -275,57 +277,91 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">基于Voicemeeter将声音同时输出到多个输出设备</h1>
+            <h1 id="seo-header">综合分测定方法</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><ul>
-<li><p>硬件输入：就是现实的电脑上的麦克风、你头戴耳麦的麦克风等硬件录音设备。【硬件输入→（发出）→声音信号】（请注意这里的声音指的是电路中的声音信号，而不是你实际听到的声音。下同。）</p>
+                <h1 id="综合分测定方法"><a href="#综合分测定方法" class="headerlink" title="综合分测定方法"></a>综合分测定方法</h1><h2 id="综合分测评的意义和作用"><a href="#综合分测评的意义和作用" class="headerlink" title="综合分测评的意义和作用"></a>综合分测评的意义和作用</h2><ul>
+<li>考察综合素质</li>
+<li>为评定奖助学金、荣誉称号的主要依据</li>
+<li>作为推荐优秀应届本科毕业生免试攻读研究生的参考依据</li>
+</ul>
+<h2 id="综合分办法解析"><a href="#综合分办法解析" class="headerlink" title="综合分办法解析"></a>综合分办法解析</h2><ul>
+<li><p>测评体系</p>
+<ul>
+<li>学生综合素质评价采用量化标准，指标体系主要包括德育素质、智育素质、体育素质、劳育素质、美育素质、创新与实践素质六部分，满分 100 分。</li>
+<li>学生综合素质测评成绩 &#x3D;<br><br>  德育素质测评成绩（10 分）+智育素质测评成绩（60 分）+<br><br>  体育素质测评成绩（8 分）+劳育素质测评成绩（5 分）+<br><br>  美育素质测评成绩（5 分）+创新与实践素质测评成绩（12 分）</li>
+</ul>
 </li>
-<li><p>硬件输出：就是现实的扬声器喇叭、你头戴耳麦的耳机等硬件发声设备。【声音信号→（被接收）→硬件输出】</p>
+<li><p>德育素质测评成绩（10 分）</p>
+<ul>
+<li><p>基本评定分</p>
+<ul>
+<li>由学生个人自我评价、班级成员互评、班主任和班委评价三部分构成，分别占 20%、40%、40%。</li>
+</ul>
 </li>
-<li><p>虚拟输入：就是虚拟录音设备，专门监听系统中各种软件发出的声音信号。【声音信号→（被接收）→虚拟输入】</p>
+<li><p>记实加减分</p>
+<ul>
+<li>由集体评定等级分（满分 2 分）、社会责任记实分（满分 2 分）、违纪违规扣分、学生荣誉称号加减分四部分构成。</li>
+</ul>
+</li>
+<li><p>addition：社会责任分主要包括：</p>
+<ul>
+<li>通报表扬（当学年限4次，同一事件通报表扬不重复计算，校级及以上通报表扬+0.25&#x2F;次，院级通报表扬+0.1&#x2F;次）</li>
+<li>思政学习加减分（青年大学习）</li>
+</ul>
+</li>
+<li><p>扣分：</p>
+  <img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/%E6%89%A3%E5%88%86.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片"></li>
+<li><p>荣誉加分：</p>
+  <img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/%E8%8D%A3%E8%AA%89%E5%8A%A0%E5%88%86.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片"></li>
+</ul>
+</li>
+<li><p>智育素质测评成绩（60 分）</p>
+<ul>
+<li>学生智育素质分 Z&#x3D;（平均学分绩点×10＋50）*0.6  <img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片"></li>
+</ul>
+</li>
+<li><p>体育素质测评成绩（8 分）</p>
+<ul>
+<li>学生体育素质分T &#x3D; 体育课程成绩(5分)+课外体育活动成绩(3分)</li>
+<li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-1.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片"></li>
+<li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-3.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片"></li>
+</ul>
+</li>
+<li><p>美育素质测评成绩（5分）</p>
+<ul>
+<li>学生美育素质分&#x3D;文化艺术实践成绩+文化艺术竞赛成绩</li>
+<li>文化艺术实践成绩<ul>
+<li>文化艺术实践成绩为学生文化艺术类选修课程和参加校内外文化艺术类活动为主要依据，其中文化艺术类选修课程以教务处提供的文化艺术类选修课程清单为准，每选修一门且及格加 0.25 分，每学年限加 0.5 分。</li>
+</ul>
+</li>
+<li>文化艺术竞赛成绩  <img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-2.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片"></li>
+</ul>
+</li>
+<li><p>劳育素质测评成绩（5分）</p>
+<ul>
+<li>学生劳育素质分 &#x3D; 日常劳动分（寝室）+志愿服务分+实习实训分</li>
+<li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-4.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片"></li>
+<li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-5.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片"></li>
+</ul>
+</li>
+<li><p>创新与实践素质测评成绩（12 分）</p>
+<ul>
+<li>学生创新与实践素质分 &#x3D;创新创业成绩+社会实践活动成绩+社会工作成绩+水平等级考试加分</li>
+<li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-6.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片"></li>
+</ul>
 </li>
 </ul>
-<img src="/2023/11/04/Voicemeeter/virtual_input.jpg" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
-
-<ul>
-<li>虚拟输出：就是虚拟发声设备，有一个虚拟的扬声器，负责向别的设备发出声音信号。【虚拟输出→（发出）→声音信号】</li>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>学生综合素质测评每学年进行一次，一般安排在新学年开学一个月内进行（一年级新生除外），转专业学生在上一学年所在班级参加综合素质测评。</li>
+<li>学生参与课程以外的专业实习、综合实习或其他劳动活动，以在有关活动中取得的成绩或奖励为依据，具体需经学院学生评价工作小组认定。</li>
+<li>相关竞赛评定等级以浙江工业大学教务处发文的《高水平学科竞赛项目清单》为依据，参考主办单位性质和证书实际落款。其余未列入本办法的竞赛以学院学生评价工作小组当年认定结果为准，网络竞赛（在线答题类）原则上不予以加分。<br>（网址：<a target="_blank" rel="noopener" href="http://www.jwc.zjut.edu.cn/217/list.htm%EF%BC%89">http://www.jwc.zjut.edu.cn/217/list.htm）</a></li>
+<li>各类竞赛获奖者必须以浙江工业大学学生身份参与，各类项目、论文知识产权、专利权人须归属浙江工业大学，否则不予以加分！</li>
+<li>经核实在测评过程中弄虚作假、虚报材料的，根据情节严重程度给予相应处分，并取消当学年所有评奖评优资格。</li>
+<li>除特别说明，各部分累计超出满分的，均以该部分满分计。综合分测评申报材料（除暑期调研类材料外）有效期限为上一年度 9 月 1<br>日至本年度 8 月 31 日，对于在规定期限外的材料不予加分。</li>
 </ul>
-<img src="/2023/11/04/Voicemeeter/virtual_output.jpg" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
-
-<ul>
-<li>通道：用于接收和转发声音信号的中间人。</li>
-</ul>
-<h2 id="设置电脑的输入输出设备"><a href="#设置电脑的输入输出设备" class="headerlink" title="设置电脑的输入输出设备"></a>设置电脑的输入输出设备</h2><p>自行百度，这里不再赘述</p>
-<h1 id="二、软件界面"><a href="#二、软件界面" class="headerlink" title="二、软件界面"></a>二、软件界面</h1><img src="/2023/11/04/Voicemeeter/%E8%BD%AF%E4%BB%B6%E7%95%8C%E9%9D%A2.jpg" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
-
-<p>看下图硬件输入通道1下面框出来的按钮：A1、A2、A3、B1、B2 都是输出通道，你点亮了哪个，声音信号就会被接入到哪一个输出通道。</p>
-<img src="/2023/11/04/Voicemeeter/%E7%A1%AC%E4%BB%B6%E9%80%9A%E9%81%93%E8%BE%93%E5%85%A5.jpg" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
-
-<p>比如图中，点亮了A1和B1，那么硬件输入通道1的声音信号就会被发送到A1、B1两个输出通道中去。</p>
-<h1 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h1><p>这里只讲解软件同时输出到多个蓝牙设备的使用方法：</p>
-<ul>
-<li>打开Voicemeeter</li>
-<li>配置输出设备</li>
-</ul>
-<img src="/2023/11/04/Voicemeeter/1.jpg" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
-
-<ul>
-<li>在虚拟输入栏中选择输出设备</li>
-</ul>
-<img src="/2023/11/04/Voicemeeter/1.png" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
-
-<ul>
-<li>调节音量</li>
-</ul>
-<img src="/2023/11/04/Voicemeeter/3.png" srcset="/img/loading.gif" lazyload class="" title="这里曾经有一张图片......">
-
-<ul>
-<li>run！</li>
-</ul>
-<h1 id="Addition"><a href="#Addition" class="headerlink" title="Addition"></a>Addition</h1><p>如果想了解更多关于voicemeeter相关的知识，可到：<br><a target="_blank" rel="noopener" href="http://vb-audio.cn/post/36.html">http://vb-audio.cn/post/36.html</a></p>
 
                 
               </div>
@@ -343,8 +379,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>基于Voicemeeter将声音同时输出到多个输出设备</div>
-      <div>http://zerohzzzz.github.io/2023/11/04/Voicemeeter/</div>
+      <div>综合分测定方法</div>
+      <div>http://zerohzzzz.github.io/2023/11/08/综合分测定方法/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +392,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>November 4, 2023</div>
+          <div>November 8, 2023</div>
         </div>
       
       
@@ -388,18 +424,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/" title="综合分测定方法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">综合分测定方法</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/" title="基于hexo搭建博客（GitHub）">
-                        <span class="hidden-mobile">基于hexo搭建博客（GitHub）</span>
+                      <a href="/2023/11/04/Voicemeeter/" title="基于Voicemeeter将声音同时输出到多个输出设备">
+                        <span class="hidden-mobile">基于Voicemeeter将声音同时输出到多个输出设备</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
