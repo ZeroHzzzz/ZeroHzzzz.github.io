@@ -16,37 +16,21 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="To Start 安装Vscode 请前往https:&#x2F;&#x2F;code.visualstudio.com&#x2F;下载你所需要的Vscode版本  下载完了之后，你就可以开始配置C++的运行环境了 Install the extension 打开Vscode 选择拓展选项卡或者使用快捷键Ctrl+Shift+X 搜索C++ 安装    Set up for your C++ environment下载Ming">
+    <meta name="description" content="啥也不说了直接上代码（） 123456789101112131415161718192021222324import cv2import torchfrom torchvision import transformsfrom PIL import Imagepath &#x3D; &amp;#x27;.&#x2F;archive\imagesTr\CHNCXR_0640_1.png&amp;#x27;data_transforms">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vccode - C&#x2F;C++ Configuration">
-<meta property="og:url" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/index.html">
+<meta property="og:title" content="cv&#x2F;PIL读取图片踩坑记录">
+<meta property="og:url" content="http://zerohzzzz.github.io/2023/11/11/cv-PIL-read/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="To Start 安装Vscode 请前往https:&#x2F;&#x2F;code.visualstudio.com&#x2F;下载你所需要的Vscode版本  下载完了之后，你就可以开始配置C++的运行环境了 Install the extension 打开Vscode 选择拓展选项卡或者使用快捷键Ctrl+Shift+X 搜索C++ 安装    Set up for your C++ environment下载Ming">
+<meta property="og:description" content="啥也不说了直接上代码（） 123456789101112131415161718192021222324import cv2import torchfrom torchvision import transformsfrom PIL import Imagepath &#x3D; &amp;#x27;.&#x2F;archive\imagesTr\CHNCXR_0640_1.png&amp;#x27;data_transforms">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/1.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/2.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/3.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/4.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/5.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/6.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/7.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/8.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/9.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/10.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/11.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/12.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/13.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/14.png">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/15.png">
-<meta property="article:published_time" content="2023-11-11T10:02:43.000Z">
-<meta property="article:modified_time" content="2023-11-11T10:19:31.125Z">
+<meta property="article:published_time" content="2023-11-11T10:25:57.000Z">
+<meta property="article:modified_time" content="2023-11-11T10:26:58.520Z">
 <meta property="article:author" content="ZeroHzzzz">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://zerohzzzz.github.io/2023/11/11/c-configuration/1.png">
   
   
   
-  <title>Vccode - C/C++ Configuration - Welcome To my Blog</title>
+  <title>cv/PIL读取图片踩坑记录 - Welcome To my Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vccode - C/C++ Configuration"></span>
+            <span id="subtitle" data-typed-text="cv/PIL读取图片踩坑记录"></span>
           
         </div>
 
@@ -223,7 +207,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-11 18:02" pubdate>
+        <time datetime="2023-11-11 18:25" pubdate>
           November 11, 2023 pm
         </time>
       </span>
@@ -235,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          791 words
+          573 words
         
       </span>
     
@@ -246,7 +230,7 @@
         
         
         
-          7 mins
+          5 mins
         
       </span>
     
@@ -283,81 +267,13 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vccode - C/C++ Configuration</h1>
+            <h1 id="seo-header">cv/PIL读取图片踩坑记录</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="To-Start"><a href="#To-Start" class="headerlink" title="To Start"></a>To Start</h1><ul>
-<li>安装Vscode</li>
-<li>请前往<a target="_blank" rel="noopener" href="https://code.visualstudio.com/" title="Vscode 官网">https://code.visualstudio.com/</a>下载你所需要的Vscode版本</li>
-</ul>
-<p>下载完了之后，你就可以开始配置C++的运行环境了</p>
-<h1 id="Install-the-extension"><a href="#Install-the-extension" class="headerlink" title="Install the extension"></a>Install the extension</h1><ul>
-<li>打开Vscode</li>
-<li>选择拓展选项卡或者使用快捷键<code>Ctrl+Shift+X</code></li>
-<li>搜索C++</li>
-<li>安装</li>
-</ul>
-<img src="/2023/11/11/c-configuration/1.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<h1 id="Set-up-for-your-C-environment"><a href="#Set-up-for-your-C-environment" class="headerlink" title="Set up for your C++ environment"></a>Set up for your C++ environment</h1><h2 id="下载Mingw64文件"><a href="#下载Mingw64文件" class="headerlink" title="下载Mingw64文件"></a>下载Mingw64文件</h2><ul>
-<li>打开浏览器</li>
-<li>前往<a target="_blank" rel="noopener" href="https://github.com/niXman/mingw-builds-binaries/releases">Releases · niXman&#x2F;mingw-builds-binaries (github.com)</a>下载MingW64文件</li>
-<li>选择下列图片中标出的版本</li>
-<li>解压，获得其中的Mingw64文件夹并放在你想放的位置</li>
-</ul>
-<img src="/2023/11/11/c-configuration/2.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><ul>
-<li>直接<code>win + S</code>快捷键搜索环境变量，进入该选项卡</li>
-<li>点击环境变量</li>
-<li>在用户变量和系统变量中找到Path，进入编辑</li>
-<li>新建，并将刚才下载的Mingw64中的bin文件夹的路径填入</li>
-<li>完成！</li>
-</ul>
-<img src="/2023/11/11/c-configuration/3.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<img src="/2023/11/11/c-configuration/4.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<img src="/2023/11/11/c-configuration/5.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<img src="/2023/11/11/c-configuration/6.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<img src="/2023/11/11/c-configuration/7.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<img src="/2023/11/11/c-configuration/8.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<img src="/2023/11/11/c-configuration/9.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<p>点击确定，完成！</p>
-<h1 id="Check"><a href="#Check" class="headerlink" title="Check"></a>Check</h1><ul>
-<li>直接<code>win + R</code>，输入cmd并运行，打开终端</li>
-<li>输入<code>gcc -v</code>，如果出现下列画面就说明配置成功了</li>
-<li>完成！</li>
-</ul>
-<img src="/2023/11/11/c-configuration/10.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<img src="/2023/11/11/c-configuration/11.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<h1 id="Create-and-Run-a-C-file"><a href="#Create-and-Run-a-C-file" class="headerlink" title="Create and Run a C++ file"></a>Create and Run a C++ file</h1><img src="/2023/11/11/c-configuration/12.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<p>create a new file called <code>helloworld.cpp</code></p>
-<p>复制，粘贴！</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Hello World&quot;</span> &lt;&lt; std::endl;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<img src="/2023/11/11/c-configuration/13.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<img src="/2023/11/11/c-configuration/14.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<p> 仅在第一次运行 helloworld.cpp 时提示您选择编译器。该编译器将成为tasks.json 文件中设置的“默认”编译器</p>
-<img src="/2023/11/11/c-configuration/15.png" srcset="/img/loading.gif" lazyload class="" title="曾经这里有一张图片....">
-
-<p>拿下！</p>
-<p><strong>好好好，现在你就可以尽情的Coding了，可能还有一些其他的零碎配置</strong></p>
-<p><strong>有空我再更新（</strong></p>
-<p>本文转自 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ZeroHzzzz/articles/17711579.html">https://www.cnblogs.com/ZeroHzzzz/articles/17711579.html</a>，如有侵权，请联系删除。</p>
-
+                <p>啥也不说了直接上代码（）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> torchvision <span class="hljs-keyword">import</span> transforms<br><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br>path = <span class="hljs-string">&#x27;./archive\imagesTr\CHNCXR_0640_1.png&#x27;</span><br><br>data_transforms = &#123;<br>        <span class="hljs-string">&quot;train&quot;</span>: transforms.Compose([<br>            transforms.ToTensor()<br>            ]),<br>        <span class="hljs-string">&quot;test&quot;</span>:transforms.Compose([<br>            transforms.ToTensor()<br>            ])<br>    &#125;<br><br>img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)<br><span class="hljs-built_in">print</span>(img.shape)<br>img = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](img)<br><span class="hljs-built_in">print</span>(img.shape)<br><span class="hljs-comment"># img = torch.from_numpy(img)</span><br><br>label = Image.<span class="hljs-built_in">open</span>(path).convert(<span class="hljs-string">&quot;L&quot;</span>)<br>label = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](label)<br><span class="hljs-built_in">print</span>(label.shape)<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -374,8 +290,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vccode - C/C++ Configuration</div>
-      <div>http://zerohzzzz.github.io/2023/11/11/c-configuration/</div>
+      <div>cv/PIL读取图片踩坑记录</div>
+      <div>http://zerohzzzz.github.io/2023/11/11/cv-PIL-read/</div>
     </div>
     <div class="license-meta">
       
@@ -419,18 +335,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/11/cv-PIL-read/" title="cv/PIL读取图片踩坑记录">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">cv/PIL读取图片踩坑记录</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/" title="综合分测定方法">
-                        <span class="hidden-mobile">综合分测定方法</span>
+                      <a href="/2023/11/11/c-configuration/" title="Vccode - C/C++ Configuration">
+                        <span class="hidden-mobile">Vccode - C/C++ Configuration</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

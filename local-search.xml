@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>cv/PIL读取图片踩坑记录</title>
+    <link href="/2023/11/11/cv-PIL-read/"/>
+    <url>/2023/11/11/cv-PIL-read/</url>
+    
+    <content type="html"><![CDATA[<p>啥也不说了直接上代码（）</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> torchvision <span class="hljs-keyword">import</span> transforms<br><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br>path = <span class="hljs-string">&#x27;./archive\imagesTr\CHNCXR_0640_1.png&#x27;</span><br><br>data_transforms = &#123;<br>        <span class="hljs-string">&quot;train&quot;</span>: transforms.Compose([<br>            transforms.ToTensor()<br>            ]),<br>        <span class="hljs-string">&quot;test&quot;</span>:transforms.Compose([<br>            transforms.ToTensor()<br>            ])<br>    &#125;<br><br>img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)<br><span class="hljs-built_in">print</span>(img.shape)<br>img = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](img)<br><span class="hljs-built_in">print</span>(img.shape)<br><span class="hljs-comment"># img = torch.from_numpy(img)</span><br><br>label = Image.<span class="hljs-built_in">open</span>(path).convert(<span class="hljs-string">&quot;L&quot;</span>)<br>label = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](label)<br><span class="hljs-built_in">print</span>(label.shape)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vccode - C/C++ Configuration</title>
     <link href="/2023/11/11/c-configuration/"/>
     <url>/2023/11/11/c-configuration/</url>
