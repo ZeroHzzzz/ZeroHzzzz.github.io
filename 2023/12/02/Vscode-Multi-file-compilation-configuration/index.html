@@ -16,21 +16,21 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="啥也不说了直接上代码（） 123456789101112131415161718192021222324import cv2import torchfrom torchvision import transformsfrom PIL import Imagepath &#x3D; &amp;#x27;.&#x2F;archive\imagesTr\CHNCXR_0640_1.png&amp;#x27;data_transforms">
+    <meta name="description" content="正片开始默认VSCode 只能编译单个文件，若多个文件一起编译，经常会报 undefined reference 找不到引用的错误，比如下面的问题： 1234&quot;C:\Program Files\mingw64\bin\g++.exe&quot; -fdiagnostics-color&#x3D;always -g C:\Users\ZeroHzzzz\Desktop\dd\dd.cpp -o C:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cv&#x2F;PIL读取图片踩坑记录">
-<meta property="og:url" content="http://zerohzzzz.github.io/2023/11/11/cv-PIL-read/index.html">
+<meta property="og:title" content="Vscode 多文件编译配置">
+<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/02/Vscode-Multi-file-compilation-configuration/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="啥也不说了直接上代码（） 123456789101112131415161718192021222324import cv2import torchfrom torchvision import transformsfrom PIL import Imagepath &#x3D; &amp;#x27;.&#x2F;archive\imagesTr\CHNCXR_0640_1.png&amp;#x27;data_transforms">
+<meta property="og:description" content="正片开始默认VSCode 只能编译单个文件，若多个文件一起编译，经常会报 undefined reference 找不到引用的错误，比如下面的问题： 1234&quot;C:\Program Files\mingw64\bin\g++.exe&quot; -fdiagnostics-color&#x3D;always -g C:\Users\ZeroHzzzz\Desktop\dd\dd.cpp -o C:">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-11-11T10:25:57.000Z">
-<meta property="article:modified_time" content="2023-11-11T10:26:58.520Z">
+<meta property="article:published_time" content="2023-12-02T05:34:04.000Z">
+<meta property="article:modified_time" content="2023-12-02T05:43:00.094Z">
 <meta property="article:author" content="ZeroHzzzz">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>cv/PIL读取图片踩坑记录 - Welcome To my Blog</title>
+  <title>Vscode 多文件编译配置 - Welcome To my Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="cv/PIL读取图片踩坑记录"></span>
+            <span id="subtitle" data-typed-text="Vscode 多文件编译配置"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-11 18:25" pubdate>
-          November 11, 2023 pm
+        <time datetime="2023-12-02 13:34" pubdate>
+          December 2, 2023 pm
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          573 words
+          1.3k words
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          5 mins
+          11 mins
         
       </span>
     
@@ -267,13 +267,26 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">cv/PIL读取图片踩坑记录</h1>
+            <h1 id="seo-header">Vscode 多文件编译配置</h1>
             
             
               <div class="markdown-body">
                 
-                <p>啥也不说了直接上代码（）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> torchvision <span class="hljs-keyword">import</span> transforms<br><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br>path = <span class="hljs-string">&#x27;./archive\imagesTr\CHNCXR_0640_1.png&#x27;</span><br><br>data_transforms = &#123;<br>        <span class="hljs-string">&quot;train&quot;</span>: transforms.Compose([<br>            transforms.ToTensor()<br>            ]),<br>        <span class="hljs-string">&quot;test&quot;</span>:transforms.Compose([<br>            transforms.ToTensor()<br>            ])<br>    &#125;<br><br>img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)<br><span class="hljs-built_in">print</span>(img.shape)<br>img = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](img)<br><span class="hljs-built_in">print</span>(img.shape)<br><span class="hljs-comment"># img = torch.from_numpy(img)</span><br><br>label = Image.<span class="hljs-built_in">open</span>(path).convert(<span class="hljs-string">&quot;L&quot;</span>)<br>label = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](label)<br><span class="hljs-built_in">print</span>(label.shape)<br></code></pre></td></tr></table></figure>
+                <h2 id="正片开始"><a href="#正片开始" class="headerlink" title="正片开始"></a>正片开始</h2><p>默认VSCode 只能编译单个文件，若多个文件一起编译，经常会报 undefined reference 找不到引用的错误，比如下面的问题：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs moonscript"><span class="hljs-string">&quot;C:\Program Files\mingw64\bin\g++.exe&quot;</span> -fdiagnostics-color=always -g <span class="hljs-name">C</span>:\Users\ZeroHzzzz\Desktop\dd\dd.cpp -o <span class="hljs-name">C</span>:\Users\ZeroHzzzz\Desktop\dd\dd.exe<br><span class="hljs-name">C</span>:\Users\ZEROHZ~<span class="hljs-number">1</span>\AppData\Local\Temp\ccYQ5ExK.<span class="hljs-name">o</span>: In function `main<span class="hljs-string">&#x27;:</span><br><span class="hljs-string">C:/Users/ZeroHzzzz/Desktop/dd/dd.cpp:6: undefined reference to `maxn(int, int)&#x27;</span><br>collect2.<span class="hljs-name">exe</span>: <span class="hljs-name">error</span>: ld returned <span class="hljs-number">1</span> exit status <br></code></pre></td></tr></table></figure>
+
+<p>解决方法如下：</p>
+<ul>
+<li>配置一下<code>.vscode </code>文件夹下的 <code>tasks.json</code> 就好了。</li>
+<li>tasks.json的话，就把界面点到代码的界面，然后菜单栏<code>&quot;Terminal&quot;</code> - <code>&quot;Configure Tasks...&quot;</code> 生成默认的<code>tasks.json</code></li>
+</ul>
+<p>找到 tasks.json中的 args 选项，这个主要是用来配置待编译的文件信息的，<code>$&#123;file&#125; </code>替换成 <code>$&#123;workspaceFolder&#125;</code>, 结果如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;-fdiagnostics-color=always&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;-g&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;\\*.cpp&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;-o&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><br><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Addition"><a href="#Addition" class="headerlink" title="Addition"></a>Addition</h2><p>再次运行程序，就可以多文件正常编译了</p>
+<p>但是如果我们还有其它的二级目录，那就还需要修改<code>tasks.json</code>文件。</p>
+<p>【举例】main函数所在<code>test.cpp</code>在一级目录下，其它<code>cpp</code>文件在 <code>others </code>目录下，这个时候就需要把<code>tasks.json</code>改成：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;-fdiagnostics-color=always&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;-g&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;\\*.cpp&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;\\others\\*.cpp&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//修改项</span><br>    <span class="hljs-string">&quot;-o&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><br><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -290,8 +303,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>cv/PIL读取图片踩坑记录</div>
-      <div>http://zerohzzzz.github.io/2023/11/11/cv-PIL-read/</div>
+      <div>Vscode 多文件编译配置</div>
+      <div>http://zerohzzzz.github.io/2023/12/02/Vscode-Multi-file-compilation-configuration/</div>
     </div>
     <div class="license-meta">
       
@@ -303,7 +316,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>November 11, 2023</div>
+          <div>December 2, 2023</div>
         </div>
       
       
@@ -335,18 +348,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/02/Vscode-Multi-file-compilation-configuration/" title="Vscode 多文件编译配置">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vscode 多文件编译配置</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/11/c-configuration/" title="Vscode - C/C++ Configuration">
-                        <span class="hidden-mobile">Vscode - C/C++ Configuration</span>
+                      <a href="/2023/11/11/cv-PIL-read/" title="cv/PIL读取图片踩坑记录">
+                        <span class="hidden-mobile">cv/PIL读取图片踩坑记录</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
