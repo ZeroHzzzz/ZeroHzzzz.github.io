@@ -4,27 +4,6 @@
   
   
   <entry>
-    <title>反向传播优化器总结（The Summary of Backpropagation Optimizer）</title>
-    <link href="/2023/12/10/Backpropagation-Optimizer-Summary/"/>
-    <url>/2023/12/10/Backpropagation-Optimizer-Summary/</url>
-    
-    <content type="html"><![CDATA[<h1 id="Beginings"><a href="#Beginings" class="headerlink" title="Beginings"></a>Beginings</h1><p>梯度下降是一个伟大……</p><h1 id="SGD-随机梯度下降"><a href="#SGD-随机梯度下降" class="headerlink" title="SGD(随机梯度下降)"></a>SGD(随机梯度下降)</h1>]]></content>
-    
-    
-    <categories>
-      
-      <category>AI_learning</category>
-      
-      <category>Math</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>模型参数量和计算量计算</title>
     <link href="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/"/>
     <url>/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/</url>
