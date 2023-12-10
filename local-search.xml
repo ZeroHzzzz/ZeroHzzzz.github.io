@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>神经网络模型的参数量和计算量</title>
+    <link href="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/"/>
+    <url>/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/</url>
+    
+    <content type="html"><![CDATA[<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul><li><p>FLOPs (Floating-point Operations)<br>浮点运算次数，理解为计算量，可以用来衡量算法的复杂度。一个乘法或一个加法都是一个FLOPs</p></li><li><p>FLOPS(Floating-point Operations Per Second)<br>每秒浮点运算次数，理解为计算速度，是一个衡量硬件性能的指标</p></li><li><p>MACCs(multiply-accumulate operations)<br>乘-加操作次数，MACCs 大约是 FLOPs 的一半。将$ w * x + b $视为一个乘法累加，也称为1 个 MACC </p></li><li><p>MAC(Memory Access Cost)<br>内存访问成本</p></li><li><p>Params<br>是指模型训练中需要训练的参数总数</p></li></ul><p>我们可以将参数量理解为空间复杂度，将计算量理解为时间复杂度</p><h1 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h1><p>一个全连接权重 W 矩阵为 $ (C_{in}, C_{out}) $， 输入为 $(B,F,C_{in})$,输出$(B,F,C_{out})$(B 代表batch_size, C代表通道数, F代表输入的特征图的大小),则：<br>$$<br>Params &#x3D; (C_{in} + 1 )* C_{out}<br>$$<br>$$<br>FLOPs &#x3D; (F * C_{in} + 1) * C_{out}<br>$$<br>以上计算都很好理解。其中$Params$中$C_{in}$加上1的原因是偏置$b$的存在。如果不懂可以参照这个图：</p><center><img src="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/full-connected-layer.jpg" class="" title="This is a img..."></center><h1 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h1><p>假设输入特征图为$ (B,C_{in},F) $,卷积核为 k * k ,输出通道为$C_{out}$。</p><h2 id="参数量"><a href="#参数量" class="headerlink" title="参数量"></a>参数量</h2><p>$$<br>Params &#x3D; k * k * C_{in} * C_{out}<br>$$</p><h2 id="计算量"><a href="#计算量" class="headerlink" title="计算量"></a>计算量</h2><ul><li>单次卷积操作的乘法次数为$ k * k * C_{in}$, 然后相加，加法次数为$k * k * C_{in} - 1$。这个-1其实就是因为因为在$ k×k×C_{in} -1 $个乘法操作之间，需要$ k×k×C_{in} -1 $次加法操作将它们累加起来。在最后一个乘法操作之后，就不需要再进行一次加法操作了，因此减去1。</li><li>刚才我们只计算了输出特征图上一个元素的计算量。那么输入特征图上单个通道上的计算量&#x3D;单个元素的计算量*元素个数，此时我们需要另外一个经典的公式去计算输出特征图大小和输入特征图大小的关系：<br>$$<br>n_H &#x3D; \frac{n_{Hp} - kernel + 2 * pad}{stride} + 1<br>$$<br>$$<br>n_W &#x3D; \frac{n_{Wp} - kernel + 2 * pad}{stride} + 1<br>$$</li><li>然后再考虑通道数，还有偏置，可知计算量<br>$$FLOPs &#x3D; (2 * k * k * C_{in} - 1) * (n_H * n_W) * C_{out}(无偏置)$$<br>$$FLOPs &#x3D; (2 * k * k * C_{in} - 1 + 1) * n_H * n_W * C_{out}(有偏置)$$<center><img src="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/conv_layer.jpg" class="" title="This is a img..."></center></li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vscode 多文件编译配置</title>
     <link href="/2023/12/02/Vscode-Multi-file-compilation-configuration/"/>
     <url>/2023/12/02/Vscode-Multi-file-compilation-configuration/</url>
