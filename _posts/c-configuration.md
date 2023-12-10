@@ -1,7 +1,9 @@
 ---
-title: Vccode - C/C++ Configuration
+title: Vscode - C/C++ Configuration
 date: 2023-11-11 18:02:43
-tags:
+categories:
+    - Technologies_exploration
+    - VSCode
 ---
 To Start
 ========

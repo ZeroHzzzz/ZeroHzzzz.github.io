@@ -1,7 +1,9 @@
 ---
-title: cv/PIL读取图片踩坑记录
+title:  CV/PIL读取图片踩坑记录
 date: 2023-11-11 18:25:57
-tags:
+categories:
+    - AI_learning
+    - technology
 ---
 啥也不说了直接上代码（）
 

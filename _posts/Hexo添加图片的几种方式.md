@@ -1,7 +1,9 @@
 ---
 title: Hexo添加图片的几种方式
 date: 2023-10-27 10:36:10
-tags: Hexo
+categories:
+    - Technologies_exploration
+    - Hexo
 ---
 
 在写文章的时候我们常常会使用图片来传达一些只可意会不可言传的含义....

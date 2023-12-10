@@ -1,7 +1,9 @@
 ---
 title: 基于hexo搭建博客（GitHub）
 date: 2023-10-27 10:58:06
-tags: Hexo
+categories: 
+  - Technologies_exploration
+  - Hexo
 ---
 
 # 准备工作
@@ -71,6 +73,76 @@ deploy:
 - 发布
 ```
 hexo g -d
+```
+# Addition
+## 使用Fluid主题的一些文章属性设置
+```title
+---
+title: Hexo Fluid主题使用笔记
+
+tags:
+  - Hexo
+  [Hexo, Fluid]  # 推荐使用这种方法
+
+categories:
+  - Hexo
+  - Fluid # 注意以上这两个标题不是并列关系，而是包含关系
+  - Hexo
+    - Fluid  # 注意以上这两个标题是并列关系
+  - [Hexo, Fluid]  # 并列关系
+
+excerpt: 这是摘要 # 摘要还可以在正文通过 <!-- more --> 进行分割
+
+hide: true # 隐藏文章，隐藏后依然可以通过文章链接访问
+
+sticky: 100 # 数值越大排序越靠前
+
+index_img: /img/example.jpg # 文章在首页的封面图，支持外链
+
+banner_img: /img/post_banner.jpg # 文章详情页顶部大图，支持外链
+
+toc: true # 生成文章目录，不填为true
+---
+
+```
+## 一些有意思的东西
+```hexo
+// 便签
+
+{% note success %}
+文字 或者 `markdown` 均可
+{% endnote %}
+或者使用 HTML 形式：
+<p class="note note-primary">标签</p>
+
+
+//行内标签
+
+{% label primary @text %}
+或者
+<span class="label label-primary">Label</span>
+
+
+//复选框
+
+{% cb text, checked?, incline? %}
+
+text：显示的文字
+checked：默认是否已勾选，默认 false
+incline: 是否内联（可以理解为后面的文字是否换行），默认 false
+
+
+//按钮
+
+{% btn url, text, title %}
+
+或者：
+
+<a class="btn" href="url" title="title">text</a>
+
+url：跳转链接
+text：显示的文字
+title：鼠标悬停时显示的文字（可选）
 ```
 
 # EOF
