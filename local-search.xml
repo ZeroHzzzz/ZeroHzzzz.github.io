@@ -4,12 +4,41 @@
   
   
   <entry>
+    <title>反向传播优化器总结（The Summary of Backpropagation Optimizer）</title>
+    <link href="/2023/12/10/Backpropagation-Optimizer-Summary/"/>
+    <url>/2023/12/10/Backpropagation-Optimizer-Summary/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Beginings"><a href="#Beginings" class="headerlink" title="Beginings"></a>Beginings</h1><p>梯度下降是一个伟大……</p><h1 id="SGD-随机梯度下降"><a href="#SGD-随机梯度下降" class="headerlink" title="SGD(随机梯度下降)"></a>SGD(随机梯度下降)</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI_learning</category>
+      
+      <category>Math</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>模型参数量和计算量计算</title>
     <link href="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/"/>
     <url>/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/</url>
     
     <content type="html"><![CDATA[<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul><li><p>FLOPs (Floating-point Operations)<br>浮点运算次数，理解为计算量，可以用来衡量算法的复杂度。一个乘法或一个加法都是一个FLOPs</p></li><li><p>FLOPS(Floating-point Operations Per Second)<br>每秒浮点运算次数，理解为计算速度，是一个衡量硬件性能的指标</p></li><li><p>MACCs(multiply-accumulate operations)<br>乘-加操作次数，MACCs 大约是 FLOPs 的一半。将$ w * x + b $视为一个乘法累加，也称为1 个 MACC </p></li><li><p>MAC(Memory Access Cost)<br>内存访问成本</p></li><li><p>Params<br>是指模型训练中需要训练的参数总数</p></li></ul><p>我们可以将参数量理解为空间复杂度，将计算量理解为时间复杂度</p><h1 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h1><p>一个全连接权重 W 矩阵为 $ (C_{in}, C_{out}) $， 输入为 $(B,F,C_{in})$,输出$(B,F,C_{out})$(B 代表batch_size, C代表通道数, F代表输入的特征图的大小),则：<br>$$<br>Params &#x3D; (C_{in} + 1 )* C_{out}<br>$$<br>$$<br>FLOPs &#x3D; (F * C_{in} + 1) * C_{out}<br>$$<br>以上计算都很好理解。其中$Params$中$C_{in}$加上1的原因是偏置$b$的存在。如果不懂可以参照这个图：</p><center><img src="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/full-connected-layer.jpg" class="" title="This is a img..."></center><h1 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h1><p>假设输入特征图为$ (B,C_{in},F) $,卷积核为 k * k ,输出通道为$C_{out}$。</p><h2 id="参数量"><a href="#参数量" class="headerlink" title="参数量"></a>参数量</h2><p>$$<br>Params &#x3D; k * k * C_{in} * C_{out}<br>$$</p><h2 id="计算量"><a href="#计算量" class="headerlink" title="计算量"></a>计算量</h2><ul><li>单次卷积操作的乘法次数为$ k * k * C_{in}$, 然后相加，加法次数为$k * k * C_{in} - 1$。这个-1其实就是因为因为在$ k×k×C_{in} -1 $个乘法操作之间，需要$ k×k×C_{in} -1 $次加法操作将它们累加起来。在最后一个乘法操作之后，就不需要再进行一次加法操作了，因此减去1。</li><li>刚才我们只计算了输出特征图上一个元素的计算量。那么输入特征图上单个通道上的计算量&#x3D;单个元素的计算量*元素个数，此时我们需要另外一个经典的公式去计算输出特征图大小和输入特征图大小的关系：<br>$$<br>n_H &#x3D; \frac{n_{Hp} - kernel + 2 * pad}{stride} + 1<br>$$<br>$$<br>n_W &#x3D; \frac{n_{Wp} - kernel + 2 * pad}{stride} + 1<br>$$</li><li>然后再考虑通道数，还有偏置，可知计算量<br>$$FLOPs &#x3D; (2 * k * k * C_{in} - 1) * (n_H * n_W) * C_{out}(无偏置)$$<br>$$FLOPs &#x3D; (2 * k * k * C_{in} - 1 + 1) * n_H * n_W * C_{out}(有偏置)$$<center><img src="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/conv_layer.jpg" class="" title="This is a img..."></center></li></ul>]]></content>
     
+    
+    <categories>
+      
+      <category>AI_learning</category>
+      
+      <category>Math</category>
+      
+    </categories>
     
     
   </entry>
@@ -24,18 +53,34 @@
     <content type="html"><![CDATA[<h2 id="正片开始"><a href="#正片开始" class="headerlink" title="正片开始"></a>正片开始</h2><p>默认VSCode 只能编译单个文件，若多个文件一起编译，经常会报 undefined reference 找不到引用的错误，比如下面的问题：</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs moonscript"><span class="hljs-string">&quot;C:\Program Files\mingw64\bin\g++.exe&quot;</span> -fdiagnostics-color=always -g <span class="hljs-name">C</span>:\Users\ZeroHzzzz\Desktop\dd\dd.cpp -o <span class="hljs-name">C</span>:\Users\ZeroHzzzz\Desktop\dd\dd.exe<br><span class="hljs-name">C</span>:\Users\ZEROHZ~<span class="hljs-number">1</span>\AppData\Local\Temp\ccYQ5ExK.<span class="hljs-name">o</span>: In function `main<span class="hljs-string">&#x27;:</span><br><span class="hljs-string">C:/Users/ZeroHzzzz/Desktop/dd/dd.cpp:6: undefined reference to `maxn(int, int)&#x27;</span><br>collect2.<span class="hljs-name">exe</span>: <span class="hljs-name">error</span>: ld returned <span class="hljs-number">1</span> exit status <br></code></pre></td></tr></table></figure><p>解决方法如下：</p><ul><li>配置一下<code>.vscode </code>文件夹下的 <code>tasks.json</code> 就好了。</li><li>tasks.json的话，就把界面点到代码的界面，然后菜单栏<code>&quot;Terminal&quot;</code> - <code>&quot;Configure Tasks...&quot;</code> 生成默认的<code>tasks.json</code></li></ul><p>找到 tasks.json中的 args 选项，这个主要是用来配置待编译的文件信息的，<code>$&#123;file&#125; </code>替换成 <code>$&#123;workspaceFolder&#125;</code>, 结果如下：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;-fdiagnostics-color=always&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;-g&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;\\*.cpp&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;-o&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><br><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure><p>再次运行程序，就可以多文件正常编译了</p><h2 id="Addition"><a href="#Addition" class="headerlink" title="Addition"></a>Addition</h2><p>但是如果我们还有其它的二级目录，那就还需要修改<code>tasks.json</code>文件。</p><p>【举例】main函数所在<code>test.cpp</code>在一级目录下，其它<code>cpp</code>文件在 <code>others </code>目录下，这个时候就需要把<code>tasks.json</code>改成：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;-fdiagnostics-color=always&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;-g&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;\\*.cpp&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;\\others\\*.cpp&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//修改项</span><br>    <span class="hljs-string">&quot;-o&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><br><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>Technologies_exploration</category>
+      
+      <category>VSCode</category>
+      
+    </categories>
+    
     
   </entry>
   
   
   
   <entry>
-    <title>cv/PIL读取图片踩坑记录</title>
+    <title>CV/PIL读取图片踩坑记录</title>
     <link href="/2023/11/11/cv-PIL-read/"/>
     <url>/2023/11/11/cv-PIL-read/</url>
     
     <content type="html"><![CDATA[<p>啥也不说了直接上代码（）</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> torchvision <span class="hljs-keyword">import</span> transforms<br><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br>path = <span class="hljs-string">&#x27;./archive\imagesTr\CHNCXR_0640_1.png&#x27;</span><br><br>data_transforms = &#123;<br>        <span class="hljs-string">&quot;train&quot;</span>: transforms.Compose([<br>            transforms.ToTensor()<br>            ]),<br>        <span class="hljs-string">&quot;test&quot;</span>:transforms.Compose([<br>            transforms.ToTensor()<br>            ])<br>    &#125;<br><br>img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)<br><span class="hljs-built_in">print</span>(img.shape)<br>img = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](img)<br><span class="hljs-built_in">print</span>(img.shape)<br><span class="hljs-comment"># img = torch.from_numpy(img)</span><br><br>label = Image.<span class="hljs-built_in">open</span>(path).convert(<span class="hljs-string">&quot;L&quot;</span>)<br>label = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](label)<br><span class="hljs-built_in">print</span>(label.shape)<br></code></pre></td></tr></table></figure>]]></content>
     
+    
+    <categories>
+      
+      <category>AI_learning</category>
+      
+      <category>technology</category>
+      
+    </categories>
     
     
   </entry>
@@ -50,6 +95,14 @@
     <content type="html"><![CDATA[<h1 id="To-Start"><a href="#To-Start" class="headerlink" title="To Start"></a>To Start</h1><ul><li>安装Vscode</li><li>请前往<a href="https://code.visualstudio.com/" title="Vscode 官网">https://code.visualstudio.com/</a>下载你所需要的Vscode版本</li></ul><p>下载完了之后，你就可以开始配置C++的运行环境了</p><h1 id="Install-the-extension"><a href="#Install-the-extension" class="headerlink" title="Install the extension"></a>Install the extension</h1><ul><li>打开Vscode</li><li>选择拓展选项卡或者使用快捷键<code>Ctrl+Shift+X</code></li><li>搜索C++</li><li>安装</li></ul><img src="/2023/11/11/c-configuration/1.png" class="" title="曾经这里有一张图片...."><h1 id="Set-up-for-your-C-environment"><a href="#Set-up-for-your-C-environment" class="headerlink" title="Set up for your C++ environment"></a>Set up for your C++ environment</h1><h2 id="下载Mingw64文件"><a href="#下载Mingw64文件" class="headerlink" title="下载Mingw64文件"></a>下载Mingw64文件</h2><ul><li>打开浏览器</li><li>前往<a href="https://github.com/niXman/mingw-builds-binaries/releases">Releases · niXman&#x2F;mingw-builds-binaries (github.com)</a>下载MingW64文件</li><li>选择下列图片中标出的版本</li><li>解压，获得其中的Mingw64文件夹并放在你想放的位置</li></ul><img src="/2023/11/11/c-configuration/2.png" class="" title="曾经这里有一张图片...."><h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><ul><li>直接<code>win + S</code>快捷键搜索环境变量，进入该选项卡</li><li>点击环境变量</li><li>在用户变量和系统变量中找到Path，进入编辑</li><li>新建，并将刚才下载的Mingw64中的bin文件夹的路径填入</li><li>完成！</li></ul><img src="/2023/11/11/c-configuration/3.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/4.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/5.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/6.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/7.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/8.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/9.png" class="" title="曾经这里有一张图片...."><p>点击确定，完成！</p><h1 id="Check"><a href="#Check" class="headerlink" title="Check"></a>Check</h1><ul><li>直接<code>win + R</code>，输入cmd并运行，打开终端</li><li>输入<code>gcc -v</code>，如果出现下列画面就说明配置成功了</li><li>完成！</li></ul><img src="/2023/11/11/c-configuration/10.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/11.png" class="" title="曾经这里有一张图片...."><h1 id="Create-and-Run-a-C-file"><a href="#Create-and-Run-a-C-file" class="headerlink" title="Create and Run a C++ file"></a>Create and Run a C++ file</h1><img src="/2023/11/11/c-configuration/12.png" class="" title="曾经这里有一张图片...."><p>create a new file called <code>helloworld.cpp</code></p><p>复制，粘贴！</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Hello World&quot;</span> &lt;&lt; std::endl;<br>&#125;<br></code></pre></td></tr></table></figure><img src="/2023/11/11/c-configuration/13.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/14.png" class="" title="曾经这里有一张图片...."><p> 仅在第一次运行 helloworld.cpp 时提示您选择编译器。该编译器将成为tasks.json 文件中设置的“默认”编译器</p><img src="/2023/11/11/c-configuration/15.png" class="" title="曾经这里有一张图片...."><p>拿下！</p><p><strong>好好好，现在你就可以尽情的Coding了，可能还有一些其他的零碎配置</strong></p><p><strong>有空我再更新（</strong></p><p>本文转自 <a href="https://www.cnblogs.com/ZeroHzzzz/articles/17711579.html">https://www.cnblogs.com/ZeroHzzzz/articles/17711579.html</a>，如有侵权，请联系删除。</p>]]></content>
     
     
+    <categories>
+      
+      <category>Technologies_exploration</category>
+      
+      <category>VSCode</category>
+      
+    </categories>
+    
     
   </entry>
   
@@ -63,12 +116,12 @@
     <content type="html"><![CDATA[<h1 id="综合分测定方法"><a href="#综合分测定方法" class="headerlink" title="综合分测定方法"></a>综合分测定方法</h1><h2 id="综合分测评的意义和作用"><a href="#综合分测评的意义和作用" class="headerlink" title="综合分测评的意义和作用"></a>综合分测评的意义和作用</h2><ul><li>考察综合素质</li><li>为评定奖助学金、荣誉称号的主要依据</li><li>作为推荐优秀应届本科毕业生免试攻读研究生的参考依据</li></ul><h2 id="综合分办法解析"><a href="#综合分办法解析" class="headerlink" title="综合分办法解析"></a>综合分办法解析</h2><ul><li><p>测评体系</p><ul><li>学生综合素质评价采用量化标准，指标体系主要包括德育素质、智育素质、体育素质、劳育素质、美育素质、创新与实践素质六部分，满分 100 分。</li><li>学生综合素质测评成绩 &#x3D;<br><br>  德育素质测评成绩（10 分）+智育素质测评成绩（60 分）+<br><br>  体育素质测评成绩（8 分）+劳育素质测评成绩（5 分）+<br><br>  美育素质测评成绩（5 分）+创新与实践素质测评成绩（12 分）</li></ul></li><li><p>德育素质测评成绩（10 分）</p><ul><li><p>基本评定分</p><ul><li>由学生个人自我评价、班级成员互评、班主任和班委评价三部分构成，分别占 20%、40%、40%。</li></ul></li><li><p>记实加减分</p><ul><li>由集体评定等级分（满分 2 分）、社会责任记实分（满分 2 分）、违纪违规扣分、学生荣誉称号加减分四部分构成。</li></ul></li><li><p>addition：社会责任分主要包括：</p><ul><li>通报表扬（当学年限4次，同一事件通报表扬不重复计算，校级及以上通报表扬+0.25&#x2F;次，院级通报表扬+0.1&#x2F;次）</li><li>思政学习加减分（青年大学习）</li></ul></li><li><p>扣分：</p>  <img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/%E6%89%A3%E5%88%86.png" class="" title="曾经这里有一张图片"></li><li><p>荣誉加分：</p>  <img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/%E8%8D%A3%E8%AA%89%E5%8A%A0%E5%88%86.png" class="" title="曾经这里有一张图片"></li></ul></li><li><p>智育素质测评成绩（60 分）</p><ul><li>学生智育素质分 Z&#x3D;（平均学分绩点×10＋50）*0.6  <img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image.png" class="" title="曾经这里有一张图片"></li></ul></li><li><p>体育素质测评成绩（8 分）</p><ul><li>学生体育素质分T &#x3D; 体育课程成绩(5分)+课外体育活动成绩(3分)</li><li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-1.png" class="" title="曾经这里有一张图片"></li><li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-3.png" class="" title="曾经这里有一张图片"></li></ul></li><li><p>美育素质测评成绩（5分）</p><ul><li>学生美育素质分&#x3D;文化艺术实践成绩+文化艺术竞赛成绩</li><li>文化艺术实践成绩<ul><li>文化艺术实践成绩为学生文化艺术类选修课程和参加校内外文化艺术类活动为主要依据，其中文化艺术类选修课程以教务处提供的文化艺术类选修课程清单为准，每选修一门且及格加 0.25 分，每学年限加 0.5 分。</li></ul></li><li>文化艺术竞赛成绩  <img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-2.png" class="" title="曾经这里有一张图片"></li></ul></li><li><p>劳育素质测评成绩（5分）</p><ul><li>学生劳育素质分 &#x3D; 日常劳动分（寝室）+志愿服务分+实习实训分</li><li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-4.png" class="" title="曾经这里有一张图片"></li><li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-5.png" class="" title="曾经这里有一张图片"></li></ul></li><li><p>创新与实践素质测评成绩（12 分）</p><ul><li>学生创新与实践素质分 &#x3D;创新创业成绩+社会实践活动成绩+社会工作成绩+水平等级考试加分</li><li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-6.png" class="" title="曾经这里有一张图片"></li></ul></li></ul><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul><li>学生综合素质测评每学年进行一次，一般安排在新学年开学一个月内进行（一年级新生除外），转专业学生在上一学年所在班级参加综合素质测评。</li><li>学生参与课程以外的专业实习、综合实习或其他劳动活动，以在有关活动中取得的成绩或奖励为依据，具体需经学院学生评价工作小组认定。</li><li>相关竞赛评定等级以浙江工业大学教务处发文的《高水平学科竞赛项目清单》为依据，参考主办单位性质和证书实际落款。其余未列入本办法的竞赛以学院学生评价工作小组当年认定结果为准，网络竞赛（在线答题类）原则上不予以加分。<br>（网址：<a href="http://www.jwc.zjut.edu.cn/217/list.htm%EF%BC%89">http://www.jwc.zjut.edu.cn/217/list.htm）</a></li><li>各类竞赛获奖者必须以浙江工业大学学生身份参与，各类项目、论文知识产权、专利权人须归属浙江工业大学，否则不予以加分！</li><li>经核实在测评过程中弄虚作假、虚报材料的，根据情节严重程度给予相应处分，并取消当学年所有评奖评优资格。</li><li>除特别说明，各部分累计超出满分的，均以该部分满分计。综合分测评申报材料（除暑期调研类材料外）有效期限为上一年度 9 月 1<br>日至本年度 8 月 31 日，对于在规定期限外的材料不予加分。</li></ul>]]></content>
     
     
+    <categories>
+      
+      <category>Something</category>
+      
+    </categories>
     
-    <tags>
-      
-      <tag>学校里面一些有的没的东西</tag>
-      
-    </tags>
     
   </entry>
   
@@ -82,6 +135,14 @@
     <content type="html"><![CDATA[<h1 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h1><h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><ul><li><p>硬件输入：就是现实的电脑上的麦克风、你头戴耳麦的麦克风等硬件录音设备。【硬件输入→（发出）→声音信号】（请注意这里的声音指的是电路中的声音信号，而不是你实际听到的声音。下同。）</p></li><li><p>硬件输出：就是现实的扬声器喇叭、你头戴耳麦的耳机等硬件发声设备。【声音信号→（被接收）→硬件输出】</p></li><li><p>虚拟输入：就是虚拟录音设备，专门监听系统中各种软件发出的声音信号。【声音信号→（被接收）→虚拟输入】</p></li></ul><img src="/2023/11/04/Voicemeeter/virtual_input.jpg" class="" title="这里曾经有一张图片......"><ul><li>虚拟输出：就是虚拟发声设备，有一个虚拟的扬声器，负责向别的设备发出声音信号。【虚拟输出→（发出）→声音信号】</li></ul><img src="/2023/11/04/Voicemeeter/virtual_output.jpg" class="" title="这里曾经有一张图片......"><ul><li>通道：用于接收和转发声音信号的中间人。</li></ul><h2 id="设置电脑的输入输出设备"><a href="#设置电脑的输入输出设备" class="headerlink" title="设置电脑的输入输出设备"></a>设置电脑的输入输出设备</h2><p>自行百度，这里不再赘述</p><h1 id="二、软件界面"><a href="#二、软件界面" class="headerlink" title="二、软件界面"></a>二、软件界面</h1><img src="/2023/11/04/Voicemeeter/%E8%BD%AF%E4%BB%B6%E7%95%8C%E9%9D%A2.jpg" class="" title="这里曾经有一张图片......"><p>看下图硬件输入通道1下面框出来的按钮：A1、A2、A3、B1、B2 都是输出通道，你点亮了哪个，声音信号就会被接入到哪一个输出通道。</p><img src="/2023/11/04/Voicemeeter/%E7%A1%AC%E4%BB%B6%E9%80%9A%E9%81%93%E8%BE%93%E5%85%A5.jpg" class="" title="这里曾经有一张图片......"><p>比如图中，点亮了A1和B1，那么硬件输入通道1的声音信号就会被发送到A1、B1两个输出通道中去。</p><h1 id="三、使用"><a href="#三、使用" class="headerlink" title="三、使用"></a>三、使用</h1><p>这里只讲解软件同时输出到多个蓝牙设备的使用方法：</p><ul><li>打开Voicemeeter</li><li>配置输出设备</li></ul><img src="/2023/11/04/Voicemeeter/1.jpg" class="" title="这里曾经有一张图片......"><ul><li>在虚拟输入栏中选择输出设备</li></ul><img src="/2023/11/04/Voicemeeter/1.png" class="" title="这里曾经有一张图片......"><ul><li>调节音量</li></ul><img src="/2023/11/04/Voicemeeter/3.png" class="" title="这里曾经有一张图片......"><ul><li>run！</li></ul><h1 id="Addition"><a href="#Addition" class="headerlink" title="Addition"></a>Addition</h1><p>如果想了解更多关于voicemeeter相关的知识，可到：<br><a href="http://vb-audio.cn/post/36.html">http://vb-audio.cn/post/36.html</a></p>]]></content>
     
     
+    <categories>
+      
+      <category>Technologies_exploration</category>
+      
+      <category>Voicemeeter</category>
+      
+    </categories>
+    
     
   </entry>
   
@@ -92,15 +153,17 @@
     <link href="/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/"/>
     <url>/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul><li>GitHub账号</li><li>安装git</li><li>安装node</li></ul><h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><ul><li>创建仓库，并将仓库命名为 username.github.io<br>注意这里的username（）</li></ul><h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><ul><li>安装hexo</li></ul><p><code>npm install -g hexo-cli</code></p><ul><li>check</li></ul><p><code>hexo -v</code></p><ul><li>创建hexo项目并初始化<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">hexo init [hexo-<span class="hljs-keyword">blog(你新建的本地博客文件夹的名字，如果不输入默认为当前文件夹)]</span><br><span class="hljs-keyword"></span>cd hexo-<span class="hljs-keyword">blog</span><br><span class="hljs-keyword"></span>npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure></li></ul><h1 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h1><p>hexo默认主题为landscape，可以前往hexo官网寻找你心仪的主题<br><a href="https://hexo.io/themes/">Themes</a></p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">[github</span>地址] [存放路径]<br><span class="hljs-comment"># 例如</span><br><span class="hljs-comment"># git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></code></pre></td></tr></table></figure><p>在根目录的 _config.yml 文件中找到theme字段并将它改成你主题的名字<br><code>theme: next</code></p><p>本地启动：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure><img src="/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/1.png" class="" title="这里曾经有一张图片....."><h1 id="修改参数"><a href="#修改参数" class="headerlink" title="修改参数"></a>修改参数</h1><p>根据themes提供的文档修改参数</p><h1 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h1><p>新建文章<br><code>hexo new post 测试文章</code><br>然后就开始写吧</p><h1 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h1><ul><li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可</li><li>对 Hexo 根目录 _config.yml 的修改，需要重启本地服务器后才能预览效果</li></ul><p><code>hexo s</code></p><h1 id="Deloy"><a href="#Deloy" class="headerlink" title="Deloy"></a>Deloy</h1><ul><li>安装hexo-deployer-git</li></ul><p><code>npm install hexo-deployer-git --save</code></p><ul><li>修改根目录下的 _config.yml，配置 GitHub 相关信息,token获取方式自行百度<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repo:</span> https:<span class="hljs-comment">//github.com/yaorongke/yaorongke.github.io.git</span><br><span class="hljs-symbol">  branch:</span> main<br><span class="hljs-symbol">  token:</span> ghp_3KakcaPHerunNRyMerofcFd9pblU282FSbsY   <span class="hljs-meta"># 应该可写可不写</span><br></code></pre></td></tr></table></figure></li><li>发布<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g -d</span><br></code></pre></td></tr></table></figure></li></ul><h1 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul><li>GitHub账号</li><li>安装git</li><li>安装node</li></ul><h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><ul><li>创建仓库，并将仓库命名为 username.github.io<br>注意这里的username（）</li></ul><h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><ul><li>安装hexo</li></ul><p><code>npm install -g hexo-cli</code></p><ul><li>check</li></ul><p><code>hexo -v</code></p><ul><li>创建hexo项目并初始化<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">hexo init [hexo-<span class="hljs-keyword">blog(你新建的本地博客文件夹的名字，如果不输入默认为当前文件夹)]</span><br><span class="hljs-keyword"></span>cd hexo-<span class="hljs-keyword">blog</span><br><span class="hljs-keyword"></span>npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure></li></ul><h1 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h1><p>hexo默认主题为landscape，可以前往hexo官网寻找你心仪的主题<br><a href="https://hexo.io/themes/">Themes</a></p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">[github</span>地址] [存放路径]<br><span class="hljs-comment"># 例如</span><br><span class="hljs-comment"># git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></code></pre></td></tr></table></figure><p>在根目录的 _config.yml 文件中找到theme字段并将它改成你主题的名字<br><code>theme: next</code></p><p>本地启动：</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure><img src="/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/1.png" class="" title="这里曾经有一张图片....."><h1 id="修改参数"><a href="#修改参数" class="headerlink" title="修改参数"></a>修改参数</h1><p>根据themes提供的文档修改参数</p><h1 id="Writing"><a href="#Writing" class="headerlink" title="Writing"></a>Writing</h1><p>新建文章<br><code>hexo new post 测试文章</code><br>然后就开始写吧</p><h1 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h1><ul><li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可</li><li>对 Hexo 根目录 _config.yml 的修改，需要重启本地服务器后才能预览效果</li></ul><p><code>hexo s</code></p><h1 id="Deloy"><a href="#Deloy" class="headerlink" title="Deloy"></a>Deloy</h1><ul><li>安装hexo-deployer-git</li></ul><p><code>npm install hexo-deployer-git --save</code></p><ul><li>修改根目录下的 _config.yml，配置 GitHub 相关信息,token获取方式自行百度<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repo:</span> https:<span class="hljs-comment">//github.com/yaorongke/yaorongke.github.io.git</span><br><span class="hljs-symbol">  branch:</span> main<br><span class="hljs-symbol">  token:</span> ghp_3KakcaPHerunNRyMerofcFd9pblU282FSbsY   <span class="hljs-meta"># 应该可写可不写</span><br></code></pre></td></tr></table></figure></li><li>发布<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g -d</span><br></code></pre></td></tr></table></figure></li></ul><h1 id="Addition-使用Fluid主题的一些文章属性设置"><a href="#Addition-使用Fluid主题的一些文章属性设置" class="headerlink" title="Addition : 使用Fluid主题的一些文章属性设置"></a>Addition : 使用Fluid主题的一些文章属性设置</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs title">---<br>title: Hexo Fluid主题使用笔记<br>tags:<br> - Hexo<br> - Fluid<br>toc: true<br>categories: xxx<br>---<br><br></code></pre></td></tr></table></figure><h1 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h1>]]></content>
     
     
-    
-    <tags>
+    <categories>
       
-      <tag>Hexo</tag>
+      <category>Technologies_exploration</category>
       
-    </tags>
+      <category>Hexo</category>
+      
+    </categories>
+    
     
   </entry>
   
@@ -114,12 +177,14 @@
     <content type="html"><![CDATA[<p>在写文章的时候我们常常会使用图片来传达一些只可意会不可言传的含义….</p><h1 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h1><p>当Hexo项目中只用到少量图片时，可以将图片统一放在source&#x2F;images文件夹中，通过markdown语法访问它们。<br>路径：source&#x2F;images&#x2F;image.jpg<br><code>![](/images/image.jpg)</code></p><p>这样图片既可以在首页内容中访问到，也可以在文章正文中访问到。</p><h1 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h1><p>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中。文章的目录可以通过配置_config.yml来生成。</p><p>在根目录的_config.yml中：</p><p><code>post_asset_folder: true</code><br>但是据我惨痛的经历显示，下面这种写法是错误的:<br><code>![photo](passage_name/Photo.png)</code><br>因此我翻阅了hexo的<a href="https://hexo.io/zh-cn/docs/">文档</a>，里面是这么写的</p><img src="/2023/10/27/Hexo%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/1.png" class="" title="这里曾经有一张图片....."><p>但是不知道为啥这个艾斯比东西就是没有用….</p><p>因此我还是只能采用官方推荐的这种写法：<br><code>&#123;% asset_img example.jpg failed_description %&#125;</code></p><p>事后经过一翻谷歌搜索发现用md直接导入图片导致失败的原因可能是因为只是将图片放入文件夹，hexo生成静态界面时并没有处理该图片，所以运行后就找不到图片了….<br>给我整无语了。但是我发现他文件路径是这样的:<br><code>https://zerohzzzz.github.io/[passage_name]/1.png</code><br>而用<code>&#123;% %&#125;</code>方式导入图片，图片的路径是这样的：<br><code>https://zerohzzzz.github.io/2023/10/27/[passage_name]/1.png</code></p><p><del>这个艾斯比东西果然*****</del></p><p>但是这个问题似乎在插件的新版本中得到了解决，有兴趣可以看看<a href="https://github.com/boboidream/hexo-easy-images">hexo-easy-images</a>，但我认为有<code>&#123;% %&#125;</code>方式就已经足够了</p><h1 id="Addition"><a href="#Addition" class="headerlink" title="Addition"></a>Addition</h1><p><a href="http://codecook.site/2020/12/05/hexo+typora%E7%9A%84%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/">hexo+typora的图片路径问题</a></p>]]></content>
     
     
+    <categories>
+      
+      <category>Technologies_exploration</category>
+      
+      <category>Hexo</category>
+      
+    </categories>
     
-    <tags>
-      
-      <tag>Hexo</tag>
-      
-    </tags>
     
   </entry>
   
