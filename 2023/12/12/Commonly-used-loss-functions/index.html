@@ -16,21 +16,23 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="规则 电压从零开始 数据“严禁造假”seriously  考核 平时分 平时实验考评：实验 40% 实验报告：实验原理、实验内容和步骤 实验册子（60%）（表格、画图60%，其他40%，心得建议不用）   考试 实验笔试：课程结束前一个月左右进行实验理论考试，侧重实验原理、方法和实验基本知识的考核    预习 自习实验原理并完成实验册子第一部分实验原理的作业 浏览实验内容和步骤，大致了解实验进程">
+    <meta name="description" content="Begining很久很久以前，机器学习主要有两大任务：分类和回归任务…… 基本概念（Note） 损失函数：就是用来更新参数的衡量指标 风险函数：就是train过程中的loss，用于衡量样本点平均意义下的好坏。注意要除以batch_size 泛化函数：就是test过程中的loss  回归 (Regression)在回归任务中，预测值和实际值都是实数，一般采用残差$ y−f(x) $来度量两者的不一致">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大雾（）">
-<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/11/physics/index.html">
+<meta property="og:title" content="常用损失函数及一些Notes">
+<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/12/Commonly-used-loss-functions/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="规则 电压从零开始 数据“严禁造假”seriously  考核 平时分 平时实验考评：实验 40% 实验报告：实验原理、实验内容和步骤 实验册子（60%）（表格、画图60%，其他40%，心得建议不用）   考试 实验笔试：课程结束前一个月左右进行实验理论考试，侧重实验原理、方法和实验基本知识的考核    预习 自习实验原理并完成实验册子第一部分实验原理的作业 浏览实验内容和步骤，大致了解实验进程">
+<meta property="og:description" content="Begining很久很久以前，机器学习主要有两大任务：分类和回归任务…… 基本概念（Note） 损失函数：就是用来更新参数的衡量指标 风险函数：就是train过程中的loss，用于衡量样本点平均意义下的好坏。注意要除以batch_size 泛化函数：就是test过程中的loss  回归 (Regression)在回归任务中，预测值和实际值都是实数，一般采用残差$ y−f(x) $来度量两者的不一致">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-12-10T16:29:40.000Z">
-<meta property="article:modified_time" content="2023-12-10T16:49:13.108Z">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/12/Commonly-used-loss-functions/log.png">
+<meta property="article:published_time" content="2023-12-11T16:53:47.000Z">
+<meta property="article:modified_time" content="2023-12-11T16:54:42.630Z">
 <meta property="article:author" content="ZeroHzzzz">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://zerohzzzz.github.io/2023/12/12/Commonly-used-loss-functions/log.png">
   
   
   
-  <title>大雾（） - Welcome To my Blog</title>
+  <title>常用损失函数及一些Notes - Welcome To my Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="大雾（）"></span>
+            <span id="subtitle" data-typed-text="常用损失函数及一些Notes"></span>
           
         </div>
 
@@ -211,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-11 00:29" pubdate>
-          December 11, 2023 am
+        <time datetime="2023-12-12 00:53" pubdate>
+          December 12, 2023 am
         </time>
       </span>
     
@@ -223,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          905 words
+          1.7k words
         
       </span>
     
@@ -234,7 +236,7 @@
         
         
         
-          8 mins
+          15 mins
         
       </span>
     
@@ -271,110 +273,42 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">大雾（）</h1>
+            <h1 id="seo-header">常用损失函数及一些Notes</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><ul>
-<li>电压从零开始</li>
-<li>数据“严禁造假”seriously</li>
+                <h1 id="Begining"><a href="#Begining" class="headerlink" title="Begining"></a>Begining</h1><p>很久很久以前，机器学习主要有两大任务：分类和回归任务……</p>
+<h1 id="基本概念（Note）"><a href="#基本概念（Note）" class="headerlink" title="基本概念（Note）"></a>基本概念（Note）</h1><ul>
+<li>损失函数：就是用来更新参数的衡量指标</li>
+<li>风险函数：就是train过程中的loss，用于衡量样本点平均意义下的好坏。注意要除以batch_size</li>
+<li>泛化函数：就是test过程中的loss</li>
 </ul>
-<h2 id="考核"><a href="#考核" class="headerlink" title="考核"></a>考核</h2><ul>
-<li>平时分<ul>
-<li>平时实验考评：实验 40%</li>
-<li>实验报告：实验原理、实验内容和步骤</li>
-<li>实验册子（60%）（表格、画图60%，其他40%，心得建议不用）</li>
-</ul>
-</li>
-<li>考试<ul>
-<li>实验笔试：课程结束前一个月左右进行实验理论考试，侧重实验原理、方法和实验基本知识的考核</li>
-</ul>
-</li>
-</ul>
-<h2 id="预习"><a href="#预习" class="headerlink" title="预习"></a>预习</h2><ul>
-<li>自习实验原理并完成实验册子第一部分实验原理的作业</li>
-<li>浏览实验内容和步骤，大致了解实验进程</li>
-<li>课堂上完成实验操作并记录实验数据，建议用铅笔记录数据</li>
-<li>处理实验数据，完成问题与讨论</li>
-<li>方格纸：A3纸两张（画图）</li>
-</ul>
-<h2 id="数据处理（考试重点）"><a href="#数据处理（考试重点）" class="headerlink" title="数据处理（考试重点）"></a>数据处理（<strong>考试重点</strong>）</h2><p>课本第一章</p>
+<h1 id="回归-Regression"><a href="#回归-Regression" class="headerlink" title="回归 (Regression)"></a>回归 (Regression)</h1><p>在回归任务中，预测值和实际值都是实数，一般采用残差$ y−f(x) $来度量两者的不一致程度</p>
+<h2 id="均方误差（MSE）-L2损失"><a href="#均方误差（MSE）-L2损失" class="headerlink" title="均方误差（MSE）&#x2F;L2损失"></a>均方误差（MSE）&#x2F;L2损失</h2><p>说白了就是预测值和实际观测值间差的平方的均值。它只考虑误差的平均大小，不考虑其方向。<br>$$<br>MSE &#x3D; \frac{1}{2n} \sum (y_i - \hat{y_i})^2<br>$$<br>特性：</p>
 <ul>
-<li><p>直接测量和间接测量</p>
+<li>经过平方，与真实值偏离较多的预测值会受到更为严重的惩罚,所以不够robust()</li>
+<li>容易算梯度……</li>
+</ul>
+<h2 id="均方根误差（root-mean-suqare-error-RMSE）"><a href="#均方根误差（root-mean-suqare-error-RMSE）" class="headerlink" title="均方根误差（root mean suqare error,RMSE）"></a>均方根误差（root mean suqare error,RMSE）</h2><p>没错，跟刚刚那个很像，就是多了个根号()<br>$$<br>RMSE &#x3D; \sqrt {\frac{ \sum (y_i - \hat{y_i})^2}{n}}<br>$$<br>这个玩意和刚刚那个的区别就是惩罚变轻了</p>
+<h2 id="平均绝对误差MAE-L1损失"><a href="#平均绝对误差MAE-L1损失" class="headerlink" title="平均绝对误差MAE&#x2F;L1损失"></a>平均绝对误差MAE&#x2F;L1损失</h2><p>不考虑方向<br>$$<br>MAE &#x3D; \frac{ \sum_{i&#x3D;1}^{n} \left | y_i - \hat{y_i} \right |}{n}<br>$$<br>特性：</p>
 <ul>
-<li>区别就是是不是直接去测</li>
-<li>间接测量量是由直接测量量通过计算获得</li>
-<li>一个物理量必须有数字和单位组成，并且一般写为标准形式</li>
-<li>测量值的小数位和不确定度的小数位是<strong>对齐</strong>的，这是因为不确定度决定了存疑位，测量值中小于存疑位的数字都是没有意义的（*）</li>
-<li>先确定后面的小数位在确定前面的小数位</li>
+<li>梯度的计算有点烦，需要用到线性规划</li>
+<li>异常值的反应更小</li>
+<li>梯度一直很大，会遗漏最小值</li>
 </ul>
-</li>
-<li><p>误差</p>
-<ul>
-<li>绝对误差 &#x3D; 测量值 - 真实值</li>
-<li>相对误差 &#x3D; 测量绝对误差&#x2F;测量值的真值</li>
-<li>偶然误差<br>  -公式 $ \sqrt{\frac{\sum(x_i - x)^2}{n-1}}$（*&#x2F;n-1）</li>
-<li>系统误差</li>
-</ul>
-</li>
-<li><p>不确定度</p>
-<ul>
-<li><p>平均值代替真值，并且用不确定度来确定误差</p>
-</li>
-<li><p>游标卡尺的不确定度</p>
-<ul>
-<li>游标卡尺的示值误差也称为仪器误差 &#x3D; 0.02mm</li>
-</ul>
-</li>
-<li><p>螺旋测微计</p>
-<ul>
-<li>仪器误差为0.004mm（约定）</li>
-</ul>
-</li>
-<li><p>总不确定度 $\sqrt{x_偶^2+x_真^2}$</p>
-</li>
-<li><p>间接不确定度</p>
-<ul>
-<li>测量式是单元函数<ul>
-<li>先算直接测量量平均值</li>
-<li>再算间接测量量的平均值</li>
-<li>间接测量量的不确定度为：$ \delta &#x3D; \left |\frac{dF(x)}{dx}\right | * \delta_x $</li>
-</ul>
-</li>
-<li>测量式是多元函数<ul>
-<li>……</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>相对不确定度</p>
-<ul>
-<li>如果是测量式是积商形式的函数式，则合成相对不确定度计算数（先取对数，再方和根合成）</li>
-<li>绝对不确定度&#x2F;平均值</li>
-<li>保留两位有效数字</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>保留小数</p>
-<ul>
-<li>不确定度保留一位有效数字，测量值小数位和不确定度对齐</li>
-<li>有效数字<ul>
-<li>有效数字的科学计数法</li>
-</ul>
-</li>
-<li>不确定度直接四舍五入， 测量值四舍六入， 逢五配双<ul>
-<li>五前面是奇数就进位，如果是偶数就不进位</li>
-</ul>
-</li>
-<li>运算位数保留<ul>
-<li>相加减看小数位（小数位最少为准），相乘除看有效数字（有效数字最少为准）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<h2 id="平均偏差误差（Mean-Bias-Error）-不常见"><a href="#平均偏差误差（Mean-Bias-Error）-不常见" class="headerlink" title="平均偏差误差（Mean Bias Error）(不常见)"></a>平均偏差误差（Mean Bias Error）(不常见)</h2><p>注意，这里正负误差可以互相抵消，因为他相比MAE来说没有用绝对值。可以确定模型存在正偏差还是负偏差<br>$$<br>MBE &#x3D; \frac{ \sum_{i&#x3D;1}^{n} (y_i - \hat{y_i})}{n}<br>$$</p>
+<h2 id="平均绝对百分比误差（Mean-Absolute-Pencent-Error，MAPE）"><a href="#平均绝对百分比误差（Mean-Absolute-Pencent-Error，MAPE）" class="headerlink" title="平均绝对百分比误差（Mean Absolute Pencent Error，MAPE）"></a>平均绝对百分比误差（Mean Absolute Pencent Error，MAPE）</h2><p>相比 RMSE，MAPE 相当于把每个点的误差进行了归一化, 降低了个别离群点带来的绝对误差的影响<br>$$<br>MAPE &#x3D; \sum_{i&#x3D;1}^{n} \left |\frac{y_i - \hat{y_i}}{y_i} \right | * \frac{100}{n}<br>$$</p>
+<h2 id="Huber函数"><a href="#Huber函数" class="headerlink" title="Huber函数"></a>Huber函数</h2><p>$$<br>L_{Huber}(f,y) &#x3D;<br>\begin{cases}<br>\ (f-y)^2, &amp; \left | f - y \right|  \leqslant \xi\<br> \ 2\xi\left | f - y \right| - \xi^2, &amp;\left | f - y \right| &gt; \xi<br>\end{cases}<br>$$</p>
+<p>这样一来，$\xi \rightarrow 0 $时，Huber趋近于MAE；$\xi \rightarrow \infty $ ， Huber趋近于MSE</p>
+<p>但是他需要训练$\xi$这个超参数……</p>
+<h1 id="分类-Classification"><a href="#分类-Classification" class="headerlink" title="分类(Classification)"></a>分类(Classification)</h1><h2 id="0-1损失函数（zero-one-loss）——Perception"><a href="#0-1损失函数（zero-one-loss）——Perception" class="headerlink" title="0-1损失函数（zero-one loss）——Perception"></a>0-1损失函数（zero-one loss）——Perception</h2><p>就是预测值和目标值不相等为1， 否则为0。我们经常可以在感知机模型里面看到他，属于非凸函数，一般来说也就只能在感知机模型里面看到他<br>$$<br>L(Y,f(x)) &#x3D;<br>\begin{cases}<br>\ 1, &amp;Y \neq f(x) \<br>\ 0, &amp;Y &#x3D; f(x)<br>\end{cases}<br>$$</p>
+<h2 id="Logistic损失函数"><a href="#Logistic损失函数" class="headerlink" title="Logistic损失函数"></a>Logistic损失函数</h2><p>Logistic损失函数是0-1损失函数的另一个代理损失函数，它也是0-1损失函数的凸上界，且该函数处处光滑。但是该损失函数对所有样本点都惩罚，因此对异常值更加敏感。当预测值$f \epsilon &#x3D; [-1, 1]$时，另一个常用的代理损失函数是交叉熵损失函数<br>$$<br>L(f,y) &#x3D; \log_2(1+\exp(-fy))<br>$$</p>
+<h2 id="对数损失函数（log）——LR"><a href="#对数损失函数（log）——LR" class="headerlink" title="对数损失函数（log）——LR"></a>对数损失函数（log）——LR</h2><p>这里懒得手写LaTeX公式了()，直接用图片说明：</p>
+<center><img src="/2023/12/12/Commonly-used-loss-functions/log.png" srcset="/img/loading.gif" lazyload class="" title="This is a photos..."></center>
+
+<h2 id="Cross-Entropy-交叉熵-损失函数"><a href="#Cross-Entropy-交叉熵-损失函数" class="headerlink" title="Cross-Entropy(交叉熵)损失函数"></a>Cross-Entropy(交叉熵)损失函数</h2><p>交叉熵损失函数也是0-1损失函数的光滑凸上界<br>$$<br>L(f,y) &#x3D; \log_2(\frac{1+fy}{2})<br>$$</p>
+<h2 id="Exponential-指数-损失函数-AdaBoost"><a href="#Exponential-指数-损失函数-AdaBoost" class="headerlink" title="Exponential(指数)损失函数(AdaBoost)"></a>Exponential(指数)损失函数(AdaBoost)</h2><p>指数损失函数是AdaBoost里使用的损失函数，同样地，它对异常点较为敏感，缺乏rebust<br>$$<br>L(f,y) &#x3D; e^{-fy}<br>$$</p>
 
                 
               </div>
@@ -393,8 +327,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Something/" class="category-chain-item">Something</a>
+  <a href="/categories/AI-learning/" class="category-chain-item">AI_learning</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/AI-learning/Math/" class="category-chain-item">Math</a>
+  
+  
+
   
 
       </span>
@@ -413,8 +354,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>大雾（）</div>
-      <div>http://zerohzzzz.github.io/2023/12/11/physics/</div>
+      <div>常用损失函数及一些Notes</div>
+      <div>http://zerohzzzz.github.io/2023/12/12/Commonly-used-loss-functions/</div>
     </div>
     <div class="license-meta">
       
@@ -426,7 +367,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 11, 2023</div>
+          <div>December 12, 2023</div>
         </div>
       
       
@@ -458,18 +399,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/12/Commonly-used-loss-functions/" title="常用损失函数及一些Notes">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">常用损失函数及一些Notes</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/" title="模型参数量和计算量计算">
-                        <span class="hidden-mobile">模型参数量和计算量计算</span>
+                      <a href="/2023/12/11/physics/" title="大雾（）">
+                        <span class="hidden-mobile">大雾（）</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
