@@ -16,21 +16,21 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="规则 电压从零开始 数据“严禁造假”seriously  考核 平时分 平时实验考评：实验 40% 实验报告：实验原理、实验内容和步骤 实验册子（60%）（表格、画图60%，其他40%，心得建议不用）   考试 实验笔试：课程结束前一个月左右进行实验理论考试，侧重实验原理、方法和实验基本知识的考核    预习 自习实验原理并完成实验册子第一部分实验原理的作业 浏览实验内容和步骤，大致了解实验进程">
+    <meta name="description" content="Beginings梯度下降算法（Gradient Descent Optimization）是神经网络模型训练最常用的优化算法。对于深度学习模型，基本都是采用梯度下降算法来进行优化训练的。其原理也很简单，就是求导（），将其推广到高维空间就是求偏导 目标函数$J(\theta)$关于参数$\theta$的梯度就是损失函数（loss function）上升最快的方向，那么同样道理，梯度的反方向指向的就">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大雾（）">
-<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/11/physics/index.html">
+<meta property="og:title" content="反向传播优化器总结（The Summary of Backpropagation Optimizer）">
+<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/10/Backpropagation-Optimizer-Summary/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="规则 电压从零开始 数据“严禁造假”seriously  考核 平时分 平时实验考评：实验 40% 实验报告：实验原理、实验内容和步骤 实验册子（60%）（表格、画图60%，其他40%，心得建议不用）   考试 实验笔试：课程结束前一个月左右进行实验理论考试，侧重实验原理、方法和实验基本知识的考核    预习 自习实验原理并完成实验册子第一部分实验原理的作业 浏览实验内容和步骤，大致了解实验进程">
+<meta property="og:description" content="Beginings梯度下降算法（Gradient Descent Optimization）是神经网络模型训练最常用的优化算法。对于深度学习模型，基本都是采用梯度下降算法来进行优化训练的。其原理也很简单，就是求导（），将其推广到高维空间就是求偏导 目标函数$J(\theta)$关于参数$\theta$的梯度就是损失函数（loss function）上升最快的方向，那么同样道理，梯度的反方向指向的就">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-12-10T16:29:40.000Z">
-<meta property="article:modified_time" content="2023-12-10T16:49:13.108Z">
+<meta property="article:published_time" content="2023-12-10T12:03:10.000Z">
+<meta property="article:modified_time" content="2023-12-11T18:18:39.864Z">
 <meta property="article:author" content="ZeroHzzzz">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>大雾（） - Welcome To my Blog</title>
+  <title>反向传播优化器总结（The Summary of Backpropagation Optimizer） - Welcome To my Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="大雾（）"></span>
+            <span id="subtitle" data-typed-text="反向传播优化器总结（The Summary of Backpropagation Optimizer）"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-11 00:29" pubdate>
-          December 11, 2023 am
+        <time datetime="2023-12-10 20:03" pubdate>
+          December 10, 2023 pm
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          905 words
+          3.6k words
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          8 mins
+          31 mins
         
       </span>
     
@@ -271,110 +271,39 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">大雾（）</h1>
+            <h1 id="seo-header">反向传播优化器总结（The Summary of Backpropagation Optimizer）</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><ul>
-<li>电压从零开始</li>
-<li>数据“严禁造假”seriously</li>
-</ul>
-<h2 id="考核"><a href="#考核" class="headerlink" title="考核"></a>考核</h2><ul>
-<li>平时分<ul>
-<li>平时实验考评：实验 40%</li>
-<li>实验报告：实验原理、实验内容和步骤</li>
-<li>实验册子（60%）（表格、画图60%，其他40%，心得建议不用）</li>
-</ul>
-</li>
-<li>考试<ul>
-<li>实验笔试：课程结束前一个月左右进行实验理论考试，侧重实验原理、方法和实验基本知识的考核</li>
-</ul>
-</li>
-</ul>
-<h2 id="预习"><a href="#预习" class="headerlink" title="预习"></a>预习</h2><ul>
-<li>自习实验原理并完成实验册子第一部分实验原理的作业</li>
-<li>浏览实验内容和步骤，大致了解实验进程</li>
-<li>课堂上完成实验操作并记录实验数据，建议用铅笔记录数据</li>
-<li>处理实验数据，完成问题与讨论</li>
-<li>方格纸：A3纸两张（画图）</li>
-</ul>
-<h2 id="数据处理（考试重点）"><a href="#数据处理（考试重点）" class="headerlink" title="数据处理（考试重点）"></a>数据处理（<strong>考试重点</strong>）</h2><p>课本第一章</p>
-<ul>
-<li><p>直接测量和间接测量</p>
-<ul>
-<li>区别就是是不是直接去测</li>
-<li>间接测量量是由直接测量量通过计算获得</li>
-<li>一个物理量必须有数字和单位组成，并且一般写为标准形式</li>
-<li>测量值的小数位和不确定度的小数位是<strong>对齐</strong>的，这是因为不确定度决定了存疑位，测量值中小于存疑位的数字都是没有意义的（*）</li>
-<li>先确定后面的小数位在确定前面的小数位</li>
-</ul>
-</li>
-<li><p>误差</p>
-<ul>
-<li>绝对误差 &#x3D; 测量值 - 真实值</li>
-<li>相对误差 &#x3D; 测量绝对误差&#x2F;测量值的真值</li>
-<li>偶然误差<br>  -公式 $ \sqrt{\frac{\sum(x_i - x)^2}{n-1}}$（*&#x2F;n-1）</li>
-<li>系统误差</li>
-</ul>
-</li>
-<li><p>不确定度</p>
-<ul>
-<li><p>平均值代替真值，并且用不确定度来确定误差</p>
-</li>
-<li><p>游标卡尺的不确定度</p>
-<ul>
-<li>游标卡尺的示值误差也称为仪器误差 &#x3D; 0.02mm</li>
-</ul>
-</li>
-<li><p>螺旋测微计</p>
-<ul>
-<li>仪器误差为0.004mm（约定）</li>
-</ul>
-</li>
-<li><p>总不确定度 $\sqrt{x_偶^2+x_真^2}$</p>
-</li>
-<li><p>间接不确定度</p>
-<ul>
-<li>测量式是单元函数<ul>
-<li>先算直接测量量平均值</li>
-<li>再算间接测量量的平均值</li>
-<li>间接测量量的不确定度为：$ \delta &#x3D; \left |\frac{dF(x)}{dx}\right | * \delta_x $</li>
-</ul>
-</li>
-<li>测量式是多元函数<ul>
-<li>……</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>相对不确定度</p>
-<ul>
-<li>如果是测量式是积商形式的函数式，则合成相对不确定度计算数（先取对数，再方和根合成）</li>
-<li>绝对不确定度&#x2F;平均值</li>
-<li>保留两位有效数字</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>保留小数</p>
-<ul>
-<li>不确定度保留一位有效数字，测量值小数位和不确定度对齐</li>
-<li>有效数字<ul>
-<li>有效数字的科学计数法</li>
-</ul>
-</li>
-<li>不确定度直接四舍五入， 测量值四舍六入， 逢五配双<ul>
-<li>五前面是奇数就进位，如果是偶数就不进位</li>
-</ul>
-</li>
-<li>运算位数保留<ul>
-<li>相加减看小数位（小数位最少为准），相乘除看有效数字（有效数字最少为准）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+                <h1 id="Beginings"><a href="#Beginings" class="headerlink" title="Beginings"></a>Beginings</h1><p>梯度下降算法（Gradient Descent Optimization）是神经网络模型训练最常用的优化算法。对于深度学习模型，基本都是采用梯度下降算法来进行优化训练的。<del>其原理也很简单，就是求导（），将其推广到高维空间就是求偏导</del></p>
+<p>目标函数$J(\theta)$关于参数$\theta$的梯度就是损失函数（loss function）上升最快的方向，那么同样道理，梯度的反方向指向的就是损失函数下降最快的方向。根据这一特点，我们可以写出网络中每个参数的更新方程<br>$$<br>\theta_j &#x3D; \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta)<br>$$<br>$\alpha$ 表示学习率（learning rate）,这个参数设置的目的就是为了走太大<del>扯到蛋</del>的，或者就是说防止在接近最低点的位置反复横跳</p>
+<h1 id="梯度下降的三种基本形式"><a href="#梯度下降的三种基本形式" class="headerlink" title="梯度下降的三种基本形式"></a>梯度下降的三种基本形式</h1><p>其实说到底只有BGD是最基本的，SGD和MBGD其实都是对BGD的优化。但是看在也是很基础的份上我就把他归于基本的梯度下降方式</p>
+<h2 id="BGD-批量梯度下降"><a href="#BGD-批量梯度下降" class="headerlink" title="BGD(批量梯度下降)"></a>BGD(批量梯度下降)</h2><p>BGD使用整个训练数据集来计算每一步的梯度。具体来说，它计算损失函数对所有样本的梯度，然后根据该梯度来更新模型参数。但这意味着在每一次迭代中，都要考虑整个数据集，所以计算速度非常慢，无法进行在线学习，即便可以，一个样本加入到大数据集中，对梯度影响也不明显。唯一的优点就是<del>容易写</del>它对整个数据集进行了全局考虑，因此可以更准确地朝着最优参数的方向前进</p>
+<p>它对于凸函数可以收敛到全局极小值，对于非凸函数可以收敛到局部极小值。</p>
+<p>如果用X代表数据集，那么他的更新规则是：<br>$$<br>\nabla L(X;\theta_l) &#x3D; \frac{1}{m} \sum_{x_i \epsilon X} \nabla l(x_i;\theta_l)\<br>\theta_{l+1} &#x3D; \theta_{l} - \alpha \nabla L(X;\theta_l)<br>$$</p>
+<h2 id="SGD-随机梯度下降"><a href="#SGD-随机梯度下降" class="headerlink" title="SGD(随机梯度下降)"></a>SGD(随机梯度下降)</h2><p>说白了就是在BGD的基础上，每次迭代仅使用一个随机样本来计算梯度和更新模型参数。这也导致了他容易受数据集中一些异常值的影响，导致更新过程不稳定。但是也恰恰是整个不稳定的特性让他有时可以更容易的跳出梯度高原()…..这也可以提高计算速度和内存效率。由于每次只使用一个样本，SGD的计算开销较小，特别适用于大型数据集</p>
+<p>更新规则是：<br>$$<br>\theta_{l+1} &#x3D; \theta_{l} - \alpha \nabla l(x_i;\theta_l)<br>$$<br>其中$\nabla l(X;\theta_l)$ 是损失函数关于单个样本$x_i$的梯度</p>
+<p>SGD 虽然能达到极小值，但是比其它算法用的时间长，而且可能会被困在鞍点。</p>
+<p>如果需要更快的收敛，或者是训练更深更复杂的神经网络，需要用一种自适应的算法。</p>
+<h2 id="MBGD-小批量梯度下降"><a href="#MBGD-小批量梯度下降" class="headerlink" title="MBGD(小批量梯度下降)"></a>MBGD(小批量梯度下降)</h2><p>从这个标题出现的位置和他的命名我们就可以大概的猜出来，这个玩意介于BGD和SGD之间，集合了两家之长，降低了更新时的方差，收敛更加稳定。</p>
+<p>MBGD每次迭代时不是使用整个数据集，也不是只使用单个样本，而是使用一个小批量样本。这个小批量的大小通常是一个可调节的超参数，也就是batch_size</p>
+<p>其更新规则是：<br>$$<br>\theta_{l+1} &#x3D; \theta_{l} - \alpha \nabla (\frac{1}{b}\sum_{i&#x3D;1}^b l(x_i;\theta_l))<br>$$</p>
+<h1 id="梯度下降法的优化"><a href="#梯度下降法的优化" class="headerlink" title="梯度下降法的优化"></a>梯度下降法的优化</h1><h2 id="动量优化算法（Momentum）"><a href="#动量优化算法（Momentum）" class="headerlink" title="动量优化算法（Momentum）"></a>动量优化算法（Momentum）</h2><p>它引入了动量项v，它是之前梯度的加权平均，模拟了物体在运动中的积累速度的效果，从而帮助跨越局部最小值并更快地收敛到全局最小值。</p>
+<p>动量项有助于平滑更新过程，减少参数更新的方差，特别是在存在高曲率或噪声的情况下。它还有助于加速梯度下降，特别是在平原上的方向。同时，动量的积累效果有助于在参数空间中跨越局部最小值，因为动量使得更新在原有方向上继续前进。特别适用于复杂的损失函数和参数空间中存在局部极小值的情况。</p>
+<p>对于给定的模型参数$\theta$，动量项v的更新规则如下：</p>
+<p>$$<br>v_{l+1} &#x3D; \beta v_t + (1 - \beta) \nabla L(\theta_l)<br>$$<br>$\beta$ 是动量参数，通常取一个介于0到1之间的值</p>
+<p>相应的，其参数的更新规则为：<br>$$<br>\theta_{l+1} &#x3D; \theta_{l} - \alpha v_{l+1}<br>$$</p>
+<h2 id="Nesterov-Accelerated-Gradient（NAG）"><a href="#Nesterov-Accelerated-Gradient（NAG）" class="headerlink" title="Nesterov Accelerated Gradient（NAG）"></a>Nesterov Accelerated Gradient（NAG）</h2><p>这是对动量算法的改进。NAG 在更新参数时先根据当前动量位置预估下一步的位置，然后计算梯度进行更新。<br>NAG首先根据当前动量位置$v_t$预估下一步的位置。预估的下一步位置为$\theta_l - \beta v_t$，其中$\beta$是动量参数。其主要优势在于它对动量的使用进行了改进，提供更准确的预估位置，有助于在参数更新时更精确地调整方向。这使得 NAG 在一些情况下比标准动量算法表现更好</p>
+<p>参数更新规则为：<br>$$<br>\theta_{l+1} &#x3D; \theta_{l} - \alpha \nabla_\theta L(\theta_l - \beta v_l)\<br>v_{l+1} &#x3D; \beta v_l + \alpha \nabla_\theta L(\theta_l - \beta v_l)<br>$$</p>
+<h2 id="Adagrad-（Adaptive-gradient-algorithm）"><a href="#Adagrad-（Adaptive-gradient-algorithm）" class="headerlink" title="Adagrad （Adaptive gradient algorithm）"></a>Adagrad （Adaptive gradient algorithm）</h2><p>很牛逼的一个东西，自适应学习率。它根据每个参数的历史梯度信息自适应地调整学习率，使得对于稀疏梯度的参数可以具有更大的学习率，而对于频繁出现的参数可以有较小的学习率。适用于稀疏数据和非平稳目标函数，但它可能在训练后期过于减小学习率，导致更新步长过小，难以收敛。因此出现了后面的RMSprop和Adam。但是，RMSprop, Adadelta, Adam 在很多情况下的效果其实是相似的。</p>
+<p>参数更新规则如下：<br>$$<br>\theta_{t+1} &#x3D; \theta_t - \frac{\alpha}{\sqrt{G_t + \epsilon}} \cdot \nabla_{\theta} L(\theta_t)<br>$$<br>其中$G_T$是历史梯度平方的累积，$\epsilon$是一个小的常数用于数值稳定性</p>
+<h2 id="Adadelta"><a href="#Adadelta" class="headerlink" title="Adadelta"></a>Adadelta</h2><p>Adadelta 是是 Adagrad 的一种改进版本，解决了 Adagrad 在训练后期学习率过小的问题，不需要手动设置初始学习率，并且对学习率进行了更加平滑和自适应的调整。它使用了对梯度平方的滑动平均，而不是历史梯度平方的累积。这解决了 Adagrad 学习率过早减小的问题<br>。适用于处理非平稳目标函数和具有不同尺度的参数的情况。<br>参数更新规则：<br>$$<br>\theta_{t+1} &#x3D; \theta_t - \frac{\sqrt{E[g^2]<em>t + \epsilon}}{\sqrt{E[\Delta \theta^2]<em>t + \epsilon}} \cdot \nabla</em>{\theta} L(\theta_t)<br>$$<br>其中，$\nabla</em>{\theta} L(\theta_t)$是损失函数关于参数$\theta$的梯度，$E[g^2]_t$是梯度平方的滑动平均，$E[\Delta \theta^2]_t$是参数更新的滑动平均</p>
+<h2 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h2><p>RMSprop是对 Adagrad 的改进，通过引入衰减系数来减轻学习率的过早减小问题。使用滑动平均来累积梯度平方，这有助于自适应地调整学习率，对于稀疏梯度和非平稳目标函数效果较好。引入了一个衰减系数ρ，它控制了滑动平均的速度。通常ρ取值为接近于1的数，如0.9。适用于处理非平稳目标函数和具有不同尺度的参数的情况</p>
+<p>参数更新规则：<br>$$<br>\theta_{t+1} &#x3D; \theta_t - \frac{\alpha}{\sqrt{E[g^2]<em>t + \epsilon}} \cdot \nabla</em>{\theta} L(\theta_t)<br>$$</p>
+<h2 id="Adam：Adaptive-Moment-Estimation"><a href="#Adam：Adaptive-Moment-Estimation" class="headerlink" title="Adam：Adaptive Moment Estimation"></a>Adam：Adaptive Moment Estimation</h2><p>Adam结合了动量（momentum）和 RMSprop 的思想，引入了动量项，用$m_l$表示，同时引入了RMSprop的思想，使用了梯度平方的滑动平均，用$v_l$表示。随着梯度变的稀疏，Adam 比 RMSprop 效果更好。</p>
+<p>参数更新规则：<br>$$<br>\theta_{t+1} &#x3D; \theta_t - \frac{\alpha \cdot m_t}{\sqrt{v_t} + \epsilon} \<br>m_{t+1} &#x3D; \beta_1 \cdot m_t + (1 - \beta_1) \cdot \nabla_{\theta} L(\theta_t) \<br>v_{t+1} &#x3D; \beta_2 \cdot v_t + (1 - \beta_2) \cdot (\nabla_{\theta} L(\theta_t))^2<br>$$<br>其中$\beta_1 和 \beta_2$都是衰减系数，通常取接近于1的数</p>
+<p>整体来讲，Adam 是最好的选择。</p>
 
                 
               </div>
@@ -393,8 +322,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Something/" class="category-chain-item">Something</a>
+  <a href="/categories/AI-learning/" class="category-chain-item">AI_learning</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/AI-learning/Math/" class="category-chain-item">Math</a>
+  
+  
+
   
 
       </span>
@@ -413,8 +349,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>大雾（）</div>
-      <div>http://zerohzzzz.github.io/2023/12/11/physics/</div>
+      <div>反向传播优化器总结（The Summary of Backpropagation Optimizer）</div>
+      <div>http://zerohzzzz.github.io/2023/12/10/Backpropagation-Optimizer-Summary/</div>
     </div>
     <div class="license-meta">
       
@@ -426,7 +362,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 11, 2023</div>
+          <div>December 10, 2023</div>
         </div>
       
       
@@ -458,9 +394,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/12/Commonly-used-loss-functions/" title="常用损失函数及一些Notes">
+                      <a href="/2023/12/11/physics/" title="大雾（）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">常用损失函数及一些Notes</span>
+                        <span class="hidden-mobile">大雾（）</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -468,8 +404,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/10/Backpropagation-Optimizer-Summary/" title="反向传播优化器总结（The Summary of Backpropagation Optimizer）">
-                        <span class="hidden-mobile">反向传播优化器总结（The Summary of Backpropagation Optimizer）</span>
+                      <a href="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/" title="模型参数量和计算量计算">
+                        <span class="hidden-mobile">模型参数量和计算量计算</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
