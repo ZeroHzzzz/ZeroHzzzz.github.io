@@ -89,7 +89,7 @@ L(f,y) = \log_2(1+\exp(-fy))
 $$
 
 ## 对数损失函数（log）——LR
-这里懒得手写LaTeX公式了()，直接用图片说明：
+~~这里懒得手写LaTeX公式了()，直接用图片说明：~~
 <center>{%asset_img log.png This is a photos...%}</center>
 
 ## Cross-Entropy(交叉熵)损失函数
