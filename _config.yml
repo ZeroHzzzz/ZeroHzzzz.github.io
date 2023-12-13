@@ -106,4 +106,4 @@ deploy:
   type: git
   repo: https://github.com/ZeroHzzzz/ZeroHzzzz.github.io.git
   branch: main
-  token: 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
+  # token: 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
