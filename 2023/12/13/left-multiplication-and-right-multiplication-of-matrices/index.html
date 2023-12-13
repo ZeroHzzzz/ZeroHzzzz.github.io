@@ -16,24 +16,21 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基本概念 FLOPs (Floating-point Operations)浮点运算次数，理解为计算量，可以用来衡量算法的复杂度。一个乘法或一个加法都是一个FLOPs  FLOPS(Floating-point Operations Per Second)每秒浮点运算次数，理解为计算速度，是一个衡量硬件性能的指标  MACCs(multiply-accumulate operations)乘-加操">
+    <meta name="description" content="向量乘矩阵 设矩阵A： \[ A &#x3D; \begin{bmatrix} a_{11} &amp; a_{12} \\ a_{21} &amp; a_{22} \end{bmatrix} \] 设向量x： \[ x &#x3D; \begin{bmatrix} x_1\\ x_2 \end{bmatrix} \] 那么x右乘矩阵A，我们会得到： \[ \begin{bmatri">
 <meta property="og:type" content="article">
-<meta property="og:title" content="模型参数量和计算量计算">
-<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/index.html">
+<meta property="og:title" content="矩阵左乘和右乘">
+<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/13/left-multiplication-and-right-multiplication-of-matrices/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="基本概念 FLOPs (Floating-point Operations)浮点运算次数，理解为计算量，可以用来衡量算法的复杂度。一个乘法或一个加法都是一个FLOPs  FLOPS(Floating-point Operations Per Second)每秒浮点运算次数，理解为计算速度，是一个衡量硬件性能的指标  MACCs(multiply-accumulate operations)乘-加操">
+<meta property="og:description" content="向量乘矩阵 设矩阵A： \[ A &#x3D; \begin{bmatrix} a_{11} &amp; a_{12} \\ a_{21} &amp; a_{22} \end{bmatrix} \] 设向量x： \[ x &#x3D; \begin{bmatrix} x_1\\ x_2 \end{bmatrix} \] 那么x右乘矩阵A，我们会得到： \[ \begin{bmatri">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/full-connected-layer.jpg">
-<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/conv_layer.jpg">
-<meta property="article:published_time" content="2023-12-10T05:47:34.000Z">
-<meta property="article:modified_time" content="2023-12-10T14:53:36.293Z">
+<meta property="article:published_time" content="2023-12-13T10:02:06.000Z">
+<meta property="article:modified_time" content="2023-12-13T14:06:35.969Z">
 <meta property="article:author" content="ZeroHzzzz">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://zerohzzzz.github.io/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/full-connected-layer.jpg">
   
   
   
-  <title>模型参数量和计算量计算 - Welcome To my Blog</title>
+  <title>矩阵左乘和右乘 - Welcome To my Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="模型参数量和计算量计算"></span>
+            <span id="subtitle" data-typed-text="矩阵左乘和右乘"></span>
           
         </div>
 
@@ -210,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-10 13:47" pubdate>
-          December 10, 2023 pm
+        <time datetime="2023-12-13 18:02" pubdate>
+          December 13, 2023 pm
         </time>
       </span>
     
@@ -222,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          1.5k words
         
       </span>
     
@@ -233,7 +230,7 @@
         
         
         
-          10 mins
+          13 mins
         
       </span>
     
@@ -270,33 +267,127 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">模型参数量和计算量计算</h1>
+            <h1 id="seo-header">矩阵左乘和右乘</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul>
-<li><p>FLOPs (Floating-point Operations)<br>浮点运算次数，理解为计算量，可以用来衡量算法的复杂度。一个乘法或一个加法都是一个FLOPs</p>
-</li>
-<li><p>FLOPS(Floating-point Operations Per Second)<br>每秒浮点运算次数，理解为计算速度，是一个衡量硬件性能的指标</p>
-</li>
-<li><p>MACCs(multiply-accumulate operations)<br>乘-加操作次数，MACCs 大约是 FLOPs 的一半。将$ w * x + b $视为一个乘法累加，也称为1 个 MACC </p>
-</li>
-<li><p>MAC(Memory Access Cost)<br>内存访问成本</p>
-</li>
-<li><p>Params<br>是指模型训练中需要训练的参数总数</p>
-</li>
+                <h1 id="向量乘矩阵">向量乘矩阵</h1>
+<p>设矩阵A：</p>
+<p><span class="math display">\[
+A = \begin{bmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{bmatrix}
+\]</span></p>
+<p>设向量x：</p>
+<p><span class="math display">\[
+x = \begin{bmatrix}
+x_1\\
+x_2
+\end{bmatrix}
+\]</span></p>
+<p>那么x右乘矩阵A，我们会得到：</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+x_{1}\\
+x_{2}
+\end{bmatrix}
+=
+x_1\begin{bmatrix}
+a_{11}\\
+a_{21}
+\end{bmatrix}
++x_2
+\begin{bmatrix}
+a_{12} \\
+a_{22}
+\end{bmatrix}
+\]</span></p>
+<p>由此可见，上述乘法相对于是对矩阵A中的列向量进行线性组合，线性组合的系数就是x对应位置的元素</p>
+<p>那么x左乘矩阵A，我们会得到：</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+x_{1} &amp; x_{2}
+\end{bmatrix}
+\begin{bmatrix}
+a_{11} &amp; a_{12} \\
+a_{21} &amp; a_{22}
+\end{bmatrix}
+=
+x_1
+\begin{bmatrix}
+a_{11} &amp; a_{12}
+\end{bmatrix}
++x_2
+\begin{bmatrix}
+a_{21} &amp; a_{22}
+\end{bmatrix}
+\]</span></p>
+<p>由此可见，向量左乘矩阵A，就相当于对矩阵A中的行向量进行线性组合，线性组合的系数就是向量x上对应位置的元素</p>
+<h1 id="矩阵乘矩阵">矩阵乘矩阵</h1>
+<p><strong>左乘</strong>，是指将第一个矩阵的列向量作为基，将第二个矩阵的列向量进行线性组合。</p>
+<p><strong>右乘</strong>，是指将第一个矩阵的行向量作为基，将第二个矩阵的行向量进行线性组合。</p>
+<p>例如，设矩阵 A 和 B 如下所示：</p>
+<p><span class="math display">\[
+A=\begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{bmatrix}
+B=\begin{bmatrix}
+5 &amp; 6 \\
+7 &amp; 8
+\end{bmatrix}
+\]</span></p>
+<p>则矩阵 A 左乘矩阵 B 的结果如下所示：</p>
+<p><span class="math display">\[
+C = A \cdot B = \begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{bmatrix} \cdot \begin{bmatrix}
+5 &amp; 6 \\
+7 &amp; 8
+\end{bmatrix} = \begin{bmatrix}
+25 &amp; 22 \\
+49 &amp; 42
+\end{bmatrix}
+\]</span></p>
+<p>矩阵 A 左乘矩阵 B 的结果可以理解为：</p>
+<ul>
+<li>将矩阵 B 的列向量按顺序排列，得到一个列向量组。</li>
+<li>将矩阵 A
+的每一行向量与列向量组中的每一个向量进行线性组合，得到一个新的列向量。</li>
+<li>将新的列向量组作为矩阵 C 的列向量。</li>
 </ul>
-<p>我们可以将参数量理解为空间复杂度，将计算量理解为时间复杂度</p>
-<h1 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h1><p>一个全连接权重 W 矩阵为 $ (C_{in}, C_{out}) $， 输入为 $(B,F,C_{in})$,输出$(B,F,C_{out})$(B 代表batch_size, C代表通道数, F代表输入的特征图的大小),则：<br>$$<br>Params &#x3D; (C_{in} + 1 )* C_{out}<br>$$<br>$$<br>FLOPs &#x3D; (F * C_{in} + 1) * C_{out}<br>$$<br>以上计算都很好理解。其中$Params$中$C_{in}$加上1的原因是偏置$b$的存在。如果不懂可以参照这个图：</p>
-<center><img src="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/full-connected-layer.jpg" srcset="/img/loading.gif" lazyload class="" title="This is a img..."></center>
-
-<h1 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h1><p>假设输入特征图为$ (B,C_{in},F) $,卷积核为 k * k ,输出通道为$C_{out}$。</p>
-<h2 id="参数量"><a href="#参数量" class="headerlink" title="参数量"></a>参数量</h2><p>$$<br>Params &#x3D; k * k * C_{in} * C_{out}<br>$$</p>
-<h2 id="计算量"><a href="#计算量" class="headerlink" title="计算量"></a>计算量</h2><ul>
-<li>单次卷积操作的乘法次数为$ k * k * C_{in}$, 然后相加，加法次数为$k * k * C_{in} - 1$。这个-1其实就是因为因为在$ k×k×C_{in} -1 $个乘法操作之间，需要$ k×k×C_{in} -1 $次加法操作将它们累加起来。在最后一个乘法操作之后，就不需要再进行一次加法操作了，因此减去1。</li>
-<li>刚才我们只计算了输出特征图上一个元素的计算量。那么输入特征图上单个通道上的计算量&#x3D;单个元素的计算量*元素个数，此时我们需要另外一个经典的公式去计算输出特征图大小和输入特征图大小的关系：<br>$$<br>n_H &#x3D; \frac{n_{Hp} - kernel + 2 * pad}{stride} + 1<br>$$<br>$$<br>n_W &#x3D; \frac{n_{Wp} - kernel + 2 * pad}{stride} + 1<br>$$</li>
-<li>然后再考虑通道数，还有偏置，可知计算量<br>$$FLOPs &#x3D; (2 * k * k * C_{in} - 1) * (n_H * n_W) * C_{out}(无偏置)$$<br>$$FLOPs &#x3D; (2 * k * k * C_{in} - 1 + 1) * n_H * n_W * C_{out}(有偏置)$$<center><img src="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/conv_layer.jpg" srcset="/img/loading.gif" lazyload class="" title="This is a img..."></center></li>
+<p>矩阵 A 右乘矩阵 B 的结果如下所示：</p>
+<p><span class="math display">\[
+D = B \cdot A = \begin{bmatrix}
+5 &amp; 6 \\
+7 &amp; 8
+\end{bmatrix} \cdot \begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4
+\end{bmatrix} = \begin{bmatrix}
+53 &amp; 64 \\
+95 &amp; 108
+\end{bmatrix}
+\]</span></p>
+<p>矩阵 A 右乘矩阵 B 的结果可以理解为：</p>
+<ul>
+<li>将矩阵 A 的行向量按顺序排列，得到一个行向量组。</li>
+<li>将矩阵 B
+的每一行向量与行向量组中的每一个向量进行线性组合，得到一个新的行向量。</li>
+<li>将新的行向量组作为矩阵 D 的行向量。</li>
+</ul>
+<h1 id="summary">Summary</h1>
+<ul>
+<li>要将矩阵乘法理解称为变换</li>
+<li>左乘矩阵相当于对原矩阵进行了初等行变换，右乘矩阵相当于对原矩阵进行了初等列变换</li>
+<li>左乘可以说是矩阵中向量组的变换，而右乘是空间的变换，本质是基向量的改变</li>
 </ul>
 
                 
@@ -343,8 +434,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>模型参数量和计算量计算</div>
-      <div>http://zerohzzzz.github.io/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/</div>
+      <div>矩阵左乘和右乘</div>
+      <div>http://zerohzzzz.github.io/2023/12/13/left-multiplication-and-right-multiplication-of-matrices/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +447,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 10, 2023</div>
+          <div>December 13, 2023</div>
         </div>
       
       
@@ -388,18 +479,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/11/physics/" title="大雾（）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">大雾（）</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/02/Vscode-Multi-file-compilation-configuration/" title="Vscode 多文件编译配置">
-                        <span class="hidden-mobile">Vscode 多文件编译配置</span>
+                      <a href="/2023/12/12/Backpropagation-Optimizer-Summary/" title="反向传播优化器总结（The Summary of Backpropagation Optimizer）">
+                        <span class="hidden-mobile">反向传播优化器总结（The Summary of Backpropagation Optimizer）</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
