@@ -16,21 +16,21 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="\(\int kdx &#x3D; kx + C\) \(\int x^{\mu}dx &#x3D; \frac{x^{\mu + 1}}{\mu + 1} + C\) \(\int\frac{dx}{x} &#x3D; \ln\left\vert x\right\vert + C\) \(\int\frac{dx}{1 + x^2} &#x3D; \arctan x + C\) \(\int\frac{dx}{\sqrt">
+    <meta name="description" content="变换矩阵 SVM 特征值和特征向量 仿射组合 LU分解、特征值、特征向量、线性相关、对角化、特征空间、对角矩阵、可逆性、最小二乘法、正交性、三角多项式、最大线性不相关子集、最小生成集、基、正交基、线性变换、仿射、对称性  VGGnet ResNet DenseNet Fast R-CNN RPN FCN DeepLab Unet YOLO">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Calculus">
-<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/14/Calculus/index.html">
+<meta property="og:title" content="Collected">
+<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/14/Collected/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="\(\int kdx &#x3D; kx + C\) \(\int x^{\mu}dx &#x3D; \frac{x^{\mu + 1}}{\mu + 1} + C\) \(\int\frac{dx}{x} &#x3D; \ln\left\vert x\right\vert + C\) \(\int\frac{dx}{1 + x^2} &#x3D; \arctan x + C\) \(\int\frac{dx}{\sqrt">
+<meta property="og:description" content="变换矩阵 SVM 特征值和特征向量 仿射组合 LU分解、特征值、特征向量、线性相关、对角化、特征空间、对角矩阵、可逆性、最小二乘法、正交性、三角多项式、最大线性不相关子集、最小生成集、基、正交基、线性变换、仿射、对称性  VGGnet ResNet DenseNet Fast R-CNN RPN FCN DeepLab Unet YOLO">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-12-13T16:42:37.000Z">
-<meta property="article:modified_time" content="2023-12-13T16:44:46.010Z">
+<meta property="article:published_time" content="2023-12-13T18:19:47.000Z">
+<meta property="article:modified_time" content="2023-12-13T18:26:22.179Z">
 <meta property="article:author" content="ZeroHzzzz">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Calculus - Welcome To my Blog</title>
+  <title>Collected - Welcome To my Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Calculus"></span>
+            <span id="subtitle" data-typed-text="Collected"></span>
           
         </div>
 
@@ -207,7 +207,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-14 00:42" pubdate>
+        <time datetime="2023-12-14 02:19" pubdate>
           December 14, 2023 am
         </time>
       </span>
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          920 words
+          155 words
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          8 mins
+          2 mins
         
       </span>
     
@@ -267,49 +267,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Calculus</h1>
+            <h1 id="seo-header">Collected</h1>
             
             
               <div class="markdown-body">
                 
-                <p><span class="math inline">\(\int kdx = kx + C\)</span></p>
-<p><span class="math inline">\(\int x^{\mu}dx = \frac{x^{\mu + 1}}{\mu +
-1} + C\)</span></p>
-<p><span class="math inline">\(\int\frac{dx}{x} = \ln\left\vert
-x\right\vert + C\)</span></p>
-<p><span class="math inline">\(\int\frac{dx}{1 + x^2} = \arctan x +
-C\)</span></p>
-<p><span class="math inline">\(\int\frac{dx}{\sqrt{1 - x^2}} = \arcsin x
-+ C\)</span></p>
-<p><span class="math inline">\(\int\cos xdx = \sin x + C\)</span></p>
-<p><span class="math inline">\(\int\sin xdx = -\cos x + C\)</span></p>
-<p><span class="math inline">\(\int\sec^2 xdx = \tan x + C\)</span></p>
-<p><span class="math inline">\(\int\csc^2 xdx = -\cot x + C\)</span></p>
-<p><span class="math inline">\(\int\sec x\tan xdx = \sec x +
-C\)</span></p>
-<p><span class="math inline">\(\int\csc x\cot xdx = -\csc x +
-C\)</span></p>
-<p><span class="math inline">\(\int e^xdx = e^x + C\)</span></p>
-<p><span class="math inline">\(\int a^xdx = \frac{a^x}{\ln a} +
-C\)</span></p>
-<p><span class="math inline">\(\int\frac{dx}{a^2 + x^2} =
-\frac{1}{a}\arctan{\frac{x}{a}} + C\)</span></p>
-<p><span class="math inline">\(\int\frac{dx}{\sqrt{a^2 - x^2}} =
-\arcsin{\frac{x}{a}} + C\)</span></p>
-<p><span class="math inline">\(\int\frac{dx}{a^2 - x^2} =
-\frac{1}{2a}\ln\left\vert\frac{a + x}{a - x}\right\vert + C\)</span></p>
-<p><span class="math inline">\(\int\tan xdx = -\ln\left\vert \cos
-x\right\vert + C\)</span></p>
-<p><span class="math inline">\(\int\cot xdx = \ln\left\vert\sin
-x\right\vert + C\)</span></p>
-<p><span class="math inline">\(\int\sec xdx = \ln\left\vert\sec x + \tan
-x\right\vert + C\)</span></p>
-<p><span class="math inline">\(\int\csc xdx = \ln\left\vert\csc x - \cot
-x\right\vert + C\)</span></p>
-<p><span class="math inline">\(\int\frac{dx}{\sqrt{x^2 + a^2}} = \ln(x +
-\sqrt{x^2 + a^2}) + C\)</span></p>
-<p><span class="math inline">\(\int\frac{dx}{\sqrt{x^2 - a^2}} =
-\ln\left\vert x + \sqrt{x^2 - a^2}\right\vert + C\)</span></p>
+                <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/448115462">变换矩阵</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/31886934?source_id=1003">SVM</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/51011531">特征值和特征向量</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599014616">仿射组合</a></p>
+<p>LU分解、特征值、特征向量、线性相关、对角化、特征空间、对角矩阵、可逆性、最小二乘法、正交性、三角多项式、最大线性不相关子集、最小生成集、基、正交基、线性变换、仿射、对称性</p>
+<ol type="1">
+<li>VGGnet</li>
+<li>ResNet</li>
+<li>DenseNet</li>
+<li>Fast R-CNN</li>
+<li>RPN</li>
+<li>FCN</li>
+<li>DeepLab</li>
+<li>Unet</li>
+<li>YOLO</li>
+</ol>
 
                 
               </div>
@@ -317,27 +297,6 @@ x\right\vert + C\)</span></p>
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Math/" class="category-chain-item">Math</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -348,8 +307,8 @@ x\right\vert + C\)</span></p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Calculus</div>
-      <div>http://zerohzzzz.github.io/2023/12/14/Calculus/</div>
+      <div>Collected</div>
+      <div>http://zerohzzzz.github.io/2023/12/14/Collected/</div>
     </div>
     <div class="license-meta">
       
@@ -393,18 +352,12 @@ x\right\vert + C\)</span></p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/14/Collected/" title="Collected">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Collected</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/13/left-multiplication-and-right-multiplication-of-matrices/" title="矩阵左乘和右乘">
-                        <span class="hidden-mobile">矩阵左乘和右乘</span>
+                      <a href="/2023/12/14/Calculus/" title="Calculus">
+                        <span class="hidden-mobile">Calculus</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
