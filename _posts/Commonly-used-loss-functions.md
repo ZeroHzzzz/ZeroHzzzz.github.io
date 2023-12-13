@@ -2,7 +2,7 @@
 title: 常用损失函数及一些Notes
 categories:
   - AI_learning
-  - Math
+  - Theories
 date: 2023-12-12 00:53:47
 tags:
 ---
@@ -62,12 +62,12 @@ $$
 $$
 L_{Huber}(f,y) = 
 \begin{cases}
-\ (f-y)^2, & \left | f - y \right|  \leqslant \xi\\
- \ 2\xi\left | f - y \right| - \xi^2, &\left | f - y \right| > \xi
+(f-y)^2, & \left | f - y \right|  \leqslant \xi\\
+2\xi\left | f - y \right| - \xi^2, &\left | f - y \right| > \xi
 \end{cases}
 $$
 
-这样一来，$\xi \rightarrow 0 $时，Huber趋近于MAE；$\xi \rightarrow \infty $ ， Huber趋近于MSE
+这样一来，$\xi$ ~ 0时，Huber趋近于MAE；$\xi$ ~ $\infty$ ， Huber趋近于MSE
 
 但是他需要训练$\xi$这个超参数......
 

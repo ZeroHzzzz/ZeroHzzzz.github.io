@@ -1,7 +1,6 @@
 ---
 title: 矩阵左乘和右乘
 categories:
-  - AI_learning
   - Math
 date: 2023-12-13 18:02:06
 ---

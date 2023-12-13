@@ -3,7 +3,7 @@ title: 反向传播优化器总结（The Summary of Backpropagation Optimizer）
 date: 2023-12-12 2:21:10
 categories:
     - AI_learning
-    - Math
+    - Theories
 ---
 # Beginings
 梯度下降算法（Gradient Descent Optimization）是神经网络模型训练最常用的优化算法。对于深度学习模型，基本都是采用梯度下降算法来进行优化训练的。~~其原理也很简单，就是求导（），将其推广到高维空间就是求偏导~~

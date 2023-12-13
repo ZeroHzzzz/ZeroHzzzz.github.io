@@ -2,8 +2,8 @@
 title: 模型参数量和计算量计算
 date: 2023-12-10 13:47:34
 categories:
-    - AI_learning
-    - Math
+  - AI_learning
+  - Theories
 ---
 # 基本概念
 - FLOPs (Floating-point Operations)
