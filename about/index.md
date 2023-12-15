@@ -13,4 +13,5 @@ layout: about
 <center>....慢慢慢慢....</center>
 <center>我不会因为过去而纠结</center>
 <center>不会因为未来而焦虑</center>
+<center>热爱，不一定是永恒。成长，需要放弃</center>
 <center>“自那以后，我再也没有提起我曾经是那里的一员”</center>
