@@ -16,21 +16,33 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="变换矩阵 SVM 特征值和特征向量 仿射组合 LU分解、特征值、特征向量、线性相关、对角化、特征空间、对角矩阵、可逆性、最小二乘法、正交性、三角多项式、最大线性不相关子集、最小生成集、基、正交基、线性变换、仿射、对称性  VGGnet ResNet DenseNet Fast R-CNN RPN FCN DeepLab Unet YOLO">
+    <meta name="description" content="VGG net   DenseNet  Alexnet  FCN  Resnet   Unet  DeepLab  Fast R-CNN  YOLO v5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Collected">
-<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/14/Collected/index.html">
+<meta property="og:title" content="一些网络结构笔记">
+<meta property="og:url" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="变换矩阵 SVM 特征值和特征向量 仿射组合 LU分解、特征值、特征向量、线性相关、对角化、特征空间、对角矩阵、可逆性、最小二乘法、正交性、三角多项式、最大线性不相关子集、最小生成集、基、正交基、线性变换、仿射、对称性  VGGnet ResNet DenseNet Fast R-CNN RPN FCN DeepLab Unet YOLO">
+<meta property="og:description" content="VGG net   DenseNet  Alexnet  FCN  Resnet   Unet  DeepLab  Fast R-CNN  YOLO v5">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-12-13T18:19:47.000Z">
-<meta property="article:modified_time" content="2023-12-13T18:26:22.179Z">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/VGGnet-configuration.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/VGGnet.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/DenseNet.webp">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/Alexnet.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/FCN.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/Resnet.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/Resnet-1.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/Unet.webp">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/DeepLab.png">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/Fast-R-CNN.webp">
+<meta property="og:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/YOLOv5.webp">
+<meta property="article:published_time" content="2023-12-16T16:44:11.000Z">
+<meta property="article:modified_time" content="2023-12-16T17:11:32.271Z">
 <meta property="article:author" content="ZeroHzzzz">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/VGGnet-configuration.png">
   
   
   
-  <title>Collected - Welcome To my Blog</title>
+  <title>一些网络结构笔记 - Welcome To my Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Collected"></span>
+            <span id="subtitle" data-typed-text="一些网络结构笔记"></span>
           
         </div>
 
@@ -207,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-14 02:19" pubdate>
-          December 14, 2023 am
+        <time datetime="2023-12-17 00:44" pubdate>
+          December 17, 2023 am
         </time>
       </span>
     
@@ -219,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          155 words
+          56 words
         
       </span>
     
@@ -230,7 +242,7 @@
         
         
         
-          2 mins
+          1 mins
         
       </span>
     
@@ -267,29 +279,31 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Collected</h1>
+            <h1 id="seo-header">一些网络结构笔记</h1>
             
             
               <div class="markdown-body">
                 
-                <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/448115462">变换矩阵</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/31886934?source_id=1003">SVM</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/51011531">特征值和特征向量</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599014616">仿射组合</a></p>
-<p>LU分解、特征值、特征向量、线性相关、对角化、特征空间、对角矩阵、可逆性、最小二乘法、正交性、三角多项式、最大线性不相关子集、最小生成集、基、正交基、线性变换、仿射、对称性</p>
-<ol type="1">
-<li>VGGnet</li>
-<li>ResNet</li>
-<li>DenseNet</li>
-<li>Fast R-CNN</li>
-<li>RPN</li>
-<li>FCN</li>
-<li>DeepLab</li>
-<li>Unet</li>
-<li>YOLO</li>
-</ol>
+                <h1 id="vgg-net">VGG net</h1>
+<img src="/2023/12/17/Some-Network-Structure/VGGnet-configuration.png" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
+<img src="/2023/12/17/Some-Network-Structure/VGGnet.png" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
+<h1 id="densenet">DenseNet</h1>
+<img src="/2023/12/17/Some-Network-Structure/DenseNet.webp" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
+<h1 id="alexnet">Alexnet</h1>
+<img src="/2023/12/17/Some-Network-Structure/Alexnet.png" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
+<h1 id="fcn">FCN</h1>
+<img src="/2023/12/17/Some-Network-Structure/FCN.png" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
+<h1 id="resnet">Resnet</h1>
+<img src="/2023/12/17/Some-Network-Structure/Resnet.png" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
+<img src="/2023/12/17/Some-Network-Structure/Resnet-1.png" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
+<h1 id="unet">Unet</h1>
+<img src="/2023/12/17/Some-Network-Structure/Unet.webp" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
+<h1 id="deeplab">DeepLab</h1>
+<img src="/2023/12/17/Some-Network-Structure/DeepLab.png" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
+<h1 id="fast-r-cnn">Fast R-CNN</h1>
+<img src="/2023/12/17/Some-Network-Structure/Fast-R-CNN.webp" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
+<h1 id="yolo-v5">YOLO v5</h1>
+<img src="/2023/12/17/Some-Network-Structure/YOLOv5.webp" srcset="/img/loading.gif" lazyload class="" title="this is a img...">
 
                 
               </div>
@@ -307,8 +321,8 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/51011531">特�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Collected</div>
-      <div>http://zerohzzzz.github.io/2023/12/14/Collected/</div>
+      <div>一些网络结构笔记</div>
+      <div>http://zerohzzzz.github.io/2023/12/17/Some-Network-Structure/</div>
     </div>
     <div class="license-meta">
       
@@ -320,7 +334,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/51011531">特�
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 14, 2023</div>
+          <div>December 17, 2023</div>
         </div>
       
       
@@ -352,18 +366,12 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/51011531">特�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/17/Some-Network-Structure/" title="一些网络结构笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">一些网络结构笔记</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/14/Calculus/" title="Calculus">
-                        <span class="hidden-mobile">Calculus</span>
+                      <a href="/2023/12/14/Collected/" title="Collected">
+                        <span class="hidden-mobile">Collected</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

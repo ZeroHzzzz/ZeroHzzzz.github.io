@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>一些网络结构笔记</title>
+    <link href="/2023/12/17/Some-Network-Structure/"/>
+    <url>/2023/12/17/Some-Network-Structure/</url>
+    
+    <content type="html"><![CDATA[<h1 id="vgg-net">VGG net</h1><img src="/2023/12/17/Some-Network-Structure/VGGnet-configuration.png" class="" title="this is a img..."><img src="/2023/12/17/Some-Network-Structure/VGGnet.png" class="" title="this is a img..."><h1 id="densenet">DenseNet</h1><img src="/2023/12/17/Some-Network-Structure/DenseNet.webp" class="" title="this is a img..."><h1 id="alexnet">Alexnet</h1><img src="/2023/12/17/Some-Network-Structure/Alexnet.png" class="" title="this is a img..."><h1 id="fcn">FCN</h1><img src="/2023/12/17/Some-Network-Structure/FCN.png" class="" title="this is a img..."><h1 id="resnet">Resnet</h1><img src="/2023/12/17/Some-Network-Structure/Resnet.png" class="" title="this is a img..."><img src="/2023/12/17/Some-Network-Structure/Resnet-1.png" class="" title="this is a img..."><h1 id="unet">Unet</h1><img src="/2023/12/17/Some-Network-Structure/Unet.webp" class="" title="this is a img..."><h1 id="deeplab">DeepLab</h1><img src="/2023/12/17/Some-Network-Structure/DeepLab.png" class="" title="this is a img..."><h1 id="fast-r-cnn">Fast R-CNN</h1><img src="/2023/12/17/Some-Network-Structure/Fast-R-CNN.webp" class="" title="this is a img..."><h1 id="yolo-v5">YOLO v5</h1><img src="/2023/12/17/Some-Network-Structure/YOLOv5.webp" class="" title="this is a img...">]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Collected</title>
     <link href="/2023/12/14/Collected/"/>
     <url>/2023/12/14/Collected/</url>
