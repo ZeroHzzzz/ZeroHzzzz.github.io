@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Linear Algebra</title>
+    <link href="/2023/12/26/Linear-Algebra/"/>
+    <url>/2023/12/26/Linear-Algebra/</url>
+    
+    <content type="html"><![CDATA[<h1 id="分块矩阵">分块矩阵</h1><h2 id="加法">加法</h2><p>设 <spanclass="math inline">\(A=\begin{pmatrix}A_{11}&amp;\cdots&amp;A_{1t}\\\vdots&amp;\ddots&amp;\vdots\\A_{s1}&amp;\cdots&amp;A_{st}\end{pmatrix}\)</span>，<span class="math inline">\(B =\begin{pmatrix}B_{11}&amp;\cdots&amp;B_{1t}\\\vdots&amp;\ddots&amp;\vdots\\B_{s1}&amp;\cdots&amp;B_{st}\end{pmatrix}\)</span>，则<span class="math display">\[A + B = \begin{pmatrix}A_{11} +B_{11}&amp;\cdots&amp;A_{1t}+B_{1t}\\\vdots&amp;\ddots&amp;\vdots\\A_{s1}+B_{s1}&amp;\cdots&amp;A_{st}+B_{st}\end{pmatrix}\]</span></p><h2 id="数乘">数乘</h2><p>设 <spanclass="math inline">\(A=\begin{pmatrix}A_{11}&amp;\cdots&amp;A_{1t}\\\vdots&amp;\ddots&amp;\vdots\\A_{s1}&amp;\cdots&amp;A_{st}\end{pmatrix}\)</span>，则<span class="math display">\[kA =\begin{pmatrix}kA_{11}&amp;\cdots&amp;kA_{1t}\\\vdots&amp;\ddots&amp;\vdots\\kA_{s1}&amp;\cdots&amp;kA_{st}\end{pmatrix}\]</span></p><h2 id="乘法">乘法</h2><p>设 <spanclass="math inline">\(A=\begin{pmatrix}A_{11}&amp;\cdots&amp;A_{1t}\\\vdots&amp;\ddots&amp;\vdots\\A_{s1}&amp;\cdots&amp;A_{st}\end{pmatrix}\)</span>，<spanclass="math inline">\(B =\begin{pmatrix}B_{11}&amp;\cdots&amp;B_{1r}\\\vdots&amp;\ddots&amp;\vdots\\B_{t1}&amp;\cdots&amp;B_{tr}\end{pmatrix}\)</span>，则<span class="math display">\[AB =\begin{pmatrix}C_{11}&amp;\cdots&amp;C_{1r}\\\vdots&amp;\ddots&amp;\vdots\\C_{s1}&amp;\cdots&amp;C_{sr}\end{pmatrix}\]</span>其中 <spanclass="math inline">\(C_{ij}=\sum_{k=1}^tA_{ik}B_{kj}\)</span></p><h2 id="幂">幂</h2><p>设 <span class="math inline">\(A = \begin{pmatrix}A_1 &amp; &amp; &amp; \\&amp; A_2 &amp; &amp; \\&amp; &amp; \ddots &amp;\\&amp; &amp; &amp; A_s\end{pmatrix}\)</span>，则 <span class="math display">\[ A^m =\begin{pmatrix}A_1^m &amp; &amp; &amp;\\&amp; A_2^m &amp; &amp;\\&amp; &amp; \ddots &amp;\\&amp; &amp; &amp; A_s^m\\\end{pmatrix}\]</span></p><h2 id="转置">转置</h2><p>设 <spanclass="math inline">\(A=\begin{pmatrix}A_{11}&amp;A_{12}&amp;\cdots&amp;A_{1t}\\A_{21}&amp;A_{22}&amp;\cdots&amp;A_{2t}\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\A_{s1}&amp;A_{s2}&amp;\cdots&amp;A_{st}\end{pmatrix}\)</span>，则<span class="math display">\[A&#39; =\begin{pmatrix}A_{11}^\prime&amp;A_{21}^\prime&amp;\cdots&amp;A_{s1}^\prime\\A_{12}^\prime&amp;A_{22}^\prime&amp;\cdots&amp;A_{s2}^\prime\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\A_{1t}^\prime&amp;A_{2t}^\prime&amp;\cdots&amp;A_{st}^\prime\end{pmatrix}\]</span></p><h2 id="行列式">行列式</h2><p><span class="math display">\[\begin{vmatrix}A_{11} &amp;A_{12} &amp;\cdots &amp;A_{1s}\\0 &amp;A_{22} &amp;\cdots &amp;A_{2s}\\\vdots &amp;\vdots &amp;\ddots &amp;\vdots\\0 &amp;0 &amp;\cdots &amp;A_{ss}\end{vmatrix} = \left\vert A_{11}\right\vert \left\vertA_{22}\right\vert\cdots\left\vert A_{ss}\right\vert\]</span></p><p><span class="math display">\[\begin{vmatrix}A_{11} &amp; 0 &amp; \cdots &amp; 0\\A_{21} &amp; A_{22} &amp; \cdots &amp; 0\\\vdots &amp;\vdots &amp;\ddots &amp;\vdots\\A_{s1} &amp; A_{s2} &amp; \cdots &amp; A_{ss}\end{vmatrix} = \left\vert A_{11}\right\vert \left\vertA_{22}\right\vert\cdots\left\vert A_{ss}\right\vert\]</span></p><p><span class="math display">\[\begin{vmatrix}A_{1} &amp; &amp; &amp; \\&amp; A_{2} &amp; &amp; \\&amp; &amp; \ddots &amp; \\&amp; &amp; &amp; A_{s}\end{vmatrix} = \left\vert A_{1}\right\vert \left\vertA_{2}\right\vert\cdots\left\vert A_{s}\right\vert\]</span></p><h2 id="逆">逆</h2><p><span class="math display">\[ \begin{pmatrix}A_1 &amp; &amp; &amp;\\&amp; A_2 &amp; &amp;\\&amp; &amp; \ddots &amp;\\&amp; &amp; &amp;A_s\end{pmatrix}^{-1} =\begin{pmatrix}A_1^{-1} &amp; &amp; &amp;\\&amp; A_2^{-1} &amp; &amp;\\&amp; &amp; \ddots &amp;\\&amp; &amp; &amp;A_s^{-1}\end{pmatrix}\]</span></p><p><span class="math display">\[ \begin{pmatrix}&amp; &amp; &amp;A_1 \\&amp; &amp; A_2 &amp;\\&amp;\ddots &amp; &amp;\\A_s&amp; &amp; &amp;\end{pmatrix}^{-1} =\begin{pmatrix}&amp; &amp; &amp;A_s^{-1}\\&amp;&amp; A_{s-1}^{-1} &amp;\\&amp; \ddots &amp;&amp; \\A_1^{-1}&amp; &amp; &amp;\end{pmatrix}\]</span> # 降阶公式 设 <spanclass="math inline">\(A\)</span> 为 <span class="math inline">\(m\timesn\)</span> 矩阵，<span class="math inline">\(B\)</span> 是 <spanclass="math inline">\(n\times m\)</span> 矩阵，<spanclass="math inline">\(m&gt;n\)</span>，<spanclass="math inline">\(\lambda\)</span> 是任意数，则 <spanclass="math display">\[\left\vert\lambda E_m - AB\right\vert =\lambda^{m-n}\left\vert\lambda E_n - BA\right\vert\]</span></p><h1 id="矩阵的秩">矩阵的秩</h1><h2 id="定义">定义</h2><p>矩阵 <span class="math inline">\(A\)</span>的非零子式的最高阶数叫作矩阵 <span class="math inline">\(A\)</span>的秩。记为 <span class="math inline">\(R(A)\)</span>。</p><h2 id="性质">性质</h2><p>设 <span class="math inline">\(A\)</span> 为 <spanclass="math inline">\(m\times n\)</span> 矩阵，<spanclass="math inline">\(B\)</span> 为 <span class="math inline">\(n\timesp\)</span> 矩阵，则 - <span class="math inline">\(0 \le R(A) \le\min\{m, n\}\)</span> - <span class="math inline">\(R(A&#39;) =R(A)\)</span> - <span class="math inline">\(R(kA) =\begin{cases}0&amp;k=0 \\ R(A)&amp;k\ne0\end{cases}\)</span> - <spanclass="math inline">\(R(A_1) \le R(A)\)</span>，其中 <spanclass="math inline">\(A_1\)</span> 为 <spanclass="math inline">\(A\)</span> 的任意一个子矩阵。 - <spanclass="math inline">\(R\begin{pmatrix}A&amp;0\\0&amp;B\end{pmatrix} =R(A) + R(B)\)</span> - <spanclass="math inline">\(R\begin{pmatrix}A&amp;C\\0&amp;B\end{pmatrix} \geR(A) + R(B)\)</span> - <span class="math inline">\(R(A \mid B) \le R(A)+ R(B)\)</span> - <span class="math inline">\(R(A + B) \le R(A) +R(B)\)</span> - <span class="math inline">\(R(AB) \le \min\{R(A),R(B)\}\)</span> - <span class="math inline">\(R(AB) \ge R(A) + R(B) -n\)</span></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Math</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2023/12/26/hello-world/"/>
+    <url>/2023/12/26/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your veryfirst post. Check <a href="https://hexo.io/docs/">documentation</a> formore info. If you get any problems when using Hexo, you can find theanswer in <ahref="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> oryou can ask me on <ahref="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start">Quick Start</h2><h3 id="create-a-new-post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <ahref="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>一些网络结构笔记</title>
+    <link href="/2023/12/17/Some-Network-Structure/"/>
+    <url>/2023/12/17/Some-Network-Structure/</url>
+    
+    <content type="html"><![CDATA[<h1 id="vgg-net">VGG net</h1><img src="/2023/12/17/Some-Network-Structure/VGGnet-configuration.png" class="" title="this is a img..."><img src="/2023/12/17/Some-Network-Structure/VGGnet.png" class="" title="this is a img..."><h1 id="densenet">DenseNet</h1><img src="/2023/12/17/Some-Network-Structure/DenseNet.webp" class="" title="this is a img..."><h1 id="alexnet">Alexnet</h1><img src="/2023/12/17/Some-Network-Structure/Alexnet.png" class="" title="this is a img..."><h1 id="fcn">FCN</h1><img src="/2023/12/17/Some-Network-Structure/FCN.png" class="" title="this is a img..."><h1 id="resnet">Resnet</h1><img src="/2023/12/17/Some-Network-Structure/Resnet.png" class="" title="this is a img..."><img src="/2023/12/17/Some-Network-Structure/Resnet-1.png" class="" title="this is a img..."><h1 id="unet">Unet</h1><img src="/2023/12/17/Some-Network-Structure/Unet.webp" class="" title="this is a img..."><h1 id="deeplab">DeepLab</h1><img src="/2023/12/17/Some-Network-Structure/DeepLab.png" class="" title="this is a img..."><h1 id="fast-r-cnn">Fast R-CNN</h1><img src="/2023/12/17/Some-Network-Structure/Fast-R-CNN.webp" class="" title="this is a img..."><h1 id="yolo-v5">YOLO v5</h1><img src="/2023/12/17/Some-Network-Structure/YOLOv5.webp" class="" title="this is a img...">]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Collected</title>
+    <link href="/2023/12/14/Collected/"/>
+    <url>/2023/12/14/Collected/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/448115462">变换矩阵</a></p><p><ahref="https://www.zhihu.com/tardis/zm/art/31886934?source_id=1003">SVM</a></p><p><ahref="https://zhuanlan.zhihu.com/p/51011531">特征值和特征向量</a></p><p><a href="https://zhuanlan.zhihu.com/p/599014616">仿射组合</a></p><p>LU分解、特征值、特征向量、线性相关、对角化、特征空间、对角矩阵、可逆性、最小二乘法、正交性、三角多项式、最大线性不相关子集、最小生成集、基、正交基、线性变换、仿射、对称性</p><ol type="1"><li>VGGnet</li><li>ResNet</li><li>DenseNet</li><li>Fast R-CNN</li><li>RPN</li><li>FCN</li><li>DeepLab</li><li>Unet</li><li>YOLO</li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Calculus</title>
+    <link href="/2023/12/14/Calculus/"/>
+    <url>/2023/12/14/Calculus/</url>
+    
+    <content type="html"><![CDATA[<p><span class="math inline">\(\int kdx = kx + C\)</span></p><p><span class="math inline">\(\int x^{\mu}dx = \frac{x^{\mu + 1}}{\mu +1} + C\)</span></p><p><span class="math inline">\(\int\frac{dx}{x} = \ln\left\vertx\right\vert + C\)</span></p><p><span class="math inline">\(\int\frac{dx}{1 + x^2} = \arctan x +C\)</span></p><p><span class="math inline">\(\int\frac{dx}{\sqrt{1 - x^2}} = \arcsin x+ C\)</span></p><p><span class="math inline">\(\int\cos xdx = \sin x + C\)</span></p><p><span class="math inline">\(\int\sin xdx = -\cos x + C\)</span></p><p><span class="math inline">\(\int\sec^2 xdx = \tan x + C\)</span></p><p><span class="math inline">\(\int\csc^2 xdx = -\cot x + C\)</span></p><p><span class="math inline">\(\int\sec x\tan xdx = \sec x +C\)</span></p><p><span class="math inline">\(\int\csc x\cot xdx = -\csc x +C\)</span></p><p><span class="math inline">\(\int e^xdx = e^x + C\)</span></p><p><span class="math inline">\(\int a^xdx = \frac{a^x}{\ln a} +C\)</span></p><p><span class="math inline">\(\int\frac{dx}{a^2 + x^2} =\frac{1}{a}\arctan{\frac{x}{a}} + C\)</span></p><p><span class="math inline">\(\int\frac{dx}{\sqrt{a^2 - x^2}} =\arcsin{\frac{x}{a}} + C\)</span></p><p><span class="math inline">\(\int\frac{dx}{a^2 - x^2} =\frac{1}{2a}\ln\left\vert\frac{a + x}{a - x}\right\vert + C\)</span></p><p><span class="math inline">\(\int\tan xdx = -\ln\left\vert \cosx\right\vert + C\)</span></p><p><span class="math inline">\(\int\cot xdx = \ln\left\vert\sinx\right\vert + C\)</span></p><p><span class="math inline">\(\int\sec xdx = \ln\left\vert\sec x + \tanx\right\vert + C\)</span></p><p><span class="math inline">\(\int\csc xdx = \ln\left\vert\csc x - \cotx\right\vert + C\)</span></p><p><span class="math inline">\(\int\frac{dx}{\sqrt{x^2 + a^2}} = \ln(x +\sqrt{x^2 + a^2}) + C\)</span></p><p><span class="math inline">\(\int\frac{dx}{\sqrt{x^2 - a^2}} =\ln\left\vert x + \sqrt{x^2 - a^2}\right\vert + C\)</span></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Math</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>矩阵左乘和右乘</title>
+    <link href="/2023/12/13/left-multiplication-and-right-multiplication-of-matrices/"/>
+    <url>/2023/12/13/left-multiplication-and-right-multiplication-of-matrices/</url>
+    
+    <content type="html"><![CDATA[<h1 id="向量乘矩阵">向量乘矩阵</h1><p>设矩阵A：</p><p><span class="math display">\[A = \begin{bmatrix}a_{11} &amp; a_{12} \\a_{21} &amp; a_{22}\end{bmatrix}\]</span></p><p>设向量x：</p><p><span class="math display">\[x = \begin{bmatrix}x_1\\x_2\end{bmatrix}\]</span></p><p>那么x右乘矩阵A，我们会得到：</p><p><span class="math display">\[\begin{bmatrix}a_{11} &amp; a_{12} \\a_{21} &amp; a_{22}\end{bmatrix}\begin{bmatrix}x_{1}\\x_{2}\end{bmatrix}=x_1\begin{bmatrix}a_{11}\\a_{21}\end{bmatrix}+x_2\begin{bmatrix}a_{12} \\a_{22}\end{bmatrix}\]</span></p><p>由此可见，上述乘法相对于是对矩阵A中的列向量进行线性组合，线性组合的系数就是x对应位置的元素</p><p>那么x左乘矩阵A，我们会得到：</p><p><span class="math display">\[\begin{bmatrix}x_{1} &amp; x_{2}\end{bmatrix}\begin{bmatrix}a_{11} &amp; a_{12} \\a_{21} &amp; a_{22}\end{bmatrix}=x_1\begin{bmatrix}a_{11} &amp; a_{12}\end{bmatrix}+x_2\begin{bmatrix}a_{21} &amp; a_{22}\end{bmatrix}\]</span></p><p>由此可见，向量左乘矩阵A，就相当于对矩阵A中的行向量进行线性组合，线性组合的系数就是向量x上对应位置的元素</p><h1 id="矩阵乘矩阵">矩阵乘矩阵</h1><p><strong>左乘</strong>，是指将第一个矩阵的列向量作为基，将第二个矩阵的列向量进行线性组合。</p><p><strong>右乘</strong>，是指将第一个矩阵的行向量作为基，将第二个矩阵的行向量进行线性组合。</p><p>例如，设矩阵 A 和 B 如下所示：</p><p><span class="math display">\[A=\begin{bmatrix}1 &amp; 2 \\3 &amp; 4\end{bmatrix}B=\begin{bmatrix}5 &amp; 6 \\7 &amp; 8\end{bmatrix}\]</span></p><p>则矩阵 A 左乘矩阵 B 的结果如下所示：</p><p><span class="math display">\[C = A \cdot B = \begin{bmatrix}1 &amp; 2 \\3 &amp; 4\end{bmatrix} \cdot \begin{bmatrix}5 &amp; 6 \\7 &amp; 8\end{bmatrix} = \begin{bmatrix}25 &amp; 22 \\49 &amp; 42\end{bmatrix}\]</span></p><p>矩阵 A 左乘矩阵 B 的结果可以理解为：</p><ul><li>将矩阵 B 的列向量按顺序排列，得到一个列向量组。</li><li>将矩阵 A的每一行向量与列向量组中的每一个向量进行线性组合，得到一个新的列向量。</li><li>将新的列向量组作为矩阵 C 的列向量。</li></ul><p>矩阵 A 右乘矩阵 B 的结果如下所示：</p><p><span class="math display">\[D = B \cdot A = \begin{bmatrix}5 &amp; 6 \\7 &amp; 8\end{bmatrix} \cdot \begin{bmatrix}1 &amp; 2 \\3 &amp; 4\end{bmatrix} = \begin{bmatrix}53 &amp; 64 \\95 &amp; 108\end{bmatrix}\]</span></p><p>矩阵 A 右乘矩阵 B 的结果可以理解为：</p><ul><li>将矩阵 A 的行向量按顺序排列，得到一个行向量组。</li><li>将矩阵 B的每一行向量与行向量组中的每一个向量进行线性组合，得到一个新的行向量。</li><li>将新的行向量组作为矩阵 D 的行向量。</li></ul><h1 id="summary">Summary</h1><ul><li>要将矩阵乘法理解称为变换</li><li>左乘矩阵相当于对原矩阵进行了初等行变换，右乘矩阵相当于对原矩阵进行了初等列变换</li><li>左乘可以说是矩阵中向量组的变换，而右乘是空间的变换，本质是基向量的改变</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Math</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>反向传播优化器总结（The Summary of Backpropagation Optimizer）</title>
+    <link href="/2023/12/12/Backpropagation-Optimizer-Summary/"/>
+    <url>/2023/12/12/Backpropagation-Optimizer-Summary/</url>
+    
+    <content type="html"><![CDATA[<h1 id="beginings">Beginings</h1><p>梯度下降算法（Gradient DescentOptimization）是神经网络模型训练最常用的优化算法。对于深度学习模型，基本都是采用梯度下降算法来进行优化训练的。<del>其原理也很简单，就是求导（），将其推广到高维空间就是求偏导</del></p><p>目标函数<span class="math inline">\(J(\theta)\)</span>关于参数<spanclass="math inline">\(\theta\)</span>的梯度就是损失函数（lossfunction）上升最快的方向，那么同样道理，梯度的反方向指向的就是损失函数下降最快的方向。根据这一特点，我们可以写出网络中每个参数的更新方程<span class="math display">\[\theta_j = \theta_j - \alpha \frac{\partial}{\partial \theta_j}J(\theta)\]</span> <span class="math inline">\(\alpha\)</span>表示学习率（learningrate）,这个参数设置的目的就是为了走太大<del>扯到蛋</del>的，或者就是说防止在接近最低点的位置反复横跳# 梯度下降的三种基本形式其实说到底只有BGD是最基本的，SGD和MBGD其实都是对BGD的优化。但是看在也是很基础的份上我就把他归于基本的梯度下降方式## BGD(批量梯度下降)BGD使用整个训练数据集来计算每一步的梯度。具体来说，它计算损失函数对所有样本的梯度，然后根据该梯度来更新模型参数。但这意味着在每一次迭代中，都要考虑整个数据集，所以计算速度非常慢，无法进行在线学习，即便可以，一个样本加入到大数据集中，对梯度影响也不明显。唯一的优点就是<del>容易写</del>它对整个数据集进行了全局考虑，因此可以更准确地朝着最优参数的方向前进</p><p>它对于凸函数可以收敛到全局极小值，对于非凸函数可以收敛到局部极小值。</p><p>如果用X代表数据集，那么他的更新规则是： <span class="math display">\[\nabla L(X;\theta_l) = \frac{1}{m} \sum_{x_i \epsilon X} \nablal(x_i;\theta_l)\]</span> <span class="math display">\[\theta_{l+1} = \theta_{l} - \alpha \nabla L(X;\theta_l)\]</span></p><h2 id="sgd随机梯度下降">SGD(随机梯度下降)</h2><p>说白了就是在BGD的基础上，每次迭代仅使用一个随机样本来计算梯度和更新模型参数。这也导致了他容易受数据集中一些异常值的影响，导致更新过程不稳定。但是也恰恰是整个不稳定的特性让他有时可以更容易的跳出梯度高原().....这也可以提高计算速度和内存效率。由于每次只使用一个样本，SGD的计算开销较小，特别适用于大型数据集</p><p>更新规则是： <span class="math display">\[\theta_{l+1} = \theta_{l} - \alpha \nabla l(x_i;\theta_l)\]</span> 其中<span class="math inline">\(\nabla l(X;\theta_l)\)</span>是损失函数关于单个样本<span class="math inline">\(x_i\)</span>的梯度</p><p>SGD虽然能达到极小值，但是比其它算法用的时间长，而且可能会被困在鞍点。</p><p>如果需要更快的收敛，或者是训练更深更复杂的神经网络，需要用一种自适应的算法。</p><h2 id="mbgd小批量梯度下降">MBGD(小批量梯度下降)</h2><p>从这个标题出现的位置和他的命名我们就可以大概的猜出来，这个玩意介于BGD和SGD之间，集合了两家之长，降低了更新时的方差，收敛更加稳定。</p><p>MBGD每次迭代时不是使用整个数据集，也不是只使用单个样本，而是使用一个小批量样本。这个小批量的大小通常是一个可调节的超参数，也就是batch_size</p><p>其更新规则是： <span class="math display">\[\theta_{l+1} = \theta_{l} - \alpha \nabla (\frac{1}{b}\sum_{i=1}^bl(x_i;\theta_l))\]</span></p><h1 id="梯度下降法的优化">梯度下降法的优化</h1><h2 id="动量优化算法momentum">动量优化算法（Momentum）</h2><p>它引入了动量项v，它是之前梯度的加权平均，模拟了物体在运动中的积累速度的效果，从而帮助跨越局部最小值并更快地收敛到全局最小值。</p><p>动量项有助于平滑更新过程，减少参数更新的方差，特别是在存在高曲率或噪声的情况下。它还有助于加速梯度下降，特别是在平原上的方向。同时，动量的积累效果有助于在参数空间中跨越局部最小值，因为动量使得更新在原有方向上继续前进。特别适用于复杂的损失函数和参数空间中存在局部极小值的情况。</p><p>对于给定的模型参数<spanclass="math inline">\(\theta\)</span>，动量项v的更新规则如下：</p><p><span class="math display">\[v_{l+1} = \beta v_t + (1 - \beta) \nabla L(\theta_l)\]</span> <span class="math inline">\(\beta\)</span>是动量参数，通常取一个介于0到1之间的值</p><p>相应的，其参数的更新规则为： <span class="math display">\[\theta_{l+1} = \theta_{l} - \alpha v_{l+1}\]</span></p><h2 id="nesterov-accelerated-gradientnag">Nesterov AcceleratedGradient（NAG）</h2><p>这是对动量算法的改进。NAG在更新参数时先根据当前动量位置预估下一步的位置，然后计算梯度进行更新。NAG首先根据当前动量位置<spanclass="math inline">\(v_t\)</span>预估下一步的位置。预估的下一步位置为<spanclass="math inline">\(\theta_l - \beta v_t\)</span>，其中<spanclass="math inline">\(\beta\)</span>是动量参数。其主要优势在于它对动量的使用进行了改进，提供更准确的预估位置，有助于在参数更新时更精确地调整方向。这使得NAG 在一些情况下比标准动量算法表现更好</p><p>参数更新规则为： <span class="math display">\[\theta_{l+1} = \theta_{l} - \alpha \nabla_\theta L(\theta_l - \beta v_l)\]</span> <span class="math display">\[v_{l+1} = \beta v_l + \alpha \nabla_\theta L(\theta_l - \beta v_l)\]</span></p><h2 id="adagrad-adaptive-gradient-algorithm">Adagrad （Adaptive gradientalgorithm）</h2><p>很牛逼的一个东西，自适应学习率。它根据每个参数的历史梯度信息自适应地调整学习率，使得对于稀疏梯度的参数可以具有更大的学习率，而对于频繁出现的参数可以有较小的学习率。适用于稀疏数据和非平稳目标函数，但它可能在训练后期过于减小学习率，导致更新步长过小，难以收敛。因此出现了后面的RMSprop和Adam。但是，RMSprop,Adadelta, Adam 在很多情况下的效果其实是相似的。</p><p>参数更新规则如下： <span class="math display">\[\theta_{l+1} = \theta_l - \frac{\alpha}{\sqrt{G_l + \epsilon}} \cdot\nabla_{\theta} L(\theta_l)\]</span> 其中<spanclass="math inline">\(G_l\)</span>是历史梯度平方的累积，<spanclass="math inline">\(\epsilon\)</span>是一个小的常数用于数值稳定性</p><h2 id="adadelta">Adadelta</h2><p>Adadelta 是是 Adagrad 的一种改进版本，解决了 Adagrad在训练后期学习率过小的问题，不需要手动设置初始学习率，并且对学习率进行了更加平滑和自适应的调整。它使用了对梯度平方的滑动平均，而不是历史梯度平方的累积。这解决了Adagrad学习率过早减小的问题。适用于处理非平稳目标函数和具有不同尺度的参数的情况。</p><p>参数更新规则： <span class="math display">\[\theta_{l+1} = \theta_l - \frac{\sqrt{E[g^2]_t +\epsilon}}{\sqrt{E[\Delta \theta^2]l + \epsilon}}  \nabla_{\theta}L(\theta_l)\]</span></p><p>其中，$ _{} L(_l) $ 是损失函数关于参数 $ $ 的梯度，$ E[g^2]_l <spanclass="math inline">\(是梯度平方的滑动平均，\)</span> E[^2]l$是参数更新的滑动平均</p><h2 id="rmsprop">RMSprop</h2><p>RMSprop是对 Adagrad的改进，通过引入衰减系数来减轻学习率的过早减小问题。使用滑动平均来累积梯度平方，这有助于自适应地调整学习率，对于稀疏梯度和非平稳目标函数效果较好。引入了一个衰减系数ρ，它控制了滑动平均的速度。通常ρ取值为接近于1的数，如0.9。适用于处理非平稳目标函数和具有不同尺度的参数的情况</p><p>参数更新规则： <span class="math display">\[\theta_{l+1} = \theta_l - \frac{\alpha}{ \sqrt{E[g^2]_t + \epsilon}}\nabla_{ \theta} L( \theta_t)\]</span> ## Adam：Adaptive Moment EstimationAdam结合了动量（momentum）和 RMSprop 的思想，引入了动量项，用<spanclass="math inline">\(m_l\)</span>表示，同时引入了RMSprop的思想，使用了梯度平方的滑动平均，用<spanclass="math inline">\(v_l\)</span>表示。随着梯度变的稀疏，Adam 比RMSprop 效果更好。</p><p>参数更新规则： <span class="math display">\[\theta_{t+1} = \theta_t - \frac{\alpha \cdot m_t}{\sqrt{v_t} + \epsilon}\]</span> <span class="math display">\[m_{t+1} = \beta_1 \cdot m_t + (1 - \beta_1) \cdot \nabla_{\theta}L(\theta_t)\]</span> <span class="math display">\[v_{t+1} = \beta_2 \cdot v_t + (1 - \beta_2) \cdot (\nabla_{\theta}L(\theta_t))^2\]</span> 其中<span class="math inline">\(\beta_1 和\beta_2\)</span>都是衰减系数，通常取接近于1的数</p><p>整体来讲，Adam 是最好的选择。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI_learning</category>
+      
+      <category>Theories</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>常用损失函数及一些Notes</title>
+    <link href="/2023/12/12/Commonly-used-loss-functions/"/>
+    <url>/2023/12/12/Commonly-used-loss-functions/</url>
+    
+    <content type="html"><![CDATA[<h1 id="begining">Begining</h1><p>很久很久以前，机器学习主要有两大任务：分类和回归任务......</p><h1 id="基本概念note">基本概念（Note）</h1><ul><li>损失函数：就是用来更新参数的衡量指标</li><li>风险函数：就是train过程中的loss，用于衡量样本点平均意义下的好坏。注意要除以batch_size</li><li>泛化函数：就是test过程中的loss</li></ul><h1 id="回归-regression">回归 (Regression)</h1><p>在回归任务中，预测值和实际值都是实数，一般采用残差$ y−f(x)$来度量两者的不一致程度</p><h2 id="均方误差msel2损失">均方误差（MSE）/L2损失</h2><p>说白了就是预测值和实际观测值间差的平方的均值。它只考虑误差的平均大小，不考虑其方向。<span class="math display">\[MSE = \frac{1}{2n} \sum (y_i - \hat{y_i})^2\]</span> 特性： -经过平方，与真实值偏离较多的预测值会受到更为严重的惩罚,所以不够robust()- 容易算梯度......</p><h2 id="均方根误差root-mean-suqare-errorrmse">均方根误差（root meansuqare error,RMSE）</h2><p>没错，跟刚刚那个很像，就是多了个根号() <span class="math display">\[RMSE = \sqrt {\frac{ \sum (y_i - \hat{y_i})^2}{n}}\]</span> 这个玩意和刚刚那个的区别就是惩罚变轻了</p><h2 id="平均绝对误差mael1损失">平均绝对误差MAE/L1损失</h2><p>不考虑方向 <span class="math display">\[MAE = \frac{ \sum_{i=1}^{n} \left | y_i - \hat{y_i} \right |}{n}\]</span> 特性： - 梯度的计算有点烦，需要用到线性规划 - 异常值的反应更小- 梯度一直很大，会遗漏最小值</p><h2 id="平均偏差误差mean-bias-error不常见">平均偏差误差（Mean BiasError）(不常见)</h2><p>注意，这里正负误差可以互相抵消，因为他相比MAE来说没有用绝对值。可以确定模型存在正偏差还是负偏差<span class="math display">\[MBE = \frac{ \sum_{i=1}^{n} (y_i - \hat{y_i})}{n}\]</span></p><h2id="平均绝对百分比误差mean-absolute-pencent-errormape">平均绝对百分比误差（MeanAbsolute Pencent Error，MAPE）</h2><p>相比 RMSE，MAPE 相当于把每个点的误差进行了归一化,降低了个别离群点带来的绝对误差的影响 <span class="math display">\[MAPE = \sum_{i=1}^{n} \left |\frac{y_i - \hat{y_i}}{y_i} \right | *\frac{100}{n}\]</span></p><h2 id="huber函数">Huber函数</h2><p><span class="math display">\[L_{Huber}(f,y) =\begin{cases}(f-y)^2, &amp; \left | f - y \right|  \leqslant \xi\\2\xi\left | f - y \right| - \xi^2, &amp;\left | f - y \right| &gt; \xi\end{cases}\]</span></p><p>这样一来，<span class="math inline">\(\xi\)</span> ~0时，Huber趋近于MAE；<span class="math inline">\(\xi\)</span> ~ <spanclass="math inline">\(\infty\)</span> ， Huber趋近于MSE</p><p>但是他需要训练<spanclass="math inline">\(\xi\)</span>这个超参数......</p><h1 id="分类classification">分类(Classification)</h1><h2 id="损失函数zero-one-lossperception">0-1损失函数（zero-oneloss）——Perception</h2><p>就是预测值和目标值不相等为1，否则为0。我们经常可以在感知机模型里面看到他，属于非凸函数，一般来说也就只能在感知机模型里面看到他<span class="math display">\[L(Y,f(x)) =\begin{cases}\ 1, &amp;Y \neq f(x) \\\ 0, &amp;Y = f(x)\end{cases}\]</span></p><h2 id="logistic损失函数">Logistic损失函数</h2><p>Logistic损失函数是0-1损失函数的另一个代理损失函数，它也是0-1损失函数的凸上界，且该函数处处光滑。但是该损失函数对所有样本点都惩罚，因此对异常值更加敏感。当预测值<spanclass="math inline">\(f \epsilon = [-1,1]\)</span>时，另一个常用的代理损失函数是交叉熵损失函数 <spanclass="math display">\[L(f,y) = \log_2(1+\exp(-fy))\]</span></p><h2 id="对数损失函数loglr">对数损失函数（log）——LR</h2><del>这里懒得手写LaTeX公式了()，直接用图片说明：</del><center><img src="/2023/12/12/Commonly-used-loss-functions/log.png" class="" title="This is a photos..."></center><h2 id="cross-entropy交叉熵损失函数">Cross-Entropy(交叉熵)损失函数</h2><p>交叉熵损失函数也是0-1损失函数的光滑凸上界 <spanclass="math display">\[L(f,y) = \log_2(\frac{1+fy}{2})\]</span></p><h2id="exponential指数损失函数adaboost">Exponential(指数)损失函数(AdaBoost)</h2><p>指数损失函数是AdaBoost里使用的损失函数，同样地，它对异常点较为敏感，缺乏rebust<span class="math display">\[L(f,y) = e^{-fy}\]</span></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI_learning</category>
+      
+      <category>Theories</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>大雾（）</title>
+    <link href="/2023/12/11/physics/"/>
+    <url>/2023/12/11/physics/</url>
+    
+    <content type="html"><![CDATA[<h2 id="规则">规则</h2><ul><li>电压从零开始</li><li>数据“严禁造假”seriously ## 考核</li><li>平时分<ul><li>平时实验考评：实验 40%</li><li>实验报告：实验原理、实验内容和步骤</li><li>实验册子（60%）（表格、画图60%，其他40%，心得建议不用）</li></ul></li><li>考试<ul><li>实验笔试：课程结束前一个月左右进行实验理论考试，侧重实验原理、方法和实验基本知识的考核## 预习</li></ul></li><li>自习实验原理并完成实验册子第一部分实验原理的作业</li><li>浏览实验内容和步骤，大致了解实验进程</li><li>课堂上完成实验操作并记录实验数据，建议用铅笔记录数据</li><li>处理实验数据，完成问题与讨论</li><li>方格纸：A3纸两张（画图） ## 数据处理（<strong>考试重点</strong>）课本第一章</li><li>直接测量和间接测量<ul><li>区别就是是不是直接去测</li><li>间接测量量是由直接测量量通过计算获得</li><li>一个物理量必须有数字和单位组成，并且一般写为标准形式</li><li>测量值的小数位和不确定度的小数位是<strong>对齐</strong>的，这是因为不确定度决定了存疑位，测量值中小于存疑位的数字都是没有意义的（*）</li><li>先确定后面的小数位在确定前面的小数位</li></ul></li><li>误差<ul><li>绝对误差 = 测量值 - 真实值</li><li>相对误差 = 测量绝对误差/测量值的真值</li><li>偶然误差 -公式 $ $（*/n-1）</li><li>系统误差</li></ul></li><li>不确定度<ul><li><p>平均值代替真值，并且用不确定度来确定误差</p></li><li><p>游标卡尺的不确定度</p><ul><li>游标卡尺的示值误差也称为仪器误差 = 0.02mm</li></ul></li><li><p>螺旋测微计</p><ul><li>仪器误差为0.004mm（约定）</li></ul></li><li><p>总不确定度 <spanclass="math inline">\(\sqrt{x_偶^2+x_真^2}\)</span></p></li><li><p>间接不确定度</p><ul><li>测量式是单元函数<ul><li>先算直接测量量平均值</li><li>再算间接测量量的平均值</li><li>间接测量量的不确定度为：$ = || * _x $</li></ul></li><li>测量式是多元函数<ul><li>……</li></ul></li></ul></li><li><p>相对不确定度</p><ul><li>如果是测量式是积商形式的函数式，则合成相对不确定度计算数（先取对数，再方和根合成）</li><li>绝对不确定度/平均值</li><li>保留两位有效数字</li></ul></li></ul></li><li>保留小数<ul><li>不确定度保留一位有效数字，测量值小数位和不确定度对齐</li><li>有效数字<ul><li>有效数字的科学计数法</li></ul></li><li>不确定度直接四舍五入， 测量值四舍六入， 逢五配双<ul><li>五前面是奇数就进位，如果是偶数就不进位</li></ul></li><li>运算位数保留<ul><li>相加减看小数位（小数位最少为准），相乘除看有效数字（有效数字最少为准）</li></ul></li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Something</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>模型参数量和计算量计算</title>
+    <link href="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/"/>
+    <url>/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/</url>
+    
+    <content type="html"><![CDATA[<h1 id="基本概念">基本概念</h1><ul><li><p>FLOPs (Floating-point Operations)浮点运算次数，理解为计算量，可以用来衡量算法的复杂度。一个乘法或一个加法都是一个FLOPs</p></li><li><p>FLOPS(Floating-point Operations Per Second)每秒浮点运算次数，理解为计算速度，是一个衡量硬件性能的指标</p></li><li><p>MACCs(multiply-accumulate operations) 乘-加操作次数，MACCs 大约是FLOPs 的一半。将$ w * x + b $视为一个乘法累加，也称为1 个 MACC</p></li><li><p>MAC(Memory Access Cost) 内存访问成本</p></li><li><p>Params 是指模型训练中需要训练的参数总数</p></li></ul>我们可以将参数量理解为空间复杂度，将计算量理解为时间复杂度 # 全连接层一个全连接权重 W 矩阵为 $ (C_{in}, C_{out}) $， 输入为 <spanclass="math inline">\((B,F,C_{in})\)</span>,输出<spanclass="math inline">\((B,F,C_{out})\)</span>(B 代表batch_size,C代表通道数, F代表输入的特征图的大小),则： <span class="math display">\[Params = (C_{in} + 1 )* C_{out}\]</span> <span class="math display">\[FLOPs = (F * C_{in} + 1) * C_{out}\]</span> 以上计算都很好理解。其中<spanclass="math inline">\(Params\)</span>中<spanclass="math inline">\(C_{in}\)</span>加上1的原因是偏置<spanclass="math inline">\(b\)</span>的存在。如果不懂可以参照这个图：<center><img src="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/full-connected-layer.jpg" class="" title="This is a img..."></center><h1 id="卷积">卷积</h1>假设输入特征图为$ (B,C_{in},F) <span class="math inline">\(,卷积核为 k *k ,输出通道为\)</span>C_{out}<span class="math inline">\(。## 参数量\)</span>$ Params = k * k * C_{in} * C_{out} <spanclass="math display">\[## 计算量- 单次卷积操作的乘法次数为$ k * k * C_{in}$, 然后相加，加法次数为$k * k* C_{in} - 1$。这个-1其实就是因为因为在$ k×k×C_{in} -1$个乘法操作之间，需要$ k×k×C_{in} -1$次加法操作将它们累加起来。在最后一个乘法操作之后，就不需要再进行一次加法操作了，因此减去1。-刚才我们只计算了输出特征图上一个元素的计算量。那么输入特征图上单个通道上的计算量=单个元素的计算量*元素个数，此时我们需要另外一个经典的公式去计算输出特征图大小和输入特征图大小的关系：\]</span> n_H = + 1 <span class="math display">\[\]</span> n_W = + 1 <span class="math display">\[- 然后再考虑通道数，还有偏置，可知计算量\]</span>FLOPs = (2 * k * k * C_{in} - 1) * (n_H * n_W) *C_{out}(无偏置)<span class="math display">\[\]</span>FLOPs = (2 * k * k * C_{in} - 1 + 1) * n_H * n_W *C_{out}(有偏置)$$<center><img src="/2023/12/10/The-amount-of-parameters-and-calculations-of-the-neural-network-model/conv_layer.jpg" class="" title="This is a img..."></center>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI_learning</category>
+      
+      <category>Theories</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Vscode 多文件编译配置</title>
+    <link href="/2023/12/02/Vscode-Multi-file-compilation-configuration/"/>
+    <url>/2023/12/02/Vscode-Multi-file-compilation-configuration/</url>
+    
+    <content type="html"><![CDATA[<h2 id="正片开始">正片开始</h2><p>默认VSCode 只能编译单个文件，若多个文件一起编译，经常会报 undefinedreference 找不到引用的错误，比如下面的问题：</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs moonscript"><span class="hljs-string">&quot;C:\Program Files\mingw64\bin\g++.exe&quot;</span> -fdiagnostics-color=always -g <span class="hljs-name">C</span>:\Users\ZeroHzzzz\Desktop\dd\dd.cpp -o <span class="hljs-name">C</span>:\Users\ZeroHzzzz\Desktop\dd\dd.exe<br><span class="hljs-name">C</span>:\Users\ZEROHZ~<span class="hljs-number">1</span>\AppData\Local\Temp\ccYQ5ExK.<span class="hljs-name">o</span>: In function `main<span class="hljs-string">&#x27;:</span><br><span class="hljs-string">C:/Users/ZeroHzzzz/Desktop/dd/dd.cpp:6: undefined reference to `maxn(int, int)&#x27;</span><br>collect2.<span class="hljs-name">exe</span>: <span class="hljs-name">error</span>: ld returned <span class="hljs-number">1</span> exit status <br></code></pre></td></tr></table></figure><p>解决方法如下： - 配置一下<code>.vscode</code>文件夹下的<code>tasks.json</code> 就好了。 -tasks.json的话，就把界面点到代码的界面，然后菜单栏<code>"Terminal"</code>- <code>"Configure Tasks..."</code>生成默认的<code>tasks.json</code></p><p>找到 tasks.json中的 args选项，这个主要是用来配置待编译的文件信息的，<code>$&#123;file&#125;</code>替换成<code>$&#123;workspaceFolder&#125;</code>, 结果如下：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;-fdiagnostics-color=always&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;-g&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;\\*.cpp&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;-o&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><br><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure><p>再次运行程序，就可以多文件正常编译了</p><h2 id="addition">Addition</h2><p>但是如果我们还有其它的二级目录，那就还需要修改<code>tasks.json</code>文件。</p><p>【举例】main函数所在<code>test.cpp</code>在一级目录下，其它<code>cpp</code>文件在<code>others</code>目录下，这个时候就需要把<code>tasks.json</code>改成：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;-fdiagnostics-color=always&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;-g&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;\\*.cpp&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;workspaceFolder&#125;\\others\\*.cpp&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//修改项</span><br>    <span class="hljs-string">&quot;-o&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe&quot;</span><br><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Technologies_exploration</category>
+      
+      <category>VSCode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CV/PIL读取图片踩坑记录</title>
+    <link href="/2023/11/11/cv-PIL-read/"/>
+    <url>/2023/11/11/cv-PIL-read/</url>
+    
+    <content type="html"><![CDATA[<p>啥也不说了直接上代码（）</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> cv2<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> torchvision <span class="hljs-keyword">import</span> transforms<br><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image<br>path = <span class="hljs-string">&#x27;./archive\imagesTr\CHNCXR_0640_1.png&#x27;</span><br><br>data_transforms = &#123;<br>        <span class="hljs-string">&quot;train&quot;</span>: transforms.Compose([<br>            transforms.ToTensor()<br>            ]),<br>        <span class="hljs-string">&quot;test&quot;</span>:transforms.Compose([<br>            transforms.ToTensor()<br>            ])<br>    &#125;<br><br>img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)<br><span class="hljs-built_in">print</span>(img.shape)<br>img = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](img)<br><span class="hljs-built_in">print</span>(img.shape)<br><span class="hljs-comment"># img = torch.from_numpy(img)</span><br><br>label = Image.<span class="hljs-built_in">open</span>(path).convert(<span class="hljs-string">&quot;L&quot;</span>)<br>label = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](label)<br><span class="hljs-built_in">print</span>(label.shape)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI_learning</category>
+      
+      <category>Technology</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Vscode - C/C++ Configuration</title>
+    <link href="/2023/11/11/c-configuration/"/>
+    <url>/2023/11/11/c-configuration/</url>
+    
+    <content type="html"><![CDATA[<h1 id="to-start">To Start</h1><ul><li>安装Vscode</li><li>请前往<a href="https://code.visualstudio.com/"title="Vscode 官网">https://code.visualstudio.com/</a>下载你所需要的Vscode版本</li></ul><p>下载完了之后，你就可以开始配置C++的运行环境了</p><h1 id="install-the-extension">Install the extension</h1><ul><li>打开Vscode</li><li>选择拓展选项卡或者使用快捷键<code>Ctrl+Shift+X</code></li><li>搜索C++</li><li>安装</li></ul><img src="/2023/11/11/c-configuration/1.png" class="" title="曾经这里有一张图片...."><h1 id="set-up-for-your-c-environment">Set up for your C++environment</h1><h2 id="下载mingw64文件">下载Mingw64文件</h2><ul><li>打开浏览器</li><li>前往<ahref="https://github.com/niXman/mingw-builds-binaries/releases">Releases· niXman/mingw-builds-binaries (github.com)</a>下载MingW64文件</li><li>选择下列图片中标出的版本</li><li>解压，获得其中的Mingw64文件夹并放在你想放的位置</li></ul><img src="/2023/11/11/c-configuration/2.png" class="" title="曾经这里有一张图片...."><h2 id="配置环境变量">配置环境变量</h2><ul><li>直接<code>win + S</code>快捷键搜索环境变量，进入该选项卡</li><li>点击环境变量</li><li>在用户变量和系统变量中找到Path，进入编辑</li><li>新建，并将刚才下载的Mingw64中的bin文件夹的路径填入</li><li>完成！</li></ul><img src="/2023/11/11/c-configuration/3.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/4.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/5.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/6.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/7.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/8.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/9.png" class="" title="曾经这里有一张图片...."><p>点击确定，完成！</p><h1 id="check">Check</h1><ul><li>直接<code>win + R</code>，输入cmd并运行，打开终端</li><li>输入<code>gcc -v</code>，如果出现下列画面就说明配置成功了</li><li>完成！</li></ul><img src="/2023/11/11/c-configuration/10.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/11.png" class="" title="曾经这里有一张图片...."><h1 id="create-and-run-a-c-file">Create and Run a C++ file</h1><img src="/2023/11/11/c-configuration/12.png" class="" title="曾经这里有一张图片...."><p>create a new file called <code>helloworld.cpp</code></p><p>复制，粘贴！</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;Hello World&quot;</span> &lt;&lt; std::endl;<br>&#125;<br></code></pre></td></tr></table></figure><img src="/2023/11/11/c-configuration/13.png" class="" title="曾经这里有一张图片...."><img src="/2023/11/11/c-configuration/14.png" class="" title="曾经这里有一张图片...."><p> 仅在第一次运行 helloworld.cpp时提示您选择编译器。该编译器将成为tasks.json文件中设置的“默认”编译器</p><img src="/2023/11/11/c-configuration/15.png" class="" title="曾经这里有一张图片...."><p>拿下！</p><p><strong>好好好，现在你就可以尽情的Coding了，可能还有一些其他的零碎配置</strong></p><p><strong>有空我再更新（</strong></p><p>本文转自 <ahref="https://www.cnblogs.com/ZeroHzzzz/articles/17711579.html">https://www.cnblogs.com/ZeroHzzzz/articles/17711579.html</a>，如有侵权，请联系删除。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Technologies_exploration</category>
+      
+      <category>VSCode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>综合分测定方法</title>
+    <link href="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/"/>
+    <url>/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="综合分测定方法">综合分测定方法</h1><h2 id="综合分测评的意义和作用">综合分测评的意义和作用</h2><ul><li>考察综合素质</li><li>为评定奖助学金、荣誉称号的主要依据</li><li>作为推荐优秀应届本科毕业生免试攻读研究生的参考依据</li></ul><h2 id="综合分办法解析">综合分办法解析</h2><ul><li>测评体系<ul><li>学生综合素质评价采用量化标准，指标体系主要包括德育素质、智育素质、体育素质、劳育素质、美育素质、创新与实践素质六部分，满分100 分。</li><li>学生综合素质测评成绩 =<br> 德育素质测评成绩（10分）+智育素质测评成绩（60 分）+<br> 体育素质测评成绩（8分）+劳育素质测评成绩（5 分）+<br> 美育素质测评成绩（5分）+创新与实践素质测评成绩（12 分）</li></ul></li><li>德育素质测评成绩（10 分）<ul><li><p>基本评定分</p><ul><li>由学生个人自我评价、班级成员互评、班主任和班委评价三部分构成，分别占20%、40%、40%。</li></ul></li><li><p>记实加减分</p><ul><li>由集体评定等级分（满分 2 分）、社会责任记实分（满分 2分）、违纪违规扣分、学生荣誉称号加减分四部分构成。</li></ul></li><li><p>addition：社会责任分主要包括：</p><ul><li>通报表扬（当学年限4次，同一事件通报表扬不重复计算，校级及以上通报表扬+0.25/次，院级通报表扬+0.1/次）</li><li>思政学习加减分（青年大学习）</li></ul></li><li><p>扣分：</p><p><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/%E6%89%A3%E5%88%86.png" class="" title="曾经这里有一张图片"></p></li><li><p>荣誉加分：</p><p><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/%E8%8D%A3%E8%AA%89%E5%8A%A0%E5%88%86.png" class="" title="曾经这里有一张图片"></p></li></ul></li><li>智育素质测评成绩（60 分）<ul><li>学生智育素质分 Z=（平均学分绩点×10＋50）*0.6 <img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image.png" class="" title="曾经这里有一张图片"></li></ul></li><li>体育素质测评成绩（8 分）<ul><li>学生体育素质分T = 体育课程成绩(5分)+课外体育活动成绩(3分)</li><li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-1.png" class="" title="曾经这里有一张图片"></li><li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-3.png" class="" title="曾经这里有一张图片"></li></ul></li><li>美育素质测评成绩（5分）<ul><li>学生美育素质分=文化艺术实践成绩+文化艺术竞赛成绩</li><li>文化艺术实践成绩<ul><li>文化艺术实践成绩为学生文化艺术类选修课程和参加校内外文化艺术类活动为主要依据，其中文化艺术类选修课程以教务处提供的文化艺术类选修课程清单为准，每选修一门且及格加0.25 分，每学年限加 0.5 分。</li></ul></li><li>文化艺术竞赛成绩 <img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-2.png" class="" title="曾经这里有一张图片"></li></ul></li><li>劳育素质测评成绩（5分）<ul><li>学生劳育素质分 = 日常劳动分（寝室）+志愿服务分+实习实训分</li><li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-4.png" class="" title="曾经这里有一张图片"></li><li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-5.png" class="" title="曾经这里有一张图片"></li></ul></li><li>创新与实践素质测评成绩（12 分）<ul><li>学生创新与实践素质分=创新创业成绩+社会实践活动成绩+社会工作成绩+水平等级考试加分</li><li><img src="/2023/11/08/%E7%BB%BC%E5%90%88%E5%88%86%E6%B5%8B%E5%AE%9A%E6%96%B9%E6%B3%95/image-6.png" class="" title="曾经这里有一张图片"></li></ul></li></ul><h2 id="注意事项">注意事项</h2><ul><li>学生综合素质测评每学年进行一次，一般安排在新学年开学一个月内进行（一年级新生除外），转专业学生在上一学年所在班级参加综合素质测评。</li><li>学生参与课程以外的专业实习、综合实习或其他劳动活动，以在有关活动中取得的成绩或奖励为依据，具体需经学院学生评价工作小组认定。</li><li>相关竞赛评定等级以浙江工业大学教务处发文的《高水平学科竞赛项目清单》为依据，参考主办单位性质和证书实际落款。其余未列入本办法的竞赛以学院学生评价工作小组当年认定结果为准，网络竞赛（在线答题类）原则上不予以加分。（网址：http://www.jwc.zjut.edu.cn/217/list.htm）</li><li>各类竞赛获奖者必须以浙江工业大学学生身份参与，各类项目、论文知识产权、专利权人须归属浙江工业大学，否则不予以加分！</li><li>经核实在测评过程中弄虚作假、虚报材料的，根据情节严重程度给予相应处分，并取消当学年所有评奖评优资格。</li><li>除特别说明，各部分累计超出满分的，均以该部分满分计。综合分测评申报材料（除暑期调研类材料外）有效期限为上一年度9 月 1 日至本年度 8 月 31 日，对于在规定期限外的材料不予加分。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Something</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>基于Voicemeeter将声音同时输出到多个输出设备</title>
+    <link href="/2023/11/04/Voicemeeter/"/>
+    <url>/2023/11/04/Voicemeeter/</url>
+    
+    <content type="html"><![CDATA[<h1 id="一基础知识">一、基础知识</h1><h2 id="输入与输出">输入与输出</h2><ul><li><p>硬件输入：就是现实的电脑上的麦克风、你头戴耳麦的麦克风等硬件录音设备。【硬件输入→（发出）→声音信号】（请注意这里的声音指的是电路中的声音信号，而不是你实际听到的声音。下同。）</p></li><li><p>硬件输出：就是现实的扬声器喇叭、你头戴耳麦的耳机等硬件发声设备。【声音信号→（被接收）→硬件输出】</p></li><li><p>虚拟输入：就是虚拟录音设备，专门监听系统中各种软件发出的声音信号。【声音信号→（被接收）→虚拟输入】</p></li></ul><img src="/2023/11/04/Voicemeeter/virtual_input.jpg" class="" title="这里曾经有一张图片......"><ul><li>虚拟输出：就是虚拟发声设备，有一个虚拟的扬声器，负责向别的设备发出声音信号。【虚拟输出→（发出）→声音信号】</li></ul><img src="/2023/11/04/Voicemeeter/virtual_output.jpg" class="" title="这里曾经有一张图片......"><ul><li>通道：用于接收和转发声音信号的中间人。 ## 设置电脑的输入输出设备自行百度，这里不再赘述</li></ul><h1 id="二软件界面">二、软件界面</h1><img src="/2023/11/04/Voicemeeter/%E8%BD%AF%E4%BB%B6%E7%95%8C%E9%9D%A2.jpg" class="" title="这里曾经有一张图片......"><p>看下图硬件输入通道1下面框出来的按钮：A1、A2、A3、B1、B2都是输出通道，你点亮了哪个，声音信号就会被接入到哪一个输出通道。</p><img src="/2023/11/04/Voicemeeter/%E7%A1%AC%E4%BB%B6%E9%80%9A%E9%81%93%E8%BE%93%E5%85%A5.jpg" class="" title="这里曾经有一张图片......"><p>比如图中，点亮了A1和B1，那么硬件输入通道1的声音信号就会被发送到A1、B1两个输出通道中去。</p><h1 id="三使用">三、使用</h1><p>这里只讲解软件同时输出到多个蓝牙设备的使用方法： - 打开Voicemeeter -配置输出设备</p><img src="/2023/11/04/Voicemeeter/1.jpg" class="" title="这里曾经有一张图片......"><ul><li>在虚拟输入栏中选择输出设备</li></ul><img src="/2023/11/04/Voicemeeter/1.png" class="" title="这里曾经有一张图片......"><ul><li>调节音量</li></ul><img src="/2023/11/04/Voicemeeter/3.png" class="" title="这里曾经有一张图片......"><ul><li>run！</li></ul><h1 id="addition">Addition</h1><p>如果想了解更多关于voicemeeter相关的知识，可到： <ahref="http://vb-audio.cn/post/36.html">http://vb-audio.cn/post/36.html</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Technologies_exploration</category>
+      
+      <category>Voicemeeter</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>基于hexo搭建博客（GitHub）</title>
+    <link href="/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/"/>
+    <url>/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="准备工作">准备工作</h1><ul><li>GitHub账号</li><li>安装git</li><li>安装node</li></ul><h1 id="创建仓库">创建仓库</h1><ul><li>创建仓库，并将仓库命名为 username.github.io注意这里的username（）</li></ul><h1 id="安装hexo">安装hexo</h1><ul><li>安装hexo <code>npm install -g hexo-cli</code></li><li>check <code>hexo -v</code></li><li>创建hexo项目并初始化 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">hexo init [hexo-<span class="hljs-keyword">blog(你新建的本地博客文件夹的名字，如果不输入默认为当前文件夹)]</span><br><span class="hljs-keyword"></span>cd hexo-<span class="hljs-keyword">blog</span><br><span class="hljs-keyword"></span>npm <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure> # 主题hexo默认主题为landscape，可以前往hexo官网寻找你心仪的主题 <ahref="https://hexo.io/themes/">Themes</a></li></ul><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">[github</span>地址] [存放路径]<br><span class="hljs-comment"># 例如</span><br><span class="hljs-comment"># git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></code></pre></td></tr></table></figure><p>在根目录的 _config.yml 文件中找到theme字段并将它改成你主题的名字<code>theme: next</code></p><p>本地启动： <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure> <img src="/2023/10/27/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/1.png" class="" title="这里曾经有一张图片....."></p><h1 id="修改参数">修改参数</h1><p>根据themes提供的文档修改参数</p><h1 id="writing">Writing</h1><p>新建文章 <code>hexo new post 测试文章</code> 然后就开始写吧</p><h1 id="本地预览">本地预览</h1><ul><li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可</li><li>对 Hexo 根目录 _config.yml 的修改，需要重启本地服务器后才能预览效果<code>hexo s</code></li></ul><h1 id="deloy">Deloy</h1><ul><li>安装hexo-deployer-git<code>npm install hexo-deployer-git --save</code></li><li>修改根目录下的 _config.yml，配置 GitHub相关信息,token获取方式自行百度 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repo:</span> https:<span class="hljs-comment">//github.com/yaorongke/yaorongke.github.io.git</span><br><span class="hljs-symbol">  branch:</span> main<br><span class="hljs-symbol">  token:</span> ghp_3KakcaPHerunNRyMerofcFd9pblU282FSbsY   <span class="hljs-meta"># 应该可写可不写</span><br></code></pre></td></tr></table></figure></li><li>发布 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g -d</span><br></code></pre></td></tr></table></figure> # Addition ## 使用Fluid主题的一些文章属性设置<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs title">---<br>title: Hexo Fluid主题使用笔记<br><br>tags:<br>  - Hexo<br>  [Hexo, Fluid]  # 推荐使用这种方法<br><br>categories:<br>  - Hexo<br>  - Fluid # 注意以上这两个标题不是并列关系，而是包含关系<br>  - Hexo<br>    - Fluid  # 注意以上这两个标题是并列关系<br>  - [Hexo, Fluid]  # 并列关系<br><br>excerpt: 这是摘要 # 摘要还可以在正文通过 &lt;!-- more --&gt; 进行分割<br><br>hide: true # 隐藏文章，隐藏后依然可以通过文章链接访问<br><br>sticky: 100 # 数值越大排序越靠前<br><br>index_img: /img/example.jpg # 文章在首页的封面图，支持外链<br><br>banner_img: /img/post_banner.jpg # 文章详情页顶部大图，支持外链<br><br>toc: true # 生成文章目录，不填为true<br>---<br><br></code></pre></td></tr></table></figure> ## 一些有意思的东西 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs hexo">// 便签<br><br>&#123;% note success %&#125;<br>文字 或者 `markdown` 均可<br>&#123;% endnote %&#125;<br>或者使用 HTML 形式：<br>&lt;p class=&quot;note note-primary&quot;&gt;标签&lt;/p&gt;<br><br><br>//行内标签<br><br>&#123;% label primary @text %&#125;<br>或者<br>&lt;span class=&quot;label label-primary&quot;&gt;Label&lt;/span&gt;<br><br><br>//复选框<br><br>&#123;% cb text, checked?, incline? %&#125;<br><br>text：显示的文字<br>checked：默认是否已勾选，默认 false<br>incline: 是否内联（可以理解为后面的文字是否换行），默认 false<br><br><br>//按钮<br><br>&#123;% btn url, text, title %&#125;<br><br>或者：<br><br>&lt;a class=&quot;btn&quot; href=&quot;url&quot; title=&quot;title&quot;&gt;text&lt;/a&gt;<br><br>url：跳转链接<br>text：显示的文字<br>title：鼠标悬停时显示的文字（可选）<br></code></pre></td></tr></table></figure></li></ul><h1 id="eof">EOF</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>Technologies_exploration</category>
+      
+      <category>Hexo</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hexo添加图片的几种方式</title>
+    <link href="/2023/10/27/Hexo%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <url>/2023/10/27/Hexo%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<p>在写文章的时候我们常常会使用图片来传达一些只可意会不可言传的含义....</p><h1 id="绝对路径">绝对路径</h1><p>当Hexo项目中只用到少量图片时，可以将图片统一放在source/images文件夹中，通过markdown语法访问它们。路径：source/images/image.jpg <code>![](/images/image.jpg)</code></p><p>这样图片既可以在首页内容中访问到，也可以在文章正文中访问到。</p><h1 id="相对路径">相对路径</h1><p>图片除了可以放在统一的images文件夹中，还可以放在文章自己的目录中。文章的目录可以通过配置_config.yml来生成。</p><p>在根目录的_config.yml中：</p><p><code>post_asset_folder: true</code>但是据我惨痛的经历显示，下面这种写法是错误的:<code>![photo](passage_name/Photo.png)</code> 因此我翻阅了hexo的<ahref="https://hexo.io/zh-cn/docs/">文档</a>，里面是这么写的</p><img src="/2023/10/27/Hexo%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/1.png" class="" title="这里曾经有一张图片....."><p>但是不知道为啥这个艾斯比东西就是没有用....</p><p>因此我还是只能采用官方推荐的这种写法：<code>&#123;% asset_img example.jpg failed_description %&#125;</code></p><p>事后经过一翻谷歌搜索发现用md直接导入图片导致失败的原因可能是因为只是将图片放入文件夹，hexo生成静态界面时并没有处理该图片，所以运行后就找不到图片了....给我整无语了。但是我发现他文件路径是这样的:<code>https://zerohzzzz.github.io/[passage_name]/1.png</code>而用<code>&#123;% %&#125;</code>方式导入图片，图片的路径是这样的：<code>https://zerohzzzz.github.io/2023/10/27/[passage_name]/1.png</code></p><p><del>这个艾斯比东西果然*****</del></p><p>但是这个问题似乎在插件的新版本中得到了解决，有兴趣可以看看<ahref="https://github.com/boboidream/hexo-easy-images">hexo-easy-images</a>，但我认为有<code>&#123;% %&#125;</code>方式就已经足够了</p><h1 id="addition">Addition</h1><p><ahref="http://codecook.site/2020/12/05/hexo+typora%E7%9A%84%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/">hexo+typora的图片路径问题</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Technologies_exploration</category>
+      
+      <category>Hexo</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>First Blog</title>
+    <link href="/2023/10/26/First-Blog/"/>
+    <url>/2023/10/26/First-Blog/</url>
+    
+    <content type="html"><![CDATA[<h1 id="重振精弘容光-目猫义不容辞">重振精弘容光 目猫义不容辞</h1><img src="/2023/10/26/First-Blog/asb.png" class="" title="曾经这里有一群asb......">]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
