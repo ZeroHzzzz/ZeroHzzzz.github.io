@@ -16,21 +16,23 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装 参照：https:&#x2F;&#x2F;www.todesk.com&#x2F;linux.html 官方文档上说： 1sudo apt-get install .&#x2F;todesk-v4.3.1.0-amd64.deb 但是我试了没用（），由于我要用的是远程的ubuntu服务器，因此只能老老实实下载deb包然后通过scp传到服务器上。 启动 启动命令为： 1todesk 但是你都作为服务端了，你要gui界面你有">
+    <meta name="description" content="最近因为自己搭建了一个vps而欣喜若狂而导致日崩。由于某些...的需求，我需要能够再不用的时候将服务器关机。因此我开始折腾远程开机。 我的思路是通过电脑主板自带的Wake on Lan 功能，目前来说大部分主板都有（我的主板是x99 QD4）。最大的问题是在于配置为S5(shutdown)状态下时网卡需要在关机后处于激活状态，而这里需要系统在启动后将对应的网卡状态设置为对应状态。（因为Ubu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu Todesk 的一些使用记录">
-<meta property="og:url" content="http://zerohzzzz.github.io/2024/02/20/Ubuntu-Todesk/index.html">
+<meta property="og:title" content="Ubuntu Wake on Lan">
+<meta property="og:url" content="http://zerohzzzz.github.io/2024/02/20/Ubuntu-Wake-on-Lan/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="安装 参照：https:&#x2F;&#x2F;www.todesk.com&#x2F;linux.html 官方文档上说： 1sudo apt-get install .&#x2F;todesk-v4.3.1.0-amd64.deb 但是我试了没用（），由于我要用的是远程的ubuntu服务器，因此只能老老实实下载deb包然后通过scp传到服务器上。 启动 启动命令为： 1todesk 但是你都作为服务端了，你要gui界面你有">
+<meta property="og:description" content="最近因为自己搭建了一个vps而欣喜若狂而导致日崩。由于某些...的需求，我需要能够再不用的时候将服务器关机。因此我开始折腾远程开机。 我的思路是通过电脑主板自带的Wake on Lan 功能，目前来说大部分主板都有（我的主板是x99 QD4）。最大的问题是在于配置为S5(shutdown)状态下时网卡需要在关机后处于激活状态，而这里需要系统在启动后将对应的网卡状态设置为对应状态。（因为Ubu">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-02-19T17:46:22.000Z">
-<meta property="article:modified_time" content="2024-02-19T18:00:45.641Z">
+<meta property="og:image" content="http://zerohzzzz.github.io/2024/02/20/Ubuntu-Wake-on-Lan/image.png">
+<meta property="article:published_time" content="2024-02-20T15:42:36.000Z">
+<meta property="article:modified_time" content="2024-02-20T16:10:03.412Z">
 <meta property="article:author" content="ZeroHzzzz">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://zerohzzzz.github.io/2024/02/20/Ubuntu-Wake-on-Lan/image.png">
   
   
   
-  <title>Ubuntu Todesk 的一些使用记录 - Welcome To my Blog</title>
+  <title>Ubuntu Wake on Lan - Welcome To my Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Ubuntu Todesk 的一些使用记录"></span>
+            <span id="subtitle" data-typed-text="Ubuntu Wake on Lan"></span>
           
         </div>
 
@@ -207,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-20 01:46" pubdate>
-          February 20, 2024 am
+        <time datetime="2024-02-20 23:42" pubdate>
+          February 20, 2024 pm
         </time>
       </span>
     
@@ -219,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k words
+          2.3k words
         
       </span>
     
@@ -230,7 +232,7 @@
         
         
         
-          16 mins
+          20 mins
         
       </span>
     
@@ -267,26 +269,49 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Ubuntu Todesk 的一些使用记录</h1>
+            <h1 id="seo-header">Ubuntu Wake on Lan</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="安装">安装</h1>
-<p>参照：https://www.todesk.com/linux.html 官方文档上说： <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">sudo</span> apt-<span class="hljs-meta">get</span> install ./todesk-<span class="hljs-built_in">v4</span>.<span class="hljs-number">3</span>.<span class="hljs-number">1</span>.<span class="hljs-number">0</span>-amd64.deb<br></code></pre></td></tr></table></figure>
-但是我试了没用（），由于我要用的是远程的ubuntu服务器，因此只能老老实实下载deb包然后通过scp传到服务器上。</p>
-<h1 id="启动">启动</h1>
-<p>启动命令为： <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">todesk</span><br></code></pre></td></tr></table></figure></p>
-<p>但是你都作为服务端了，你要gui界面你有看不到，因此只需要保持todeskd.service运行就行了。</p>
-<p>但是我们显然看不到服务端的设备代码和临时密码，秉持着linux数据皆文件的原则，我们找到了他的配置文件，位于：/opt/todesk/config/config.ini</p>
-<p>查看config.ini</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /opt/todesk/config<br><span class="hljs-built_in">cat</span> config.ini<br></code></pre></td></tr></table></figure>
-<p>可以看到： <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[configinfo]</span><br><span class="hljs-attr">passupdate</span>                     = <span class="hljs-number">3</span><br><span class="hljs-attr">screen_img</span>                     =<br><span class="hljs-attr">clientid</span>                       = ********(这里只是我人为的加密)<br><span class="hljs-attr">privatedata</span>                    = ea51f22264b6913deb2b29e925788531500fd14c303ac881eb8bf2104632d95c969ecc074f67273fd5eda82971dc56e5ca9cc57467ae6c4b83<br><span class="hljs-attr">updatepasstime</span>                 = <span class="hljs-number">20240220</span><br><br></code></pre></td></tr></table></figure></p>
-<p>此时并没有tempauthpassex
-字段。我们通过我们windows端的todesk的配置文件可以看到:</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[ConfigInfo]</span><br><span class="hljs-attr">passUpdate</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">PrivateScreenLockScreen</span>=<span class="hljs-number">1</span><br><span class="hljs-attr">autoLockScreen</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">downloadtimes</span>=<span class="hljs-number">202309040</span><br><span class="hljs-attr">clientId</span>=********<br><span class="hljs-attr">PrivateData</span>=<span class="hljs-number">98</span>f13012367f8fa56c7b71bce229e7f6fd1d8275b1340122e53293861dc6256651992beeaac16e61a4b5fad7ba2d0d04f7fd75003e78d12651<br><span class="hljs-attr">PluginExpiresDays</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">Resolution</span>=<span class="hljs-number">2560</span>x1600<br><span class="hljs-attr">tempAuthPassEx</span>=f2c33773c4e07102cd9b30f1e762842b78a13df40e45bb730cd938953cc078a9d174a5b6ee1ad50b13ebb65a4de17f7e917a40969a966d0f<br><span class="hljs-attr">updatePassTime</span>=<span class="hljs-number">20230904</span><br><span class="hljs-attr">isOpenTempPass</span>=<span class="hljs-number">1</span><br><span class="hljs-attr">language</span>=<span class="hljs-number">936</span><br><span class="hljs-attr">isAdmissionControl</span>=<span class="hljs-number">1</span><br><span class="hljs-attr">WeakPasswordTip</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">Version</span>=<span class="hljs-number">4.7</span>.<span class="hljs-number">0.4</span><br><span class="hljs-attr">isUpdate</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">PresetDialogUpdateDate</span>=<span class="hljs-number">2024</span>-<span class="hljs-number">02</span>-<span class="hljs-number">20</span><br><span class="hljs-attr">PresetDialogShowCount</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">NewToken</span>=<br><span class="hljs-attr">Token</span>=cb3c958a5d8d8f79e7d3561495b25987<br><span class="hljs-attr">LoginType</span>=<span class="hljs-number">1</span><br><span class="hljs-attr">user</span>=<br><span class="hljs-attr">LoginPhone</span>=<span class="hljs-number">15918991630</span><br><span class="hljs-attr">LoginEmail</span>=<br><span class="hljs-attr">AreaCode</span>=<span class="hljs-number">86</span><br><span class="hljs-attr">UpdateFrequencyPromptBubble</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">UpdateTempPassDefault</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">LastPushTimeEx</span>=<span class="hljs-number">20240220</span><br><span class="hljs-attr">ShowToolbarGuide</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">IsFirstTimeConnect</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">MouseLeaveTip</span>=<span class="hljs-number">1</span><br><span class="hljs-attr">autoLogin</span>=<span class="hljs-number">2</span><br><span class="hljs-attr">AuthMode</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">minsizelock</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">loginlock</span>=<span class="hljs-number">0</span><br><span class="hljs-attr">passex</span>=<span class="hljs-number">8534</span>b3464a478963712d4a727bc9f34ddbe1b59cc1611fa58ec36c741823b03fa7a59cc821dab0cb617c26a737a6179c<br><span class="hljs-attr">RoundBallXPos</span>=<span class="hljs-number">167</span><br><span class="hljs-attr">RoundBallYPos</span>=<span class="hljs-number">28</span><br></code></pre></td></tr></table></figure>
-<p>对比我们ui界面中的临时密码和设备码，可以确定，clientId就是设备代码，而tempAuthPassEx是通过加密后的临时密码</p>
-<p>那么我们就可以通过我们现在已知的临时密码来获取他的加密，并且添加到服务端的配置文件中，这样一来，服务端的密码就已知了，就可以进行连接了。连接之前记得重启todeskd.service和查看其状态来确定其工作是否正常</p>
+                <p>最近因为自己搭建了一个vps而欣喜若狂而导致日崩。由于某些...的需求，我需要能够再不用的时候将服务器关机。因此我开始折腾远程开机。</p>
+<p>我的思路是通过电脑主板自带的Wake on Lan
+功能，目前来说大部分主板都有（我的主板是x99
+QD4）。最大的问题是在于配置为S5(shutdown)状态下时网卡需要在关机后处于激活状态，而这里需要系统在启动后将对应的网卡状态设置为对应状态。（因为Ubuntu20.04后网络唤醒重启之后网卡状态设置就会失效。。。不知道为啥）</p>
+<p>过程很简单，即通过发送一组特殊格式的网络封包（Magic
+Packet）给具有某个MAC地址的电脑，让该电脑从睡眠模式甚至是关机模式苏醒，即从ACPI的Sx(S3，S4，S5)模式返回S0运行模式。</p>
+<p>根据以上的思路，我们就开始着手准备了。</p>
+<h1 id="服务端配置">服务端配置</h1>
+<p>我们可以通过ethtool工具来查看并修改网卡状态，因此首先安装ethtool工具：
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt update<br>sudo apt <span class="hljs-keyword">install</span> ethtool<br></code></pre></td></tr></table></figure> 通过ifconfig查看网络信息： <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">ifconfig</span><br></code></pre></td></tr></table></figure></p>
+<p>以我的为例： <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">enp6s0</span>: flags=<span class="hljs-number">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu <span class="hljs-number">1500</span><br>        <span class="hljs-attribute">inet</span> <span class="hljs-number">192.168.0.200</span>  netmask <span class="hljs-number">255.255.255.0</span>  broadcast <span class="hljs-number">192.168.0.255</span><br>        <span class="hljs-attribute">inet6</span> fe80::b7e2:<span class="hljs-number">6743</span>:aa3:<span class="hljs-number">5</span>e49  prefixlen <span class="hljs-number">64</span>  scopeid <span class="hljs-number">0</span>x20&lt;link&gt;<br>        <span class="hljs-attribute">ether</span> <span class="hljs-number">0</span>a:e0:af:b3:<span class="hljs-number">23</span>:bf  txqueuelen <span class="hljs-number">1000</span>  (以太网)<br>        <span class="hljs-attribute">RX</span> packets <span class="hljs-number">10466</span>  bytes <span class="hljs-number">6877996</span> (<span class="hljs-number">6</span>.<span class="hljs-number">8</span> MB)<br>        <span class="hljs-attribute">RX</span> errors <span class="hljs-number">0</span>  dropped <span class="hljs-number">3</span>  overruns <span class="hljs-number">0</span>  frame <span class="hljs-number">0</span><br>        <span class="hljs-attribute">TX</span> packets <span class="hljs-number">8851</span>  bytes <span class="hljs-number">860614</span> (<span class="hljs-number">860</span>.<span class="hljs-number">6</span> KB)<br>        <span class="hljs-attribute">TX</span> errors <span class="hljs-number">0</span>  dropped <span class="hljs-number">0</span> overruns <span class="hljs-number">0</span>  carrier <span class="hljs-number">0</span>  collisions <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure></p>
+<p>这个就是我的有线网卡信息。可以看出，ether就是mac地址，网卡名为enp6s0。接下来通过ethtool查看网卡状态：
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">sudo ethtool e<span class="hljs-symbol">np6</span>s<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure></p>
+<p>可以看到： <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">Supports</span> Wake-<span class="hljs-literal">on</span>: pumbg<br>Wake-<span class="hljs-literal">on</span>: d<br></code></pre></td></tr></table></figure></p>
+<p>这里附上Wake-on各种状态的参数含义： <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vim">Option	Description<br><span class="hljs-keyword">p</span>	Wake <span class="hljs-keyword">on</span> PHY activity<br><span class="hljs-keyword">u</span>	Wake <span class="hljs-keyword">on</span> unicast <span class="hljs-keyword">messages</span><br><span class="hljs-keyword">m</span>	Wake <span class="hljs-keyword">on</span> multicast <span class="hljs-keyword">messages</span><br><span class="hljs-keyword">b</span>	Wake <span class="hljs-keyword">on</span> broadcast <span class="hljs-keyword">messages</span><br>g	Wake <span class="hljs-keyword">on</span> MagicPacket <span class="hljs-keyword">messages</span><br></code></pre></td></tr></table></figure></p>
+<p>更新网卡状态。由于我们要使用的是MagicPacket信息，因此：
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs smali">sudo ethtool --change enp6s0 wol g<br>sudo ethtool enp6s0<br></code></pre></td></tr></table></figure></p>
+<p>此时看到： <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Wake</span>-<span class="hljs-literal">on</span>: g<br></code></pre></td></tr></table></figure> 说明状态修改成功。</p>
+<p>由于每次开机后都要重新设置网卡的状态才能在下一次关机后再次使用网络唤醒，所以我们可以通过systemd添加一个系统服务在每次开机后修改网卡状态。
+首先确定ethtool路径： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">which</span> ethtool<br></code></pre></td></tr></table></figure> 可见: <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/usr/</span>sbin/ethtool<br></code></pre></td></tr></table></figure>
+这个因机器而异，因此下面的内容需要根据实际情况修改：</p>
+<p>创建一个 /etc/systemd/system/wol.service
+文件，在这里写下启动执行一次的服务信息：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Unit]</span><br><span class="hljs-attr">Description</span>=Enable Wake <span class="hljs-literal">On</span> Lan<br><br><span class="hljs-section">[Service]</span><br><span class="hljs-attr">Type</span>=<span class="hljs-literal">on</span>eshot<br><span class="hljs-attr">ExecStart</span> = /usr/sbin/ethtool --change enp6s0 wol g<br><br><span class="hljs-section">[Install]</span><br><span class="hljs-attr">WantedBy</span>=basic.target<br></code></pre></td></tr></table></figure>
+<p>之后只需要enable该服务就可以: <figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nsis">sudo <span class="hljs-params">system</span>ctl daemon-reload<br>sudo <span class="hljs-params">system</span>ctl enable wol.service<br></code></pre></td></tr></table></figure></p>
+<p>检查一下对应的状态: <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">systemctl status wol</span><br></code></pre></td></tr></table></figure> 可以看到： <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs routeros">○ wakeonlan.service - <span class="hljs-built_in">Enable</span> Wake On<span class="hljs-built_in"> Lan</span><br><span class="hljs-built_in"></span>     Loaded: loaded (/etc/systemd/system/wol.service; enabled; vendor preset: enabled)<br>     Active: inactive (dead) since Tue 2024-02-20 23:32:35 +08; 28min ago<br>   Main PID: 948 (<span class="hljs-attribute">code</span>=exited, <span class="hljs-attribute">status</span>=0/SUCCESS)<br>        CPU: 2ms<br><br>Feb 20 23:32:34<span class="hljs-built_in"> Server </span>systemd[1]: Starting <span class="hljs-built_in">Enable</span> Wake On Lan<span class="hljs-built_in">..</span>.<br>Feb 20 23:32:35<span class="hljs-built_in"> Server </span>systemd[1]: wol.service: Deactivated successfully.<br>Feb 20 23:32:35<span class="hljs-built_in"> Server </span>systemd[1]: Finished <span class="hljs-built_in">Enable</span> Wake On Lan.<br></code></pre></td></tr></table></figure></p>
+<p>说明服务正常运行。</p>
+<h1 id="远程启动">远程启动</h1>
+<h2 id="ubuntu-mac">Ubuntu &amp;&amp; Mac</h2>
+<p>以Ubuntu和Mac为例，在命令行中执行wakeonlan xx:xx:xx:xx:xx:xx
+（输入Ubuntu机器对应的mac地址）就可以唤醒机器了</p>
+<p>但是前提是安装了wakeonlan</p>
+<h2 id="windows">windows</h2>
+<p>这里我偷懒了，不想自己写一个脚本出来，因此我就用一些现成的工具了。此处我选择的是<a
+target="_blank" rel="noopener" href="https://www.depicus.com/wake-on-lan/wake-on-lan-gui">WakeOnLanGui</a></p>
+<p>界面如下：</p>
+<img src="/2024/02/20/Ubuntu-Wake-on-Lan/image.png" srcset="/img/loading.gif" lazyload class="" title="This is a image...">
+<p>根据实际情况填写MAC地址、被控端域名、子网掩码和端口号（任一）就行了</p>
 
                 
               </div>
@@ -294,34 +319,6 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Technologies-exploration/" class="category-chain-item">Technologies_exploration</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Technologies-exploration/Linux/" class="category-chain-item">Linux</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -332,8 +329,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Ubuntu Todesk 的一些使用记录</div>
-      <div>http://zerohzzzz.github.io/2024/02/20/Ubuntu-Todesk/</div>
+      <div>Ubuntu Wake on Lan</div>
+      <div>http://zerohzzzz.github.io/2024/02/20/Ubuntu-Wake-on-Lan/</div>
     </div>
     <div class="license-meta">
       
@@ -377,18 +374,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/20/Ubuntu-Wake-on-Lan/" title="Ubuntu Wake on Lan">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Ubuntu Wake on Lan</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/19/About-Ubuntu-LTS22-04-libssl1-1/" title="About Ubuntu LTS22.04 libssl1.1">
-                        <span class="hidden-mobile">About Ubuntu LTS22.04 libssl1.1</span>
+                      <a href="/2024/02/20/Ubuntu-Todesk/" title="Ubuntu Todesk 的一些使用记录">
+                        <span class="hidden-mobile">Ubuntu Todesk 的一些使用记录</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
