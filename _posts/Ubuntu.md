@@ -2,6 +2,7 @@
 title: Note - Ubuntu
 date: 2024-05-02 17:34:29
 categories: 
+- Technologies_exploration
 - Linux
 ---
 
@@ -62,4 +63,10 @@ nvidia-smi
 # 多显示器
 ```bash
 sudo apt install xrandr
+```
+
+# 关闭屏幕边缘粘滞
+```bash
+gsettings list-recursively org.gnome.shell.overrides
+gsettings set org.gnome.shell.overrides edge-tiling false
 ```
