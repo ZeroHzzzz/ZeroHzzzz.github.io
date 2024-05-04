@@ -17,6 +17,12 @@ sticky: 1
 
 [脚本](https://greasyfork.org/zh-CN)
 
+[壁纸](https://wallhaven.cc/)
+
+[Flathub](https://flathub.org)
+
+[Zeemo 自动加字幕/翻译字幕](http://zeemo.ai)
+
 # 一些常用命令
 
 ## conda
