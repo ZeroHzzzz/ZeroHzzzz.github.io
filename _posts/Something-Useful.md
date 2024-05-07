@@ -13,6 +13,8 @@ sticky: 1
 
 [markdown查询](http://latex.codecogs.com/eqneditor/editor.php)
 
+[md公式整理](https://muzing.top/posts/48740/)
+
 [图论工具](https://csacademy.com/app/graph_editor/)
 
 [脚本](https://greasyfork.org/zh-CN)
