@@ -74,14 +74,16 @@ $$
 
 # 半群
 半群是一个二元运算的代数系统。
-设代数系统 \( \langle S, \cdot \rangle \)，其中 \( \cdot \) 是二元运算，如果 \( \cdot \) 在S上满足封闭律和结合律，则称\( \langle S, \cdot \rangle \)为半群
+设代数系统 \( \langle S, \cdot \rangle \)，其中 \( \cdot \) 是二元运算，如果 \( \cdot \) 在S上满足**封闭律**和**结合律**，则称\( \langle S, \cdot \rangle \)为半群
 
 # 子半群
+如果B是S的子集，且\( \langle S, \cdot \rangle \)为半群，而\( \langle B, \cdot \rangle \)也是半群，那么称( \langle B, \cdot \rangle \)是\( \langle S, \cdot \rangle \)的子半群
 
 # 独异点
 含有单位元的半群叫做独异点，也叫做奇异点
 
 # 子独异点
+同样是自己且为独异点
 
 # 可交换半群
 设\( \langle S, \cdot \rangle \)为半群，如果 \( \cdot \) 是可交换的，则称\( \langle S, \cdot \rangle \)为可交换半群
@@ -90,9 +92,35 @@ $$
 \( \langle S, \cdot \rangle \)为半群，g \( \in \) S，若对于任意的x\( \in \)S， 存在一个自然数n使得x = \( g ^ n\)，则称\( \langle S, \cdot \rangle \)为循环半群，并称g为\( \langle S, \cdot \rangle \)的生成元
 
 # 群
+## 定义
 设\( \langle S, \cdot \rangle \) 为代数系统，如果：
 - 运算\( \cdot \) 对S是封闭的
 - 运算是可结合的
 - \( \langle S, \cdot \rangle \)中有单位元
-- S中的每个元素都存在逆元
+- **S中的每个元素都存在逆元**
 则称\( \langle S, \cdot \rangle \)是一个群
+
+其实就是在独异点的基础上加上每个元素都有逆元
+
+## 性质
+设S是一个群
+- 单位元唯一
+- 逆元唯一
+- 对于所有 a, b ∈ S，有$ (ab)^{-1} = b^{-1}a^{-1} $
+- 对于所有 a ∈ S，有$ (a^{-1})^{-1} = a $
+- 对于所有 a, b, c ∈ S，若 ab = ac 则 b = c。
+- 对于所有 a, b, c ∈ S，若 ba = ca 则 b = c。
+
+# 子群
+~
+\( \langle S, \cdot \rangle \)有两个平凡子群，就是\( \langle \{e\}, \cdot \rangle \)和\( \langle S, \cdot \rangle \)本身
+
+## 子群判定定理
+（看了一眼好像就是判断某个子集是不是群）
+
+# 特殊的群
+## 交换群
+
+## 循环群
+任何一个循环群必定是交换群
+元素g就是群的生成元
