@@ -1,0 +1,1069 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/ZeroHzzzz.jpg">
+  <link rel="icon" href="/img/ZeroHzzzz.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ZeroHzzzz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="向量 数量积 定义 设 \(a, b\) 是两个几何向量，称 \(\left\vert a\right\vert \left\vert b\right\vert \cos\theta\) 为 \(a\) 与 \(b\) 的数量积或内积，记作 \(a \cdot b\)，即 \[a \cdot b &#x3D; \left\vert a\right\vert \left\vert b\right\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Note - 空间几何">
+<meta property="og:url" content="http://zerohzzzz.github.io/2024/05/02/Space-Geometry/index.html">
+<meta property="og:site_name" content="Welcome To my Blog">
+<meta property="og:description" content="向量 数量积 定义 设 \(a, b\) 是两个几何向量，称 \(\left\vert a\right\vert \left\vert b\right\vert \cos\theta\) 为 \(a\) 与 \(b\) 的数量积或内积，记作 \(a \cdot b\)，即 \[a \cdot b &#x3D; \left\vert a\right\vert \left\vert b\right\">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-02T09:17:25.000Z">
+<meta property="article:modified_time" content="2024-06-11T06:36:31.993Z">
+<meta property="article:author" content="ZeroHzzzz">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Note - 空间几何 - Welcome To my Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zerohzzzz.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ZeroHzzzz</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Note - 空间几何"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-02 17:17" pubdate>
+          May 2, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          51 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Note - 空间几何</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="向量">向量</h1>
+<h2 id="数量积">数量积</h2>
+<h3 id="定义">定义</h3>
+<p>设 <span class="math inline">\(a, b\)</span> 是两个几何向量，称 <span
+class="math inline">\(\left\vert a\right\vert \left\vert b\right\vert
+\cos\theta\)</span> 为 <span class="math inline">\(a\)</span> 与 <span
+class="math inline">\(b\)</span>
+的<strong>数量积</strong>或<strong>内积</strong>，记作 <span
+class="math inline">\(a \cdot b\)</span>，即 <span
+class="math display">\[a \cdot b = \left\vert a\right\vert \left\vert
+b\right\vert \cos\theta\]</span></p>
+<h3 id="性质">性质</h3>
+<ul>
+<li><span class="math inline">\(a \cdot b = b \cdot
+a\)</span>（交换律）</li>
+<li><span class="math inline">\((ka) \cdot b = k(a \cdot
+b)\)</span></li>
+<li><span class="math inline">\((a + b) \cdot c = a \cdot c + b \cdot
+c\)</span>（分配律）</li>
+<li><span class="math inline">\(a \cdot a \ge 0\)</span>。此外，<span
+class="math inline">\(a \cdot a = 0\)</span> 的充要条件是 <span
+class="math inline">\(a = 0\)</span>。</li>
+</ul>
+<h2 id="向量积">向量积</h2>
+<h3 id="定义-1">定义</h3>
+<p>若 <span class="math inline">\(a, b\)</span> 不平行，则 - <span
+class="math inline">\(\left\vert a \times b\right\vert = \left\vert
+a\right\vert \left\vert b\right\vert \sin\theta\)</span> - <span
+class="math inline">\(a \times b \perp a, a \times b \perp b\)</span> -
+向量 <span class="math inline">\(a, b, a \times b\)</span>
+构成右手系</p>
+<h3 id="性质-1">性质</h3>
+<ul>
+<li><span class="math inline">\(a \times b = -b \times a\)</span></li>
+<li><span class="math inline">\((ka)\times b = k(a\times b) = a \times
+(kb)\)</span></li>
+<li><span class="math inline">\((a + b) \times c = (a \times c) + (b
+\times c)\\a \times (b + c) = (a \times b) + (a \times c)\)</span></li>
+</ul>
+<h2 id="混合积">混合积</h2>
+<h3 id="定义-2">定义</h3>
+<p>已知三个向量 <span class="math inline">\(a, b\)</span> 和 <span
+class="math inline">\(c\)</span>。先作 <span
+class="math inline">\(a\)</span> 和 <span
+class="math inline">\(b\)</span> 的向量积 <span class="math inline">\(a
+\times b\)</span>，把所得的向量与 <span class="math inline">\(c\)</span>
+再作数量积 <span class="math inline">\((a \times b) \cdot
+c\)</span>，这样得到的数量叫做三向量 <span class="math inline">\(a, b,
+c\)</span> 的<strong>混合积</strong>，记为 <span
+class="math inline">\(\left[abc\right]\)</span>。</p>
+<p>向量的混合积有如下几何意义：<span
+class="math inline">\(\left[abc\right] = (a \times b) \cdot c\)</span>
+的绝对值表示以向量 <span class="math inline">\(a, b, c\)</span>
+为棱的平行六面体的体积。如果向量 <span class="math inline">\(a, b,
+c\)</span> 组成右手系，那么混合积的符号是正的；如果 <span
+class="math inline">\(a, b, c\)</span>
+组成左手系，那么混合积的符号是负的。</p>
+<h3 id="性质-2">性质</h3>
+<p><span class="math display">\[ \left[abc\right] = 0 \Leftrightarrow
+a,b,c\ 共面\]</span> <span class="math display">\[\left[abc\right] =
+\left[bca\right] = \left[cab\right] = -\left[bac\right] =
+-\left[cba\right] = -\left[acb\right]\]</span> 设 <span
+class="math inline">\(a = (a_x, a_y, a_z), b = (b_x, b_y, b_z), c =
+(c_x, c_y, c_z)\)</span>，则 <span class="math display">\[
+[abc] =
+\begin{vmatrix}
+a_x &amp; a_y &amp; a_z \\
+b_x &amp; b_y &amp; b_z \\
+c_x &amp; c_y &amp; c_z
+\end{vmatrix}
+\]</span> # 空间中的平面与直线</p>
+<h2 id="平面">平面</h2>
+<p>设平面 <span class="math inline">\(\pi\)</span> 通过点 <span
+class="math inline">\(M_0(x_0, y_0, z_0)\)</span> 并且垂直于非零向量
+<span class="math inline">\(n = (A, B, C)\)</span>，则平面 <span
+class="math inline">\(\pi\)</span> 的<strong>点法式方程</strong>为：
+<span class="math display">\[A(x - x_0) + B(y - y_0) + C(z - z_0) =
+0\]</span> 将其整理得 <span class="math display">\[Ax + By + Cz + D =
+0\]</span> 其中 <span class="math inline">\(D = -(Ax_0 + By_0 +
+Cz_0)\)</span>，称其为平面 <span class="math inline">\(\pi\)</span>
+的<strong>一般方程</strong></p>
+<p>设 <span class="math inline">\(M_1(x_1, y_1, z_1), M_2(x_2, y_2,
+z_2), M_3(x_3, y_3, z_3)\)</span> 是空间中不在同一条直线上的三点，则称
+<span class="math display">\[\begin{vmatrix}
+x - x_1 &amp; y - y_1 &amp; z - z_1\\
+x_2 - x_1 &amp; y_2 - y_1 &amp; z_2 - z_1\\
+x_3 - x_1 &amp; y_3 - y_1 &amp; z_3 - z_1
+\end{vmatrix}
+= 0\]</span> 为平面 <span class="math inline">\(\pi\)</span>
+的<strong>三点式方程</strong>。</p>
+<p>设平面 <span class="math inline">\(\pi\)</span> 与 <span
+class="math inline">\(x, y, z\)</span> 轴分别交于 <span
+class="math inline">\(P(a, 0, 0), Q(0, b, 0), R(0, 0, c)\)</span>，则称
+<span class="math display">\[\frac{x}{a} + \frac{y}{b} + \frac{z}{c} =
+1\]</span> 为平面 <span class="math inline">\(\pi\)</span>
+的<strong>截距式方程</strong>。</p>
+<h2 id="直线">直线</h2>
+<p>设直线 <span class="math inline">\(L\)</span> 过点 <span
+class="math inline">\(M_0(x_0, y_0,
+z_0)\)</span>，并且平行于已知非零向量 <span class="math inline">\(s =
+(m, n, p)\)</span>，则称 <span class="math display">\[\frac{x - x_0}{m}
+= \frac{y - y_0}{n} = \frac{z - z_0}{p}\]</span> 为直线 <span
+class="math inline">\(L\)</span> 的<strong>标准方程</strong>。</p>
+<p>令其比值为 <span class="math inline">\(t\)</span>，则称 <span
+class="math display">\[\begin{cases}
+x = x_0 + mt \\
+y = y_0 + nt \\
+z = z_0 + pt
+\end{cases}\]</span> 为直线 <span class="math inline">\(L\)</span>
+的<strong>参数方程</strong>。</p>
+<p>设平面 <span class="math inline">\(\pi_1, \pi_2\)</span> 为 <span
+class="math display">\[\pi_1 : A_1x + B_1y + C_1z + D_1 = 0\\
+\pi_2 : A_2x + B_2y + C_2z + D_2 = 0\]</span> 若 <span
+class="math inline">\(\pi_1, \pi_2\)</span> 的交线为直线 <span
+class="math inline">\(L\)</span>，则称 <span
+class="math display">\[\begin{cases}
+A_1x + B_1y + C_1z + D_1 = 0\\
+A_2x + B_2y + C_2z + D_2 = 0
+\end{cases}\]</span> 为直线 <span class="math inline">\(L\)</span>
+的<strong>一般方程</strong>。</p>
+<p>设直线 <span class="math inline">\(L\)</span> 过点 <span
+class="math inline">\(M_0(x_0, y_0, z_0)\)</span> 和点 <span
+class="math inline">\(M_1(x_1, y_1, z_1)\)</span>，则称 <span
+class="math display">\[\frac{x - x_0}{x_1 - x_0} = \frac{y - y_0}{y_1 -
+y_0} = \frac{z - z_0}{z_1 - z_0}\]</span> 为直线 <span
+class="math inline">\(L\)</span> 的<strong>二点式方程</strong>。</p>
+<h1 id="位置关系">位置关系</h1>
+<h2 id="平面与平面">平面与平面</h2>
+<p>设有两个平面 <span class="math display">\[
+\pi_1 : A_1x + B_1y + C_1z + D_1 = 0 \\
+\pi_2 : A_2x + B_2y + C_2z + D_2 = 0
+\]</span> 可将 <span class="math inline">\(\pi_1, \pi_2\)</span>
+的位置关系分为如下三种情形。</p>
+<ol type="1">
+<li><span class="math inline">\(\pi_1, \pi_2\)</span> 重合。其充要条件是
+<span class="math display">\[
+\frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2} = \frac{D_1}{D_2}
+\]</span></li>
+<li><span class="math inline">\(\pi_1, \pi_2\)</span>
+平行（不包括重合）。其充要条件是 <span class="math display">\[
+\frac{A_1}{A_2} = \frac{B_1}{B_2} = \frac{C_1}{C_2} \ne \frac{D_1}{D_2}
+\]</span></li>
+<li><span class="math inline">\(\pi_1, \pi_2\)</span>
+交于一条直线。其充要条件是 <span class="math inline">\(n_1 = (A_1, B_1,
+C_1)\)</span> 与 <span class="math inline">\(n_2 = (A_2, B_2,
+C_2)\)</span> 不平行。</li>
+</ol>
+<p>当 <span class="math inline">\(\pi_1, \pi_2\)</span>
+是两个相交的平面时，称它们的法向量的夹角 <span
+class="math inline">\(\varphi\)</span> 为这两个平面的夹角，通常规定
+<span class="math display">\[0 \le \varphi \le \frac{\pi}{2}\]</span>
+平面 <span class="math inline">\(\pi_1\)</span> 与 <span
+class="math inline">\(\pi_2\)</span> 的夹角 <span
+class="math inline">\(\varphi\)</span> 可由公式 <span
+class="math display">\[
+\cos\varphi = \frac{\left\vert A_1A_2 + B_1B_2 + C_1C_2
+\right\vert}{\sqrt{A_1^2 + B_1^2 + C_1^2}\sqrt{A_2^2 + B_2^2 + C_2^2}}
+\]</span> 来确定。</p>
+<p>显然，<span class="math inline">\(\pi_1\)</span> 与 <span
+class="math inline">\(\pi_2\)</span> 垂直的充要条件时它们的法向量 <span
+class="math inline">\(n_1\)</span> 与 <span
+class="math inline">\(n_2\)</span> 垂直，即 <span
+class="math display">\[A_1A_2 + B_1B_2 + C_1C_2 = 0\]</span></p>
+<h2 id="直线与直线">直线与直线</h2>
+<p>设有两条直线 <span class="math display">\[
+L_1 : \frac{x - x_1}{m_1} = \frac{y - y_1}{n_1} = \frac{z - z_1}{p_1}\\
+L_2 : \frac{x - x_2}{m_2} = \frac{y - y_2}{n_2} = \frac{z - z_2}{p_2}
+\]</span> <span class="math inline">\(M_1(x_1, y_1, z_1), M_2(x_2, y_2,
+z_2)\)</span> 分别是 <span class="math inline">\(L_1, L_2\)</span>
+上的定点。<span class="math inline">\(s_1=(m_1, n_1, p_1), s_2=(m_2,
+n_2, p_2)\)</span> 分别是 <span class="math inline">\(L_1, L_2\)</span>
+的方向向量。</p>
+<p>可将 <span class="math inline">\(L_1, L_2\)</span>
+的位置关系分成如下四种情形 1. <span class="math inline">\(L_1,
+L_2\)</span> 重合。其充要条件是 <span class="math display">\[
+\frac{m_1}{m_2} = \frac{n_1}{n_2} = \frac{p_1}{p_2}
+\]</span> 且 <span class="math inline">\(M_1 \in L_2 \ (M_2 \in
+L_1)\)</span>，即 <span class="math display">\[
+\frac{x_1 - x_2}{m_2} = \frac{y_1 - y_2}{n_2} = \frac{z_1 - z_2}{p_2}
+\]</span> 2. <span class="math inline">\(L_1, L_2\)</span>
+平行（不包括重合）。其充要条件是 <span class="math display">\[
+\frac{m_1}{m_2} = \frac{n_1}{n_2} = \frac{p_1}{p_2}
+\]</span> 且 <span class="math inline">\(M_1 \notin L_2 \ (M_2 \notin
+L_1)\)</span>，即 <span class="math display">\[
+\frac{x_1 - x_2}{m_2} = \frac{y_1 - y_2}{n_2} = \frac{z_1 - z_2}{p_2}
+\]</span> 不成立。</p>
+<ol start="3" type="1">
+<li><p><span class="math inline">\(L_1, L_2\)</span>
+交于一点。其充要条件是混合积 <span
+class="math inline">\(\left[s_1s_2\overrightarrow{M_1M_2}\right] =
+0\)</span> 且 <span class="math inline">\(s_1s_2\)</span>
+不平行。</p></li>
+<li><p><span class="math inline">\(L_1, L_2\)</span>
+是异面直线。其充要条件是混合积 <span
+class="math inline">\(\left[s_1s_2\overrightarrow{M_1M_2}\right] \ne
+0\)</span>。</p></li>
+</ol>
+<p>我们规定 <span class="math inline">\(L_1, L_2\)</span> 的方向向量
+<span class="math inline">\(s_1, s_2\)</span> 的夹角 <span
+class="math inline">\(\varphi\)</span> 为这两条直线的夹角。通常规定
+<span class="math inline">\(0 \le \varphi \le
+\frac{\pi}{2}\)</span>。</p>
+<p>直线 <span class="math inline">\(L_1, L_2\)</span> 的夹角 <span
+class="math inline">\(\varphi\)</span> 可由公式 <span
+class="math display">\[
+\cos\varphi = \frac{\left\vert s_1 \cdot s_2\right\vert}{\left\vert
+s_1\right\vert \left\vert s_2 \right\vert}
+\]</span> 来确定。</p>
+<p>显然，<span class="math inline">\(L_1\)</span> 与 <span
+class="math inline">\(L_2\)</span> 垂直的充要条件是 <span
+class="math inline">\(s_1\)</span> 与 <span
+class="math inline">\(s_2\)</span> 垂直，即 <span
+class="math display">\[
+s_1 \cdot s_2 = m_1m_2 + n_1n_2 + p_1p_2 = 0
+\]</span></p>
+<h2 id="直线与平面">直线与平面</h2>
+<p>设有一条直线 <span class="math display">\[
+L : \frac{x - x_0}{m} = \frac{y - y_0}{n} = \frac{z - z_0}{p}
+\]</span> 及一个平面 <span class="math display">\[
+\pi : Ax + By + Cz + D = 0
+\]</span> 可将 <span class="math inline">\(L, \pi\)</span>
+的位置关系分成如下三种情形。 1. <span class="math inline">\(L\)</span>
+在 <span class="math inline">\(\pi\)</span> 上。其充要条件是 <span
+class="math inline">\(s = (m, n, p)\)</span> 与 <span
+class="math inline">\(n = (A, B, C)\)</span> 垂直，且 <span
+class="math inline">\(M_0 \in \pi\)</span>，即 <span
+class="math display">\[
+\begin{cases}
+mA + nB + pC = 0\\
+Ax_0 + By_0 + Cz_0 + D = 0
+\end{cases}
+\]</span> 2. <span class="math inline">\(L\)</span> 与 <span
+class="math inline">\(\pi\)</span> 平行（不包括 <span
+class="math inline">\(L\)</span> 在 <span
+class="math inline">\(\pi\)</span> 上的情形）。其充要条件是 <span
+class="math inline">\(s = (m, n, p)\)</span> 与 <span
+class="math inline">\(n = (A, B, C)\)</span> 垂直，且 <span
+class="math inline">\(M_0 \notin \pi\)</span>，即 <span
+class="math display">\[mA + nB + pC = 0\]</span> 且 <span
+class="math display">\[Ax_0 + By_0 + Cz_0 + D \ne 0\]</span> 3. <span
+class="math inline">\(L\)</span> 与 <span
+class="math inline">\(\pi\)</span> 交于一点。其充要条件是 <span
+class="math inline">\(s = (m, n, p)\)</span> 与 <span
+class="math inline">\(n = (A, B, C)\)</span> 不垂直，即 <span
+class="math display">\[mA + nB + pC \ne 0\]</span> 直线 <span
+class="math inline">\(L\)</span> 与其在平面 <span
+class="math inline">\(\pi\)</span> 上的投影直线 <span
+class="math inline">\(L_1\)</span> 的夹角 <span
+class="math inline">\(\varphi\)</span> 称为<strong>直线 <span
+class="math inline">\(L\)</span> 与平面 <span
+class="math inline">\(\pi\)</span> 的夹角</strong>，通常规定 <span
+class="math inline">\(0 \le \varphi \le \frac{\pi}{2}\)</span>。</p>
+<p><span class="math inline">\(\varphi\)</span> 可由公式 <span
+class="math display">\[
+\sin\varphi = \frac{\left\vert s \cdot n \right\vert}{\left\vert s
+\right\vert \left\vert n \right\vert}
+\]</span> 确定。显然，<span class="math inline">\(L\)</span> 与 <span
+class="math inline">\(\pi\)</span> 垂直的充要条件是 <span
+class="math inline">\(n\)</span> 与 <span
+class="math inline">\(s\)</span> 平行，即 <span class="math display">\[
+\frac{A}{m} = \frac{B}{n} = \frac{C}{p}
+\]</span></p>
+<h1 id="距离">距离</h1>
+<h2 id="点到平面">点到平面</h2>
+<p>设 <span class="math inline">\(M_0(x_0, y_0, z_0)\)</span> 是平面
+<span class="math inline">\(\pi : Ax + By + Cz + D = 0\)</span>
+外一点。在平面 <span class="math inline">\(\pi\)</span> 上任取一点 <span
+class="math inline">\(M_1(x_1, y_1, z_1)\)</span>，取平面 <span
+class="math inline">\(\pi\)</span> 的法向量 <span
+class="math inline">\(n = (A, B, C)\)</span>，则点 <span
+class="math inline">\(M_0\)</span> 到平面 <span
+class="math inline">\(\pi\)</span> 的距离 <span
+class="math inline">\(d\)</span> 为 <span class="math display">\[d =
+\frac{\left\vert n \cdot \overrightarrow{M_0M_1} \right\vert}{\left\vert
+n \right\vert} \]</span></p>
+<h2 id="两平行平面">两平行平面</h2>
+<p>可以转化为点到平面间的距离</p>
+<h2 id="直线到其平行的平面">直线到其平行的平面</h2>
+<p>可以转化为点到平面间的距离</p>
+<h2 id="点到直线">点到直线</h2>
+<p>设直线 <span class="math inline">\(L\)</span> 的标准方程为 <span
+class="math display">\[
+L : \frac{x - x_0}{m} = \frac{y - y_0}{n} = \frac{z - z_0}{p}
+\]</span> 即 <span class="math inline">\(L\)</span> 过点 <span
+class="math inline">\(M_0(x_0, y_0, z_0)\)</span>，并且方向向量为 <span
+class="math inline">\(s = (m, n, p)\)</span>。再设 <span
+class="math inline">\(M_1(x_1, y_1, z_1)\)</span> 是直线 <span
+class="math inline">\(L\)</span> 外一点，则点 <span
+class="math inline">\(M_1\)</span> 到直线 <span
+class="math inline">\(L\)</span> 的距离 <span
+class="math inline">\(d\)</span> 为 <span class="math display">\[
+d = \frac{\left\vert s \times
+\overrightarrow{M_0M_1}\right\vert}{\left\vert s\right\vert}
+\]</span></p>
+<h2 id="两平行直线">两平行直线</h2>
+<p>可以转化为点到直线间的距离</p>
+<h2 id="两异面直线">两异面直线</h2>
+<p>设由两条异面直线： <span class="math display">\[
+L_1 : \frac{x - x_1}{m_1} = \frac{y - y_1}{n_1} = \frac{z - z_1}{p_1}\\
+L_2 : \frac{x - x_2}{m_2} = \frac{y - y_2}{n_2} = \frac{z - z_2}{p_2}
+\]</span> 记 <span class="math inline">\(P_1(x_1, y_1, z_1), P_2(x_2,
+y_2, z_2)\)</span> 分别是 <span class="math inline">\(L_1, L_2\)</span>
+上的点。<span class="math inline">\(L_1, L_2\)</span> 的方向向量 <span
+class="math inline">\(s_1 = (m_1, n_1, p_1)\)</span>，<span
+class="math inline">\(s_2 = (m_2, n_2, p_2)\)</span> 分别与 <span
+class="math inline">\(L_1, L_2\)</span> 的公垂线垂直，所以 <span
+class="math inline">\(s_1 \times s_2\)</span> 是 <span
+class="math inline">\(L_1, L_2\)</span> 的公垂线的方向向量。</p>
+<p><span class="math inline">\(\overrightarrow{P_1P_2}\)</span> 在 <span
+class="math inline">\(s_1 \times s_2\)</span> 上的投影的绝对值就是 <span
+class="math inline">\(L_1\)</span> 与 <span
+class="math inline">\(L_2\)</span> 之间的距离 <span
+class="math inline">\(d\)</span>，即 <span class="math display">\[
+d = \left\vert \overrightarrow{P_1P_2} \cdot \frac{s_1 \times
+s_2}{\left\vert s_1 \times s_2 \right\vert} \right\vert
+\]</span></p>
+<h1 id="平面束">平面束</h1>
+<p>称通过给定直线 <span class="math inline">\(L\)</span>
+的所有平面的全体为通过直线 <span class="math inline">\(L\)</span>
+的<strong>平面束</strong>。</p>
+<p>设 <span class="math inline">\(L\)</span> 的一般方程为 <span
+class="math display">\[
+\begin{cases}
+A_1x + B_1y + C_1z + D_1 = 0\\
+A_2x + B_2y + C_2z + D_2 = 0
+\end{cases}
+\]</span> 其中系数 <span class="math inline">\(A_1, B_1, C_1\)</span> 与
+<span class="math inline">\(A_2, B_2, C_2\)</span> 不成比例。则称方程
+<span class="math display">\[
+A_1x + B_1y + C_1z + D_1 + \lambda(A_2x + B_2y + C_2z + D_2) = 0
+\]</span> 为通过直线 <span class="math inline">\(L\)</span>
+的<strong>平面束方程</strong>。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Math/" class="category-chain-item">Math</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Note - 空间几何</div>
+      <div>http://zerohzzzz.github.io/2024/05/02/Space-Geometry/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>ZeroHzzzz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 2, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/05/02/Ubuntu/" title="Note - Ubuntu">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Note - Ubuntu</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/02/Martix/" title="Note - 矩阵">
+                        <span class="hidden-mobile">Note - 矩阵</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       # <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> # <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
