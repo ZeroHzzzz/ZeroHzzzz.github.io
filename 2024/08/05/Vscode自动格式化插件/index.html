@@ -16,16 +16,18 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="#VSCode #Prettier Previous 事情的起因是我在某一天打开 vscode 后发现了 tab 变成了两个空格而导致我这个极度代码洁癖的人感觉很难受 由于懒...由于习惯了编写 go 语言代码保存时候的自动格式化，这让最近因为 c++的goushi作业而焦头烂额的我开始思考能不能在其他语言编写的时候能不能也搞个 由于我平时使用的是 Vscode，因此我就直接使用了">
+    <meta name="description" content="#VSCode #Prettier Previous事情的起因是我在某一天打开 vscode 后发现了 tab 变成了两个空格而导致我这个极度代码洁癖的人感觉很难受由于懒…由于习惯了编写 go 语言代码保存时候的自动格式化，这让最近因为 c++的goushi作业而焦头烂额的我开始思考能不能在其他语言编写的时候能不能也搞个 由于我平时使用的是 Vscode，因此我就直接使用了 prettier 插件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vscode自动格式化插件">
 <meta property="og:url" content="http://zerohzzzz.github.io/2024/08/05/Vscode%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%8F%92%E4%BB%B6/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="#VSCode #Prettier Previous 事情的起因是我在某一天打开 vscode 后发现了 tab 变成了两个空格而导致我这个极度代码洁癖的人感觉很难受 由于懒...由于习惯了编写 go 语言代码保存时候的自动格式化，这让最近因为 c++的goushi作业而焦头烂额的我开始思考能不能在其他语言编写的时候能不能也搞个 由于我平时使用的是 Vscode，因此我就直接使用了">
+<meta property="og:description" content="#VSCode #Prettier Previous事情的起因是我在某一天打开 vscode 后发现了 tab 变成了两个空格而导致我这个极度代码洁癖的人感觉很难受由于懒…由于习惯了编写 go 语言代码保存时候的自动格式化，这让最近因为 c++的goushi作业而焦头烂额的我开始思考能不能在其他语言编写的时候能不能也搞个 由于我平时使用的是 Vscode，因此我就直接使用了 prettier 插件">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-08-05T09:05:00.000Z">
-<meta property="article:modified_time" content="2024-09-06T14:07:00.000Z">
+<meta property="article:modified_time" content="2024-09-06T14:34:00.000Z">
 <meta property="article:author" content="ZeroHzzzz">
+<meta property="article:tag" content="#VSCode">
+<meta property="article:tag" content="#Prettier">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -221,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          507 words
+          505 words
         
       </span>
     
@@ -283,22 +285,15 @@
               <div class="markdown-body">
                 
                 <p>#VSCode #Prettier</p>
-<h2 id="previous">Previous</h2>
-<p>事情的起因是我在某一天打开 vscode 后发现了 tab
-变成了两个空格而导致我这个极度代码洁癖的人感觉很难受
-<del>由于懒</del>...由于习惯了编写 go
-语言代码保存时候的自动格式化，这让最近因为
-c++的<del>goushi</del>作业而焦头烂额的我开始思考能不能在其他语言编写的时候能不能也搞个</p>
-<p>由于我平时使用的是 Vscode，因此我就直接使用了 prettier
-插件。以下是我配置的一些记录：</p>
-<h2 id="步骤">步骤</h2>
-<ul>
+<h2 id="Previous"><a href="#Previous" class="headerlink" title="Previous"></a>Previous</h2><p>事情的起因是我在某一天打开 vscode 后发现了 tab 变成了两个空格而导致我这个极度代码洁癖的人感觉很难受<br><del>由于懒</del>…由于习惯了编写 go 语言代码保存时候的自动格式化，这让最近因为 c++的<del>goushi</del>作业而焦头烂额的我开始思考能不能在其他语言编写的时候能不能也搞个</p>
+<p>由于我平时使用的是 Vscode，因此我就直接使用了 prettier 插件。以下是我配置的一些记录：</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
 <li>安装 prettier 插件</li>
-<li>配置
-<ul>
+<li>配置<ul>
 <li>可以通过 setting.json 进行配置， 这里就不多说了</li>
 <li>也可以通过在 setting 中直接搜索 prettier 来实现</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;editor.formatOnSave&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>  <span class="hljs-comment">// 保存自动格式化</span><br><span class="hljs-attr">&quot;prettier.useTabs&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;prettier.tabWidth&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// Tab 宽度</span><br><span class="hljs-attr">&quot;C_Cpp.clang_format_style&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&#123; BasedOnStyle: Chromium, IndentWidth: 4&#125;&quot;</span> <span class="hljs-comment">// c++/c 大括号不换行</span><br></code></pre></td></tr></table></figure>
 
@@ -309,6 +304,15 @@ c++的<del>goushi</del>作业而焦头烂额的我开始思考能不能在其他
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/VSCode/" class="print-no-link">##VSCode</a>
+      
+        <a href="/tags/Prettier/" class="print-no-link">##Prettier</a>
+      
+    </div>
   
 </div>
 

@@ -16,16 +16,18 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="#Langchain #libmagic 在使用Langchain中的DirectLoader加载PDF文件时，我们遇到了以下问题： 1234Import Error:failed to find libmagic. Check your installationFile &quot;C:\Users\ZeroHzzzz\Desktop\Jarvis\Docbot\create_index.p">
+    <meta name="description" content="#Langchain #libmagic在使用Langchain中的DirectLoader加载PDF文件时，我们遇到了以下问题： 1234Import Error:failed to find libmagic. Check your installationFile &quot;C:\Users\ZeroHzzzz\Desktop\Jarvis\Docbot\create_index.py&amp;q">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-magic导入报错问题">
 <meta property="og:url" content="http://zerohzzzz.github.io/2024/08/15/python-magic%E5%AF%BC%E5%85%A5%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="#Langchain #libmagic 在使用Langchain中的DirectLoader加载PDF文件时，我们遇到了以下问题： 1234Import Error:failed to find libmagic. Check your installationFile &quot;C:\Users\ZeroHzzzz\Desktop\Jarvis\Docbot\create_index.p">
+<meta property="og:description" content="#Langchain #libmagic在使用Langchain中的DirectLoader加载PDF文件时，我们遇到了以下问题： 1234Import Error:failed to find libmagic. Check your installationFile &quot;C:\Users\ZeroHzzzz\Desktop\Jarvis\Docbot\create_index.py&amp;q">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-08-15T12:25:00.000Z">
-<meta property="article:modified_time" content="2024-09-06T13:56:00.000Z">
+<meta property="article:modified_time" content="2024-09-06T14:35:00.000Z">
 <meta property="article:author" content="ZeroHzzzz">
+<meta property="article:tag" content="#Langchain">
+<meta property="article:tag" content="#libmagic">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -282,11 +284,10 @@
             
               <div class="markdown-body">
                 
-                <p>#Langchain #libmagic
-在使用Langchain中的DirectLoader加载PDF文件时，我们遇到了以下问题：</p>
+                <p>#Langchain #libmagic<br>在使用Langchain中的DirectLoader加载PDF文件时，我们遇到了以下问题：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">Import Error:<br>failed to find libmagic. Check your installation<br><br>File <span class="hljs-string">&quot;C:\Users\ZeroHzzzz\Desktop\Jarvis\Docbot\create_index.py&quot;</span>, line 12, <span class="hljs-keyword">in</span> &lt;module&gt; document = loader.load() ImportError: failed to find libmagic. Check your installation<br></code></pre></td></tr></table></figure>
-<p>通过查询，我们发现这个问题源于程序在调用<code>magic</code>模块时出现了<code>ImportError</code>，其原因是缺少<code>libmagic</code>共享库。<code>magic</code>库主要用于识别文件类型，它通过读取文件的“魔术数字”（Magic
-Number）来推断文件的格式。魔术数字是文件开头的一些字节，可以标识文件类型，例如图片、压缩文件、可执行文件等。Langchain可能正是利用这个库来判断文件类型。</p>
+
+<p>通过查询，我们发现这个问题源于程序在调用<code>magic</code>模块时出现了<code>ImportError</code>，其原因是缺少<code>libmagic</code>共享库。<code>magic</code>库主要用于识别文件类型，它通过读取文件的“魔术数字”（Magic Number）来推断文件的格式。魔术数字是文件开头的一些字节，可以标识文件类型，例如图片、压缩文件、可执行文件等。Langchain可能正是利用这个库来判断文件类型。</p>
 <p>要解决这个问题，可以安装以下库：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install pylibmagic<br></code></pre></td></tr></table></figure>
 
@@ -297,6 +298,15 @@ Number）来推断文件的格式。魔术数字是文件开头的一些字节�
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Langchain/" class="print-no-link">##Langchain</a>
+      
+        <a href="/tags/libmagic/" class="print-no-link">##libmagic</a>
+      
+    </div>
   
 </div>
 

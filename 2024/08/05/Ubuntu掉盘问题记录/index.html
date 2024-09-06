@@ -16,17 +16,20 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="#Ubuntu 最近属实是有点太压抑了，于是斥巨资买下了HOGWARTS，然后在下载的时候发现游戏盘掉了，表现为： 1unable to access &quot;xxx&quot;, an operation is pending 找了一下，原因是上一次拔硬盘的时候没有安全退出 【解决方法】 1sudo fdisk -l   image.png  最后的设备&#x2F;dev&#x2F;sda1">
+    <meta name="description" content="#Ubuntu 最近属实是有点太压抑了，于是斥巨资买下了HOGWARTS，然后在下载的时候发现游戏盘掉了，表现为： 1unable to access &quot;xxx&quot;, an operation is pending  找了一下，原因是上一次拔硬盘的时候没有安全退出 【解决方法】 1sudo fdisk -l   最后的设备&#x2F;dev&#x2F;sda1就是出问题的磁盘，于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu掉盘问题记录">
 <meta property="og:url" content="http://zerohzzzz.github.io/2024/08/05/Ubuntu%E6%8E%89%E7%9B%98%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="#Ubuntu 最近属实是有点太压抑了，于是斥巨资买下了HOGWARTS，然后在下载的时候发现游戏盘掉了，表现为： 1unable to access &quot;xxx&quot;, an operation is pending 找了一下，原因是上一次拔硬盘的时候没有安全退出 【解决方法】 1sudo fdisk -l   image.png  最后的设备&#x2F;dev&#x2F;sda1">
+<meta property="og:description" content="#Ubuntu 最近属实是有点太压抑了，于是斥巨资买下了HOGWARTS，然后在下载的时候发现游戏盘掉了，表现为： 1unable to access &quot;xxx&quot;, an operation is pending  找了一下，原因是上一次拔硬盘的时候没有安全退出 【解决方法】 1sudo fdisk -l   最后的设备&#x2F;dev&#x2F;sda1就是出问题的磁盘，于">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202408281844254.png">
 <meta property="article:published_time" content="2024-08-05T09:05:00.000Z">
-<meta property="article:modified_time" content="2024-09-06T14:11:00.000Z">
+<meta property="article:modified_time" content="2024-09-06T14:35:00.000Z">
 <meta property="article:author" content="ZeroHzzzz">
+<meta property="article:tag" content="#Ubuntu">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202408281844254.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -221,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          258 words
+          259 words
         
       </span>
     
@@ -285,17 +288,15 @@
                 <p>#Ubuntu</p>
 <p>最近属实是有点太压抑了，于是斥巨资买下了HOGWARTS，然后在下载的时候发现游戏盘掉了，表现为：</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">unable <span class="hljs-keyword">to</span> <span class="hljs-keyword">access</span> &quot;xxx&quot;, an operation <span class="hljs-keyword">is</span> pending<br></code></pre></td></tr></table></figure>
+
 <p>找了一下，原因是上一次拔硬盘的时候没有安全退出</p>
 <p>【解决方法】</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> fdisk -l<br></code></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202408281844254.png" srcset="/img/loading.gif" lazyload
-alt="image.png" />
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
-<p>最后的设备/dev/sda1就是出问题的磁盘，于是我们需要修复挂载错误的相应分区</p>
+
+<p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202408281844254.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>最后的设备&#x2F;dev&#x2F;sda1就是出问题的磁盘，于是我们需要修复挂载错误的相应分区</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> ntfsfix /dev/sda1<br></code></pre></td></tr></table></figure>
+
 <p>然后再次插入硬盘就可以正常使用了，后续有空了可能会对挂载失败问题进行更深入的探究</p>
 
                 
@@ -305,6 +306,13 @@ alt="image.png" />
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Ubuntu/" class="print-no-link">##Ubuntu</a>
+      
+    </div>
   
 </div>
 
