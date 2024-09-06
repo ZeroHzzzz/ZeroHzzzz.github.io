@@ -16,26 +16,24 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="#重复定义 #Cpp #extern关键字 C++编译过程中出现变量重复定义问题非常常见，通常表现为以下报错： 12[build] CMakeFiles\NewPlayer.dir&#x2F;objects.a(imagehandler.cpp.obj):C:&#x2F;Users&#x2F;ZeroHzzzz&#x2F;Desktop&#x2F;QT_new&#x2F;src&#x2F;NewPlayer&#x2F;imagehandler.h:197: multiple">
+    <meta name="description" content="#Nginx 文章的开始我们先来看几种写法： 123456789101112location &#x2F;b&#x2F; &#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017&#x2F;;&#125;location &#x2F;b&#x2F; &#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017;&#125;location &#x2F;b &#123;	proxy_pass http:&#x2F;&#x2F;loca">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++编译中变量重复定义问题">
-<meta property="og:url" content="http://zerohzzzz.github.io/2024/09/04/C++%E7%BC%96%E8%AF%91%E4%B8%AD%E5%8F%98%E9%87%8F%E9%87%8D%E5%A4%8D%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异">
+<meta property="og:url" content="http://zerohzzzz.github.io/2024/09/06/Nginx%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E2%80%94%E2%80%94location%20%E8%B7%AF%E5%BE%84%E5%8C%B9%E9%85%8D%E5%92%8C%20proxy_pass%20%E8%BD%AC%E5%8F%91%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%B7%AE%E5%BC%82/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="#重复定义 #Cpp #extern关键字 C++编译过程中出现变量重复定义问题非常常见，通常表现为以下报错： 12[build] CMakeFiles\NewPlayer.dir&#x2F;objects.a(imagehandler.cpp.obj):C:&#x2F;Users&#x2F;ZeroHzzzz&#x2F;Desktop&#x2F;QT_new&#x2F;src&#x2F;NewPlayer&#x2F;imagehandler.h:197: multiple">
+<meta property="og:description" content="#Nginx 文章的开始我们先来看几种写法： 123456789101112location &#x2F;b&#x2F; &#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017&#x2F;;&#125;location &#x2F;b&#x2F; &#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017;&#125;location &#x2F;b &#123;	proxy_pass http:&#x2F;&#x2F;loca">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-09-04T13:31:00.000Z">
-<meta property="article:modified_time" content="2024-09-06T14:36:00.000Z">
+<meta property="article:published_time" content="2024-09-05T19:10:00.000Z">
+<meta property="article:modified_time" content="2024-09-06T14:42:00.000Z">
 <meta property="article:author" content="ZeroHzzzz">
-<meta property="article:tag" content="#重复定义">
-<meta property="article:tag" content="#Cpp">
-<meta property="article:tag" content="#extern关键字">
+<meta property="article:tag" content="#Nginx">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>C++编译中变量重复定义问题 - Welcome To my Blog</title>
+  <title>Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异 - Welcome To my Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C++编译中变量重复定义问题"></span>
+            <span id="subtitle" data-typed-text="Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异"></span>
           
         </div>
 
@@ -212,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-04 21:31" pubdate>
-          September 4, 2024 pm
+        <time datetime="2024-09-06 03:10" pubdate>
+          September 6, 2024 am
         </time>
       </span>
     
@@ -224,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          1.8k words
         
       </span>
     
@@ -235,7 +233,7 @@
         
         
         
-          10 mins
+          15 mins
         
       </span>
     
@@ -280,31 +278,83 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">C++编译中变量重复定义问题</h1>
+            <h1 id="seo-header">Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异</h1>
             
             
               <div class="markdown-body">
                 
-                <p>#重复定义 #Cpp #extern关键字</p>
-<p>C++编译过程中出现变量重复定义问题非常常见，通常表现为以下报错：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[build] CMakeFiles\NewPlayer.<span class="hljs-built_in">dir</span>/objects.a(imagehandler.cpp.obj):C:/Users/ZeroHzzzz/Desktop/QT_new/src/NewPlayer/imagehandler.h:197: multiple definition of `speedlineLeft<span class="hljs-string">&#x27;</span><br><span class="hljs-string">[build] CMakeFiles\NewPlayer.dir/objects.a(datahandler.cpp.obj):C:/Users/ZeroHzzzz/Desktop/QT_new/src/NewPlayer/imagehandler.h:197: first defined here</span><br></code></pre></td></tr></table></figure>
-
-<p>出现这种报错通常分为以下几种情况：</p>
-<h3 id="全局变量重复定义"><a href="#全局变量重复定义" class="headerlink" title="全局变量重复定义"></a>全局变量重复定义</h3><p>在多个源文件中定义了相同的全局变量，而没有使用<code>extern</code>关键字声明。这会导致链接器在合并目标文件时发现多个相同的符号定义。</p>
-<h3 id="头文件中的直接定义变量"><a href="#头文件中的直接定义变量" class="headerlink" title="头文件中的直接定义变量"></a>头文件中的直接定义变量</h3><p>在头文件中直接定义了变量或函数，这些头文件被多个源文件包含。每次包含都会生成该变量或函数的一个定义，最终在链接时产生冲突。</p>
-<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><p>在头文件中定义了非静态的局部变量，如果这个头文件被多个源文件包含，也会导致重复定义问题。</p>
-<h2 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h2><h3 id="使用extern声明全局变量"><a href="#使用extern声明全局变量" class="headerlink" title="使用extern声明全局变量"></a>使用<code>extern</code>声明全局变量</h3><p>如果需要在多个文件中使用相同的全局变量，可以在一个源文件中定义变量，在其他源文件中使用<code>extern</code>关键字来声明。例如：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 变量声明在header.h中</span><br><span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> globalVar;<br><br><span class="hljs-comment">// 变量定义在main.cpp中</span><br><span class="hljs-type">int</span> globalVar = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
-
-<h3 id="头文件中使用inline或static关键字"><a href="#头文件中使用inline或static关键字" class="headerlink" title="头文件中使用inline或static关键字"></a>头文件中使用<code>inline</code>或<code>static</code>关键字</h3><p>如果头文件中有函数定义，可以使用<code>inline</code>关键字来避免重复定义。例如：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// header.h</span><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 函数实现</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>对于需要在头文件中定义的局部变量，可以使用<code>static</code>关键字：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// header.h</span><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> localVar = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
-
-<h3 id="使用包含保护"><a href="#使用包含保护" class="headerlink" title="使用包含保护"></a>使用包含保护</h3><p>确保头文件有包含保护，防止同一个头文件被多次包含。可以通过<code>#ifndef</code>，<code>#define</code>，<code>#endif</code>来实现<br>[[C++编译中头文件重复包含问题]]</p>
-<h3 id="使用命名空间"><a href="#使用命名空间" class="headerlink" title="使用命名空间"></a>使用命名空间</h3><p>将全局变量放入命名空间内，可以减少不同文件中相同变量名的冲突：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// header.h</span><br><span class="hljs-keyword">namespace</span> MyNamespace &#123;<br>    <span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> globalVar;<br>&#125;<br><br><span class="hljs-comment">// main.cpp</span><br><span class="hljs-type">int</span> MyNamespace::globalVar = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
+                <p>#Nginx</p>
+<p>文章的开始我们先来看几种写法：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br><span class="hljs-section">location</span> /b &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br><span class="hljs-section">location</span> /b &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>请你告诉我，这几种写法有什么区别</p>
+<h2 id="location-b-和-location-b"><code>location /b/</code> 和
+<code>location /b</code></h2>
+<p>这两个东西看起来很像，但是其实区别有点大。</p>
+<p>我们先来看<code>location /b/</code>。这个配置匹配的是以<code>/b/</code>开头的路径。例如，<code>/b/something</code>
+或 <code>/b/subdir/file</code>
+等等。重要的是，这种匹配要求路径紧跟在<code>/b/</code>后面，后面必须有<code>/</code>，而且<strong>不包括</strong><code>/b</code>。</p>
+<p>而<code>location /b</code>这个配置匹配的是以<code>/b</code>开头的路径，既可以匹配<code>/b</code>本身，也可以匹配以<code>/b</code>开头的其他路径。例如，<code>/b</code>,
+<code>/b/something</code>, <code>/b/subdir/file</code> 都会被匹配。</p>
+<h2 id="proxy_pass路径末尾有无">proxy_pass路径末尾有无/</h2>
+<p>这两个是不一样的。</p>
+<p>如果你在 <code>proxy_pass</code> 后面使用的是
+<code>http://localhost:2017</code>，即没有带“/”，那么Nginx
+会将客户端请求的 URI 直接转发到目标服务器，保持原始 URI 不变。例如：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /test/ &#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在这种情况下，由于 <code>proxy_pass</code> 没有加斜杠，Nginx
+不会去掉匹配的 <code>/test/</code>
+前缀部分，而是直接将原始请求完整地转发给目标服务器。所以，假设客户端请求
+<code>example.com/test/abc</code>，那么 Nginx 会将请求转发为
+<code>http://localhost:2017/test/abc</code>。</p>
+<p>如果你在 <code>proxy_pass</code> 后面加上了斜杠
+<code>http://localhost:2017/</code>，在 <code>proxy_pass</code>
+后面加上斜杠时，Nginx 会去掉客户端请求的 URI
+中和<strong>匹配位置</strong>相关的部分，并替换为目标服务器的根路径。这里的<strong>前缀部分</strong>是指在
+Nginx 配置中与 <code>location</code> 指令匹配的那部分 URL。例如：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /test/ &#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在这个例子中，客户端请求的 URI <code>/test/abc</code>
+中，<code>/test/</code> 是匹配的前缀部分，而 Nginx
+会将这一部分去掉，并把剩余的 <code>/abc</code>
+转发给目标服务器。这时，Nginx 会将请求转发为
+<code>http://localhost:2017/abc</code>，即<strong>去掉了匹配的前缀
+<code>/test/</code>，并将剩余的部分加到目标服务器的根路径后</strong>。</p>
+<h2 id="解答">解答</h2>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>客户端请求</strong>:
+<code>http://example.com/b/abc</code></li>
+<li><strong>Nginx 匹配的部分</strong>: <code>/b/</code></li>
+<li><strong>剩余部分</strong>: <code>abc</code></li>
+<li><strong>实际被转发的请求</strong>:
+<code>http://localhost:2017/abc</code></li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>客户端请求</strong>:
+<code>http://example.com/b/abc</code></li>
+<li><strong>Nginx 匹配的部分</strong>: <code>/b/</code></li>
+<li><strong>剩余部分</strong>: <code>abc</code></li>
+<li><strong>实际被转发的请求</strong>:
+<code>http://localhost:2017/b/abc</code></li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>客户端请求</strong>:
+<code>http://example.com/b/abc</code></li>
+<li><strong>Nginx 匹配的部分</strong>: <code>/b</code></li>
+<li><strong>剩余部分</strong>: <code>/abc</code></li>
+<li><strong>实际被转发的请求</strong>:
+<code>http://localhost:2017/b/abc</code></li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><strong>客户端请求</strong>:
+<code>http://example.com/b/abc</code></li>
+<li><strong>Nginx 匹配的部分</strong>: <code>/b</code></li>
+<li><strong>剩余部分</strong>: <code>/abc</code></li>
+<li><strong>实际被转发的请求</strong>:
+<code>http://localhost:2017/abc</code></li>
+</ul>
 
                 
               </div>
@@ -317,11 +367,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%87%8D%E5%A4%8D%E5%AE%9A%E4%B9%89/" class="print-no-link">##重复定义</a>
-      
-        <a href="/tags/Cpp/" class="print-no-link">##Cpp</a>
-      
-        <a href="/tags/extern%E5%85%B3%E9%94%AE%E5%AD%97/" class="print-no-link">##extern关键字</a>
+        <a href="/tags/Nginx/" class="print-no-link">##Nginx</a>
       
     </div>
   
@@ -333,8 +379,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C++编译中变量重复定义问题</div>
-      <div>http://zerohzzzz.github.io/2024/09/04/C++编译中变量重复定义问题/</div>
+      <div>Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异</div>
+      <div>http://zerohzzzz.github.io/2024/09/06/Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异/</div>
     </div>
     <div class="license-meta">
       
@@ -346,7 +392,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>September 4, 2024</div>
+          <div>September 6, 2024</div>
         </div>
       
       
@@ -378,9 +424,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/06/Nginx%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E2%80%94%E2%80%94location%20%E8%B7%AF%E5%BE%84%E5%8C%B9%E9%85%8D%E5%92%8C%20proxy_pass%20%E8%BD%AC%E5%8F%91%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%B7%AE%E5%BC%82/" title="Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异">
+                      <a href="/2024/09/06/C++%E5%89%8D%E5%90%91%E5%A3%B0%E6%98%8E/" title="C++前向声明">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异</span>
+                        <span class="hidden-mobile">C++前向声明</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -388,8 +434,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/09/01/C++%E7%BC%96%E8%AF%91%E4%B8%AD%E5%A4%B4%E6%96%87%E4%BB%B6%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98/" title="C++编译中头文件重复包含问题">
-                        <span class="hidden-mobile">C++编译中头文件重复包含问题</span>
+                      <a href="/2024/09/04/C++%E7%BC%96%E8%AF%91%E4%B8%AD%E5%8F%98%E9%87%8F%E9%87%8D%E5%A4%8D%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98/" title="C++编译中变量重复定义问题">
+                        <span class="hidden-mobile">C++编译中变量重复定义问题</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
