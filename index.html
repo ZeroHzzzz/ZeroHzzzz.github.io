@@ -236,7 +236,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/09/11/WSL%EF%BC%9A%E2%80%9DNAT%20%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%20WSL%20%E4%B8%8D%E6%94%AF%E6%8C%81%20localhost%20%E4%BB%A3%E7%90%86%E2%80%9C%E6%8F%90%E7%A4%BA%E4%BB%A5%E5%8F%8Amirrored%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F%E4%B8%8ETUN%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%86%B2%E7%AA%81/" target="_self">
         <div>
-          #wsl #nat #网络 我们在启动wsl的时候经常看到这样的提示，这样我很是不爽 1wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。 这个问题源自于wsl2的更新。首先我们就需要说一下这个wsl和wsl2的区别了。 WSL 1 与 Windows 系统共享同一个 IP 地址。因此，网络请求的处理比较简单，
+          #wsl #nat #网络 我们在启动wsl的时候经常看到这样的提示，这样我很是不爽 1wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。 这个问题其实是因为我使用了TUN模式进行代理，它会将系统的所有流量通过代理，包括 localhost 流量。但是这个问题对我来说其实问题不大毕竟我用TUN 这个要说的话其
         </div>
       </a>
 
