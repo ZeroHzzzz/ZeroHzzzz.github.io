@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k words
+          1.1k words
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          17 mins
+          10 mins
         
       </span>
     
@@ -289,12 +289,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">[build] CMakeFiles\NewPlayer.<span class="hljs-built_in">dir</span>/objects.a(imagehandler.cpp.obj):C:/Users/ZeroHzzzz/Desktop/QT_new/src/NewPlayer/imagehandler.h:197: multiple definition of `speedlineLeft<span class="hljs-string">&#x27;</span><br><span class="hljs-string">[build] CMakeFiles\NewPlayer.dir/objects.a(datahandler.cpp.obj):C:/Users/ZeroHzzzz/Desktop/QT_new/src/NewPlayer/imagehandler.h:197: first defined here</span><br></code></pre></td></tr></table></figure>
 <p>出现这种报错通常分为以下几种情况：</p>
 <h3 id="全局变量重复定义"><a href="#全局变量重复定义" class="headerlink" title="全局变量重复定义"></a>全局变量重复定义</h3><p>在多个源文件中定义了相同的全局变量，而没有使用<code>extern</code>关键字声明。这会导致链接器在合并目标文件时发现多个相同的符号定义。</p>
-<h3 id="头文件中的直接定义变量"><a href="#头文件中的直接定义变量" class="headerlink" title="头文件中的直接定义变量"></a>头文件中的直接定义变量</h3><p>在C或C++中，<strong>不要直接在头文件（.h 文件）中定义全局变量</strong>，因为这样做会导致在多个文件中包含同一个头文件时出现多次定义的问题（即“重复定义”错误）</p>
-<p>在头文件中直接定义了变量或函数，这些头文件被多个源文件包含。每次包含都会生成该变量或函数的一个定义，最终在链接时产生冲突。我们通常的做法是在头文件中声明一个变量但是不去定义他，然后再cpp文件中定义变量。</p>
-<p>错误案例：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// myheader.h</span><br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> MYHEADER_H</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MYHEADER_H</span><br><br><span class="hljs-type">int</span> myVar;<br><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span> <span class="hljs-comment">// MYHEADER_H</span></span><br><br><span class="hljs-comment">// mysource.cpp</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;myheader.h&quot;</span></span><br><br><span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> myVar = <span class="hljs-number">42</span>;  <span class="hljs-comment">// 定义变量</span><br></code></pre></td></tr></table></figure>
-<p>正确做法：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// myheader.h</span><br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> MYHEADER_H</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MYHEADER_H</span><br><br><span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> myVar;  <span class="hljs-comment">// 仅声明，不定义</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span> <span class="hljs-comment">// MYHEADER_H</span></span><br><br><span class="hljs-comment">// mysource.cpp</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;myheader.h&quot;</span></span><br><br><span class="hljs-type">int</span> myVar = <span class="hljs-number">42</span>;  <span class="hljs-comment">// 定义变量</span><br><br><span class="hljs-comment">// othersource.cpp</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;myheader.h&quot;</span></span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printVar</span><span class="hljs-params">()</span> </span>&#123;<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;myVar: &quot;</span> &lt;&lt; myVar &lt;&lt; std::endl;  <span class="hljs-comment">// 使用变量</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3 id="头文件中的直接定义变量"><a href="#头文件中的直接定义变量" class="headerlink" title="头文件中的直接定义变量"></a>头文件中的直接定义变量</h3><p>在头文件中直接定义了变量或函数，这些头文件被多个源文件包含。每次包含都会生成该变量或函数的一个定义，最终在链接时产生冲突。</p>
 <h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><p>在头文件中定义了非静态的局部变量，如果这个头文件被多个源文件包含，也会导致重复定义问题。</p>
 <h2 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h2><h3 id="使用extern声明全局变量"><a href="#使用extern声明全局变量" class="headerlink" title="使用extern声明全局变量"></a>使用<code>extern</code>声明全局变量</h3><p>如果需要在多个文件中使用相同的全局变量，可以在一个源文件中定义变量，在其他源文件中使用<code>extern</code>关键字来声明。例如：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 变量声明在header.h中</span><br><span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> globalVar;<br><br><span class="hljs-comment">// 变量定义在main.cpp中</span><br><span class="hljs-type">int</span> globalVar = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
@@ -302,12 +297,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// header.h</span><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 函数实现</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <p>对于需要在头文件中定义的局部变量，可以使用<code>static</code>关键字：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// header.h</span><br><span class="hljs-type">static</span> <span class="hljs-type">int</span> localVar = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
-<h3 id="使用包含保护"><a href="#使用包含保护" class="headerlink" title="使用包含保护"></a>使用包含保护</h3><p>确保头文件有包含保护，防止同一个头文件被多次包含。可以通过<code>#ifndef</code>，<code>#define</code>，<code>#endif</code>来实现</p>
-<p>[[C++编译中头文件重复包含问题]]</p>
-<p>“包含保护”只是防止头文件被多次包含到<strong>同一个</strong>源文件中，它无法防止多个源文件中出现同样的变量定义</p>
-<p>假设你在头文件中定义了一个全局变量：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// myheader.h</span><br><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> MYHEADER_H</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MYHEADER_H</span><br><br><span class="hljs-type">int</span> myVar = <span class="hljs-number">42</span>;  <span class="hljs-comment">// 在头文件中定义变量</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span> <span class="hljs-comment">// MYHEADER_H</span></span><br></code></pre></td></tr></table></figure>
-<p>然后有两个源文件<code>a.cpp</code>和<code>b.cpp</code>都包含了这个头文件，当你编译时，<code>a.cpp</code>和<code>b.cpp</code>都会各自包含并定义<code>myVar</code>，这意味着编译器会看到两个不同的文件中都有一个全局变量<code>myVar</code>的定义，从而导致<strong>重复定义</strong>错误。正确的做法是<strong>在头文件中声明变量</strong>，而<strong>在某个源文件中定义变量</strong>。</p>
+<h3 id="使用包含保护"><a href="#使用包含保护" class="headerlink" title="使用包含保护"></a>使用包含保护</h3><p>确保头文件有包含保护，防止同一个头文件被多次包含。可以通过<code>#ifndef</code>，<code>#define</code>，<code>#endif</code>来实现<br>[[C++编译中头文件重复包含问题]]</p>
 <h3 id="使用命名空间"><a href="#使用命名空间" class="headerlink" title="使用命名空间"></a>使用命名空间</h3><p>将全局变量放入命名空间内，可以减少不同文件中相同变量名的冲突：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// header.h</span><br><span class="hljs-keyword">namespace</span> MyNamespace &#123;<br>    <span class="hljs-keyword">extern</span> <span class="hljs-type">int</span> globalVar;<br>&#125;<br><br><span class="hljs-comment">// main.cpp</span><br><span class="hljs-type">int</span> MyNamespace::globalVar = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure>
 
@@ -382,6 +372,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/09/06/Nginx%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E2%80%94%E2%80%94location%20%E8%B7%AF%E5%BE%84%E5%8C%B9%E9%85%8D%E5%92%8C%20proxy_pass%20%E8%BD%AC%E5%8F%91%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%B7%AE%E5%BC%82/" title="Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
