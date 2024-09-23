@@ -313,7 +313,7 @@
 </div>
 <p>注意，MX 和 NS 记录不能指向 CNAME 记录，它们必须指向 A 记录（对于 IPv4）或 AAAA 记录。MX 记录是邮件交换记录，将电子邮件指向一个邮件服务器。NS 记录是“名称服务器”记录，表明哪个 DNS 服务器是该域的权威。</p>
 <p>## 给GitHub Pages配置CNAME记录</p>
-<p>我们这里主要讲述如何配置子域名。官方的文档<a target="_blank" rel="noopener" href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site\#configuring-a-subdomain">在这</a><br>其实不用很麻烦</p>
+<p>我们这里主要讲述如何配置子域名。官方的文档<a target="_blank" rel="noopener" href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">在这</a><br>其实不用很麻烦</p>
 <p>首先需要建立一个名为CNAME的文件。文件中的内容也只需要一行，也就是自定义域名的空子域名，例如<code>blog.zerohzzzz.top</code>（请注意不是<code>https://blog.zerohzzzz.top</code>）。注意，在 <em>CNAME</em> 文件中只允许有<strong>一个域名</strong>。这个文件以后放在你博客中的sources文件夹中，以后<code>deloy</code>的时候会一起提交上去并出现在储存分支的根目录</p>
 <p>进入你的<code>github.io</code>储存库，并进入设置（<code>setting</code>），在侧边栏中的<code>Code and automation</code>中选择<code>Pages</code></p>
 <p>在<code>Custom domain</code>条目下，输入你的域名，然后选择保存，注意这个域名和你<em>CNAME</em>文件中的域名要保持一致。</p>

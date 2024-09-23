@@ -16,12 +16,12 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="#Nginx 文章的开始我们先来看几种写法： 123456789101112location &#x2F;b&#x2F; &amp;\#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017&#x2F;;&amp;\#125;location &#x2F;b&#x2F; &amp;\#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017;&amp;\#125;location &#x2F;b &amp;\#123;	proxy_pass http:&#x2F;&#x2F;l">
+    <meta name="description" content="#Nginx 文章的开始我们先来看几种写法： 123456789101112location &#x2F;b&#x2F; &#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017&#x2F;;&#125;location &#x2F;b&#x2F; &#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017;&#125;location &#x2F;b &#123;	proxy_pass http:&#x2F;&#x2F;localh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx踩坑记录——location 路径匹配和 proxy_pass 转发行为的差异">
 <meta property="og:url" content="http://zerohzzzz.github.io/2024/09/06/Nginx%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E2%80%94%E2%80%94location%20%E8%B7%AF%E5%BE%84%E5%8C%B9%E9%85%8D%E5%92%8C%20proxy_pass%20%E8%BD%AC%E5%8F%91%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%B7%AE%E5%BC%82/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="#Nginx 文章的开始我们先来看几种写法： 123456789101112location &#x2F;b&#x2F; &amp;\#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017&#x2F;;&amp;\#125;location &#x2F;b&#x2F; &amp;\#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017;&amp;\#125;location &#x2F;b &amp;\#123;	proxy_pass http:&#x2F;&#x2F;l">
+<meta property="og:description" content="#Nginx 文章的开始我们先来看几种写法： 123456789101112location &#x2F;b&#x2F; &#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017&#x2F;;&#125;location &#x2F;b&#x2F; &#123;	proxy_pass http:&#x2F;&#x2F;localhost:2017;&#125;location &#x2F;b &#123;	proxy_pass http:&#x2F;&#x2F;localh">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-09-06T03:10:00.000Z">
 <meta property="article:modified_time" content="2024-09-06T22:42:00.000Z">
@@ -233,7 +233,7 @@
         
         
         
-          16 mins
+          15 mins
         
       </span>
     
@@ -285,7 +285,7 @@
                 
                 <p>#Nginx</p>
 <p>文章的开始我们先来看几种写法：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &\#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&\#125;<br><span class="hljs-section">location</span> /b/ &\#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&\#125;<br><span class="hljs-section">location</span> /b &\#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&\#125;<br><span class="hljs-section">location</span> /b &\#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&\#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br><span class="hljs-section">location</span> /b &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br><span class="hljs-section">location</span> /b &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>请你告诉我，这几种写法有什么区别</p>
 <p>## <code>location /b/</code> 和 <code>location /b</code></p>
 <p>这两个东西看起来很像，但是其实区别有点大。</p>
@@ -294,34 +294,34 @@
 <p>## proxy_pass路径末尾有无/</p>
 <p>这两个是不一样的。</p>
 <p>如果你在 <code>proxy_pass</code> 后面使用的是 <code>http://localhost:2017</code>，即没有带“/”，那么Nginx 会将客户端请求的 URI 直接转发到目标服务器，保持原始 URI 不变。例如：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /test/ &\#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&\#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /test/ &#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>在这种情况下，由于 <code>proxy_pass</code> 没有加斜杠，Nginx 不会去掉匹配的 <code>/test/</code> 前缀部分，而是直接将原始请求完整地转发给目标服务器。所以，假设客户端请求 <code>example.com/test/abc</code>，那么 Nginx 会将请求转发为 <code>http://localhost:2017/test/abc</code>。</p>
 <p>如果你在 <code>proxy_pass</code> 后面加上了斜杠 <code>http://localhost:2017/</code>，在 <code>proxy_pass</code> 后面加上斜杠时，Nginx 会去掉客户端请求的 URI 中和<strong>匹配位置</strong>相关的部分，并替换为目标服务器的根路径。这里的<strong>前缀部分</strong>是指在 Nginx 配置中与 <code>location</code> 指令匹配的那部分 URL。例如：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /test/ &\#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&\#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /test/ &#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>在这个例子中，客户端请求的 URI <code>/test/abc</code> 中，<code>/test/</code> 是匹配的前缀部分，而 Nginx 会将这一部分去掉，并把剩余的 <code>/abc</code> 转发给目标服务器。这时，Nginx 会将请求转发为 <code>http://localhost:2017/abc</code>，即<strong>去掉了匹配的前缀 <code>/test/</code>，并将剩余的部分加到目标服务器的根路径后</strong>。</p>
 <p>## 解答</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &\#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&\#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong>客户端请求</strong>: <code>http://example.com/b/abc</code></li>
 <li><strong>Nginx 匹配的部分</strong>: <code>/b/</code></li>
 <li><strong>剩余部分</strong>: <code>abc</code></li>
 <li><strong>实际被转发的请求</strong>: <code>http://localhost:2017/abc</code></li>
 </ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &\#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&\#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong>客户端请求</strong>: <code>http://example.com/b/abc</code></li>
 <li><strong>Nginx 匹配的部分</strong>: <code>/b/</code></li>
 <li><strong>剩余部分</strong>: <code>abc</code></li>
 <li><strong>实际被转发的请求</strong>: <code>http://localhost:2017/b/abc</code></li>
 </ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b &\#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&\#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong>客户端请求</strong>: <code>http://example.com/b/abc</code></li>
 <li><strong>Nginx 匹配的部分</strong>: <code>/b</code></li>
 <li><strong>剩余部分</strong>: <code>/abc</code></li>
 <li><strong>实际被转发的请求</strong>: <code>http://localhost:2017/b/abc</code></li>
 </ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b &\#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&\#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong>客户端请求</strong>: <code>http://example.com/b/abc</code></li>
 <li><strong>Nginx 匹配的部分</strong>: <code>/b</code></li>
