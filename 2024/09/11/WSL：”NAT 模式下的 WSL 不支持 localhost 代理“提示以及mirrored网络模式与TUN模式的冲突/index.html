@@ -16,12 +16,12 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="wsl #nat #网络我们在启动wsl的时候经常看到这样的提示，这样我很是不爽 1wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。 这个问题其实是因为我使用了TUN模式进行代理，它会将系统的所有流量通过代理，包括 localhost 流量。但是这个问题对我来说其实问题不大毕竟我用TUN 这个要说的话其实是WSL2更新">
+    <meta name="description" content="#wsl #nat #网络我们在启动wsl的时候经常看到这样的提示，这样我很是不爽 1wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。 这个问题其实是因为我使用了TUN模式进行代理，它会将系统的所有流量通过代理，包括 localhost 流量。但是这个问题对我来说其实问题不大毕竟我用TUN 这个要说的话其实是WSL2更">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WSL：”NAT 模式下的 WSL 不支持 localhost 代理“提示以及mirrored网络模式与TUN模式的冲突">
 <meta property="og:url" content="http://zerohzzzz.github.io/2024/09/11/WSL%EF%BC%9A%E2%80%9DNAT%20%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%20WSL%20%E4%B8%8D%E6%94%AF%E6%8C%81%20localhost%20%E4%BB%A3%E7%90%86%E2%80%9C%E6%8F%90%E7%A4%BA%E4%BB%A5%E5%8F%8Amirrored%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F%E4%B8%8ETUN%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%86%B2%E7%AA%81/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="wsl #nat #网络我们在启动wsl的时候经常看到这样的提示，这样我很是不爽 1wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。 这个问题其实是因为我使用了TUN模式进行代理，它会将系统的所有流量通过代理，包括 localhost 流量。但是这个问题对我来说其实问题不大毕竟我用TUN 这个要说的话其实是WSL2更新">
+<meta property="og:description" content="#wsl #nat #网络我们在启动wsl的时候经常看到这样的提示，这样我很是不爽 1wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。 这个问题其实是因为我使用了TUN模式进行代理，它会将系统的所有流量通过代理，包括 localhost 流量。但是这个问题对我来说其实问题不大毕竟我用TUN 这个要说的话其实是WSL2更">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-09-11T02:37:00.000Z">
 <meta property="article:modified_time" content="2024-09-11T02:54:00.000Z">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          872 words
+          873 words
         
       </span>
     
@@ -285,7 +285,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="wsl-nat-网络"><a href="#wsl-nat-网络" class="headerlink" title="wsl #nat #网络"></a>wsl #nat #网络</h1><p>我们在启动wsl的时候经常看到这样的提示，这样我很是不爽</p>
+                <p>#wsl #nat #网络<br>我们在启动wsl的时候经常看到这样的提示，这样我很是不爽</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wsl: 检测到 localhost 代理配置，但未镜像到 WSL。NAT 模式下的 WSL 不支持 localhost 代理。<br></code></pre></td></tr></table></figure>
 <p>这个问题其实是因为我使用了TUN模式进行代理，它会将系统的所有流量通过代理，包括 <code>localhost</code> 流量。<del>但是这个问题对我来说其实问题不大毕竟我用TUN</del></p>
 <p>这个要说的话其实是WSL2更新了一种新的网络模式。首先我们就需要说一下这个wsl和wsl2的区别了。</p>

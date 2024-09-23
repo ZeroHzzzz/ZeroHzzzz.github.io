@@ -236,7 +236,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/Ubuntu%E4%B8%8A%E4%BD%BF%E7%94%A8Todesk/" target="_self">
         <div>
-          Ubuntu #Todesk安装参照：https://www.todesk.com/linux.html官方文档上说： 1sudo apt-get install ./todesk-v4.3.1.0-amd64.deb 但是我试了没用（），由于我要用的是远程的ubuntu服务器，因此只能老老实实下载deb包然后通过scp传到服务器上。 启动启动命令为： 1todesk 但是你都作为服务端了，你要g
+          #Ubuntu #Todesk ## 安装 参照：https://www.todesk.com/linux.html官方文档上说： 1sudo apt-get install ./todesk-v4.3.1.0-amd64.deb 但是我试了没用（），由于我要用的是远程的ubuntu服务器，因此只能老老实实下载deb包然后通过scp传到服务器上。 ## 启动 启动命令为： 1todesk 但是你都
         </div>
       </a>
 
@@ -278,7 +278,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/Ubuntu%E6%8E%89%E7%9B%98%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" target="_self">
         <div>
-          Ubuntu最近属实是有点太压抑了，于是斥巨资买下了HOGWARTS，然后在下载的时候发现游戏盘掉了，表现为： 1unable to access &quot;xxx&quot;, an operation is pending 找了一下，原因是上一次拔硬盘的时候没有安全退出 【解决方法】 1sudo fdisk -l  最后的设备/dev/sda1就是出问题的磁盘，于是我们需要修复挂载错误的相应
+          #Ubuntu 最近属实是有点太压抑了，于是斥巨资买下了HOGWARTS，然后在下载的时候发现游戏盘掉了，表现为： 1unable to access &quot;xxx&quot;, an operation is pending 找了一下，原因是上一次拔硬盘的时候没有安全退出 【解决方法】 1sudo fdisk -l  最后的设备/dev/sda1就是出问题的磁盘，于是我们需要修复挂载错误的
         </div>
       </a>
 
@@ -318,7 +318,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/Ubuntu%E9%80%9A%E8%BF%87%E7%BD%91%E7%BB%9C%E5%94%A4%E9%86%92/" target="_self">
         <div>
-          Ubuntu #WakeonLan最近因为自己搭建了一个vps而欣喜若狂而导致日崩。由于某些…的需求，我需要能够再不用的时候将服务器关机。因此我开始折腾远程开机。 我的思路是通过电脑主板自带的Wake on Lan 功能，目前来说大部分主板都有（我的主板是x99 QD4）。最大的问题是在于配置为S5(shutdown)状态下时网卡需要在关机后处于激活状态，而这里需要系统在启动后将对应的网卡状态设置
+          #Ubuntu #WakeonLan 最近因为自己搭建了一个vps而欣喜若狂而导致日崩。由于某些…的需求，我需要能够再不用的时候将服务器关机。因此我开始折腾远程开机。 我的思路是通过电脑主板自带的Wake on Lan 功能，目前来说大部分主板都有（我的主板是x99 QD4）。最大的问题是在于配置为S5(shutdown)状态下时网卡需要在关机后处于激活状态，而这里需要系统在启动后将对应的网卡状态
         </div>
       </a>
 
@@ -360,7 +360,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/Voicemeeter%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" target="_self">
         <div>
-          Voicemeeter一、基础知识输入与输出 硬件输入：就是现实的电脑上的麦克风、你头戴耳麦的麦克风等硬件录音设备。【硬件输入→（发出）→声音信号】（请注意这里的声音指的是电路中的声音信号，而不是你实际听到的声音。下同。） 硬件输出：就是现实的扬声器喇叭、你头戴耳麦的耳机等硬件发声设备。【声音信号→（被接收）→硬件输出】  虚拟输入：就是虚拟录音设备，专门监听系统中各种软件发出的声音信号。【声音信
+          #Voicemeeter 一、基础知识## 输入与输出  硬件输入：就是现实的电脑上的麦克风、你头戴耳麦的麦克风等硬件录音设备。【硬件输入→（发出）→声音信号】（请注意这里的声音指的是电路中的声音信号，而不是你实际听到的声音。下同。） 硬件输出：就是现实的扬声器喇叭、你头戴耳麦的耳机等硬件发声设备。【声音信号→（被接收）→硬件输出】  虚拟输入：就是虚拟录音设备，专门监听系统中各种软件发出的声音信
         </div>
       </a>
 
@@ -400,7 +400,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/Vscode%E4%B8%ADc%E7%BC%96%E8%AF%91%E5%99%A8%E9%85%8D%E7%BD%AE%EF%BC%88mingw64%EF%BC%89/" target="_self">
         <div>
-          VSCode #CppTo Start 安装Vscode 请前往https://code.visualstudio.com/下载你所需要的Vscode版本  下载完了之后，你就可以开始配置C++的运行环境了 Install the extension 打开Vscode 选择拓展选项卡或者使用快捷键Ctrl+Shift+X 搜索C++ 安装   Set up for your C++ environ
+          #VSCode #Cpp ## To Start  安装Vscode 请前往https://code.visualstudio.com/下载你所需要的Vscode版本  下载完了之后，你就可以开始配置C++的运行环境了 ## Install the extension  打开Vscode 选择拓展选项卡或者使用快捷键Ctrl+Shift+X 搜索C++ 安装   ## Set up for you
         </div>
       </a>
 
@@ -442,7 +442,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/Vscode%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE/" target="_self">
         <div>
-          VSCode #Cpp #编译正片开始默认VSCode 只能编译单个文件，若多个文件一起编译，经常会报 undefined reference 找不到引用的错误，比如下面的问题： 1234&quot;C:\Program Files\mingw64\bin\g++.exe&quot; -fdiagnostics-color=always -g C:\Users\ZeroHzzzz\Desktop\
+          #VSCode #Cpp #编译 ## 正片开始 默认VSCode 只能编译单个文件，若多个文件一起编译，经常会报 undefined reference 找不到引用的错误，比如下面的问题： 1234&quot;C:\Program Files\mingw64\bin\g++.exe&quot; -fdiagnostics-color=always -g C:\Users\ZeroHzzzz\De
         </div>
       </a>
 
@@ -486,7 +486,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/Vscode%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%8F%92%E4%BB%B6/" target="_self">
         <div>
-          VSCode #PrettierPrevious事情的起因是我在某一天打开 vscode 后发现了 tab 变成了两个空格而导致我这个极度代码洁癖的人感觉很难受由于懒…由于习惯了编写 go 语言代码保存时候的自动格式化，这让最近因为 c++的goushi作业而焦头烂额的我开始思考能不能在其他语言编写的时候能不能也搞个 由于我平时使用的是 Vscode，因此我就直接使用了 prettier 插件。以
+          #VSCode #Prettier ## Previous 事情的起因是我在某一天打开 vscode 后发现了 tab 变成了两个空格而导致我这个极度代码洁癖的人感觉很难受由于懒…由于习惯了编写 go 语言代码保存时候的自动格式化，这让最近因为 c++的goushi作业而焦头烂额的我开始思考能不能在其他语言编写的时候能不能也搞个 由于我平时使用的是 Vscode，因此我就直接使用了 prettie
         </div>
       </a>
 
@@ -528,7 +528,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/08/05/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88GitHub%EF%BC%89/" target="_self">
         <div>
-          hexo准备工作 GitHub账号 安装git 安装node  创建仓库 创建仓库，并将仓库命名为 username.github.io注意这里的username（）  安装hexo 安装hexonpm install -g hexo-cli checkhexo -v 创建hexo项目并初始化  123hexo init [hexo-blog(你新建的本地博客文件夹的名字，如果不输入默认为当前文件
+          #hexo ## 准备工作  GitHub账号 安装git 安装node  ## 创建仓库  创建仓库，并将仓库命名为 username.github.io注意这里的username（）  ## 安装hexo  安装hexonpm install -g hexo-cli checkhexo -v 创建hexo项目并初始化  123hexo init [hexo-blog(你新建的本地博客文件夹的名
         </div>
       </a>
 
@@ -568,7 +568,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/07/29/%E7%BB%99GitHub%20Pages%E9%85%8D%E7%BD%AECNAME/" target="_self">
         <div>
-          CNAME #GitHubPages什么是 DNS CNAME 记录一个”冠名” （CNAME）记录从一个别名域指向一个”冠名” 域。当一个[[域名|域]]或子域是另一个域的别名时，CNAME记录被用来代替 [[A记录]] 。 所有CNAME记录都必须指向一个域名，而不是指向一个IP地址。 CNAME记录允许你把一个域名（别名）指向另一个域名（规范名）。这样，当用户访问别名时，实际上会被重定向到规
+          #CNAME #GitHubPages ## 什么是 DNS CNAME 记录 一个”冠名” （CNAME）记录从一个别名域指向一个”冠名” 域。当一个[[域名|域]]或子域是另一个域的别名时，CNAME记录被用来代替 [[A记录]] 。 所有CNAME记录都必须指向一个域名，而不是指向一个IP地址。 CNAME记录允许你把一个域名（别名）指向另一个域名（规范名）。这样，当用户访问别名时，实际上会
         </div>
       </a>
 
@@ -610,7 +610,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/07/26/Ubuntu-22-04-LTS%E5%AE%89%E8%A3%85Steam/" target="_self">
         <div>
-          steam #Ubuntu前言很久很久以前，有个人有点受不了用windows这种系统了，由于Have no money（）….经过了一段时间的观望，他开始转向Linux的怀抱。然而又因为某些智力因素于是他决定先从Ubuntu开始…… 众所周知，安装系统后第一件事就是下载steam。原本来说，Linux系统的一大痛点就是不能玩游戏，但是随着 Steam Play 功能的推出，一切都开始有所转机 于是
+          #steam #Ubuntu ## 前言 很久很久以前，有个人有点受不了用windows这种系统了，由于Have no money（）….经过了一段时间的观望，他开始转向Linux的怀抱。然而又因为某些智力因素于是他决定先从Ubuntu开始…… 众所周知，安装系统后第一件事就是下载steam。原本来说，Linux系统的一大痛点就是不能玩游戏，但是随着 Steam Play 功能的推出，一切都开始有
         </div>
       </a>
 
