@@ -287,20 +287,17 @@
 <p>文章的开始我们先来看几种写法：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br><span class="hljs-section">location</span> /b &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br><span class="hljs-section">location</span> /b &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>请你告诉我，这几种写法有什么区别</p>
-<p>## <code>location /b/</code> 和 <code>location /b</code></p>
-<p>这两个东西看起来很像，但是其实区别有点大。</p>
+<h2 id="location-b-和-location-b"><a href="#location-b-和-location-b" class="headerlink" title="location /b/ 和 location /b"></a><code>location /b/</code> 和 <code>location /b</code></h2><p>这两个东西看起来很像，但是其实区别有点大。</p>
 <p>我们先来看<code>location /b/</code>。这个配置匹配的是以<code>/b/</code>开头的路径。例如，<code>/b/something</code> 或 <code>/b/subdir/file</code> 等等。重要的是，这种匹配要求路径紧跟在<code>/b/</code>后面，后面必须有<code>/</code>，而且<strong>不包括</strong><code>/b</code>。</p>
 <p>而<code>location /b</code>这个配置匹配的是以<code>/b</code>开头的路径，既可以匹配<code>/b</code>本身，也可以匹配以<code>/b</code>开头的其他路径。例如，<code>/b</code>, <code>/b/something</code>, <code>/b/subdir/file</code> 都会被匹配。</p>
-<p>## proxy_pass路径末尾有无/</p>
-<p>这两个是不一样的。</p>
+<h2 id="proxy-pass路径末尾有无"><a href="#proxy-pass路径末尾有无" class="headerlink" title="proxy_pass路径末尾有无/"></a>proxy_pass路径末尾有无/</h2><p>这两个是不一样的。</p>
 <p>如果你在 <code>proxy_pass</code> 后面使用的是 <code>http://localhost:2017</code>，即没有带“/”，那么Nginx 会将客户端请求的 URI 直接转发到目标服务器，保持原始 URI 不变。例如：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /test/ &#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://localhost:2017;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>在这种情况下，由于 <code>proxy_pass</code> 没有加斜杠，Nginx 不会去掉匹配的 <code>/test/</code> 前缀部分，而是直接将原始请求完整地转发给目标服务器。所以，假设客户端请求 <code>example.com/test/abc</code>，那么 Nginx 会将请求转发为 <code>http://localhost:2017/test/abc</code>。</p>
 <p>如果你在 <code>proxy_pass</code> 后面加上了斜杠 <code>http://localhost:2017/</code>，在 <code>proxy_pass</code> 后面加上斜杠时，Nginx 会去掉客户端请求的 URI 中和<strong>匹配位置</strong>相关的部分，并替换为目标服务器的根路径。这里的<strong>前缀部分</strong>是指在 Nginx 配置中与 <code>location</code> 指令匹配的那部分 URL。例如：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /test/ &#123;<br>    <span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>在这个例子中，客户端请求的 URI <code>/test/abc</code> 中，<code>/test/</code> 是匹配的前缀部分，而 Nginx 会将这一部分去掉，并把剩余的 <code>/abc</code> 转发给目标服务器。这时，Nginx 会将请求转发为 <code>http://localhost:2017/abc</code>，即<strong>去掉了匹配的前缀 <code>/test/</code>，并将剩余的部分加到目标服务器的根路径后</strong>。</p>
-<p>## 解答</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /b/ &#123;<br>	<span class="hljs-attribute">proxy_pass</span> http://localhost:2017/;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
 <li><strong>客户端请求</strong>: <code>http://example.com/b/abc</code></li>
 <li><strong>Nginx 匹配的部分</strong>: <code>/b/</code></li>

@@ -16,12 +16,12 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="#前向声明 #Cpp 前向声明（Forward Declaration） 是一种告诉编译器某个类型（如类、结构体或函数）存在的方式，而不提供该类型的完整定义。在前向声明中，我们只需要声明该类型的名称，但并不需要包含具体的定义细节。这对于减少编译依赖、提高编译速度有很大帮助。 ## 什么时候使用前向声明？  只声明指针或引用：如果你只需要在某个类或函数中使用指向某类型的指针或引用，而不需要访问其内部">
+    <meta name="description" content="#前向声明 #Cpp 前向声明（Forward Declaration） 是一种告诉编译器某个类型（如类、结构体或函数）存在的方式，而不提供该类型的完整定义。在前向声明中，我们只需要声明该类型的名称，但并不需要包含具体的定义细节。这对于减少编译依赖、提高编译速度有很大帮助。 什么时候使用前向声明？ 只声明指针或引用：如果你只需要在某个类或函数中使用指向某类型的指针或引用，而不需要访问其内部成员时，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++前向声明">
 <meta property="og:url" content="http://zerohzzzz.github.io/2024/09/06/C++%E5%89%8D%E5%90%91%E5%A3%B0%E6%98%8E/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="#前向声明 #Cpp 前向声明（Forward Declaration） 是一种告诉编译器某个类型（如类、结构体或函数）存在的方式，而不提供该类型的完整定义。在前向声明中，我们只需要声明该类型的名称，但并不需要包含具体的定义细节。这对于减少编译依赖、提高编译速度有很大帮助。 ## 什么时候使用前向声明？  只声明指针或引用：如果你只需要在某个类或函数中使用指向某类型的指针或引用，而不需要访问其内部">
+<meta property="og:description" content="#前向声明 #Cpp 前向声明（Forward Declaration） 是一种告诉编译器某个类型（如类、结构体或函数）存在的方式，而不提供该类型的完整定义。在前向声明中，我们只需要声明该类型的名称，但并不需要包含具体的定义细节。这对于减少编译依赖、提高编译速度有很大帮助。 什么时候使用前向声明？ 只声明指针或引用：如果你只需要在某个类或函数中使用指向某类型的指针或引用，而不需要访问其内部成员时，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-09-06T17:14:00.000Z">
 <meta property="article:modified_time" content="2024-09-06T22:36:00.000Z">
@@ -286,8 +286,7 @@
                 
                 <p>#前向声明 #Cpp</p>
 <p><strong>前向声明（Forward Declaration）</strong> 是一种告诉编译器某个类型（如类、结构体或函数）存在的方式，而不提供该类型的完整定义。在前向声明中，我们只需要声明该类型的名称，但并不需要包含具体的定义细节。这对于减少编译依赖、提高编译速度有很大帮助。</p>
-<p>## 什么时候使用前向声明？</p>
-<ol>
+<h2 id="什么时候使用前向声明？"><a href="#什么时候使用前向声明？" class="headerlink" title="什么时候使用前向声明？"></a>什么时候使用前向声明？</h2><ol>
 <li><strong>只声明指针或引用</strong>：如果你只需要在某个类或函数中使用指向某类型的指针或引用，而不需要访问其内部成员时，可以使用前向声明。</li>
 <li><strong>减少编译依赖</strong>：前向声明能够减少不必要的头文件包含，使得代码模块之间的依赖关系更加简洁，从而减少编译时间和复杂度。</li>
 </ol>

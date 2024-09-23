@@ -293,15 +293,11 @@
 <p><strong>OpenCV 读取图像</strong><br>在上述代码中，<code>cv2.imread()</code> 用于读取图像。我们指定了 <code>cv2.IMREAD_GRAYSCALE</code> 参数，这意味着图像将被读取为灰度图像。读取的图像将以 NumPy 数组的形式返回，数组的形状可以通过 <code>img.shape</code> 获取。</p>
 <p><strong>PIL 读取图像</strong><br>使用 <code>Image.open()</code> 函数可以通过 PIL 读取图像。为了与 OpenCV 的灰度读取保持一致，我们使用 <code>convert(&quot;L&quot;)</code> 将图像转换为灰度模式。PIL 读取的图像以 PIL Image 对象的形式返回。</p>
 <p><strong>转换为 PyTorch Tensor</strong><br>无论是使用 OpenCV 还是 PIL 读取图像，我们最终都希望将图像转换为 PyTorch 的 Tensor 格式，以便输入到神经网络中。为此，我们使用了 torchvision 提供的 <code>transforms.ToTensor()</code> 转换。</p>
-<p>## 坑点</p>
-<p>### OpenCV 和 PIL 读取图像的格式差异</p>
-<p>一个显而易见的差异是 OpenCV 和 PIL 在读取图像时使用的默认格式不同。OpenCV 默认读取图像为 BGR 格式，而 PIL 默认使用 RGB 格式。这在处理彩色图像时尤为重要，因为如果不注意这一点，可能会导致颜色通道的错误匹配。虽然在本示例中，我们读取的是灰度图像，因此这一点并不会引发问题，但在彩色图像处理中需要格外小心。</p>
-<p>### 数据类型和范围的差异</p>
-<p>OpenCV 读取的图像是以 NumPy 数组的形式存在，数据类型通常为 <code>uint8</code>，值范围是 [0, 255]。而使用 <code>transforms.ToTensor()</code> 进行转换时，NumPy 数组会被转换为一个浮点数 Tensor，值的范围是 [0, 1]。</p>
+<h2 id="坑点"><a href="#坑点" class="headerlink" title="坑点"></a>坑点</h2><h3 id="OpenCV-和-PIL-读取图像的格式差异"><a href="#OpenCV-和-PIL-读取图像的格式差异" class="headerlink" title="OpenCV 和 PIL 读取图像的格式差异"></a>OpenCV 和 PIL 读取图像的格式差异</h3><p>一个显而易见的差异是 OpenCV 和 PIL 在读取图像时使用的默认格式不同。OpenCV 默认读取图像为 BGR 格式，而 PIL 默认使用 RGB 格式。这在处理彩色图像时尤为重要，因为如果不注意这一点，可能会导致颜色通道的错误匹配。虽然在本示例中，我们读取的是灰度图像，因此这一点并不会引发问题，但在彩色图像处理中需要格外小心。</p>
+<h3 id="数据类型和范围的差异"><a href="#数据类型和范围的差异" class="headerlink" title="数据类型和范围的差异"></a>数据类型和范围的差异</h3><p>OpenCV 读取的图像是以 NumPy 数组的形式存在，数据类型通常为 <code>uint8</code>，值范围是 [0, 255]。而使用 <code>transforms.ToTensor()</code> 进行转换时，NumPy 数组会被转换为一个浮点数 Tensor，值的范围是 [0, 1]。</p>
 <p>相比之下，PIL 读取图像后使用 <code>transforms.ToTensor()</code> 转换时，PIL Image 对象中的每个像素值同样会被归一化到 [0, 1] 范围内。</p>
 <p>这种差异在处理和显示图像时可能会产生问题。例如，如果你在使用 OpenCV 读取图像并进行某些操作后，再用 PIL 显示图像，可能会看到意想不到的结果，因为数值范围的差异可能导致图像亮度和对比度异常。</p>
-<p>### 数据形状的差异</p>
-<p>当使用 OpenCV 读取灰度图像时，返回的 NumPy 数组是一个二维数组，形状为 <code>(height, width)</code>。而使用 PIL 读取灰度图像并进行 Tensor 转换后，返回的是一个三维 Tensor，形状为 <code>(1, height, width)</code>，即多了一个颜色通道维度。这是因为 PyTorch 中的 Tensor 通常期望有一个明确的通道维度，无论图像是彩色还是灰度。</p>
+<h3 id="数据形状的差异"><a href="#数据形状的差异" class="headerlink" title="数据形状的差异"></a>数据形状的差异</h3><p>当使用 OpenCV 读取灰度图像时，返回的 NumPy 数组是一个二维数组，形状为 <code>(height, width)</code>。而使用 PIL 读取灰度图像并进行 Tensor 转换后，返回的是一个三维 Tensor，形状为 <code>(1, height, width)</code>，即多了一个颜色通道维度。这是因为 PyTorch 中的 Tensor 通常期望有一个明确的通道维度，无论图像是彩色还是灰度。</p>
 <p>这意味着在使用 OpenCV 读取灰度图像并转换为 Tensor 时，我们可能需要手动添加一个通道维度，以使其与 PIL 的输出保持一致。可以使用以下代码进行转换：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">img = img[..., <span class="hljs-literal">None</span>]  <span class="hljs-comment"># 增加一个维度</span><br>img = data_transforms[<span class="hljs-string">&quot;test&quot;</span>](img)<br></code></pre></td></tr></table></figure>
 

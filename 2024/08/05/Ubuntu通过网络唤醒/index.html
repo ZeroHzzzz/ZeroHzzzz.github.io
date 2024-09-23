@@ -291,8 +291,7 @@
 <p>我的思路是通过电脑主板自带的Wake on Lan 功能，目前来说大部分主板都有（我的主板是x99 QD4）。最大的问题是在于配置为S5(shutdown)状态下时网卡需要在关机后处于激活状态，而这里需要系统在启动后将对应的网卡状态设置为对应状态。（因为Ubuntu20.04后网络唤醒重启之后网卡状态设置就会失效。。。不知道为啥）</p>
 <p>过程很简单，即通过发送一组特殊格式的网络封包（Magic Packet）给具有某个MAC地址的电脑，让该电脑从睡眠模式甚至是关机模式苏醒，即从ACPI的Sx(S3，S4，S5)模式返回S0运行模式。</p>
 <p>根据以上的思路，我们就开始着手准备了。</p>
-<p>## 服务端配置</p>
-<p>我们可以通过ethtool工具来查看并修改网卡状态，因此首先安装ethtool工具：</p>
+<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><p>我们可以通过ethtool工具来查看并修改网卡状态，因此首先安装ethtool工具：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt update<br><span class="hljs-built_in">sudo</span> apt install ethtool<br></code></pre></td></tr></table></figure>
 <p>通过ifconfig查看网络信息：</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">ifconfig</span><br></code></pre></td></tr></table></figure>
@@ -323,12 +322,9 @@
 <p>可以看到：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs routeros">○ wakeonlan.service - <span class="hljs-built_in">Enable</span> Wake On<span class="hljs-built_in"> Lan</span><br><span class="hljs-built_in"></span>     Loaded: loaded (/etc/systemd/system/wol.service; enabled; vendor preset: enabled)<br>     Active: inactive (dead) since Tue 2024-02-20 23:32:35 +08; 28min ago<br>   Main PID: 948 (<span class="hljs-attribute">code</span>=exited, <span class="hljs-attribute">status</span>=0/SUCCESS)<br>        CPU: 2ms<br><br>Feb 20 23:32:34<span class="hljs-built_in"> Server </span>systemd[1]: Starting <span class="hljs-built_in">Enable</span> Wake On Lan<span class="hljs-built_in">..</span>.<br>Feb 20 23:32:35<span class="hljs-built_in"> Server </span>systemd[1]: wol.service: Deactivated successfully.<br>Feb 20 23:32:35<span class="hljs-built_in"> Server </span>systemd[1]: Finished <span class="hljs-built_in">Enable</span> Wake On Lan.<br></code></pre></td></tr></table></figure>
 <p>说明服务正常运行。</p>
-<p>## 远程启动</p>
-<p>### Ubuntu &amp;&amp; Mac</p>
-<p>以Ubuntu和Mac为例，在命令行中执行wakeonlan xx:xx:xx:xx:xx:xx （输入Ubuntu机器对应的mac地址）就可以唤醒机器了</p>
+<h2 id="远程启动"><a href="#远程启动" class="headerlink" title="远程启动"></a>远程启动</h2><h3 id="Ubuntu-amp-amp-Mac"><a href="#Ubuntu-amp-amp-Mac" class="headerlink" title="Ubuntu &amp;&amp; Mac"></a>Ubuntu &amp;&amp; Mac</h3><p>以Ubuntu和Mac为例，在命令行中执行wakeonlan xx:xx:xx:xx:xx:xx （输入Ubuntu机器对应的mac地址）就可以唤醒机器了</p>
 <p>但是前提是安装了wakeonlan</p>
-<p>### windows</p>
-<p>这里我偷懒了，不想自己写一个脚本出来，因此我就用一些现成的工具了。此处我选择的是<a target="_blank" rel="noopener" href="https://www.depicus.com/wake-on-lan/wake-on-lan-gui">WakeOnLanGui</a></p>
+<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><p>这里我偷懒了，不想自己写一个脚本出来，因此我就用一些现成的工具了。此处我选择的是<a target="_blank" rel="noopener" href="https://www.depicus.com/wake-on-lan/wake-on-lan-gui">WakeOnLanGui</a></p>
 <p>界面如下：</p>
 <p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202408281844763.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <p>根据实际情况填写MAC地址、被控端域名\ip、子网掩码和端口号（任一）就行了</p>
