@@ -1,0 +1,926 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/ZeroHzzzz.jpg">
+  <link rel="icon" href="/img/ZeroHzzzz.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ZeroHzzzz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="#计算机网络 什么是数据链路层首先我们需要知道数据链路层这个玩意是干啥的。数据链路层是计算机网络中负责在两台直接相连设备之间传输数据的层，它位于物理层之上，网络层之下。它的核心任务是确保数据从一台设备可靠地传输到另一台设备。 省流一下就是主要解决三个问题：封装成帧、透明传输和差错检测。 他的工作确保了网络通信的基础，使上层协议能够在稳定的链路上进行有效的数据交换。 什么是透明传输透明传输 是数据链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据链路层">
+<meta property="og:url" content="http://zerohzzzz.github.io/2024/12/05/%E5%8D%81%E4%B8%87%E4%B8%AA%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B9%8B%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/index.html">
+<meta property="og:site_name" content="Welcome To my Blog">
+<meta property="og:description" content="#计算机网络 什么是数据链路层首先我们需要知道数据链路层这个玩意是干啥的。数据链路层是计算机网络中负责在两台直接相连设备之间传输数据的层，它位于物理层之上，网络层之下。它的核心任务是确保数据从一台设备可靠地传输到另一台设备。 省流一下就是主要解决三个问题：封装成帧、透明传输和差错检测。 他的工作确保了网络通信的基础，使上层协议能够在稳定的链路上进行有效的数据交换。 什么是透明传输透明传输 是数据链">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412031817335.png">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051744463.png">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051842602.png">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051925899.png">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051932804.png">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051930620.png">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052023918.png">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052024847.png">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052024677.png">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052024379.png">
+<meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052043289.png">
+<meta property="article:published_time" content="2024-12-05T12:09:00.000Z">
+<meta property="article:modified_time" content="2024-12-05T20:48:00.000Z">
+<meta property="article:author" content="ZeroHzzzz">
+<meta property="article:tag" content="#计算机网络">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412031817335.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>数据链路层 - Welcome To my Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zerohzzzz.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ZeroHzzzz</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数据链路层"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-12-05 12:09" pubdate>
+          December 5, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          85 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">数据链路层</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>#计算机网络</p>
+<h1 id="什么是数据链路层"><a href="#什么是数据链路层" class="headerlink" title="什么是数据链路层"></a>什么是数据链路层</h1><p>首先我们需要知道数据链路层这个玩意是干啥的。数据链路层是计算机网络中负责在两台直接相连设备之间传输数据的层，它位于物理层之上，网络层之下。它的核心任务是确保数据从一台设备可靠地传输到另一台设备。</p>
+<p>省流一下就是主要解决三个问题：<code>封装成帧</code>、<code>透明传输</code>和<code>差错检测</code>。</p>
+<p>他的工作确保了网络通信的基础，使上层协议能够在稳定的链路上进行有效的数据交换。</p>
+<h1 id="什么是透明传输"><a href="#什么是透明传输" class="headerlink" title="什么是透明传输"></a>什么是透明传输</h1><p><strong>透明传输</strong> 是数据链路层的一项关键特性，简单来说就两个作用：确保数据完整、对上层协议透明。</p>
+<h2 id="为什么叫透明"><a href="#为什么叫透明" class="headerlink" title="为什么叫透明"></a>为什么叫透明</h2><p>在<strong>透明传输</strong>中，”透明”这个词指的是数据链路层对数据的处理是<strong>无缝的</strong>，即数据传输的过程对上层协议和应用程序是<strong>透明的</strong>，它们不需要知道链路层的内部处理细节。</p>
+<p>链路层处理数据时，不会干扰或改变数据的内容，也不会让上层协议感知到数据在链路层传输过程中所做的任何操作。</p>
+<h2 id="为什么需要透明传输"><a href="#为什么需要透明传输" class="headerlink" title="为什么需要透明传输"></a>为什么需要透明传输</h2><p>在数据链路层进行数据传输时，通常会使用某些特殊的控制字符来标识数据帧的<strong>开始</strong>和<strong>结束</strong>（例如 <code>01111110</code> 作为以太网帧的边界标识）。如果传输的数据本身包含了这些特殊字符，链路层可能误将数据中的内容当作帧的开始或结束标识，从而导致数据解析错误或丢失。</p>
+<p><strong>透明传输</strong> 就是为了避免这种情况发生，它确保无论数据中包含什么内容，链路层都能正确地识别数据帧的边界，并且不受到数据本身的干扰。</p>
+<h2 id="透明传输是如何实现的？"><a href="#透明传输是如何实现的？" class="headerlink" title="透明传输是如何实现的？"></a>透明传输是如何实现的？</h2><p>透明传输通常通过 <strong>位填充（Bit Stuffing）</strong> 或 <strong>字符填充（Byte Stuffing）</strong> 技术来实现。</p>
+<h3 id="1-位填充（Bit-Stuffing）"><a href="#1-位填充（Bit-Stuffing）" class="headerlink" title="1. 位填充（Bit Stuffing）"></a>1. <strong>位填充（Bit Stuffing）</strong></h3><p>位填充是在数据中插入额外的比特（通常是 <code>0</code>），避免数据中出现连续的特殊标志位模式（如“11111”）。这样就能确保这些标志位不会被误判为帧的开始或结束标志。</p>
+<h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><ul>
+<li>假设链路层用一个特定的比特模式（例如连续的 5 个 <code>1</code> 比特 <code>11111</code>）作为帧的开始和结束标志。</li>
+<li>如果数据中包含了连续的 <code>11111</code>，链路层会在该模式后插入一个 <code>0</code>，打破连续的 <code>1</code>，避免它被误认为是帧的边界。</li>
+<li>接收方收到数据时，会去掉多余的 <code>0</code>，还原原始数据。</li>
+</ul>
+<h4 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h4><ul>
+<li>如果数据流中有 <code>11111</code>，而 <code>11111</code> 作为帧的边界标志，链路层会在其后插入一个 <code>0</code>，变成 <code>111110</code></li>
+<li>接收方在解码时，去掉多余的 <code>0</code>，还原为 <code>11111</code>。</li>
+</ul>
+<h3 id="2-字符填充（Byte-Stuffing）"><a href="#2-字符填充（Byte-Stuffing）" class="headerlink" title="2. 字符填充（Byte Stuffing）"></a>2. <strong>字符填充（Byte Stuffing）</strong></h3><p>字符填充是在数据流中插入特定的转义字符，避免数据中包含链路层的帧边界字符。</p>
+<h4 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h4><ul>
+<li>假设链路层使用某些特定的字节（例如 <code>0x7E</code>）作为帧的起始和结束标志。</li>
+<li>如果数据中出现了 <code>0x7E</code>，链路层会将它转义为另一个字节（如 <code>0x7D 0x5E</code>），避免它被误认为是帧的边界。</li>
+<li>接收方收到数据后，会知道这些转义字符，去掉它们，还原数据。</li>
+</ul>
+<h4 id="举个例子-1"><a href="#举个例子-1" class="headerlink" title="举个例子"></a>举个例子</h4><ul>
+<li>如果数据部分包含 <code>0x7E</code>，链路层会将其替换为 <code>0x7D 0x5E</code>。</li>
+<li>接收方收到 <code>0x7D 0x5E</code> 时，知道应该还原为 <code>0x7E</code>。</li>
+</ul>
+<h1 id="什么是协议数据单元（PDU）"><a href="#什么是协议数据单元（PDU）" class="headerlink" title="什么是协议数据单元（PDU）"></a>什么是协议数据单元（PDU）</h1><p>了解数据链路层之前我我们还需要了解一个概念——协议数据单元（PDU）。什么是协议数据单元（PDU）？</p>
+<p><strong>协议数据单元（PDU）</strong> 是指在网络通信中，数据在每一层协议中被封装后的单位。每一层协议都有其自己的PDU，用于在该层与其它设备交换数据。简而言之，PDU 是协议处理的数据块，不同层协议的 PDU 在结构和格式上是不同的。</p>
+<p>最重要的是，他其实是数据在网络中从一层传递到另一层的过程的缩影。</p>
+<h2 id="各层协议的-PDU"><a href="#各层协议的-PDU" class="headerlink" title="各层协议的 PDU"></a>各层协议的 PDU</h2><ul>
+<li><strong>物理层</strong>：物理层传输的是比特（Bit），因此物理层的 PDU 是 <strong>比特</strong>。</li>
+<li><strong>数据链路层</strong>：数据链路层将网络层传递下来的数据封装成 <strong>帧（Frame）</strong>，所以数据链路层的 PDU 是帧。</li>
+<li><strong>网络层</strong>：网络层负责将数据封装成 <strong>数据包（Packet）</strong>，所以网络层的 PDU 是数据包。</li>
+<li><strong>传输层</strong>：传输层将数据分为 <strong>段（Segment）</strong>（TCP协议）或 <strong>数据报（Datagram）</strong>（UDP协议），所以传输层的 PDU 是段或数据报。</li>
+<li><strong>会话层、表示层、应用层</strong>：这些层通常传输 <strong>数据（Data）</strong>，所以它们的 PDU 一般被称为数据。</li>
+</ul>
+<h2 id="举个例子-2"><a href="#举个例子-2" class="headerlink" title="举个例子"></a>举个例子</h2><ol>
+<li>网络层从上层接收到数据（比如应用层的数据），会将这些数据封装为 <strong>数据包</strong>，并附加必要的网络层信息，如目标IP地址。</li>
+<li>数据链路层则会将网络层的 <strong>数据包</strong> 封装为 <strong>帧</strong>，并附加链路层的信息（如MAC地址）。</li>
+<li>物理层再将这些 <strong>帧</strong> 转换成 <strong>比特</strong>，通过物理媒介发送。</li>
+</ol>
+<h2 id="数据链路层的帧是什么样的"><a href="#数据链路层的帧是什么样的" class="headerlink" title="数据链路层的帧是什么样的"></a>数据链路层的帧是什么样的</h2><p>虽然不同的网络协议可能有不同的帧结构，但一般来说，帧都包含以下几个部分：</p>
+<ul>
+<li><strong>帧头（Header）</strong><ul>
+<li><strong>目的地址（Destination MAC Address）</strong>：接收设备的 MAC 地址。就像信封上的收件人地址，确保数据能到达正确的设备。</li>
+<li><strong>源地址（Source MAC Address）</strong>：发送设备的 MAC 地址。类似信封上的发件人地址，让接收方知道是谁发送的。</li>
+<li><strong>类型（Type/Protocol）</strong>：表明帧中携带的数据类型。例如，以太网帧会标明数据是上层的 IP 数据包还是 ARP 请求。</li>
+<li><strong>控制信息（Control Information）</strong>：一些帧格式中可能包括如流量控制、优先级、顺序等信息，帮助处理数据传输中的细节。</li>
+</ul>
+</li>
+<li><strong>数据部分（Payload/Data）</strong><ul>
+<li>这是帧的主要内容，包含了网络层传来的数据包（如 IP 数据包）。这部分数据将被封装在帧内部，并在数据链路层传输。</li>
+<li>数据部分的大小根据协议不同有所不同，但通常有一个最小值（例如，以太网帧的最小有效负载为 46 字节），否则帧可能会被填充。</li>
+</ul>
+</li>
+<li><strong>帧尾（Trailer）</strong><ul>
+<li><strong>错误检测码（FCS/CRC）</strong>：帧尾通常包含一个 <strong>循环冗余校验（CRC）</strong> 或 <strong>帧校验序列（FCS）</strong>，用来进行 <strong>错误检测</strong>。接收方会根据这个校验码检查数据是否在传输过程中出现了错误。如果错误检测码与接收到的内容不符，接收方会丢弃帧并请求重传。</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据链路层，在干啥？"><a href="#数据链路层，在干啥？" class="headerlink" title="数据链路层，在干啥？"></a>数据链路层，在干啥？</h1><p>数据链路层的任务是保证设备之间的通信能顺利进行。它就像是负责包裹的工作人员，确保数据被正确打包、检查、发送，并且没有错误。它控制了数据的流动速度，确保多个设备不会“抢”数据，保证数据能准确到达目的地。就像是为信息传输提供安全和高效的“道路”，确保一切顺畅进行。</p>
+<h2 id="帧的封装与解封装"><a href="#帧的封装与解封装" class="headerlink" title="帧的封装与解封装"></a>帧的封装与解封装</h2><h3 id="为什么需要封装成帧？"><a href="#为什么需要封装成帧？" class="headerlink" title="为什么需要封装成帧？"></a>为什么需要封装成帧？</h3><p>网络层传输的是<strong>数据包（Packet）</strong>，而数据链路层需要将这个数据包封装成帧。帧不仅包含数据包的内容，还加上了数据链路层所需的控制信息（如地址、错误检测码等）。这样做的好处是：</p>
+<ul>
+<li><strong>寻址</strong>：确保数据能够传输到正确的设备。</li>
+<li><strong>错误检测</strong>：检查数据是否在传输过程中损坏。</li>
+<li><strong>数据控制</strong>：包括流量控制和介质访问控制等。</li>
+</ul>
+<h3 id="如何解封装"><a href="#如何解封装" class="headerlink" title="如何解封装"></a>如何解封装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs tree">接收物理层数据（比特流）<br>         |<br>  数据链路层接收帧<br>         |<br>    检查目的地址 → 如果不匹配，丢弃帧<br>         |<br>   计算 FCS 校验 → 如果校验失败，丢弃帧<br>         |<br>     去除帧头和帧尾 - (去除以太网帧头和 FCS)<br>         |<br>   提取有效负载（上层数据包）<br>         |<br>    将数据传递给网络层<br></code></pre></td></tr></table></figure>
+<h2 id="错误检测"><a href="#错误检测" class="headerlink" title="错误检测"></a>错误检测</h2><p>错误检测主要发生在帧的解封装流程中，这里为了凸显出数据链路层的特性因此把他单独拿出来说。</p>
+<p>首先我们要搞清楚 FCS 和 CRC 的概念。<strong>FCS</strong> 是帧检查序列，通常作为帧尾的一部分，在数据链路层用于检测在数据传输过程中是否发生了位错误。FCS 是一种冗余信息，它通过某种算法生成并附加到数据帧中，用于接收方验证数据的完整性。</p>
+<p>而<strong>CRC</strong> 是一种常用的差错检测技术，它通过对数据帧进行数学运算（通常是除法运算），生成一个冗余值（校验码），然后将这个冗余值附加到数据后面作为帧的一部分。接收方在收到数据时，使用相同的 CRC 算法重新计算数据的校验码，并与接收到的 CRC 校验码进行比较。如果两者一致，则认为数据未发生错误；如果不一致，则说明数据在传输过程中发生了错误。</p>
+<p><strong>CRC 是一种差错检测算法，而 FCS 是使用 CRC 算法计算出的校验码，并附加在数据帧中</strong>。FCS 是实际在帧中传输的校验信息。</p>
+<p>至于错误检测出来怎么办，这个就不归数据链路层管了。</p>
+<h3 id="CRC-怎么计算"><a href="#CRC-怎么计算" class="headerlink" title="CRC 怎么计算"></a>CRC 怎么计算</h3><p>我看下面视频学会的（</p>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=713069598&bvid=BV1XX4y1M79c&cid=264454435&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=713069598&bvid=BV1XX4y1M79c&cid=264453700&p=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
+<h2 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h2><h3 id="为什么需要流量控制？"><a href="#为什么需要流量控制？" class="headerlink" title="为什么需要流量控制？"></a>为什么需要流量控制？</h3><p>在通信中，发送方和接收方的处理能力往往是不一样的。如果发送方比接收方处理得更快，接收方的缓冲区可能会满，导致数据丢失。发送方一直以过快的速度发送数据，接收方无法及时处理，可能会造成网络拥塞，影响其他通信。</p>
+<h3 id="点对点信道的数据链路层流量控制"><a href="#点对点信道的数据链路层流量控制" class="headerlink" title="点对点信道的数据链路层流量控制"></a>点对点信道的数据链路层流量控制</h3><p>点对点信道指的是在两个设备之间直接进行通信的场景，如以太网的两个主机直接连接、串行通信、VPN连接等。在点对点信道中，流量控制通常关注的是 <strong>发送方和接收方</strong> 之间的数据流动，确保数据能够被有效且高效地传输。</p>
+<h4 id="流量控制机制："><a href="#流量控制机制：" class="headerlink" title="流量控制机制："></a>流量控制机制：</h4><ul>
+<li><strong>滑动窗口协议（Sliding Window Protocol）</strong>：常用于点对点的流量控制，特别是在 <strong>全双工</strong> 信道中（即双方可以同时发送和接收）。滑动窗口协议通过动态调整窗口的大小来控制发送方可以发送多少数据。<br>在滑动窗口协议中，接收方会告诉发送方它的缓冲区可用空间（即窗口大小）。发送方根据窗口大小控制发送的数据量，确保不会超出接收方的接收能力。</li>
+<li><strong>停等协议（Stop-and-Wait）</strong>：另一种常见的流量控制机制。在这种协议中，发送方每发送完一个数据帧后会停止，等待接收方的确认（ACK）消息。如果接收方的缓冲区满了，它会通过确认消息告诉发送方暂停发送数据，直到接收方有足够的空间。</li>
+</ul>
+<h3 id="广播信道的数据链路层流量控制"><a href="#广播信道的数据链路层流量控制" class="headerlink" title="广播信道的数据链路层流量控制"></a>广播信道的数据链路层流量控制</h3><p>广播信道指的是多个设备共享同一个传输信道，数据从一个发送方广播到多个接收方的情景。例如，以太网中的广播通信、Wi-Fi 无线网络等，都是典型的广播信道。广播信道的特点是发送方会向网络中所有设备发送数据，可能导致多个接收方同时接收到数据。</p>
+<h4 id="CSMA-CD（Carrier-Sense-Multiple-Access-with-Collision-Detection）"><a href="#CSMA-CD（Carrier-Sense-Multiple-Access-with-Collision-Detection）" class="headerlink" title="CSMA/CD（Carrier Sense Multiple Access with Collision Detection）"></a>CSMA/CD（Carrier Sense Multiple Access with Collision Detection）</h4><p>用于以太网中的广播信道，主要解决的是发送方如何避免与其他设备的冲突。虽然它不是严格意义上的流量控制机制，但它通过监听信道并检测冲突来减少流量的无效发送，避免了数据的过度发送。</p>
+<p>CSMA/CD 工作流程如下：</p>
+<ol>
+<li>发送方在发送数据前首先监听信道，确保信道空闲。</li>
+<li>如果信道空闲，则开始发送数据。如果信道繁忙，发送方将等待。</li>
+<li>冲突检测：当发送方开始发送数据时，数据链路层的MAC子层会<strong>监控信道</strong>，并通过物理层的信号传输来检测信道是否发生冲突。如果冲突发生，MAC层会<strong>检测到信号不一致</strong>，即自己发送的信号与接收到的信号不匹配。一旦冲突被检测到，MAC层会通过物理层发送冲突信号（在物理层以电气信号的形式传播），然后<strong>中止发送</strong>并开始重试机制。</li>
+<li>如果发生数据碰撞，发送方会暂停一段时间后重新发送。<br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412031817335.png" srcset="/img/loading.gif" lazyload alt="image.png"></li>
+</ol>
+<ul>
+<li>在 t ＝ 0 时，A 发送数据。B 检测到信道为空闲。</li>
+<li>在 t ＝ τ − δ 时（这里 τ &gt; δ &gt; 0 ），A 发送的数据还没有到达 B 时，由于 B 检测到信道是空闲的，因此 B 发送数据。</li>
+<li>经过时间 δ / 2 后，即在 t ＝ τ − δ / 2 时，A 发送的数据和 B 发送的数据发生了碰撞。但这时 A 和 B 都不知道发生了碰撞。</li>
+<li>在 t ＝ τ 时，B 检测到发生了碰撞，于是停止发送数据。</li>
+<li>在 t ＝ 2 τ − δ 时，A 也检测到发生了碰撞，因而也停止发送数据。</li>
+<li>A 和 B 发送数据均失败，它们都要推迟一段时间再重新发送。</li>
+</ul>
+<p>那么问题来了，碰撞之后，什么时候重发呢？</p>
+<h4 id="二进制指数类型退避算法"><a href="#二进制指数类型退避算法" class="headerlink" title="二进制指数类型退避算法"></a>二进制指数类型退避算法</h4><p>其基本思想就是设备在检测到冲突后等待一个随机的时间间隔再尝试重新发送数据，<strong>时间间隔是以“倍数递增”的方式选择的</strong>，即随着重试次数的增加，等待的随机时间间隔范围逐渐变大。这种递增范围是以 <strong>指数增长</strong> 的方式实现的。</p>
+<h1 id="数据链路层使用的信道"><a href="#数据链路层使用的信道" class="headerlink" title="数据链路层使用的信道"></a>数据链路层使用的信道</h1><p>在数据链路层中，<strong>信道</strong>（Channel）通常指的是数据在网络中传输的媒介或路径。它是物理设备和通信协议之间的一种逻辑或物理连接通道，用于在网络中的设备之间传递数据。信道可以是物理的（如电缆、光纤、无线电波等），也可以是逻辑上的（如虚拟连接、交换机、路由器等设备之间的路径）。</p>
+<p>根据信道的类型，我们主要将信道分为两种。</p>
+<h2 id="点对点信道"><a href="#点对点信道" class="headerlink" title="点对点信道"></a>点对点信道</h2><p>是指两个设备直接连接的信道。数据传输仅限于这两个设备之间，不涉及其他设备的干扰或竞争，因此点对点信道通常具有较高的稳定性和较低的延迟。在点对点信道中，常见的协议包括<strong>PPP协议</strong>。</p>
+<h3 id="PPP协议"><a href="#PPP协议" class="headerlink" title="PPP协议"></a>PPP协议</h3><p>PPP（Point-to-Point Protocol）协议是一种广泛应用于点对点连接的协议，常用于通过电话线、串口线、专用线路或虚拟专用网络（VPN）等方式进行两台设备间的数据通信。PPP协议提供了链路建立、认证、数据传输和链路终止等功能。其工作原理可以分为以下几个阶段：</p>
+<h4 id="链路建立"><a href="#链路建立" class="headerlink" title="链路建立"></a>链路建立</h4><p>在这个阶段，PPP协议通过一系列的控制帧来建立物理链路。链路建立过程使用 <strong>LCP（Link Control Protocol）</strong> 来进行。</p>
+<ul>
+<li><strong>LCP协商</strong>：双方通过LCP交换配置请求、配置确认、配置拒绝等信息来协商链路的基本参数，如最大接收单元（MRU）、认证方式等。</li>
+<li><strong>链路质量监控</strong>：LCP还会检测链路质量，比如链路的可靠性、有效性等。</li>
+</ul>
+<h4 id="身份验证"><a href="#身份验证" class="headerlink" title="身份验证"></a>身份验证</h4><p>PPP可以选择是否进行身份验证，通常在需要对通信的两方进行身份验证时，使用 <strong>PAP（Password Authentication Protocol）</strong> 或 <strong>CHAP（Challenge Handshake Authentication Protocol）</strong> 来完成。</p>
+<ul>
+<li><strong>PAP</strong>：简单的密码验证协议，发送用户名和密码以进行身份验证，存在一定的安全风险。</li>
+<li><strong>CHAP</strong>：一种更为安全的认证方式，通过发送挑战（challenge）信息和响应（response）信息进行身份验证，且会定期重新认证。</li>
+</ul>
+<h4 id="网络层协议协商"><a href="#网络层协议协商" class="headerlink" title="网络层协议协商"></a>网络层协议协商</h4><p>在这个阶段，PPP会协商并启用网络层协议（如IP、IPX等）。这一步使用 <strong>NCP（Network Control Protocol）</strong> 协议来进行。NCP允许PPP协议与不同的网络层协议进行交互，确保网络协议的数据能够通过点对点链路传输。</p>
+<ul>
+<li><strong>NCP协商</strong>：通过NCP，PPP协商启用某些网络层协议，如IP协议、IPX协议等。</li>
+<li>每个网络层协议都有自己独立的NCP。例如，IP协议使用 <strong>IPCP（IP Control Protocol）</strong>。</li>
+</ul>
+<h4 id="数据传输"><a href="#数据传输" class="headerlink" title="数据传输"></a>数据传输</h4><p>一旦链路建立并完成了身份验证与协议协商，PPP就进入数据传输阶段。在这个阶段，数据通过PPP的封装格式进行传输。</p>
+<ul>
+<li>PPP的数据帧包括：起始标志、地址字段、控制字段、协议字段、数据字段、循环冗余检查（CRC）字段等。</li>
+<li>PPP使用一种简单的帧结构来传输数据，具有较低的协议开销。</li>
+</ul>
+<h4 id="链路终止"><a href="#链路终止" class="headerlink" title="链路终止"></a>链路终止</h4><p>在通信结束时，PPP协议会终止链路。链路终止使用LCP来完成，LCP交换终止请求和确认消息以断开链路。</p>
+<h3 id="PPP帧结构"><a href="#PPP帧结构" class="headerlink" title="PPP帧结构"></a>PPP帧结构</h3><p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051744463.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li><strong>协议独立性</strong>：PPP支持多种网络层协议，能够在同一链路上并行使用多种协议。</li>
+<li><strong>错误检测</strong>：PPP提供了强大的错误检测功能，通过CRC校验保证数据传输的可靠性。</li>
+<li><strong>可扩展性</strong>：PPP支持链路控制、身份验证和网络层协议的扩展。</li>
+</ul>
+<h2 id="广播信道"><a href="#广播信道" class="headerlink" title="广播信道"></a>广播信道</h2><p><strong>广播信道</strong>（Broadcast Channel）是指允许一个设备同时向多个设备发送数据的信道。广播信道支持多设备间的通信，通常在共享信道中多个设备共用同一物理介质。常见的广播信道协议包括<strong>VLAN协议</strong>和<strong>CSMA/CD协议</strong>。</p>
+<p>首先我们需要了解一个概念：<strong>网络广播风暴</strong></p>
+<p>在一个局域网中，当一个设备发送广播包时，所有在同一广播域内的设备都会接收该包并进行处理。如果网络拓扑没有正确管理（比如存在环路），广播包可能会不断地在网络中循环传播，从而造成广播风暴。</p>
+<p>因此我们需要有一个东西来隔离广播域，限制广播流量的传播范围，从而减少网络中的广播风暴，提升网络性能和可管理性。我们使用到的这个技术就是<strong>VLAN（虚拟局域网）协议</strong></p>
+<h3 id="VLAN协议"><a href="#VLAN协议" class="headerlink" title="VLAN协议"></a>VLAN协议</h3><p>VLAN工作在数据链路层（OSI模型的第2层），其核心是通过交换机进行流量转发。每个VLAN通过给网络设备上的数据帧添加一个<strong>VLAN标签</strong>来进行识别。VLAN标签通常位于以太网帧的头部，遵循<strong>IEEE 802.1Q</strong>标准。</p>
+<p>VLAN技术把用户划分成多组逻辑的网络，组内可以通信，组间不允许通信。二层转发的单播、<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%BB%84%E6%92%AD&amp;spm=1001.2101.3001.7020">组播</a>、广播报文只能在组内转发。为了实现转发控制，在待转发的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BB%A5%E5%A4%AA%E7%BD%91&amp;spm=1001.2101.3001.7020">以太网</a>帧中添加 VLAN标签 ，然后<strong>设定交换机端口</strong>对该标签和帧的处理方式。方式包括丢弃帧、转发帧、添加标签、移除标签。</p>
+<h4 id="帧格式"><a href="#帧格式" class="headerlink" title="帧格式"></a>帧格式</h4><p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051842602.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<ul>
+<li>标签协议标识TPID：固定取值为0x8100，表明这是一个携带802.1Q标签的帧</li>
+<li>优先级PRI：指明帧的优先级。0-7，表示8种优先级，提供有差别的转发服务。</li>
+<li>标准格式指示CFI：在以太网环境中，这个字段始终为0。</li>
+<li><p>VLAN标识：它唯一地标志了以太网帧属于哪一个VLAN</p>
+<ul>
+<li><p>VID的取值范围是0~ 4095 （0 ~ 212-1），0和4095都不用来表示VLAN，因此用于表示VLAN的VID的有效取值范围是1 ~ 4094。</p>
+<p>802.1Q帧是由交换机来处理的，而不是用户主机来处理的</p>
+</li>
+</ul>
+</li>
+<li><p>当交换机收到普通的以太网帧时，会将其插入4字节的VLAN标记转变为802.1Q帧，简称“打标签”。</p>
+</li>
+<li>当交换机转发802.1Q帧时，可能会删除其4字节VLAN标记转变为普通以太网帧，简称“去标签”。<br>端口上接收时总希望能够打上标签，发送出去时候总希望能去除标签</li>
+</ul>
+<h4 id="VLAN间通信"><a href="#VLAN间通信" class="headerlink" title="VLAN间通信"></a>VLAN间通信</h4><p>VLAN隔离了二层广播域，也就严格地隔离了各个VLAN之间的任何流量，分属于不同VLAN的用户不能互相通信。</p>
+<p>不同VLAN 之间的流量不能直接跨越VLAN 的边界，需要使用路由，通过路由将报文从一个VLAN 转发到另外一个VLAN。</p>
+<p>在主机设置默认网关，对于非本地的通信，主机会自动寻找默认网关，并把报文交给默认网关转发而不是直接发给目的主机。</p>
+<p>让VLAN之间互通有几种方法。一是为每个VLAN 分配一个单独的路由接口，每一个VLAN使用一条独占的物理连接连接到路由器的一个接口上，但是这种方法会耗费大量的路由接口，因此并不常用。第二种是多个VLAN公用一条物理连接，这种方式也称为独臂路由或者<strong>单臂路由</strong>，它只需要一个以太网接口，通过创建子接口可以承担所有VLAN 的网关，从而在不同的VLAN 间转发数据。还有一种就是三层交换机。</p>
+<h1 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h1><p><strong>以太网（Ethernet</strong>是一种广泛使用的局域网（LAN）技术，用于计算机、设备和其他网络节点之间的数据传输。基于<strong>数据链路层（OSI模型的第2层</strong>和<strong>物理层（第1层）</strong>，提供可靠的、快速的和低成本的通信方式。</p>
+<h2 id="以太网的信道利用率"><a href="#以太网的信道利用率" class="headerlink" title="以太网的信道利用率"></a>以太网的信道利用率</h2><h3 id="理想情况下的信道利用率（无碰撞）"><a href="#理想情况下的信道利用率（无碰撞）" class="headerlink" title="理想情况下的信道利用率（无碰撞）"></a>理想情况下的信道利用率（无碰撞）</h3><p>在理想情况下，假设没有碰撞和重传，信道利用率可以通过以下公式来计算： <script type="math/tex">\text{信道利用率} = \frac{\text{有效数据传输时间}}{\text{总时间}} = \frac{\text{数据帧长度}}{\text{数据帧长度} + \text{间隔时间} + \text{帧间空闲时间}}</script><br>其中：</p>
+<ul>
+<li><strong>有效数据传输时间</strong>：指数据帧的传输时间。</li>
+<li><strong>总时间</strong>：包括有效数据传输时间、间隔时间和帧间空闲时间。</li>
+</ul>
+<h2 id="考虑碰撞的信道利用率（实际情况）"><a href="#考虑碰撞的信道利用率（实际情况）" class="headerlink" title="考虑碰撞的信道利用率（实际情况）"></a>考虑碰撞的信道利用率（实际情况）</h2><p>实际情况中，由于使用了<strong>CSMA/CD</strong>协议，会发生碰撞和重传，从而影响信道利用率。计算实际信道利用率时需要考虑碰撞概率和重传的影响。</p>
+<h3 id="有效传输时间"><a href="#有效传输时间" class="headerlink" title="有效传输时间"></a>有效传输时间</h3><p>在<strong>CSMA/CD</strong>中，发送设备会首先检查信道是否空闲，如果信道空闲，才开始传输数据。如果发生碰撞，数据丢失，需要重新传输。有效的传输时间是指成功传输数据的时间，不包括重传时间。</p>
+<h3 id="碰撞和重传"><a href="#碰撞和重传" class="headerlink" title="碰撞和重传"></a>碰撞和重传</h3><p>碰撞发生后，设备需要等待随机的<strong>退避时间</strong>后再次发送数据。碰撞和重传占用了额外的时间，增加了信道的空闲时间，从而降低了信道的利用率。碰撞率越高，信道利用率越低。</p>
+<h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p>实际情况下，以太网的信道利用率 U 可以通过以下公式来估算： <script type="math/tex">U = \frac{T*{\text{frame}}}{T*{\text{frame}} + T*{\text{collision}} + T*{\text{backoff}}}</script> 其中：</p>
+<ul>
+<li>$T_{\text{frame}}$ ：是数据帧的传输时间，等于数据长度除以传输速率。</li>
+<li>$T_{\text{collision}}$：是发生碰撞后的恢复时间。</li>
+<li>$T_{\text{backoff}}$：是退避时间，即发生碰撞后设备等待的随机时间。</li>
+</ul>
+<h2 id="以太网的吞吐量与信道利用率"><a href="#以太网的吞吐量与信道利用率" class="headerlink" title="以太网的吞吐量与信道利用率"></a>以太网的吞吐量与信道利用率</h2><p>信道利用率与吞吐量（Throughput）密切相关。吞吐量是单位时间内成功传输的数据量。当信道利用率较高时，吞吐量也较高。吞吐量的计算公式为： <script type="math/tex">\text{吞吐量} = \text{信道利用率} \times \text{信道带宽}</script> 在没有碰撞的情况下，吞吐量接近信道的最大带宽（例如 10Mbps、100Mbps 等）。但如果发生碰撞，吞吐量会减少，因为数据包丢失后需要重传。</p>
+<h2 id="扩展以太网"><a href="#扩展以太网" class="headerlink" title="扩展以太网"></a>扩展以太网</h2><h3 id="在物理层扩展以太网"><a href="#在物理层扩展以太网" class="headerlink" title="在物理层扩展以太网"></a>在物理层扩展以太网</h3><h4 id="光纤"><a href="#光纤" class="headerlink" title="光纤"></a>光纤</h4><p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051925899.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h4 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h4><p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051932804.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h3 id="在数据链路层扩展以太网"><a href="#在数据链路层扩展以太网" class="headerlink" title="在数据链路层扩展以太网"></a>在数据链路层扩展以太网</h3><h4 id="网桥"><a href="#网桥" class="headerlink" title="网桥"></a>网桥</h4><p>网桥工作在数据链路层，它根据 MAC 帧的目的地址对收到的帧进行转发，具有过滤帧的功能。当网桥收到一个帧时，并不是向所有的接口转发此帧，而是先检查此帧的目的 MAC 地址，然后再确定将该帧转发到哪一个接口<br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051930620.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>和集线器不同的是，集线器在转发帧时，不对传输媒体进行检测，而且网桥在转发帧之前必须执行 CSMA/CD 算法，若在发送过程中出现碰撞，就必须停止发送和进行退避</p>
+<h4 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h4><p>交换机的交换方式主要有几种，一是存储转发方式，把整个数据帧先缓存后再进行处理，第二种是直通 方式，接收数据帧的同时就立即按数据帧的目的 MAC 地址决定该帧的转发接口，因而提高了帧的转发速度，缺点是它不检查差错就直接将帧转发出去，因此有可能也将一些无效帧转发给其他的站。</p>
+<p>交换机的转发依然是依赖于转发表，以太网交换机运行<strong>自学习算法</strong>自动维护转发表。<br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052023918.png" srcset="/img/loading.gif" lazyload alt="image.png"><br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052024847.png" srcset="/img/loading.gif" lazyload alt="image.png"><br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052024677.png" srcset="/img/loading.gif" lazyload alt="image.png"><br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052024379.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h1 id="数据链路层的子层"><a href="#数据链路层的子层" class="headerlink" title="数据链路层的子层"></a>数据链路层的子层</h1><p>数据链路层其实可以被进一步划分为两个子层：<strong>逻辑链路控制（LLC）子层</strong>和<strong>媒体访问控制（MAC）子层</strong></p>
+<h2 id="逻辑链路控制（LLC）子层"><a href="#逻辑链路控制（LLC）子层" class="headerlink" title="逻辑链路控制（LLC）子层"></a>逻辑链路控制（LLC）子层</h2><p>LLC子层位于数据链路层的上层，主要负责为不同的网络协议提供统一的接口，并处理与网络层之间的交互。主要功能就是前面提及的帧的封装与解封装、错误控制与流量控制等。这里不再赘述，我们主要讲解的是数据链路层当中的MAC层。</p>
+<h2 id="媒体访问控制（MAC）子层"><a href="#媒体访问控制（MAC）子层" class="headerlink" title="媒体访问控制（MAC）子层"></a>媒体访问控制（MAC）子层</h2><p>MAC子层负责数据链路层下层的功能，主要控制对物理介质的访问，确保在共享信道上多台设备能够有效地传输数据。其主要功能有下面几种</p>
+<h3 id="地址寻址与识别"><a href="#地址寻址与识别" class="headerlink" title="地址寻址与识别"></a>地址寻址与识别</h3><p>MAC子层使用<strong>MAC地址</strong>（物理地址）来标识网络中的设备，确保数据能够正确地发送到目标设备。每个设备在其网卡中都有一个唯一的MAC地址，数据帧中包括源MAC地址和目标MAC地址。</p>
+<h3 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h3><p>MAC子层负责控制设备如何访问共享的通信介质。它使用不同的协议来避免不同设备在同一时刻发送数据导致碰撞。例如，在传统的以太网中，MAC使用<strong>CSMA/CD</strong>（载波侦听多路访问/碰撞检测）协议来解决设备争用信道的问题。</p>
+<h3 id="帧的封装与传输"><a href="#帧的封装与传输" class="headerlink" title="帧的封装与传输"></a>帧的封装与传输</h3><p>MAC子层负责将网络层传来的数据封装成帧，并将这些帧通过物理介质发送出去。它也负责从物理介质接收帧，并将其传递给LLC子层进行解封装。</p>
+<h3 id="错误检测-1"><a href="#错误检测-1" class="headerlink" title="错误检测"></a>错误检测</h3><p>MAC子层使用<strong>循环冗余校验</strong>（CRC）来检测数据传输过程中是否发生了错误。然后怎么处理错误就不是我们应该管的了</p>
+<h2 id="MAC帧格式"><a href="#MAC帧格式" class="headerlink" title="MAC帧格式"></a>MAC帧格式</h2><p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052043289.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><h3 id="MAC-子层怎样知道从接收到的以太网帧中取出多少字节的数据交付上一层协议？"><a href="#MAC-子层怎样知道从接收到的以太网帧中取出多少字节的数据交付上一层协议？" class="headerlink" title="MAC 子层怎样知道从接收到的以太网帧中取出多少字节的数据交付上一层协议？"></a>MAC 子层怎样知道从接收到的以太网帧中取出多少字节的数据交付上一层协议？</h3><p>在 以太网V2 的 MAC 帧格式中，其首部并没有一个帧长度（或数据长度）字段。那么，MAC 子层又怎样知道从接收到的以太网帧中取出多少字节的数据交付上一层协议呢？我们在前面讲述的曼彻斯特编码时已经讲过，这种曼彻斯特编码的一个重要特点就是：在曼彻斯特编码的每一个码元（不管码元是 1 或 0 ）的正中间一定有一次电压的转换（从高到低或从低到高）。当发送方把一个以太网帧发送完毕后，就不再发送其他码元了（既不发送 1 ，也不发送 0 ）。因此，发送方网络适配器的接口上的电压也就不再变化了。这样，接收方就可以很容易地找到以太网帧的结束位置。在这个位置往前数 4 字节（ FCS 字段长度是 4 字节），就能确定数据字段的结束位置。</p>
+<h3 id="上层协议如何知道填充字段的长度？"><a href="#上层协议如何知道填充字段的长度？" class="headerlink" title="上层协议如何知道填充字段的长度？"></a>上层协议如何知道填充字段的长度？</h3><p>当数据字段的长度小于 46 字节时，MAC 子层就会在数据字段的后面加入一个整数字节的填充字段，以保证以太网的 MAC 帧长不小于 64 字节。我们应当注意到，MAC 帧的首部并没有指出数据字段的长度是多少。在有填充字段的情况下，接收端的 MAC 子层在剥去首部和尾部后就把数据字段和填充字段一起交给上层协议。现在的问题是：上层协议如何知道填充字段的长度呢？（ IP 层应当丢弃没有用处的填充字段。）可见，上层协议必须具有识别有效的数据字段长度的功能。我们知道，当上层使用 IP 协议时，其首部就有一个“总长度”字段。因此，“总长度”加上填充字段的长度，应当等于 MAC 帧数据字段的长度。例如，当 IP数据报 的总长度为 42 字节时，填充字段共有 4 字节。当 MAC 帧把 46 字节的数据上交给 IP 层后，IP 层就把其中最后 4 字节的填充字段丢弃。</p>
+<h3 id="物理层比-MAC-层多出来的-8-个字节是什么"><a href="#物理层比-MAC-层多出来的-8-个字节是什么" class="headerlink" title="物理层比 MAC 层多出来的 8 个字节是什么"></a>物理层比 MAC 层多出来的 8 个字节是什么</h3><p>在传输媒体上实际传送的要比 MAC 帧还多8个字节。这是因为当一个站在刚开始接收 MAC 帧时，由于适配器的时钟尚未与到达的比特流达成同步，因此 MAC 帧的最前面的若干位就无法接收，结果使整个的 MAC 成为无用的帧。为了接收端迅速实现位同步，从 MAC 子层向下传到物理层时还要在帧的前面插入 8 字节（由硬件生成），它由两个字段构成。第一个字段是 7 个字节的前同步码（ 1 和 0 交替码），它的作用是使接收端的适配器在接收 MAC 帧时能够迅速调整其时钟频率，使它和发送端的时钟同步，也就是“实现位同步”（位同步就是比特同步的意思）。第二个字段是帧开始定界符，定义为 10101011 。它的前六位的作用和前同步码一样，最后的两个连续的1就是告诉接收端适配器：“ MAC 帧的信息马上就要来了，请适配器注意接收”。 MAC 帧的 FCS 字段的检验范围不包括前同步码和帧开始定界符。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="print-no-link">##计算机网络</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数据链路层</div>
+      <div>http://zerohzzzz.github.io/2024/12/05/十万个为什么之数据链路层/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>ZeroHzzzz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 5, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/24/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E6%8A%A5%E9%94%99403%EF%BC%8C%E4%BD%86%E5%8F%AF%E4%BB%A5%E5%8D%95%E7%8B%AC%E6%89%93%E5%BC%80%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5%E2%80%94%E2%80%94%E5%9B%BE%E7%89%87%E9%98%B2%E7%9B%97%E9%93%BE/" title="图片加载报错403，但可以单独打开图片链接——图片防盗链">
+                        <span class="hidden-mobile">图片加载报错403，但可以单独打开图片链接——图片防盗链</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       # <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> # <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
