@@ -389,7 +389,7 @@ P_k = E [ (A e_k^- + B) (A e_k^- + B)^T ]
 <p>那我们现在就将$P_{k}$代入进去，然后对K求偏导，并令他导数为零。这里过程不再赘述，我们最终可以得到一个公式：</p>
 <script type="math/tex; mode=display">K = \bar{P_k} H^T (H \bar{P_k} H^{T + R)^{-1} \tag{3}}</script><p>这就是著名的卡尔曼增益公式。</p>
 <h1 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h1><p>我们将刚刚获得的最优K代入到公式(a)中，进行化简，则有：</p>
-<script type="math/tex; mode=display">P_{k}= (I-K H) \bar{P_{k}} \tag{5}</script><p>同理，我们可以得到先验误差协方差矩阵：</p>
+<script type="math/tex; mode=display">P_{k}= (I-K H) \bar{P_{k}} \tag{5}</script><p>同理，我们可以得到先验误差协方差矩阵</p>
 <script type="math/tex; mode=display">\bar{P_{k}} = FP_{k-1}F^{T}+ Q \tag{2}</script><script type="math/tex; mode=display">\mathscr{END}</script>
                 
               </div>
