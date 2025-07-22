@@ -1155,27 +1155,27 @@ static_prefix:
   internal_css: /css
   internal_img: /img
 
-  anchor: https://lib.baomitu.com/anchor-js/4.3.1/
+  anchor: https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/
 
-  github_markdown: https://lib.baomitu.com/github-markdown-css/4.0.0/
+  github_markdown: https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/
 
-  jquery: https://lib.baomitu.com/jquery/3.6.4/
+  jquery: https://cdn.jsdelivr.net/npm/jquery@3.6.4/
 
-  bootstrap: https://lib.baomitu.com/twitter-bootstrap/4.6.1/
+  bootstrap: https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/
 
-  prismjs: https://lib.baomitu.com/prism/1.29.0/
+  prismjs: https://cdn.jsdelivr.net/npm/prismjs@1.29.0/
 
-  tocbot: https://lib.baomitu.com/tocbot/4.20.1/
+  tocbot: https://cdn.jsdelivr.net/npm/tocbot@4.20.1/
 
-  typed: https://lib.baomitu.com/typed.js/2.0.12/
+  typed: https://cdn.jsdelivr.net/npm/typed.js@2.0.12/
 
-  fancybox: https://lib.baomitu.com/fancybox/3.5.7/
+  fancybox: https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/
 
-  nprogress: https://lib.baomitu.com/nprogress/0.2.0/
+  nprogress: https://cdn.jsdelivr.net/npm/nprogress@0.2.0/
 
-  mathjax: https://lib.baomitu.com/mathjax/3.2.2/
+  mathjax: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/
 
-  katex: https://lib.baomitu.com/KaTeX/0.16.2/
+  katex: https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/
 
   busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/
 
