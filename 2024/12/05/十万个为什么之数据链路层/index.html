@@ -245,7 +245,7 @@
         
         
         
-          85 mins
+          86 mins
         
       </span>
     
@@ -345,17 +345,17 @@
 <li><strong>帧头（Header）</strong><ul>
 <li><strong>目的地址（Destination MAC Address）</strong>：接收设备的 MAC 地址。就像信封上的收件人地址，确保数据能到达正确的设备。</li>
 <li><strong>源地址（Source MAC Address）</strong>：发送设备的 MAC 地址。类似信封上的发件人地址，让接收方知道是谁发送的。</li>
-<li><strong>类型（Type/Protocol）</strong>：表明帧中携带的数据类型。例如，以太网帧会标明数据是上层的 IP 数据包还是 ARP 请求。</li>
+<li><strong>类型（Type&#x2F;Protocol）</strong>：表明帧中携带的数据类型。例如，以太网帧会标明数据是上层的 IP 数据包还是 ARP 请求。</li>
 <li><strong>控制信息（Control Information）</strong>：一些帧格式中可能包括如流量控制、优先级、顺序等信息，帮助处理数据传输中的细节。</li>
 </ul>
 </li>
-<li><strong>数据部分（Payload/Data）</strong><ul>
+<li><strong>数据部分（Payload&#x2F;Data）</strong><ul>
 <li>这是帧的主要内容，包含了网络层传来的数据包（如 IP 数据包）。这部分数据将被封装在帧内部，并在数据链路层传输。</li>
 <li>数据部分的大小根据协议不同有所不同，但通常有一个最小值（例如，以太网帧的最小有效负载为 46 字节），否则帧可能会被填充。</li>
 </ul>
 </li>
 <li><strong>帧尾（Trailer）</strong><ul>
-<li><strong>错误检测码（FCS/CRC）</strong>：帧尾通常包含一个 <strong>循环冗余校验（CRC）</strong> 或 <strong>帧校验序列（FCS）</strong>，用来进行 <strong>错误检测</strong>。接收方会根据这个校验码检查数据是否在传输过程中出现了错误。如果错误检测码与接收到的内容不符，接收方会丢弃帧并请求重传。</li>
+<li><strong>错误检测码（FCS&#x2F;CRC）</strong>：帧尾通常包含一个 <strong>循环冗余校验（CRC）</strong> 或 <strong>帧校验序列（FCS）</strong>，用来进行 <strong>错误检测</strong>。接收方会根据这个校验码检查数据是否在传输过程中出现了错误。如果错误检测码与接收到的内容不符，接收方会丢弃帧并请求重传。</li>
 </ul>
 </li>
 </ul>
@@ -367,6 +367,7 @@
 <li><strong>数据控制</strong>：包括流量控制和介质访问控制等。</li>
 </ul>
 <h3 id="如何解封装"><a href="#如何解封装" class="headerlink" title="如何解封装"></a>如何解封装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs tree">接收物理层数据（比特流）<br>         |<br>  数据链路层接收帧<br>         |<br>    检查目的地址 → 如果不匹配，丢弃帧<br>         |<br>   计算 FCS 校验 → 如果校验失败，丢弃帧<br>         |<br>     去除帧头和帧尾 - (去除以太网帧头和 FCS)<br>         |<br>   提取有效负载（上层数据包）<br>         |<br>    将数据传递给网络层<br></code></pre></td></tr></table></figure>
+
 <h2 id="错误检测"><a href="#错误检测" class="headerlink" title="错误检测"></a>错误检测</h2><p>错误检测主要发生在帧的解封装流程中，这里为了凸显出数据链路层的特性因此把他单独拿出来说。</p>
 <p>首先我们要搞清楚 FCS 和 CRC 的概念。<strong>FCS</strong> 是帧检查序列，通常作为帧尾的一部分，在数据链路层用于检测在数据传输过程中是否发生了位错误。FCS 是一种冗余信息，它通过某种算法生成并附加到数据帧中，用于接收方验证数据的完整性。</p>
 <p>而<strong>CRC</strong> 是一种常用的差错检测技术，它通过对数据帧进行数学运算（通常是除法运算），生成一个冗余值（校验码），然后将这个冗余值附加到数据后面作为帧的一部分。接收方在收到数据时，使用相同的 CRC 算法重新计算数据的校验码，并与接收到的 CRC 校验码进行比较。如果两者一致，则认为数据未发生错误；如果不一致，则说明数据在传输过程中发生了错误。</p>
@@ -383,8 +384,8 @@
 <li><strong>停等协议（Stop-and-Wait）</strong>：另一种常见的流量控制机制。在这种协议中，发送方每发送完一个数据帧后会停止，等待接收方的确认（ACK）消息。如果接收方的缓冲区满了，它会通过确认消息告诉发送方暂停发送数据，直到接收方有足够的空间。</li>
 </ul>
 <h3 id="广播信道的数据链路层流量控制"><a href="#广播信道的数据链路层流量控制" class="headerlink" title="广播信道的数据链路层流量控制"></a>广播信道的数据链路层流量控制</h3><p>广播信道指的是多个设备共享同一个传输信道，数据从一个发送方广播到多个接收方的情景。例如，以太网中的广播通信、Wi-Fi 无线网络等，都是典型的广播信道。广播信道的特点是发送方会向网络中所有设备发送数据，可能导致多个接收方同时接收到数据。</p>
-<h4 id="CSMA-CD（Carrier-Sense-Multiple-Access-with-Collision-Detection）"><a href="#CSMA-CD（Carrier-Sense-Multiple-Access-with-Collision-Detection）" class="headerlink" title="CSMA/CD（Carrier Sense Multiple Access with Collision Detection）"></a>CSMA/CD（Carrier Sense Multiple Access with Collision Detection）</h4><p>用于以太网中的广播信道，主要解决的是发送方如何避免与其他设备的冲突。虽然它不是严格意义上的流量控制机制，但它通过监听信道并检测冲突来减少流量的无效发送，避免了数据的过度发送。</p>
-<p>CSMA/CD 工作流程如下：</p>
+<h4 id="CSMA-CD（Carrier-Sense-Multiple-Access-with-Collision-Detection）"><a href="#CSMA-CD（Carrier-Sense-Multiple-Access-with-Collision-Detection）" class="headerlink" title="CSMA&#x2F;CD（Carrier Sense Multiple Access with Collision Detection）"></a>CSMA&#x2F;CD（Carrier Sense Multiple Access with Collision Detection）</h4><p>用于以太网中的广播信道，主要解决的是发送方如何避免与其他设备的冲突。虽然它不是严格意义上的流量控制机制，但它通过监听信道并检测冲突来减少流量的无效发送，避免了数据的过度发送。</p>
+<p>CSMA&#x2F;CD 工作流程如下：</p>
 <ol>
 <li>发送方在发送数据前首先监听信道，确保信道空闲。</li>
 <li>如果信道空闲，则开始发送数据。如果信道繁忙，发送方将等待。</li>
@@ -394,7 +395,7 @@
 <ul>
 <li>在 t ＝ 0 时，A 发送数据。B 检测到信道为空闲。</li>
 <li>在 t ＝ τ − δ 时（这里 τ &gt; δ &gt; 0 ），A 发送的数据还没有到达 B 时，由于 B 检测到信道是空闲的，因此 B 发送数据。</li>
-<li>经过时间 δ / 2 后，即在 t ＝ τ − δ / 2 时，A 发送的数据和 B 发送的数据发生了碰撞。但这时 A 和 B 都不知道发生了碰撞。</li>
+<li>经过时间 δ &#x2F; 2 后，即在 t ＝ τ − δ &#x2F; 2 时，A 发送的数据和 B 发送的数据发生了碰撞。但这时 A 和 B 都不知道发生了碰撞。</li>
 <li>在 t ＝ τ 时，B 检测到发生了碰撞，于是停止发送数据。</li>
 <li>在 t ＝ 2 τ − δ 时，A 也检测到发生了碰撞，因而也停止发送数据。</li>
 <li>A 和 B 发送数据均失败，它们都要推迟一段时间再重新发送。</li>
@@ -432,17 +433,20 @@
 <li><strong>错误检测</strong>：PPP提供了强大的错误检测功能，通过CRC校验保证数据传输的可靠性。</li>
 <li><strong>可扩展性</strong>：PPP支持链路控制、身份验证和网络层协议的扩展。</li>
 </ul>
-<h2 id="广播信道"><a href="#广播信道" class="headerlink" title="广播信道"></a>广播信道</h2><p><strong>广播信道</strong>（Broadcast Channel）是指允许一个设备同时向多个设备发送数据的信道。广播信道支持多设备间的通信，通常在共享信道中多个设备共用同一物理介质。常见的广播信道协议包括<strong>VLAN协议</strong>和<strong>CSMA/CD协议</strong>。</p>
+<h2 id="广播信道"><a href="#广播信道" class="headerlink" title="广播信道"></a>广播信道</h2><p><strong>广播信道</strong>（Broadcast Channel）是指允许一个设备同时向多个设备发送数据的信道。广播信道支持多设备间的通信，通常在共享信道中多个设备共用同一物理介质。常见的广播信道协议包括<strong>VLAN协议</strong>和<strong>CSMA&#x2F;CD协议</strong>。</p>
 <p>首先我们需要了解一个概念：<strong>网络广播风暴</strong></p>
 <p>在一个局域网中，当一个设备发送广播包时，所有在同一广播域内的设备都会接收该包并进行处理。如果网络拓扑没有正确管理（比如存在环路），广播包可能会不断地在网络中循环传播，从而造成广播风暴。</p>
 <p>因此我们需要有一个东西来隔离广播域，限制广播流量的传播范围，从而减少网络中的广播风暴，提升网络性能和可管理性。我们使用到的这个技术就是<strong>VLAN（虚拟局域网）协议</strong></p>
 <h3 id="VLAN协议"><a href="#VLAN协议" class="headerlink" title="VLAN协议"></a>VLAN协议</h3><p>VLAN工作在数据链路层（OSI模型的第2层），其核心是通过交换机进行流量转发。每个VLAN通过给网络设备上的数据帧添加一个<strong>VLAN标签</strong>来进行识别。VLAN标签通常位于以太网帧的头部，遵循<strong>IEEE 802.1Q</strong>标准。</p>
-<p>VLAN技术把用户划分成多组逻辑的网络，组内可以通信，组间不允许通信。二层转发的单播、<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%BB%84%E6%92%AD&amp;spm=1001.2101.3001.7020">组播</a>、广播报文只能在组内转发。为了实现转发控制，在待转发的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BB%A5%E5%A4%AA%E7%BD%91&amp;spm=1001.2101.3001.7020">以太网</a>帧中添加 VLAN标签 ，然后<strong>设定交换机端口</strong>对该标签和帧的处理方式。方式包括丢弃帧、转发帧、添加标签、移除标签。</p>
+<p>VLAN技术把用户划分成多组逻辑的网络，组内可以通信，组间不允许通信。二层转发的单播、<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%BB%84%E6%92%AD&spm=1001.2101.3001.7020">组播</a>、广播报文只能在组内转发。为了实现转发控制，在待转发的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E4%BB%A5%E5%A4%AA%E7%BD%91&spm=1001.2101.3001.7020">以太网</a>帧中添加 VLAN标签 ，然后<strong>设定交换机端口</strong>对该标签和帧的处理方式。方式包括丢弃帧、转发帧、添加标签、移除标签。</p>
 <h4 id="帧格式"><a href="#帧格式" class="headerlink" title="帧格式"></a>帧格式</h4><p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051842602.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <ul>
-<li>标签协议标识TPID：固定取值为0x8100，表明这是一个携带802.1Q标签的帧</li>
-<li>优先级PRI：指明帧的优先级。0-7，表示8种优先级，提供有差别的转发服务。</li>
-<li>标准格式指示CFI：在以太网环境中，这个字段始终为0。</li>
+<li><p>标签协议标识TPID：固定取值为0x8100，表明这是一个携带802.1Q标签的帧</p>
+</li>
+<li><p>优先级PRI：指明帧的优先级。0-7，表示8种优先级，提供有差别的转发服务。</p>
+</li>
+<li><p>标准格式指示CFI：在以太网环境中，这个字段始终为0。</p>
+</li>
 <li><p>VLAN标识：它唯一地标志了以太网帧属于哪一个VLAN</p>
 <ul>
 <li><p>VID的取值范围是0~ 4095 （0 ~ 212-1），0和4095都不用来表示VLAN，因此用于表示VLAN的VID的有效取值范围是1 ~ 4094。</p>
@@ -452,39 +456,40 @@
 </li>
 <li><p>当交换机收到普通的以太网帧时，会将其插入4字节的VLAN标记转变为802.1Q帧，简称“打标签”。</p>
 </li>
-<li>当交换机转发802.1Q帧时，可能会删除其4字节VLAN标记转变为普通以太网帧，简称“去标签”。<br>端口上接收时总希望能够打上标签，发送出去时候总希望能去除标签</li>
+<li><p>当交换机转发802.1Q帧时，可能会删除其4字节VLAN标记转变为普通以太网帧，简称“去标签”。<br>端口上接收时总希望能够打上标签，发送出去时候总希望能去除标签</p>
+</li>
 </ul>
 <h4 id="VLAN间通信"><a href="#VLAN间通信" class="headerlink" title="VLAN间通信"></a>VLAN间通信</h4><p>VLAN隔离了二层广播域，也就严格地隔离了各个VLAN之间的任何流量，分属于不同VLAN的用户不能互相通信。</p>
 <p>不同VLAN 之间的流量不能直接跨越VLAN 的边界，需要使用路由，通过路由将报文从一个VLAN 转发到另外一个VLAN。</p>
 <p>在主机设置默认网关，对于非本地的通信，主机会自动寻找默认网关，并把报文交给默认网关转发而不是直接发给目的主机。</p>
 <p>让VLAN之间互通有几种方法。一是为每个VLAN 分配一个单独的路由接口，每一个VLAN使用一条独占的物理连接连接到路由器的一个接口上，但是这种方法会耗费大量的路由接口，因此并不常用。第二种是多个VLAN公用一条物理连接，这种方式也称为独臂路由或者<strong>单臂路由</strong>，它只需要一个以太网接口，通过创建子接口可以承担所有VLAN 的网关，从而在不同的VLAN 间转发数据。还有一种就是三层交换机。</p>
 <h1 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h1><p><strong>以太网（Ethernet</strong>是一种广泛使用的局域网（LAN）技术，用于计算机、设备和其他网络节点之间的数据传输。基于<strong>数据链路层（OSI模型的第2层</strong>和<strong>物理层（第1层）</strong>，提供可靠的、快速的和低成本的通信方式。</p>
-<h2 id="以太网的信道利用率"><a href="#以太网的信道利用率" class="headerlink" title="以太网的信道利用率"></a>以太网的信道利用率</h2><h3 id="理想情况下的信道利用率（无碰撞）"><a href="#理想情况下的信道利用率（无碰撞）" class="headerlink" title="理想情况下的信道利用率（无碰撞）"></a>理想情况下的信道利用率（无碰撞）</h3><p>在理想情况下，假设没有碰撞和重传，信道利用率可以通过以下公式来计算： <script type="math/tex">\text{信道利用率} = \frac{\text{有效数据传输时间}}{\text{总时间}} = \frac{\text{数据帧长度}}{\text{数据帧长度} + \text{间隔时间} + \text{帧间空闲时间}}</script><br>其中：</p>
+<h2 id="以太网的信道利用率"><a href="#以太网的信道利用率" class="headerlink" title="以太网的信道利用率"></a>以太网的信道利用率</h2><h3 id="理想情况下的信道利用率（无碰撞）"><a href="#理想情况下的信道利用率（无碰撞）" class="headerlink" title="理想情况下的信道利用率（无碰撞）"></a>理想情况下的信道利用率（无碰撞）</h3><p>在理想情况下，假设没有碰撞和重传，信道利用率可以通过以下公式来计算： $$ \text{信道利用率} &#x3D; \frac{\text{有效数据传输时间}}{\text{总时间}} &#x3D; \frac{\text{数据帧长度}}{\text{数据帧长度} + \text{间隔时间} + \text{帧间空闲时间}} $$<br>其中：</p>
 <ul>
 <li><strong>有效数据传输时间</strong>：指数据帧的传输时间。</li>
 <li><strong>总时间</strong>：包括有效数据传输时间、间隔时间和帧间空闲时间。</li>
 </ul>
-<h2 id="考虑碰撞的信道利用率（实际情况）"><a href="#考虑碰撞的信道利用率（实际情况）" class="headerlink" title="考虑碰撞的信道利用率（实际情况）"></a>考虑碰撞的信道利用率（实际情况）</h2><p>实际情况中，由于使用了<strong>CSMA/CD</strong>协议，会发生碰撞和重传，从而影响信道利用率。计算实际信道利用率时需要考虑碰撞概率和重传的影响。</p>
-<h3 id="有效传输时间"><a href="#有效传输时间" class="headerlink" title="有效传输时间"></a>有效传输时间</h3><p>在<strong>CSMA/CD</strong>中，发送设备会首先检查信道是否空闲，如果信道空闲，才开始传输数据。如果发生碰撞，数据丢失，需要重新传输。有效的传输时间是指成功传输数据的时间，不包括重传时间。</p>
+<h2 id="考虑碰撞的信道利用率（实际情况）"><a href="#考虑碰撞的信道利用率（实际情况）" class="headerlink" title="考虑碰撞的信道利用率（实际情况）"></a>考虑碰撞的信道利用率（实际情况）</h2><p>实际情况中，由于使用了<strong>CSMA&#x2F;CD</strong>协议，会发生碰撞和重传，从而影响信道利用率。计算实际信道利用率时需要考虑碰撞概率和重传的影响。</p>
+<h3 id="有效传输时间"><a href="#有效传输时间" class="headerlink" title="有效传输时间"></a>有效传输时间</h3><p>在<strong>CSMA&#x2F;CD</strong>中，发送设备会首先检查信道是否空闲，如果信道空闲，才开始传输数据。如果发生碰撞，数据丢失，需要重新传输。有效的传输时间是指成功传输数据的时间，不包括重传时间。</p>
 <h3 id="碰撞和重传"><a href="#碰撞和重传" class="headerlink" title="碰撞和重传"></a>碰撞和重传</h3><p>碰撞发生后，设备需要等待随机的<strong>退避时间</strong>后再次发送数据。碰撞和重传占用了额外的时间，增加了信道的空闲时间，从而降低了信道的利用率。碰撞率越高，信道利用率越低。</p>
-<h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p>实际情况下，以太网的信道利用率 U 可以通过以下公式来估算： <script type="math/tex">U = \frac{T*{\text{frame}}}{T*{\text{frame}} + T*{\text{collision}} + T*{\text{backoff}}}</script> 其中：</p>
+<h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p>实际情况下，以太网的信道利用率 U 可以通过以下公式来估算： $$ U &#x3D; \frac{T*{\text{frame}}}{T*{\text{frame}} + T*{\text{collision}} + T*{\text{backoff}}} $$ 其中：</p>
 <ul>
 <li>$T_{\text{frame}}$ ：是数据帧的传输时间，等于数据长度除以传输速率。</li>
 <li>$T_{\text{collision}}$：是发生碰撞后的恢复时间。</li>
 <li>$T_{\text{backoff}}$：是退避时间，即发生碰撞后设备等待的随机时间。</li>
 </ul>
-<h2 id="以太网的吞吐量与信道利用率"><a href="#以太网的吞吐量与信道利用率" class="headerlink" title="以太网的吞吐量与信道利用率"></a>以太网的吞吐量与信道利用率</h2><p>信道利用率与吞吐量（Throughput）密切相关。吞吐量是单位时间内成功传输的数据量。当信道利用率较高时，吞吐量也较高。吞吐量的计算公式为： <script type="math/tex">\text{吞吐量} = \text{信道利用率} \times \text{信道带宽}</script> 在没有碰撞的情况下，吞吐量接近信道的最大带宽（例如 10Mbps、100Mbps 等）。但如果发生碰撞，吞吐量会减少，因为数据包丢失后需要重传。</p>
+<h2 id="以太网的吞吐量与信道利用率"><a href="#以太网的吞吐量与信道利用率" class="headerlink" title="以太网的吞吐量与信道利用率"></a>以太网的吞吐量与信道利用率</h2><p>信道利用率与吞吐量（Throughput）密切相关。吞吐量是单位时间内成功传输的数据量。当信道利用率较高时，吞吐量也较高。吞吐量的计算公式为： $$ \text{吞吐量} &#x3D; \text{信道利用率} \times \text{信道带宽} $$ 在没有碰撞的情况下，吞吐量接近信道的最大带宽（例如 10Mbps、100Mbps 等）。但如果发生碰撞，吞吐量会减少，因为数据包丢失后需要重传。</p>
 <h2 id="扩展以太网"><a href="#扩展以太网" class="headerlink" title="扩展以太网"></a>扩展以太网</h2><h3 id="在物理层扩展以太网"><a href="#在物理层扩展以太网" class="headerlink" title="在物理层扩展以太网"></a>在物理层扩展以太网</h3><h4 id="光纤"><a href="#光纤" class="headerlink" title="光纤"></a>光纤</h4><p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051925899.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <h4 id="集线器"><a href="#集线器" class="headerlink" title="集线器"></a>集线器</h4><p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051932804.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <h3 id="在数据链路层扩展以太网"><a href="#在数据链路层扩展以太网" class="headerlink" title="在数据链路层扩展以太网"></a>在数据链路层扩展以太网</h3><h4 id="网桥"><a href="#网桥" class="headerlink" title="网桥"></a>网桥</h4><p>网桥工作在数据链路层，它根据 MAC 帧的目的地址对收到的帧进行转发，具有过滤帧的功能。当网桥收到一个帧时，并不是向所有的接口转发此帧，而是先检查此帧的目的 MAC 地址，然后再确定将该帧转发到哪一个接口<br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412051930620.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
-<p>和集线器不同的是，集线器在转发帧时，不对传输媒体进行检测，而且网桥在转发帧之前必须执行 CSMA/CD 算法，若在发送过程中出现碰撞，就必须停止发送和进行退避</p>
+<p>和集线器不同的是，集线器在转发帧时，不对传输媒体进行检测，而且网桥在转发帧之前必须执行 CSMA&#x2F;CD 算法，若在发送过程中出现碰撞，就必须停止发送和进行退避</p>
 <h4 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h4><p>交换机的交换方式主要有几种，一是存储转发方式，把整个数据帧先缓存后再进行处理，第二种是直通 方式，接收数据帧的同时就立即按数据帧的目的 MAC 地址决定该帧的转发接口，因而提高了帧的转发速度，缺点是它不检查差错就直接将帧转发出去，因此有可能也将一些无效帧转发给其他的站。</p>
 <p>交换机的转发依然是依赖于转发表，以太网交换机运行<strong>自学习算法</strong>自动维护转发表。<br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052023918.png" srcset="/img/loading.gif" lazyload alt="image.png"><br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052024847.png" srcset="/img/loading.gif" lazyload alt="image.png"><br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052024677.png" srcset="/img/loading.gif" lazyload alt="image.png"><br><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052024379.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <h1 id="数据链路层的子层"><a href="#数据链路层的子层" class="headerlink" title="数据链路层的子层"></a>数据链路层的子层</h1><p>数据链路层其实可以被进一步划分为两个子层：<strong>逻辑链路控制（LLC）子层</strong>和<strong>媒体访问控制（MAC）子层</strong></p>
 <h2 id="逻辑链路控制（LLC）子层"><a href="#逻辑链路控制（LLC）子层" class="headerlink" title="逻辑链路控制（LLC）子层"></a>逻辑链路控制（LLC）子层</h2><p>LLC子层位于数据链路层的上层，主要负责为不同的网络协议提供统一的接口，并处理与网络层之间的交互。主要功能就是前面提及的帧的封装与解封装、错误控制与流量控制等。这里不再赘述，我们主要讲解的是数据链路层当中的MAC层。</p>
 <h2 id="媒体访问控制（MAC）子层"><a href="#媒体访问控制（MAC）子层" class="headerlink" title="媒体访问控制（MAC）子层"></a>媒体访问控制（MAC）子层</h2><p>MAC子层负责数据链路层下层的功能，主要控制对物理介质的访问，确保在共享信道上多台设备能够有效地传输数据。其主要功能有下面几种</p>
 <h3 id="地址寻址与识别"><a href="#地址寻址与识别" class="headerlink" title="地址寻址与识别"></a>地址寻址与识别</h3><p>MAC子层使用<strong>MAC地址</strong>（物理地址）来标识网络中的设备，确保数据能够正确地发送到目标设备。每个设备在其网卡中都有一个唯一的MAC地址，数据帧中包括源MAC地址和目标MAC地址。</p>
-<h3 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h3><p>MAC子层负责控制设备如何访问共享的通信介质。它使用不同的协议来避免不同设备在同一时刻发送数据导致碰撞。例如，在传统的以太网中，MAC使用<strong>CSMA/CD</strong>（载波侦听多路访问/碰撞检测）协议来解决设备争用信道的问题。</p>
+<h3 id="介质访问控制"><a href="#介质访问控制" class="headerlink" title="介质访问控制"></a>介质访问控制</h3><p>MAC子层负责控制设备如何访问共享的通信介质。它使用不同的协议来避免不同设备在同一时刻发送数据导致碰撞。例如，在传统的以太网中，MAC使用<strong>CSMA&#x2F;CD</strong>（载波侦听多路访问&#x2F;碰撞检测）协议来解决设备争用信道的问题。</p>
 <h3 id="帧的封装与传输"><a href="#帧的封装与传输" class="headerlink" title="帧的封装与传输"></a>帧的封装与传输</h3><p>MAC子层负责将网络层传来的数据封装成帧，并将这些帧通过物理介质发送出去。它也负责从物理介质接收帧，并将其传递给LLC子层进行解封装。</p>
 <h3 id="错误检测-1"><a href="#错误检测-1" class="headerlink" title="错误检测"></a>错误检测</h3><p>MAC子层使用<strong>循环冗余校验</strong>（CRC）来检测数据传输过程中是否发生了错误。然后怎么处理错误就不是我们应该管的了</p>
 <h2 id="MAC帧格式"><a href="#MAC帧格式" class="headerlink" title="MAC帧格式"></a>MAC帧格式</h2><p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412052043289.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>

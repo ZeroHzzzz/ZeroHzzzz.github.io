@@ -293,7 +293,7 @@
 <p>如果按照正常的安装流程，我们需要先有VsCode，这个自不必多言。然后就需要安装<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack">Extension Pack for Java</a>这个插件包，里面提供包含了一些可能需要的插件。但是我看了一眼发现这个插件包只有两个插件是必要的，也就是- <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=redhat.java">Language Support for Java™ by Red Hat</a>和 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug">Debugger for Java</a></p>
 <p>接下来我们就需要安装JDK~</p>
 <h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><h3 id="什么是JDK？"><a href="#什么是JDK？" class="headerlink" title="什么是JDK？"></a>什么是JDK？</h3><p>JDK（Java Development Kit）是Java开发工具包，用于开发Java应用程序，它包含了编写、编译、调试Java代码的工具，最重要的工具是<code>javac</code>，用于将Java源代码编译成字节码。</p>
-<p>而JRE是Java运行时环境，专门用于运行Java程序。JDK包含了JRE，所以它可以执行和开发Java程序。因此，JDK = JRE + 开发工具</p>
+<p>而JRE是Java运行时环境，专门用于运行Java程序。JDK包含了JRE，所以它可以执行和开发Java程序。因此，JDK &#x3D; JRE + 开发工具</p>
 <p>因此我们需要用到的是JDK而不是JRE。因为我们需要编译并运行代码。</p>
 <h3 id="安装哪个JDK？"><a href="#安装哪个JDK？" class="headerlink" title="安装哪个JDK？"></a>安装哪个JDK？</h3><p>Java的特点是百花齐放，不像c#或者go只有一家主导。因此我们不止有JDK的发行版需要选择，还有JDK的版本需要选择。有以下发行版可供选择：</p>
 <ul>
@@ -315,6 +315,7 @@
 <p>看来看去，还是选择了JDK17。</p>
 <h2 id="你的第一份Java代码"><a href="#你的第一份Java代码" class="headerlink" title="你的第一份Java代码"></a>你的第一份Java代码</h2><p>创建一个新的java文件，然后输入</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202409160250810.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <p>然后点击RUN即可。</p>
 <blockquote>

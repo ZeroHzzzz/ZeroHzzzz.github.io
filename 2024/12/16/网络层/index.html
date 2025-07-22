@@ -16,12 +16,12 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="#计算机网络前面的数据链路层)中我们可以知道，数据链路层是“尽最大努力交付”的，那么我们应该如何实现可靠传输呢？这个时候就需要网络层发挥作用了 首先我们要知道，网络层有什么用？ 网络层的作用路由选择网络层最重要的任务是确定数据包的最佳路径并进行转发。这也就是路由，路由的核心目标是确保数据包能够跨越多层网络，直到到达目标设备。 路由器是实现路由的关键设备，它根据数据包的目标地址以及网络的拓扑结构来决">
+    <meta name="description" content="#计算机网络前面的[数据链路层](Welcome To my Blog)中我们可以知道，数据链路层是“尽最大努力交付”的，那么我们应该如何实现可靠传输呢？这个时候就需要网络层发挥作用了 首先我们要知道，网络层有什么用？ 网络层的作用路由选择网络层最重要的任务是确定数据包的最佳路径并进行转发。这也就是路由，路由的核心目标是确保数据包能够跨越多层网络，直到到达目标设备。 路由器是实现路由的关键设备，它">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络层">
 <meta property="og:url" content="http://zerohzzzz.github.io/2024/12/16/%E7%BD%91%E7%BB%9C%E5%B1%82/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="#计算机网络前面的数据链路层)中我们可以知道，数据链路层是“尽最大努力交付”的，那么我们应该如何实现可靠传输呢？这个时候就需要网络层发挥作用了 首先我们要知道，网络层有什么用？ 网络层的作用路由选择网络层最重要的任务是确定数据包的最佳路径并进行转发。这也就是路由，路由的核心目标是确保数据包能够跨越多层网络，直到到达目标设备。 路由器是实现路由的关键设备，它根据数据包的目标地址以及网络的拓扑结构来决">
+<meta property="og:description" content="#计算机网络前面的[数据链路层](Welcome To my Blog)中我们可以知道，数据链路层是“尽最大努力交付”的，那么我们应该如何实现可靠传输呢？这个时候就需要网络层发挥作用了 首先我们要知道，网络层有什么用？ 网络层的作用路由选择网络层最重要的任务是确定数据包的最佳路径并进行转发。这也就是路由，路由的核心目标是确保数据包能够跨越多层网络，直到到达目标设备。 路由器是实现路由的关键设备，它">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202412290229826.png">
 <meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/20241229023659207.png">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.9k words
+          6k words
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          49 mins
+          50 mins
         
       </span>
     
@@ -286,12 +286,13 @@
             
               <div class="markdown-body">
                 
-                <p>#计算机网络<br>前面的<a href="[Welcome To my Blog](https://blog.zerohzzzz.cn/">数据链路层</a>)中我们可以知道，数据链路层是“尽最大努力交付”的，那么我们应该如何实现可靠传输呢？这个时候就需要网络层发挥作用了</p>
+                <p>#计算机网络<br>前面的[数据链路层](<a target="_blank" rel="noopener" href="https://blog.zerohzzzz.cn/">Welcome To my Blog</a>)中我们可以知道，数据链路层是“尽最大努力交付”的，那么我们应该如何实现可靠传输呢？这个时候就需要网络层发挥作用了</p>
 <p>首先我们要知道，网络层有什么用？</p>
 <h1 id="网络层的作用"><a href="#网络层的作用" class="headerlink" title="网络层的作用"></a>网络层的作用</h1><h2 id="路由选择"><a href="#路由选择" class="headerlink" title="路由选择"></a>路由选择</h2><p>网络层最重要的任务是确定数据包的最佳路径并进行转发。这也就是<strong>路由</strong>，路由的核心目标是确保数据包能够跨越多层网络，直到到达目标设备。</p>
 <p>路由器是实现路由的关键设备，它根据数据包的目标地址以及网络的拓扑结构来决定数据包的转发路径。</p>
 <p>每个路由器都维护一张<strong>路由表</strong>，表中包含了从当前路由器到目标网络的路径信息。比如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">└─$ route -n<br>Kernel IP routing table<br>Destination     Gateway         Genmask         Flags Metric Ref    Use Iface<br>0.0.0.0         192.168.31.1    0.0.0.0         UG    30     0        0 eth5<br>192.168.31.0    0.0.0.0         255.255.255.0   U     286    0        0 eth5<br>192.168.31.1    0.0.0.0         255.255.255.255 UH    30     0        0 eth5<br></code></pre></td></tr></table></figure>
+
 <p>根据路由选择方法和网络拓扑的类型的不同，常常有以下路由的分类</p>
 <h3 id="路由种类"><a href="#路由种类" class="headerlink" title="路由种类"></a>路由种类</h3><h4 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h4><p>字面意思，手动配置，不会变化。静态。</p>
 <h4 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h4><p>动态路由使用路由协议自动调整路由路径，根据网络状态变化（如链路失败、网络拓扑变化等）自动更新路由表。</p>
@@ -338,7 +339,7 @@
 <li>适用于大型网络，支持大量主机。</li>
 </ul>
 </li>
-<li><strong>默认子网掩码</strong>：<code>255.0.0.0</code>（/8）</li>
+<li><strong>默认子网掩码</strong>：<code>255.0.0.0</code>（&#x2F;8）</li>
 <li><strong>第一个字节</strong>的范围：<code>1</code> ~ <code>126</code></li>
 <li><strong>特殊地址</strong>：<ul>
 <li><code>127.x.x.x</code>：保留用于<strong>回环地址</strong>（如 <code>127.0.0.1</code>）。</li>
@@ -352,7 +353,7 @@
 <li>适用于中型网络。</li>
 </ul>
 </li>
-<li><strong>默认子网掩码</strong>：<code>255.255.0.0</code>（/16）</li>
+<li><strong>默认子网掩码</strong>：<code>255.255.0.0</code>（&#x2F;16）</li>
 <li><strong>第一个字节</strong>的范围：<code>128</code> ~ <code>191</code></li>
 </ul>
 <h5 id="C类地址"><a href="#C类地址" class="headerlink" title="C类地址"></a>C类地址</h5><ul>
@@ -362,7 +363,7 @@
 <li>适用于小型网络。</li>
 </ul>
 </li>
-<li><strong>默认子网掩码</strong>：<code>255.255.255.0</code>（/24）</li>
+<li><strong>默认子网掩码</strong>：<code>255.255.255.0</code>（&#x2F;24）</li>
 <li><strong>第一个字节</strong>的范围：<code>192</code> ~ <code>223</code></li>
 </ul>
 <h5 id="D类地址"><a href="#D类地址" class="headerlink" title="D类地址"></a>D类地址</h5><ul>
@@ -400,17 +401,16 @@
 <li>用于一对多通信，数据包发送到多个接收设备。</li>
 </ul>
 <h3 id="CIDR（无类域间路由）"><a href="#CIDR（无类域间路由）" class="headerlink" title="CIDR（无类域间路由）"></a>CIDR（无类域间路由）</h3><p>在传统的IPv4地址分类中，IP地址被划分为A类、B类和C类，每类的网络部分和主机部分是固定的。但是这种固定划分方式导致了<strong>地址浪费</strong>和<strong>网络扩展性差</strong>的问题</p>
-<p>CIDR采用<strong>斜杠表示法</strong>，通过在IP地址后添加 ‘/数字’ 表示网络部分的长度。例如：</p>
+<p>CIDR采用<strong>斜杠表示法</strong>，通过在IP地址后添加 ‘&#x2F;数字’ 表示网络部分的长度。例如：</p>
 <ul>
-<li>192.168.1.0/24</li>
+<li>192.168.1.0&#x2F;24</li>
 </ul>
 <p>其中，</p>
 <ul>
 <li><strong>192.168.1.0</strong> 是网络地址。</li>
-<li><strong>/24</strong> 表示前 <strong>24位</strong> 是网络部分，剩余的 <strong>8位</strong> 是主机部分。</li>
+<li><strong>&#x2F;24</strong> 表示前 <strong>24位</strong> 是网络部分，剩余的 <strong>8位</strong> 是主机部分。</li>
 </ul>
 <p>CIDR 允许更灵活地划分 IP 地址，网络前缀可以是任意长度（1 到 32 之间）。下面是几个例子：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -420,36 +420,33 @@
 <th>可用 IP 地址数量（主机数）</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>192.168.1.0/24</code></td>
 <td>24</td>
 <td>8</td>
-<td>2⁸ - 2 = 254</td>
+<td>2⁸ - 2 &#x3D; 254</td>
 </tr>
 <tr>
 <td><code>192.168.1.0/25</code></td>
 <td>25</td>
 <td>7</td>
-<td>2⁷ - 2 = 126</td>
+<td>2⁷ - 2 &#x3D; 126</td>
 </tr>
 <tr>
 <td><code>192.168.1.0/26</code></td>
 <td>26</td>
 <td>6</td>
-<td>2⁶ - 2 = 62</td>
+<td>2⁶ - 2 &#x3D; 62</td>
 </tr>
 <tr>
 <td><code>192.168.1.0/30</code></td>
 <td>30</td>
 <td>2</td>
-<td>2² - 2 = 2（用于点对点）</td>
+<td>2² - 2 &#x3D; 2（用于点对点）</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
-<li>IP 地址总数 = $2^{主机部分长度}$</li>
+<li>IP 地址总数 &#x3D; $2^{主机部分长度}$</li>
 <li>减去 2：1 个地址用于网络地址，1 个地址用于广播地址。</li>
 </ul>
 <h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><ol>
@@ -458,7 +455,7 @@
 <ul>
 <li>例如，可以分配 <code>/25</code>（128 个地址）给中型网络，分配 <code>/30</code>（2 个地址）给点对点链路。</li>
 </ul>
-<ol>
+<ol start="2">
 <li><strong>减少路由表的大小</strong>：CIDR 通过<strong>路由聚合</strong>将多个连续的网络地址合并为一个条目，减少了路由器的路由表条目数量，提高了网络性能。</li>
 </ol>
 <p><strong>示例</strong>：</p>
@@ -466,7 +463,7 @@
 <li>传统路由：<code>192.168.0.0/24</code>、<code>192.168.1.0/24</code>、<code>192.168.2.0/24</code>、<code>192.168.3.0/24</code></li>
 <li>使用 CIDR 聚合：<code>192.168.0.0/22</code>（合并了 4 个 C 类网络）。</li>
 </ul>
-<ol>
+<ol start="3">
 <li><p><strong>支持更大规模的网络</strong>：通过 CIDR，可以根据不同规模的网络分配不同大小的 IP 地址。</p>
 </li>
 <li><p><strong>无类路由</strong>：取消了 A、B、C 类地址的固定结构，使得 IP 地址更适合当今互联网的复杂需求。</p>
@@ -492,24 +489,23 @@
 <li>原始子网掩码：<code>255.255.255.0</code></li>
 <li>主机位：8 位（<code>/24</code> 的后 8 位）。</li>
 </ul>
-<ol>
+<ol start="2">
 <li><strong>需要划分 4 个子网</strong>：</li>
 </ol>
 <ul>
-<li>4 个子网 → ( 2^2 = 4 )，需要借用<strong>2 位主机位</strong>作为子网位。</li>
+<li>4 个子网 → ( 2^2 &#x3D; 4 )，需要借用<strong>2 位主机位</strong>作为子网位。</li>
 </ul>
-<ol>
+<ol start="3">
 <li><strong>新子网掩码</strong>：</li>
 </ol>
 <ul>
 <li>原始网络部分：24 位</li>
-<li>借用 2 位 → 新的网络位长度 = 26 位</li>
+<li>借用 2 位 → 新的网络位长度 &#x3D; 26 位</li>
 <li>新子网掩码：<code>255.255.255.192</code>（<code>/26</code>）</li>
 </ul>
-<ol>
+<ol start="4">
 <li><strong>子网地址划分</strong>：</li>
 </ol>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -519,59 +515,57 @@
 <th>广播地址</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>1</td>
-<td>192.168.1.0/26</td>
+<td>192.168.1.0&#x2F;26</td>
 <td>192.168.1.1 - 192.168.1.62</td>
 <td>192.168.1.63</td>
 </tr>
 <tr>
 <td>2</td>
-<td>192.168.1.64/26</td>
+<td>192.168.1.64&#x2F;26</td>
 <td>192.168.1.65 - 192.168.1.126</td>
 <td>192.168.1.127</td>
 </tr>
 <tr>
 <td>3</td>
-<td>192.168.1.128/26</td>
+<td>192.168.1.128&#x2F;26</td>
 <td>192.168.1.129 - 192.168.1.190</td>
 <td>192.168.1.191</td>
 </tr>
 <tr>
 <td>4</td>
-<td>192.168.1.192/26</td>
+<td>192.168.1.192&#x2F;26</td>
 <td>192.168.1.193 - 192.168.1.254</td>
 <td>192.168.1.255</td>
 </tr>
-</tbody>
-</table>
-</div>
-<ol>
+</tbody></table>
+<ol start="5">
 <li><strong>总结</strong>：</li>
 </ol>
 <ul>
-<li><p>每个子网有 64 个地址（2⁶ = 64）。</p>
+<li><p>每个子网有 64 个地址（2⁶ &#x3D; 64）。</p>
 </li>
-<li><p>可用 IP 地址 = 总地址 - 2（网络地址和广播地址）。</p>
+<li><p>可用 IP 地址 &#x3D; 总地址 - 2（网络地址和广播地址）。</p>
 </li>
 </ul>
 <h4 id="示例-2：计算子网的主机数量"><a href="#示例-2：计算子网的主机数量" class="headerlink" title="示例 2：计算子网的主机数量"></a>示例 2：计算子网的主机数量</h4><p>若给定一个子网掩码 <code>/27</code>，计算子网中可用的主机数量。</p>
 <p><strong>解法</strong>：</p>
 <ol>
-<li><p><strong>网络位</strong>：27 位<br><strong>主机位</strong>：32 - 27 = 5 位</p>
+<li><p><strong>网络位</strong>：27 位<br><strong>主机位</strong>：32 - 27 &#x3D; 5 位</p>
 </li>
-<li><p><strong>主机数量</strong> = ( 2^{主机位} - 2 )</p>
+<li><p><strong>主机数量</strong> &#x3D; ( 2^{主机位} - 2 )</p>
 </li>
 </ol>
 <ul>
-<li>( 2^5 = 32 )</li>
-<li>减去网络地址和广播地址，<strong>可用主机数</strong> = 30。</li>
+<li>( 2^5 &#x3D; 32 )</li>
+<li>减去网络地址和广播地址，<strong>可用主机数</strong> &#x3D; 30。</li>
 </ul>
 <h1 id="网络层的协议"><a href="#网络层的协议" class="headerlink" title="网络层的协议"></a>网络层的协议</h1><h2 id="ARP-地址解析协议"><a href="#ARP-地址解析协议" class="headerlink" title="ARP 地址解析协议"></a>ARP 地址解析协议</h2><p>将<strong>IP地址</strong>解析为<strong>MAC地址</strong>，从而使得数据包能够在局域网（LAN）中顺利传输。属于<strong>数据链路层</strong>和<strong>网络层</strong>的交互过程</p>
 <h3 id="ARP的工作原理"><a href="#ARP的工作原理" class="headerlink" title="ARP的工作原理"></a>ARP的工作原理</h3><h4 id="步骤1：发送ARP请求"><a href="#步骤1：发送ARP请求" class="headerlink" title="步骤1：发送ARP请求"></a>步骤1：发送ARP请求</h4><p>当设备A需要向设备B发送数据时：</p>
 <ol>
-<li>设备A检查自己的ARP缓存表，看看目标IP地址是否已经有对应的MAC地址。</li>
+<li><p>设备A检查自己的ARP缓存表，看看目标IP地址是否已经有对应的MAC地址。</p>
+</li>
 <li><p>如果ARP缓存表中没有对应的MAC地址，设备A就会在局域网中<strong>广播</strong>一个ARP请求，内容是：</p>
 <blockquote>
 <p>“谁拥有IP地址 <strong>192.168.1.2</strong>？请告诉我你的MAC地址。”</p>
@@ -632,8 +626,7 @@
 <p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/20241229023659207.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <p>好消息传播的快，坏消息传播得慢。实现简单，开销小</p>
 <h2 id="内部网关协议OSPF"><a href="#内部网关协议OSPF" class="headerlink" title="内部网关协议OSPF"></a>内部网关协议OSPF</h2><p>主要特征是使用分布式的链路状态协议。使用洪泛法，更新过程收敛得快</p>
-<h1 id="Addition-网络通信方式：单播、组播和广播"><a href="#Addition-网络通信方式：单播、组播和广播" class="headerlink" title="Addition 网络通信方式：单播、组播和广播"></a>Addition 网络通信方式：单播、组播和广播</h1><div class="table-container">
-<table>
+<h1 id="Addition-网络通信方式：单播、组播和广播"><a href="#Addition-网络通信方式：单播、组播和广播" class="headerlink" title="Addition 网络通信方式：单播、组播和广播"></a>Addition 网络通信方式：单播、组播和广播</h1><table>
 <thead>
 <tr>
 <th>特性</th>
@@ -642,8 +635,7 @@
 <th>广播（Broadcast）</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>通信范围</td>
 <td>一对一</td>
 <td>一对多</td>
@@ -673,9 +665,7 @@
 <td>视频会议、IPTV、直播等</td>
 <td>局域网广播</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 
                 
               </div>

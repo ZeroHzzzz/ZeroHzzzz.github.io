@@ -297,6 +297,7 @@
 </ul>
 <p>如果我们希望避免这个警告，可以根据项目的需求或系统的习惯调整 <code>core.autocrlf</code> 配置，使得 Git 不会自动修改行尾符。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global core.autocrlf <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
 <p>我们也可以在项目的 <code>.gitattributes</code> 文件中指定行尾符的处理方式，使得 Git 会强制所有 HTML 文件使用 LF 行尾符。比如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">*.html text eol=lf<br></code></pre></td></tr></table></figure>
 

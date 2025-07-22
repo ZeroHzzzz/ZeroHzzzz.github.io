@@ -16,12 +16,12 @@
   <meta name="author" content="ZeroHzzzz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="#OpenCV #CMake配置 #MinGW 安装前准备 检查 MinGW 的安装版本是否为 posix 线程标准，目前 OpenCV 只支持 posix 标准，不支持 win32 标准 安装Windows版本的 Cmake，官网链接为https:&#x2F;&#x2F;cmake.org&#x2F;download&#x2F; 编译之前记得使用gcc -v查看自己的编译器版本，别到时候出现一些不必要的error （我不说是谁）  下">
+    <meta name="description" content="#OpenCV #CMake配置 #MinGW 安装前准备 检查 MinGW 的安装版本是否为 posix 线程标准，目前 OpenCV 只支持 posix 标准，不支持 win32 标准 安装Windows版本的 Cmake，官网链接为https:&#x2F;&#x2F;cmake.org&#x2F;download&#x2F; 编译之前记得使用gcc -v查看自己的编译器版本，别到时候出现一些不必要的error （我不说是谁）  下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows环境中利用MinGW+CMake从源码编译OpenCV">
 <meta property="og:url" content="http://zerohzzzz.github.io/2024/08/28/Windows%E7%8E%AF%E5%A2%83%E4%B8%AD%E5%88%A9%E7%94%A8MinGW+CMake%E4%BB%8E%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91OpenCV/index.html">
 <meta property="og:site_name" content="Welcome To my Blog">
-<meta property="og:description" content="#OpenCV #CMake配置 #MinGW 安装前准备 检查 MinGW 的安装版本是否为 posix 线程标准，目前 OpenCV 只支持 posix 标准，不支持 win32 标准 安装Windows版本的 Cmake，官网链接为https:&#x2F;&#x2F;cmake.org&#x2F;download&#x2F; 编译之前记得使用gcc -v查看自己的编译器版本，别到时候出现一些不必要的error （我不说是谁）  下">
+<meta property="og:description" content="#OpenCV #CMake配置 #MinGW 安装前准备 检查 MinGW 的安装版本是否为 posix 线程标准，目前 OpenCV 只支持 posix 标准，不支持 win32 标准 安装Windows版本的 Cmake，官网链接为https:&#x2F;&#x2F;cmake.org&#x2F;download&#x2F; 编译之前记得使用gcc -v查看自己的编译器版本，别到时候出现一些不必要的error （我不说是谁）  下">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202408290036458.png">
 <meta property="og:image" content="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202408290036926.png">
@@ -291,8 +291,8 @@
                 
                 <p>#OpenCV #CMake配置 #MinGW</p>
 <h2 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h2><ul>
-<li>检查 <code>MinGW</code> 的安装版本是否为 <code>posix</code> 线程标准，目前 <code>OpenCV</code> 只支持 <code>posix</code> 标准，不支持 <code>win32</code> 标准</li>
-<li>安装Windows版本的 <code>Cmake</code>，官网链接为<a target="_blank" rel="noopener" href="https://cmake.org/download/" title="https://cmake.org/download/">https://cmake.org/download/</a></li>
+<li>检查 <code>MinGW</code> 的安装版本是否为 <code>posix</code> 线程标准，目前 <code>OpenCV</code> 只支持 <code>posix</code> 标准，不支持 <code>win32</code> 标准</li>
+<li>安装Windows版本的 <code>Cmake</code>，官网链接为<a target="_blank" rel="noopener" href="https://cmake.org/download/" title="https://cmake.org/download/">https://cmake.org/download/</a></li>
 <li>编译之前记得使用<code>gcc -v</code>查看自己的编译器版本，别到时候出现一些不必要的<code>error</code> <del>（我不说是谁）</del></li>
 </ul>
 <h2 id="下载OpenCV源码"><a href="#下载OpenCV源码" class="headerlink" title="下载OpenCV源码"></a>下载OpenCV源码</h2><p><a target="_blank" rel="noopener" href="https://opencv.org/releases/">Releases - OpenCV</a></p>
@@ -303,14 +303,17 @@
 <p><strong>CMAKE_INSTALL_PREFIX</strong>：修改默认安装路径，默认安装路径为<code>build/install</code><br><strong>BUILD_opencv_world</strong>：将所有编译后的库文件整合为一个<br><strong>OPENCV_GENERATE_PKGCONFIG</strong>：生成一个pkg-config的路径使得pkgconfig能够自动传递库路径给g++进行编译<br><strong>CMAKE_BUILD_TYPE</strong>：填入Release会编译发行版本的opencv包，从而去除debug信息和符号表，这可以提高性能；填入Debug则会编译debug版本的opencv（这是给需要深度开发opencv修改源码的人用的），而一般我们不需要深入opencv的源代码进行debug。<br><strong>OPENCV_EXTRA_MODULES_PATH</strong>：contrib包中的附加模组的路径<br><strong>WITH_QT</strong>：字面意思<br><strong>WITH_OPENGL</strong>：利用硬件加速来提高图像和视频处理的性能<br><strong>ENABLE_PRECOMPILED_HEADERS</strong>：启用预编译头，加快编译速度<br><strong>QT5_DIR</strong>：填入QT路径<br>再次configure。如果无报错之后选择generate生成makefile</p>
 <h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>在build文件夹中打开cmd或者终端或者其他类shell工具，输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mingw32-make<br></code></pre></td></tr></table></figure>
+
 <p>可以传入<code>-jx</code>使用多线程编译以加快编译速度，其中x为线程数。</p>
 <p>编译完成后，输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mingw32-make install<br></code></pre></td></tr></table></figure>
+
 <p><img src="https://cloud.intro-iu.top:738/d/ThreeBody/ZeroHzzzzPic/202408290045293.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <p>成功安装动态库到对应路径(若没有修改则是默认路径)。</p>
 <h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><p>刚刚我们得到的文件是很多的，但是我们只需要留下build文件夹中的install目录即可，其他都是可以删掉的。</p>
 <p>因此我最终的文件目录如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs tree">opencv-4.10.0/<br>├─etc<br>│  ├─haarcascades<br>│  ├─lbpcascades<br>│  └─licenses<br>├─include<br>│  └─opencv2<br>│      ├─calib3d<br>│      ├─core<br>│      │  ├─cuda<br>│      │  │  └─detail<br>│      │  ├─detail<br>│      │  ├─hal<br>│      │  ├─opencl<br>│      │  │  └─runtime<br>│      │  │      └─autogenerated<br>│      │  ├─parallel<br>│      │  │  └─backend<br>│      │  └─utils<br>│      ├─dnn<br>│      │  └─utils<br>│      ├─features2d<br>│      │  └─hal<br>│      ├─flann<br>│      ├─gapi<br>│      │  ├─cpu<br>│      │  ├─fluid<br>│      │  ├─gpu<br>│      │  ├─infer<br>│      │  ├─oak<br>│      │  ├─ocl<br>│      │  ├─own<br>│      │  ├─plaidml<br>│      │  ├─python<br>│      │  ├─render<br>│      │  ├─s11n<br>│      │  ├─streaming<br>│      │  │  ├─gstreamer<br>│      │  │  └─onevpl<br>│      │  └─util<br>│      ├─highgui<br>│      ├─imgcodecs<br>│      │  └─legacy<br>│      ├─imgproc<br>│      │  ├─detail<br>│      │  └─hal<br>│      ├─ml<br>│      ├─objdetect<br>│      ├─photo<br>│      │  └─legacy<br>│      ├─stitching<br>│      │  └─detail<br>│      ├─video<br>│      │  ├─detail<br>│      │  └─legacy<br>│      └─videoio<br>│          └─legacy<br>└─x64<br>    └─mingw<br>        ├─bin<br>        └─lib<br>            └─pkgconfig<br></code></pre></td></tr></table></figure>
+
 <p>我们添加环境变量的时候只需要添加<code>x64/mingw/bin</code>就行了。</p>
 
                 

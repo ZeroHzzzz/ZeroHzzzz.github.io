@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.4k words
+          5.8k words
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          45 mins
+          49 mins
         
       </span>
     
@@ -298,14 +298,19 @@
 </li>
 <li><p><strong>状态转移模型 (<code>F</code>)：​</strong>​ 描述系统状态如何从时刻<code>k-1</code>演变到时刻<code>k</code>的数学方程。通常是一个矩阵（状态转移矩阵）。</p>
 </li>
-<li><strong>观测模型 (<code>H</code>)：​</strong>​ 描述系统的状态(<code>x</code>)如何映射为我们能观测到的测量值(<code>z</code>)的数学方程（观测矩阵）。它的作用是把预测的状态空间转换到观测空间，以便与实际测量值进行比较和融合。</li>
-<li><strong>过程噪声 (<code>w</code>, 协方差 <code>Q</code>)：​</strong>​ 代表驱动系统动态的模型本身的不准确性和外部扰动。例如风对飞行器的影响、路面摩擦力变化对汽车模型的影响。</li>
-<li><strong>测量噪声 (<code>v</code>, 协方差 <code>R</code>)：​</strong>​ 代表传感器测量的不精确性和噪声。例如GPS的位置误差、陀螺仪的漂移。</li>
-<li><strong>状态估计协方差 (<code>P</code>)：​</strong>​ 这是卡尔曼滤波的核心“元信息”。它不是一个状态变量本身的值，而是​<strong>​一个矩阵，代表我们对当前状态估计值可信度（不确定性）的量化​</strong>​。对角线上的元素代表各个状态变量估计的方差（不确定度），非对角元素代表状态变量之间估计误差的协方差（相关性）。卡尔曼滤波在每一步都同时更新状态估计 (<code>x</code>) 和其协方差 (<code>P</code>)，协方差<code>P</code>的演变是算法精妙之处所在。</li>
-<li><strong>卡尔曼增益 (<code>K</code>)</strong>：它是一个​<strong>​权重矩阵​</strong>​，决定了我们更​<strong>​“相信”​</strong>​ 预测值还是测量值。<ul>
+<li><p><strong>观测模型 (<code>H</code>)：​</strong>​ 描述系统的状态(<code>x</code>)如何映射为我们能观测到的测量值(<code>z</code>)的数学方程（观测矩阵）。它的作用是把预测的状态空间转换到观测空间，以便与实际测量值进行比较和融合。</p>
+</li>
+<li><p><strong>过程噪声 (<code>w</code>, 协方差 <code>Q</code>)：​</strong>​ 代表驱动系统动态的模型本身的不准确性和外部扰动。例如风对飞行器的影响、路面摩擦力变化对汽车模型的影响。</p>
+</li>
+<li><p><strong>测量噪声 (<code>v</code>, 协方差 <code>R</code>)：​</strong>​ 代表传感器测量的不精确性和噪声。例如GPS的位置误差、陀螺仪的漂移。</p>
+</li>
+<li><p><strong>状态估计协方差 (<code>P</code>)：​</strong>​ 这是卡尔曼滤波的核心“元信息”。它不是一个状态变量本身的值，而是​<strong>​一个矩阵，代表我们对当前状态估计值可信度（不确定性）的量化​</strong>​。对角线上的元素代表各个状态变量估计的方差（不确定度），非对角元素代表状态变量之间估计误差的协方差（相关性）。卡尔曼滤波在每一步都同时更新状态估计 (<code>x</code>) 和其协方差 (<code>P</code>)，协方差<code>P</code>的演变是算法精妙之处所在。</p>
+</li>
+<li><p><strong>卡尔曼增益 (<code>K</code>)<strong>：它是一个​</strong>​权重矩阵​</strong>​，决定了我们更​<strong>​“相信”​</strong>​ 预测值还是测量值。</p>
+<ul>
 <li>​<strong>​测量噪声小​</strong>​（<code>R</code>小 → 传感器精度高），<code>K</code>会更大 → 新测量值在更新中的​<strong>​权重更高​</strong>​。</li>
-<li>​<strong>​预测噪声小​</strong>​（预测协方差<code>P</code>小 → 模型预测非常准确/不确定性低），<code>K</code>会更小 → ​<strong>​更倾向于相信预测值​</strong>​。</li>
-<li>事实上<code>K</code>是基于预测协方差<code>P</code>、观测模型<code>H</code>和测量噪声协方差<code>R</code>计算出来的。计算方法为$K = P<em>{predicted} <em> H^T </em> (H * P</em>{predicted} * H^T + R)^-1$</li>
+<li>​<strong>​预测噪声小​</strong>​（预测协方差<code>P</code>小 → 模型预测非常准确&#x2F;不确定性低），<code>K</code>会更小 → ​<strong>​更倾向于相信预测值​</strong>​。</li>
+<li>事实上<code>K</code>是基于预测协方差<code>P</code>、观测模型<code>H</code>和测量噪声协方差<code>R</code>计算出来的。计算方法为$K &#x3D; P_{predicted} * H^T * (H * P_{predicted} * H^T + R)^-1$</li>
 </ul>
 </li>
 </ul>
@@ -324,73 +329,49 @@
 </ul>
 <h1 id="省流版"><a href="#省流版" class="headerlink" title="省流版"></a>省流版</h1><p>我们先看省流版。其实看了这个就直接能拿来用了，有兴趣再往下看。</p>
 <p>卡尔曼滤波主要就两个步骤：预测（先验估计）和更新（后验估计）。</p>
-<p>预测的时候，我们需要预测状态：</p>
-<script type="math/tex; mode=display">\bar{x_{k}}= F x_{k-1} + B u_{k-1} \tag{1}</script><p>以及使用协方差传播方程预测协方差：</p>
-<script type="math/tex; mode=display">\bar{P_{k}} = FP_{k-1}F^{T}+ Q \tag{2}</script><p>然后求出一个k时刻的卡尔曼增益K：</p>
-<script type="math/tex; mode=display">K_k = \bar{P_k} H^T (H \bar{P_k} H^{T + R)^{-1}}\tag{3}</script><p>然后进行更新步骤。首先用K算出最优估计值：</p>
-<script type="math/tex; mode=display">\hat{x_k} = \bar{x_k} + K(z_k - Hx_k^-)\tag{4}</script><p>同时更新协方差：</p>
-<script type="math/tex; mode=display">P_k = (I - KH) \bar{P_k} (I - KH)^T + K R K^{T}\tag{5}</script><p>然后我们将更新后的$\hat{x<em>k}$和协方差估计$P</em>{K}$作为下一个时间步的输入。重复以上的算法过程。这就是卡尔曼滤波的算法过程。</p>
-<h1 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h1><p>根据上文所述，卡尔曼滤波具有三个前提条件，因此我们可以根据这个条件写出以下的两个公式：</p>
-<script type="math/tex; mode=display">x_{k}= F x_{k-1} + B u_{k-1} + w_{k}</script><script type="math/tex; mode=display">z_{k}= H x_{k} + v_{k}</script><p>其中$x<em>{k}$表示k时刻的真实值，是待估计值，而$x</em>{k-1}$表示k-1时刻的真实值。$u<em>{k-1}$表示k-1时刻的控制输入量，$z</em>{k}$表示k时刻的观测值，是我们获取到的传感器的值（请注意他可能和$x_{k}$维度不同）。</p>
-<p>可以看出，我们其实并不知道k时刻的噪声，其实就算是模型很精确他多少也存在噪声，因此我们并不能很准确的得到一个真实值$x<em>k$，所以我们的目标就是获得一个最优的估计值$\hat{x</em>{k}}$来尽可能接近$x_{k}$，让他的误差达到最小。</p>
-<p>对于过程模型来说，我们面临两个问题，就是其实我们并不知道过程模型$w<em>{k}$和$x</em>{k-1}$</p>
-<p>但我们其实可以直接忽略$w<em>{k}$。不是因为它不存在，而是因为它的具体值未知且无法直接用来计算，后续我们会用过程噪声协方差 Q 来建模 $w_k$ 的整体统计特性并加以补偿。既然我们没有k-1时刻的真实值，就用我们上一个时刻得到的最好的估计结果 $\hat{x</em>{k-1}}$ 来近似它。由此可以得到：</p>
-<script type="math/tex; mode=display">\bar{x_{k}}= F x_{k-1} + B u_{k-1} \tag{1}</script><p>我们使用上一时刻的最优估计值$\hat{x<em>{k-1}}$ 来替代真实值$x</em>{k-1}$，并将$\bar{x_{k}}$称为当前时刻通过过程模型得到的<strong>预测值</strong>，也叫做<strong>先验估计值</strong>。显然，这是一个误差较大的预估值，我们使用观测值来进行修正，这也就是卡尔曼滤波的核心思想：使用<strong>观测值</strong>修正我们得出的<strong>预测值</strong></p>
+<p>预测的时候，我们需要预测状态：<br>$$\bar{x_{k}}&#x3D; F x_{k-1} + B u_{k-1} \tag{1}$$<br>以及使用协方差传播方程预测协方差：<br>$$\bar{P_{k}} &#x3D; FP_{k-1}F^{T}+ Q \tag{2}$$<br>然后求出一个k时刻的卡尔曼增益K：<br>$$K_k &#x3D; \bar{P_k} H^T (H \bar{P_k} H^{T + R)^{-1}}\tag{3}$$<br>然后进行更新步骤。首先用K算出最优估计值：<br>$$\hat{x_k} &#x3D; \bar{x_k} + K(z_k - Hx_k^-)\tag{4}$$<br>同时更新协方差：<br>$$P_k &#x3D; (I - KH) \bar{P_k} (I - KH)^T + K R K^{T}\tag{5}$$<br>然后我们将更新后的$\hat{x_k}$和协方差估计$P_{K}$作为下一个时间步的输入。重复以上的算法过程。这就是卡尔曼滤波的算法过程。</p>
+<h1 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h1><p>根据上文所述，卡尔曼滤波具有三个前提条件，因此我们可以根据这个条件写出以下的两个公式：<br>$$x_{k}&#x3D; F x_{k-1} + B u_{k-1} + w_{k}$$<br>$$z_{k}&#x3D; H x_{k} + v_{k}$$<br>其中$x_{k}$表示k时刻的真实值，是待估计值，而$x_{k-1}$表示k-1时刻的真实值。$u_{k-1}$表示k-1时刻的控制输入量，$z_{k}$表示k时刻的观测值，是我们获取到的传感器的值（请注意他可能和$x_{k}$维度不同）。</p>
+<p>可以看出，我们其实并不知道k时刻的噪声，其实就算是模型很精确他多少也存在噪声，因此我们并不能很准确的得到一个真实值$x_k$，所以我们的目标就是获得一个最优的估计值$\hat{x_{k}}$来尽可能接近$x_{k}$，让他的误差达到最小。</p>
+<p>对于过程模型来说，我们面临两个问题，就是其实我们并不知道过程模型$w_{k}$和$x_{k-1}$</p>
+<p>但我们其实可以直接忽略$w_{k}$。不是因为它不存在，而是因为它的具体值未知且无法直接用来计算，后续我们会用过程噪声协方差 Q 来建模 $w_k$ 的整体统计特性并加以补偿。既然我们没有k-1时刻的真实值，就用我们上一个时刻得到的最好的估计结果 $\hat{x_{k-1}}$ 来近似它。由此可以得到：<br>$$\bar{x_{k}}&#x3D; F x_{k-1} + B u_{k-1} \tag{1}$$</p>
+<p>我们使用上一时刻的最优估计值$\hat{x_{k-1}}$ 来替代真实值$x_{k-1}$，并将$\bar{x_{k}}$称为当前时刻通过过程模型得到的<strong>预测值</strong>，也叫做<strong>先验估计值</strong>。显然，这是一个误差较大的预估值，我们使用观测值来进行修正，这也就是卡尔曼滤波的核心思想：使用<strong>观测值</strong>修正我们得出的<strong>预测值</strong></p>
 <p>那他是怎么修正的？请看下文的预测步骤。</p>
-<h1 id="最优估计值"><a href="#最优估计值" class="headerlink" title="最优估计值"></a>最优估计值</h1><p>其实有两种推导方式，一种是从预测值的角度出发，一种是从观测值的角度出发，本质上都是一样的。都能得到下面的公式：</p>
-<script type="math/tex; mode=display">\hat{x_{k}} = x_k^- + K(z_k - Hx_k^-)</script><p>我们先来看从预测值的角度出发的方法。</p>
-<h2 id="预测值"><a href="#预测值" class="headerlink" title="预测值"></a>预测值</h2><p>我们这里和上文所述一样，可以忽略掉观测噪声$v_{k}$。因此我们可以得到：</p>
-<script type="math/tex; mode=display">z_k = H x_k^{\text{measure}} \Rightarrow x_k^{\text{measure}} = H^{-1} z_k</script><p>这样我们就得到了一个$x<em>{k}^{measure}$，可以用它来和我们之前得到的$\bar{x</em>{k}}$作差，得到一个误差值，用来修正我们的预测值。其中A、B分别代表模型预测值的可信度权重​和传感器测量值的可信度权重​。</p>
-<script type="math/tex; mode=display">
-\hat{x}_k = A x_k^- + B x_k^{measure}, \quad A + B = I</script><p>当然也有人把这个公式写成下面这样的形式。本质上是相同的。其中G是一个系数矩阵</p>
-<script type="math/tex; mode=display">
-\hat{x}_k = x_k^- + G \cdot (x_k^{\text{measure}} - x_k^-)</script><p>这种写法可以进一步简化。让我们设$G = K \cdot H$，于是有：</p>
-<script type="math/tex; mode=display">
-\begin{align*}
-\hat{x}_k &= \bar{x_k} + G \cdot (x_k^{measure} - \bar{x_k}) \\
-&= \bar{x_k} + KH(H^{-1}z_k - \bar{x_k}) \\
-&= \bar{x_k} + K(z_k - H\bar{x_k})\tag{4}
-\end{align*}</script><p>其中K是卡尔曼增益，$\hat{x}$ 是最优值，因为他是用测量值修正的，这就叫做后验估计值</p>
-<h2 id="观测值"><a href="#观测值" class="headerlink" title="观测值"></a>观测值</h2><p>和上面的方法一样，我们直接忽略掉噪声$v<em>{k}$，但是我们这里使用先验估计值$\bar{x</em>{k}}$来表示真实值，因此我们可以得到以下公式</p>
-<script type="math/tex; mode=display">z_{k}^{measure}=H\bar{x_{k}}</script><p>我们通过预测值和观测矩阵获得了和测量值相同维度的$z<em>{k}^{measure}$，然后我们就可以用它来获得一个与观测值$z</em>{k}$的误差值，然后用这个误差来修正我们之前得出的预测值。考虑到观测值和预测值维度可能不同等因素，我们用系数矩阵K进行修正。因此有：</p>
-<script type="math/tex; mode=display">
-\begin{align*} \\
-\hat{x}_k &= \bar{x_k} + K(z_k - z_k^{\text{measure}}) \\ \\
-&= \bar{x_k} + K(z_k - H\bar{x_k}) \\
-\end{align*}</script><p>这里的K和上文一样表示卡尔曼增益，因此我们得到了最优估计值和预测值、观测值的关系式，并且希望求出一个合适的K，使得最优估计值最接近真实值。</p>
+<h1 id="最优估计值"><a href="#最优估计值" class="headerlink" title="最优估计值"></a>最优估计值</h1><p>其实有两种推导方式，一种是从预测值的角度出发，一种是从观测值的角度出发，本质上都是一样的。都能得到下面的公式：<br>$$\hat{x_{k}} &#x3D; x_k^- + K(z_k - Hx_k^-)$$<br>我们先来看从预测值的角度出发的方法。</p>
+<h2 id="预测值"><a href="#预测值" class="headerlink" title="预测值"></a>预测值</h2><p>我们这里和上文所述一样，可以忽略掉观测噪声$v_{k}$。因此我们可以得到：<br>$$z_k &#x3D; H x_k^{\text{measure}} \Rightarrow x_k^{\text{measure}} &#x3D; H^{-1} z_k$$<br>这样我们就得到了一个$x_{k}^{measure}$，可以用它来和我们之前得到的$\bar{x_{k}}$作差，得到一个误差值，用来修正我们的预测值。其中A、B分别代表模型预测值的可信度权重​和传感器测量值的可信度权重​。</p>
+<p>$$<br>\hat{x}_k &#x3D; A x_k^- + B x_k^{measure}, \quad A + B &#x3D; I<br>$$</p>
+<p>当然也有人把这个公式写成下面这样的形式。本质上是相同的。其中G是一个系数矩阵</p>
+<p>$$<br>\hat{x}_k &#x3D; x_k^- + G \cdot (x_k^{\text{measure}} - x_k^-)<br>$$</p>
+<p>这种写法可以进一步简化。让我们设$G &#x3D; K \cdot H$，于是有：</p>
+<p>$$<br>\begin{align*}<br>\hat{x}_k &amp;&#x3D; \bar{x_k} + G \cdot (x_k^{measure} - \bar{x_k}) \<br>&amp;&#x3D; \bar{x_k} + KH(H^{-1}z_k - \bar{x_k}) \<br>&amp;&#x3D; \bar{x_k} + K(z_k - H\bar{x_k})\tag{4}<br>\end{align*}<br>$$</p>
+<p>其中K是卡尔曼增益，$\hat{x}$ 是最优值，因为他是用测量值修正的，这就叫做后验估计值</p>
+<h2 id="观测值"><a href="#观测值" class="headerlink" title="观测值"></a>观测值</h2><p>和上面的方法一样，我们直接忽略掉噪声$v_{k}$，但是我们这里使用先验估计值$\bar{x_{k}}$来表示真实值，因此我们可以得到以下公式<br>$$z_{k}^{measure}&#x3D;H\bar{x_{k}}$$<br>我们通过预测值和观测矩阵获得了和测量值相同维度的$z_{k}^{measure}$，然后我们就可以用它来获得一个与观测值$z_{k}$的误差值，然后用这个误差来修正我们之前得出的预测值。考虑到观测值和预测值维度可能不同等因素，我们用系数矩阵K进行修正。因此有：</p>
+<p>$$<br>\begin{align*} \<br>\hat{x}_k &amp;&#x3D; \bar{x_k} + K(z_k - z_k^{\text{measure}}) \ \<br>&amp;&#x3D; \bar{x_k} + K(z_k - H\bar{x_k}) \<br>\end{align*}<br>$$</p>
+<p>这里的K和上文一样表示卡尔曼增益，因此我们得到了最优估计值和预测值、观测值的关系式，并且希望求出一个合适的K，使得最优估计值最接近真实值。</p>
 <h1 id="后验误差"><a href="#后验误差" class="headerlink" title="后验误差"></a>后验误差</h1><p>我们只需要把我们上面求出来的最优估计值和我们的真实值$x_{k}$作差就行了。也就是：</p>
-<script type="math/tex; mode=display">
-\begin{align*}\\
-x_k - \hat{x}_k &= x_k - \bar{x_k} - K(Hx_k + v_k - H\bar{x_k}) \\ \\
-&= (I - KH)(x_k - \bar{x_k}) - Kv_k \\
-\end{align*}</script><p>我们记$\bar{e<em>{k}} = x</em>{k} - \bar{x<em>{k}}$，$\bar{e</em>{k}}$表示预测值和真实值的误差，于是可以知道：</p>
-<script type="math/tex; mode=display">
-e_{k}=(I-KH)\bar{e_{k}}-K v_{k}\tag{b}</script><p>于是我们现在的目标是要求解最优目标函数$min<em>{K}|e</em>{k}|$。直接通过随机变量的关系式来求解最优目标函数显然不可行，因为他每次都不一样。因此我们需要一个能表征这个​随机变量整体统计特性​​的量作为目标函数，最简单的特征值就是数学期望。我们引入误差协方差矩阵，并设：</p>
+<p>$$<br>\begin{align*}\<br>x_k - \hat{x}_k &amp;&#x3D; x_k - \bar{x_k} - K(Hx_k + v_k - H\bar{x_k}) \ \<br>&amp;&#x3D; (I - KH)(x_k - \bar{x_k}) - Kv_k \<br>\end{align*}<br>$$</p>
+<p>我们记$\bar{e_{k}} &#x3D; x_{k} - \bar{x_{k}}$，$\bar{e_{k}}$表示预测值和真实值的误差，于是可以知道：</p>
+<p>$$<br>e_{k}&#x3D;(I-KH)\bar{e_{k}}-K v_{k}\tag{b}<br>$$</p>
+<p>于是我们现在的目标是要求解最优目标函数$min_{K}|e_{k}|$。直接通过随机变量的关系式来求解最优目标函数显然不可行，因为他每次都不一样。因此我们需要一个能表征这个​随机变量整体统计特性​​的量作为目标函数，最简单的特征值就是数学期望。我们引入误差协方差矩阵，并设：</p>
 <ul>
-<li>$P<em>{k} = E[e</em>{k}e_{k}^{t}]$，表示真实值和最优值的后验误差协方差矩阵。</li>
-<li>$\bar{P<em>{k}} = E[\bar{e</em>{k}} \bar{e_{k}^{t}}]$，表示的是真实值和预测值的先验误差协方差矩阵。</li>
+<li>$P_{k} &#x3D; E[e_{k}e_{k}^{t}]$，表示真实值和最优值的后验误差协方差矩阵。</li>
+<li>$\bar{P_{k}} &#x3D; E[\bar{e_{k}} \bar{e_{k}^{t}}]$，表示的是真实值和预测值的先验误差协方差矩阵。</li>
 </ul>
-<p>根据定义，我们其实可以知道$P<em>{k}^{t} = P</em>{k}$，因为$P<em>k^t = E[(e_k^t e_k^t)^t] = E[(e_k^t)^t e_k^t] = E[e_k e_k^t] = P_k$。并且我们同理可知，$\bar{P</em>{k}^{t}} = \bar{P_{k}}$</p>
-<p>我们一步步来，先讲公式(b)带入到$P_{k}$表达式里面，由此我们可以得到：</p>
-<script type="math/tex; mode=display">P_k = E [ ( (I - K H) e_k^- - K v_k )  ( (I - K H) e_k^- - K v_k )^T ]</script><p>令 $A = I - K H$, $B = -K v_k$（为了书写方便），上式变为：</p>
-<script type="math/tex; mode=display">
-P_k = E [ (A e_k^- + B) (A e_k^- + B)^T ]
-= E [ (A e_k^- + B) (e_k^-T A^T + B^T) ]</script><p>此处省略一些中间步骤，我们最终可以得到：</p>
-<script type="math/tex; mode=display">P_k = E [ (I - KH) e_k^- e_k^-T (I - KH)^T ] + E [ (I - KH) e_k^- (-v_k^T K^T) ] + E [ (-K v_k) e_k^-T (I - KH)^T ] + E [ K v_k v_k^T K^T ]</script><p>而我们之前提到过，卡尔曼滤波有一个假设是他过程噪声$w<em>{k}$和测量噪声$v</em>{k}$独立同分布，服从高斯分布。所以可以知道：</p>
+<p>根据定义，我们其实可以知道$P_{k}^{t} &#x3D; P_{k}$，因为$P_k^t &#x3D; E[(e_k^t e_k^t)^t] &#x3D; E[(e_k^t)^t e_k^t] &#x3D; E[e_k e_k^t] &#x3D; P_k$。并且我们同理可知，$\bar{P_{k}^{t}} &#x3D; \bar{P_{k}}$</p>
+<p>我们一步步来，先讲公式(b)带入到$P_{k}$表达式里面，由此我们可以得到：<br>$$P_k &#x3D; E [ ( (I - K H) e_k^- - K v_k )  ( (I - K H) e_k^- - K v_k )^T ]$$<br>令 $A &#x3D; I - K H$, $B &#x3D; -K v_k$（为了书写方便），上式变为：</p>
+<p>$$<br>P_k &#x3D; E [ (A e_k^- + B) (A e_k^- + B)^T ]<br>&#x3D; E [ (A e_k^- + B) (e_k^-T A^T + B^T) ]<br>$$</p>
+<p>此处省略一些中间步骤，我们最终可以得到：<br>$$P_k &#x3D; E [ (I - KH) e_k^- e_k^-T (I - KH)^T ] + E [ (I - KH) e_k^- (-v_k^T K^T) ] + E [ (-K v_k) e_k^-T (I - KH)^T ] + E [ K v_k v_k^T K^T ]$$<br>而我们之前提到过，卡尔曼滤波有一个假设是他过程噪声$w_{k}$和测量噪声$v_{k}$独立同分布，服从高斯分布。所以可以知道：</p>
 <ul>
-<li>$E[\bar{e_k}] = 0, E[v_k] = 0$</li>
-<li>$E[\bar{e_k} v_k^T] = 0$ (独立且不相关)</li>
-<li>$E[v_k \bar{e_k^T}] = 0$(独立且不相关)</li>
+<li>$E[\bar{e_k}] &#x3D; 0, E[v_k] &#x3D; 0$</li>
+<li>$E[\bar{e_k} v_k^T] &#x3D; 0$ (独立且不相关)</li>
+<li>$E[v_k \bar{e_k^T}] &#x3D; 0$(独立且不相关)</li>
 </ul>
-<p>所以，<script type="math/tex">E [ (I - KH) e_k^- (-v_k^T K^T) ] = (I - KH) E[e_k^- (-v_k^T)] K^T = (I - KH) [0] K^T = 0$$$$E [ (-K v_k) \bar{e_k}T (I - KH)^T ] = -K E[v_k \bar{e_k}T] (I - KH)^T = -K [0] (I - KH)^T = 0</script><br>化简过后，我们可以得到后验协方差矩阵$P_k$的表达式：</p>
-<script type="math/tex; mode=display">P_k = (I - KH) \bar{P_k} (I - KH)^T + K R K^T \tag{a}</script><p>对于这个公式，我的理解是$I - KH$ 是一个缩小因子，用来调整预测误差对最终估计的影响，然后$(I - KH) P_k^- (I - KH)^T$这个部分代表了​​校正后的预测不确定性​​。K 在减小预测误差贡献的同时也改变了它的协方差结构。而$K R K^T$这个部分代表了由​​测量噪声 (R)​​ 通过卡尔曼增益 K 引入的​​额外不确定性​​。</p>
-<p>从现在开始，我们的目标就从求解最优目标函数$min<em>{K}|e</em>{k}|$变成了​<strong>​找到一个最优的卡尔曼增益矩阵 K，使得后验误差协方差矩阵 $P_K$ 的迹最小化​</strong>​。这里迹反映了状态估计整体误差方差的总和。</p>
-<h1 id="求解最优K"><a href="#求解最优K" class="headerlink" title="求解最优K"></a>求解最优K</h1><p>上文可知，我们现在的目标是最小化$P<em>k$的迹，即$J = tr(P</em>{k})$。</p>
-<p>那我们现在就将$P_{k}$代入进去，然后对K求偏导，并令他导数为零。这里过程不再赘述，我们最终可以得到一个公式：</p>
-<script type="math/tex; mode=display">K = \bar{P_k} H^T (H \bar{P_k} H^{T + R)^{-1} \tag{3}}</script><p>这就是著名的卡尔曼增益公式。</p>
-<h1 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h1><p>我们将刚刚获得的最优K代入到公式(a)中，进行化简，则有：</p>
-<script type="math/tex; mode=display">P_{k}= (I-K H) \bar{P_{k}} \tag{5}</script><p>同理，我们可以得到先验误差协方差矩阵</p>
-<script type="math/tex; mode=display">\bar{P_{k}} = FP_{k-1}F^{T}+ Q \tag{2}</script><script type="math/tex; mode=display">\mathscr{END}</script>
+<p>所以，$$E [ (I - KH) e_k^- (-v_k^T K^T) ] &#x3D; (I - KH) E[e_k^- (-v_k^T)] K^T &#x3D; (I - KH) [0] K^T &#x3D; 0$$$$E [ (-K v_k) \bar{e_k}T (I - KH)^T ] &#x3D; -K E[v_k \bar{e_k}T] (I - KH)^T &#x3D; -K [0] (I - KH)^T &#x3D; 0$$<br>化简过后，我们可以得到后验协方差矩阵$P_k$的表达式：<br>$$P_k &#x3D; (I - KH) \bar{P_k} (I - KH)^T + K R K^T \tag{a}$$<br>对于这个公式，我的理解是$I - KH$ 是一个缩小因子，用来调整预测误差对最终估计的影响，然后$(I - KH) P_k^- (I - KH)^T$这个部分代表了​​校正后的预测不确定性​​。K 在减小预测误差贡献的同时也改变了它的协方差结构。而$K R K^T$这个部分代表了由​​测量噪声 (R)​​ 通过卡尔曼增益 K 引入的​​额外不确定性​​。</p>
+<p>从现在开始，我们的目标就从求解最优目标函数$min_{K}|e_{k}|$变成了​<strong>​找到一个最优的卡尔曼增益矩阵 K，使得后验误差协方差矩阵 $P_K$ 的迹最小化​</strong>​。这里迹反映了状态估计整体误差方差的总和。</p>
+<h1 id="求解最优K"><a href="#求解最优K" class="headerlink" title="求解最优K"></a>求解最优K</h1><p>上文可知，我们现在的目标是最小化$P_k$的迹，即$J &#x3D; tr(P_{k})$。</p>
+<p>那我们现在就将$P_{k}$代入进去，然后对K求偏导，并令他导数为零。这里过程不再赘述，我们最终可以得到一个公式：<br>$$K &#x3D; \bar{P_k} H^T (H \bar{P_k} H^{T + R)^{-1} \tag{3}}$$<br>这就是著名的卡尔曼增益公式。</p>
+<h1 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h1><p>我们将刚刚获得的最优K代入到公式(a)中，进行化简，则有：<br>$$P_{k}&#x3D; (I-K H) \bar{P_{k}} \tag{5}$$<br>同理，我们可以得到先验误差协方差矩阵<br>$$\bar{P_{k}} &#x3D; FP_{k-1}F^{T}+ Q \tag{2}$$</p>
+<p>$$\mathscr{END}$$</p>
+
                 
               </div>
             
