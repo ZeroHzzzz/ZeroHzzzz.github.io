@@ -1,0 +1,816 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/ZeroHzzzz.jpg">
+  <link rel="icon" href="/img/ZeroHzzzz.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ZeroHzzzz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一些基本概念 滤波：这是信号里面的一个概念，简单说就是从信号里挑出我们想要的部分，同时尽量去掉那些不需要的部分或噪声。  卡尔曼滤波它的核心思想其实是把多个含有误差的数据​​融合​​在一起。通过这种融合计算，我们能在很大程度上降低误差的影响，最终得到对真实情况更准、更可靠的一个估计结果。这个过程本质上也是提取更干净、更有用的信息，对两个存在误差的数据中有用的部分进行了增强，就像是过滤掉测量中的噪声">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Welcome To my Blog">
+<meta property="og:url" content="http://zerohzzzz.github.io/2025/07/22/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/index.html">
+<meta property="og:site_name" content="Welcome To my Blog">
+<meta property="og:description" content="一些基本概念 滤波：这是信号里面的一个概念，简单说就是从信号里挑出我们想要的部分，同时尽量去掉那些不需要的部分或噪声。  卡尔曼滤波它的核心思想其实是把多个含有误差的数据​​融合​​在一起。通过这种融合计算，我们能在很大程度上降低误差的影响，最终得到对真实情况更准、更可靠的一个估计结果。这个过程本质上也是提取更干净、更有用的信息，对两个存在误差的数据中有用的部分进行了增强，就像是过滤掉测量中的噪声">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-22T12:54:44.575Z">
+<meta property="article:modified_time" content="2025-07-22T12:54:44.575Z">
+<meta property="article:author" content="ZeroHzzzz">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Welcome To my Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"zerohzzzz.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ZeroHzzzz</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>Links</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-07-22 12:54" pubdate>
+          July 22, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          45 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念"></a>一些基本概念</h1><ul>
+<li><p><strong>滤波</strong>：这是信号里面的一个概念，简单说就是从信号里挑出我们想要的部分，同时尽量去掉那些不需要的部分或噪声。</p>
+<ul>
+<li>卡尔曼滤波它的核心思想其实是把多个含有误差的数据​<strong>​融合​</strong>​在一起。通过这种融合计算，我们能在很大程度上降低误差的影响，最终得到对真实情况更准、更可靠的一个估计结果。这个过程本质上也是提取更干净、更有用的信息，对两个存在误差的数据中有用的部分进行了增强，就像是过滤掉测量中的噪声，所以这玩意也叫做滤波。</li>
+</ul>
+</li>
+<li><p><strong>先验估计值</strong>：指的是在获得某些证据或数据之前，我们对某个参数或者事件的概率分布的估计。就是根据经验猜出来的值</p>
+</li>
+<li><p><strong>后验估计值</strong>：就是说我们一旦获得了新的数据或证据，就可以利用这些信息来更新我们对参数或者事件的估计。这个更新后的概率分布就称为后验估计值。</p>
+</li>
+<li><p><strong>迹</strong>：指的是一个方阵的对角线上元素之和。</p>
+</li>
+<li><p><strong>状态转移模型 (<code>F</code>)：​</strong>​ 描述系统状态如何从时刻<code>k-1</code>演变到时刻<code>k</code>的数学方程。通常是一个矩阵（状态转移矩阵）。</p>
+</li>
+<li><strong>观测模型 (<code>H</code>)：​</strong>​ 描述系统的状态(<code>x</code>)如何映射为我们能观测到的测量值(<code>z</code>)的数学方程（观测矩阵）。它的作用是把预测的状态空间转换到观测空间，以便与实际测量值进行比较和融合。</li>
+<li><strong>过程噪声 (<code>w</code>, 协方差 <code>Q</code>)：​</strong>​ 代表驱动系统动态的模型本身的不准确性和外部扰动。例如风对飞行器的影响、路面摩擦力变化对汽车模型的影响。</li>
+<li><strong>测量噪声 (<code>v</code>, 协方差 <code>R</code>)：​</strong>​ 代表传感器测量的不精确性和噪声。例如GPS的位置误差、陀螺仪的漂移。</li>
+<li><strong>状态估计协方差 (<code>P</code>)：​</strong>​ 这是卡尔曼滤波的核心“元信息”。它不是一个状态变量本身的值，而是​<strong>​一个矩阵，代表我们对当前状态估计值可信度（不确定性）的量化​</strong>​。对角线上的元素代表各个状态变量估计的方差（不确定度），非对角元素代表状态变量之间估计误差的协方差（相关性）。卡尔曼滤波在每一步都同时更新状态估计 (<code>x</code>) 和其协方差 (<code>P</code>)，协方差<code>P</code>的演变是算法精妙之处所在。</li>
+<li><strong>卡尔曼增益 (<code>K</code>)</strong>：它是一个​<strong>​权重矩阵​</strong>​，决定了我们更​<strong>​“相信”​</strong>​ 预测值还是测量值。<ul>
+<li>​<strong>​测量噪声小​</strong>​（<code>R</code>小 → 传感器精度高），<code>K</code>会更大 → 新测量值在更新中的​<strong>​权重更高​</strong>​。</li>
+<li>​<strong>​预测噪声小​</strong>​（预测协方差<code>P</code>小 → 模型预测非常准确/不确定性低），<code>K</code>会更小 → ​<strong>​更倾向于相信预测值​</strong>​。</li>
+<li>事实上<code>K</code>是基于预测协方差<code>P</code>、观测模型<code>H</code>和测量噪声协方差<code>R</code>计算出来的。计算方法为$K = P<em>{predicted} <em> H^T </em> (H * P</em>{predicted} * H^T + R)^-1$</li>
+</ul>
+</li>
+</ul>
+<h1 id="Previously"><a href="#Previously" class="headerlink" title="Previously"></a>Previously</h1><p>卡尔曼滤波，用人话讲就是你有多个不确定的数据，经过一系列的算法过程，然后能获得一个相对准确的结果。</p>
+<p>他是一种递归算法，有几个前提条件：</p>
+<ul>
+<li>当前时刻状态只和<strong>上一时刻</strong>状态有关。这个讲的高级点就是<strong>马尔可夫性</strong></li>
+<li>模型和系统均满足<strong>线性</strong>关系</li>
+<li>噪声符合<strong>高斯</strong>分布</li>
+</ul>
+<p>对于和多时刻状态有关、非线性、非高斯问题，就不能简单地使用卡尔曼滤波。例如使用拓展卡尔曼滤波器进行姿态解算，此时的卡尔曼滤波器是拓展的，适用于非线性的情况。这是后话。</p>
+<p>他通过预测和更新两个步骤来实现对系统状态的最优估计：</p>
+<ul>
+<li><strong>预测</strong>：基于前一时刻的状态估计值和当前的系统模型，预测当前时刻的状态</li>
+<li><strong>更新</strong>：当获得当前时刻的观测值后，利用这个信息来修正预测值，得到一个更精确的状态估计值</li>
+</ul>
+<h1 id="省流版"><a href="#省流版" class="headerlink" title="省流版"></a>省流版</h1><p>我们先看省流版。其实看了这个就直接能拿来用了，有兴趣再往下看。</p>
+<p>卡尔曼滤波主要就两个步骤：预测（先验估计）和更新（后验估计）。</p>
+<p>预测的时候，我们需要预测状态：</p>
+<script type="math/tex; mode=display">\bar{x_{k}}= F x_{k-1} + B u_{k-1} \tag{1}</script><p>以及使用协方差传播方程预测协方差：</p>
+<script type="math/tex; mode=display">\bar{P_{k}} = FP_{k-1}F^{T}+ Q \tag{2}</script><p>然后求出一个k时刻的卡尔曼增益K：</p>
+<script type="math/tex; mode=display">K_k = \bar{P_k} H^T (H \bar{P_k} H^{T + R)^{-1}}\tag{3}</script><p>然后进行更新步骤。首先用K算出最优估计值：</p>
+<script type="math/tex; mode=display">\hat{x_k} = \bar{x_k} + K(z_k - Hx_k^-)\tag{4}</script><p>同时更新协方差：</p>
+<script type="math/tex; mode=display">P_k = (I - KH) \bar{P_k} (I - KH)^T + K R K^{T}\tag{5}</script><p>然后我们将更新后的$\hat{x<em>k}$和协方差估计$P</em>{K}$作为下一个时间步的输入。重复以上的算法过程。这就是卡尔曼滤波的算法过程。</p>
+<h1 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h1><p>根据上文所述，卡尔曼滤波具有三个前提条件，因此我们可以根据这个条件写出以下的两个公式：</p>
+<script type="math/tex; mode=display">x_{k}= F x_{k-1} + B u_{k-1} + w_{k}</script><script type="math/tex; mode=display">z_{k}= H x_{k} + v_{k}</script><p>其中$x<em>{k}$表示k时刻的真实值，是待估计值，而$x</em>{k-1}$表示k-1时刻的真实值。$u<em>{k-1}$表示k-1时刻的控制输入量，$z</em>{k}$表示k时刻的观测值，是我们获取到的传感器的值（请注意他可能和$x_{k}$维度不同）。</p>
+<p>可以看出，我们其实并不知道k时刻的噪声，其实就算是模型很精确他多少也存在噪声，因此我们并不能很准确的得到一个真实值$x<em>k$，所以我们的目标就是获得一个最优的估计值$\hat{x</em>{k}}$来尽可能接近$x_{k}$，让他的误差达到最小。</p>
+<p>对于过程模型来说，我们面临两个问题，就是其实我们并不知道过程模型$w<em>{k}$和$x</em>{k-1}$</p>
+<p>但我们其实可以直接忽略$w<em>{k}$。不是因为它不存在，而是因为它的具体值未知且无法直接用来计算，后续我们会用过程噪声协方差 Q 来建模 $w_k$ 的整体统计特性并加以补偿。既然我们没有k-1时刻的真实值，就用我们上一个时刻得到的最好的估计结果 $\hat{x</em>{k-1}}$ 来近似它。由此可以得到：</p>
+<script type="math/tex; mode=display">\bar{x_{k}}= F x_{k-1} + B u_{k-1} \tag{1}</script><p>我们使用上一时刻的最优估计值$\hat{x<em>{k-1}}$ 来替代真实值$x</em>{k-1}$，并将$\bar{x_{k}}$称为当前时刻通过过程模型得到的<strong>预测值</strong>，也叫做<strong>先验估计值</strong>。显然，这是一个误差较大的预估值，我们使用观测值来进行修正，这也就是卡尔曼滤波的核心思想：使用<strong>观测值</strong>修正我们得出的<strong>预测值</strong></p>
+<p>那他是怎么修正的？请看下文的预测步骤。</p>
+<h1 id="最优估计值"><a href="#最优估计值" class="headerlink" title="最优估计值"></a>最优估计值</h1><p>其实有两种推导方式，一种是从预测值的角度出发，一种是从观测值的角度出发，本质上都是一样的。都能得到下面的公式：</p>
+<script type="math/tex; mode=display">\hat{x_{k}} = x_k^- + K(z_k - Hx_k^-)</script><p>我们先来看从预测值的角度出发的方法。</p>
+<h2 id="预测值"><a href="#预测值" class="headerlink" title="预测值"></a>预测值</h2><p>我们这里和上文所述一样，可以忽略掉观测噪声$v_{k}$。因此我们可以得到：</p>
+<script type="math/tex; mode=display">z_k = H x_k^{\text{measure}} \Rightarrow x_k^{\text{measure}} = H^{-1} z_k</script><p>这样我们就得到了一个$x<em>{k}^{measure}$，可以用它来和我们之前得到的$\bar{x</em>{k}}$作差，得到一个误差值，用来修正我们的预测值。其中A、B分别代表模型预测值的可信度权重​和传感器测量值的可信度权重​。</p>
+<script type="math/tex; mode=display">
+\hat{x}_k = A x_k^- + B x_k^{measure}, \quad A + B = I</script><p>当然也有人把这个公式写成下面这样的形式。本质上是相同的。其中G是一个系数矩阵</p>
+<script type="math/tex; mode=display">
+\hat{x}_k = x_k^- + G \cdot (x_k^{\text{measure}} - x_k^-)</script><p>这种写法可以进一步简化。让我们设$G = K \cdot H$，于是有：</p>
+<script type="math/tex; mode=display">
+\begin{align*}
+\hat{x}_k &= \bar{x_k} + G \cdot (x_k^{measure} - \bar{x_k}) \\
+&= \bar{x_k} + KH(H^{-1}z_k - \bar{x_k}) \\
+&= \bar{x_k} + K(z_k - H\bar{x_k})\tag{4}
+\end{align*}</script><p>其中K是卡尔曼增益，$\hat{x}$ 是最优值，因为他是用测量值修正的，这就叫做后验估计值</p>
+<h2 id="观测值"><a href="#观测值" class="headerlink" title="观测值"></a>观测值</h2><p>和上面的方法一样，我们直接忽略掉噪声$v<em>{k}$，但是我们这里使用先验估计值$\bar{x</em>{k}}$来表示真实值，因此我们可以得到以下公式</p>
+<script type="math/tex; mode=display">z_{k}^{measure}=H\bar{x_{k}}</script><p>我们通过预测值和观测矩阵获得了和测量值相同维度的$z<em>{k}^{measure}$，然后我们就可以用它来获得一个与观测值$z</em>{k}$的误差值，然后用这个误差来修正我们之前得出的预测值。考虑到观测值和预测值维度可能不同等因素，我们用系数矩阵K进行修正。因此有：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \\
+\hat{x}_k &= \bar{x_k} + K(z_k - z_k^{\text{measure}}) \\ \\
+&= \bar{x_k} + K(z_k - H\bar{x_k}) \\
+\end{align*}</script><p>这里的K和上文一样表示卡尔曼增益，因此我们得到了最优估计值和预测值、观测值的关系式，并且希望求出一个合适的K，使得最优估计值最接近真实值。</p>
+<h1 id="后验误差"><a href="#后验误差" class="headerlink" title="后验误差"></a>后验误差</h1><p>我们只需要把我们上面求出来的最优估计值和我们的真实值$x_{k}$作差就行了。也就是：</p>
+<script type="math/tex; mode=display">
+\begin{align*}\\
+x_k - \hat{x}_k &= x_k - \bar{x_k} - K(Hx_k + v_k - H\bar{x_k}) \\ \\
+&= (I - KH)(x_k - \bar{x_k}) - Kv_k \\
+\end{align*}</script><p>我们记$\bar{e<em>{k}} = x</em>{k} - \bar{x<em>{k}}$，$\bar{e</em>{k}}$表示预测值和真实值的误差，于是可以知道：</p>
+<script type="math/tex; mode=display">
+e_{k}=(I-KH)\bar{e_{k}}-K v_{k}\tag{b}</script><p>于是我们现在的目标是要求解最优目标函数$min<em>{K}|e</em>{k}|$。直接通过随机变量的关系式来求解最优目标函数显然不可行，因为他每次都不一样。因此我们需要一个能表征这个​随机变量整体统计特性​​的量作为目标函数，最简单的特征值就是数学期望。我们引入误差协方差矩阵，并设：</p>
+<ul>
+<li>$P<em>{k} = E[e</em>{k}e_{k}^{t}]$，表示真实值和最优值的后验误差协方差矩阵。</li>
+<li>$\bar{P<em>{k}} = E[\bar{e</em>{k}} \bar{e_{k}^{t}}]$，表示的是真实值和预测值的先验误差协方差矩阵。</li>
+</ul>
+<p>根据定义，我们其实可以知道$P<em>{k}^{t} = P</em>{k}$，因为$P<em>k^t = E[(e_k^t e_k^t)^t] = E[(e_k^t)^t e_k^t] = E[e_k e_k^t] = P_k$。并且我们同理可知，$\bar{P</em>{k}^{t}} = \bar{P_{k}}$</p>
+<p>我们一步步来，先讲公式(b)带入到$P_{k}$表达式里面，由此我们可以得到：</p>
+<script type="math/tex; mode=display">P_k = E [ ( (I - K H) e_k^- - K v_k )  ( (I - K H) e_k^- - K v_k )^T ]</script><p>令 $A = I - K H$, $B = -K v_k$（为了书写方便），上式变为：</p>
+<script type="math/tex; mode=display">
+P_k = E [ (A e_k^- + B) (A e_k^- + B)^T ]
+= E [ (A e_k^- + B) (e_k^-T A^T + B^T) ]</script><p>此处省略一些中间步骤，我们最终可以得到：</p>
+<script type="math/tex; mode=display">P_k = E [ (I - KH) e_k^- e_k^-T (I - KH)^T ] + E [ (I - KH) e_k^- (-v_k^T K^T) ] + E [ (-K v_k) e_k^-T (I - KH)^T ] + E [ K v_k v_k^T K^T ]</script><p>而我们之前提到过，卡尔曼滤波有一个假设是他过程噪声$w<em>{k}$和测量噪声$v</em>{k}$独立同分布，服从高斯分布。所以可以知道：</p>
+<ul>
+<li>$E[\bar{e_k}] = 0, E[v_k] = 0$</li>
+<li>$E[\bar{e_k} v_k^T] = 0$ (独立且不相关)</li>
+<li>$E[v_k \bar{e_k^T}] = 0$(独立且不相关)</li>
+</ul>
+<p>所以，<script type="math/tex">E [ (I - KH) e_k^- (-v_k^T K^T) ] = (I - KH) E[e_k^- (-v_k^T)] K^T = (I - KH) [0] K^T = 0$$$$E [ (-K v_k) \bar{e_k}T (I - KH)^T ] = -K E[v_k \bar{e_k}T] (I - KH)^T = -K [0] (I - KH)^T = 0</script><br>化简过后，我们可以得到后验协方差矩阵$P_k$的表达式：</p>
+<script type="math/tex; mode=display">P_k = (I - KH) \bar{P_k} (I - KH)^T + K R K^T \tag{a}</script><p>对于这个公式，我的理解是$I - KH$ 是一个缩小因子，用来调整预测误差对最终估计的影响，然后$(I - KH) P_k^- (I - KH)^T$这个部分代表了​​校正后的预测不确定性​​。K 在减小预测误差贡献的同时也改变了它的协方差结构。而$K R K^T$这个部分代表了由​​测量噪声 (R)​​ 通过卡尔曼增益 K 引入的​​额外不确定性​​。</p>
+<p>从现在开始，我们的目标就从求解最优目标函数$min<em>{K}|e</em>{k}|$变成了​<strong>​找到一个最优的卡尔曼增益矩阵 K，使得后验误差协方差矩阵 $P_K$ 的迹最小化​</strong>​。这里迹反映了状态估计整体误差方差的总和。</p>
+<h1 id="求解最优K"><a href="#求解最优K" class="headerlink" title="求解最优K"></a>求解最优K</h1><p>上文可知，我们现在的目标是最小化$P<em>k$的迹，即$J = tr(P</em>{k})$。</p>
+<p>那我们现在就将$P_{k}$代入进去，然后对K求偏导，并令他导数为零。这里过程不再赘述，我们最终可以得到一个公式：</p>
+<script type="math/tex; mode=display">K = \bar{P_k} H^T (H \bar{P_k} H^{T + R)^{-1} \tag{3}}</script><p>这就是著名的卡尔曼增益公式。</p>
+<h1 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h1><p>我们将刚刚获得的最优K代入到公式(a)中，进行化简，则有：</p>
+<script type="math/tex; mode=display">P_{k}= (I-K H) \bar{P_{k}} \tag{5}</script><p>同理，我们可以得到先验误差协方差矩阵</p>
+<script type="math/tex; mode=display">\bar{P_{k}} = FP_{k-1}F^{T}+ Q \tag{2}</script><script type="math/tex; mode=display">\mathscr{END}</script>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://zerohzzzz.github.io/2025/07/22/卡尔曼滤波/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>ZeroHzzzz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 22, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/12/16/%E7%BD%91%E7%BB%9C%E5%B1%82/" title="网络层">
+                        <span class="hidden-mobile">网络层</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       # <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> # <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
